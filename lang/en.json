@@ -6,6 +6,10 @@
     },
     "Tabs": {
       "Navigation": "Character sheet sections",
+      "ItemNavigation": "Item sheet sections",
+      "ItemAttributes": "Attributes",
+      "Description": "Description",
+      "ItemEffects": "Item Effects",
       "General": "General",
       "State": "State",
       "Specialties": "Specialities",

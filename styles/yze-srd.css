@@ -130,6 +130,49 @@
   max-width: 100%;
 }
 
+.yze.item-sheet .yze-sheet-tabs {
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--yze-ink);
+}
+
+.yze.item-sheet .yze-sheet-tabs button {
+  border: 0;
+  border-right: 1px solid var(--yze-ink);
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.yze.item-sheet .yze-sheet-tabs button:last-child {
+  border-right: 0;
+}
+
+.yze.item-sheet .yze-sheet-tabs button.active {
+  background: var(--yze-ink);
+  color: #fff;
+}
+
+.yze.item-sheet .yze-sheet-tab {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.yze.item-sheet .yze-sheet-tab.active {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.yze.item-sheet .item-description-section textarea {
+  display: block;
+  width: 100%;
+  min-height: 18rem;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
 .yze-zone-manager {
   display: flex;
   flex-direction: column;

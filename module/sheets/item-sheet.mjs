@@ -52,6 +52,17 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     }
   };
 
+  static TABS = {
+    sheet: {
+      tabs: [
+        { id: "attributes", icon: "fa-solid fa-sliders", label: "YZE.Tabs.ItemAttributes" },
+        { id: "description", icon: "fa-solid fa-align-left", label: "YZE.Tabs.Description" },
+        { id: "effects", icon: "fa-solid fa-bolt", label: "YZE.Tabs.ItemEffects" }
+      ],
+      initial: "attributes"
+    }
+  };
+
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const labels = getAttributeLabels();
@@ -64,6 +75,11 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     });
     context.isArchetype = this.item.type === "archetype";
     context.showItemEffects = !context.isArchetype;
+    if (!context.showItemEffects) {
+      context.tabs = Object.fromEntries(
+        Object.entries(context.tabs).filter(([id]) => id !== "effects")
+      );
+    }
     context.isSkill = this.item.type === "skill";
     context.useStepDice = isStepDiceEnabled();
     context.stepRatingOptions = STEP_RATINGS.map((rating) => ({

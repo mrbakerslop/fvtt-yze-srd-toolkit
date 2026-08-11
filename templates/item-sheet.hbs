@@ -7,6 +7,23 @@
     </div>
   </header>
 
+  <nav class="yze-sheet-tabs tabs" data-group="sheet" aria-label="{{localize 'YZE.Tabs.ItemNavigation'}}">
+    {{#each tabs}}
+      <button
+        type="button"
+        class="{{cssClass}}"
+        data-action="tab"
+        data-group="sheet"
+        data-tab="{{id}}"
+      >
+        <i class="{{icon}}" aria-hidden="true"></i>
+        <span>{{localize label}}</span>
+      </button>
+    {{/each}}
+  </nav>
+
+  <div class="tab yze-sheet-tab {{tabs.attributes.cssClass}}" data-group="sheet" data-tab="attributes">
+
   {{#if showPrice}}
     <section class="yze-section form-grid item-price-fields">
       <label>
@@ -108,32 +125,31 @@
           <input name="system.weight" type="number" value="{{system.weight}}" min="0" step="0.25">
         </label>
       {{/if}}
+      {{#if usesReliability}}
+        <label>
+          {{localize "YZE.Item.Reliability"}}
+          <input name="system.reliability.value" type="number" value="{{system.reliability.value}}" min="0" max="{{system.reliability.max}}">
+        </label>
+        <label>
+          {{localize "YZE.Item.MaximumReliability"}}
+          <input name="system.reliability.max" type="number" value="{{system.reliability.max}}" min="0">
+        </label>
+      {{/if}}
       <label class="checkbox-row">
         <input name="system.equipped" type="checkbox" {{checked system.equipped}}>
         {{localize "YZE.Item.Equipped"}}
       </label>
-    </section>
-  {{/if}}
-
-  {{#if usesReliability}}
-    <section class="yze-section form-grid">
-      <label>
-        {{localize "YZE.Item.Reliability"}}
-        <input name="system.reliability.value" type="number" value="{{system.reliability.value}}" min="0" max="{{system.reliability.max}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.MaximumReliability"}}
-        <input name="system.reliability.max" type="number" value="{{system.reliability.max}}" min="0">
-      </label>
-      {{#unless system.reliability.value}}
-        <p class="hint gear-broken-hint">{{localize "YZE.Item.BrokenGearHint"}}</p>
-      {{/unless}}
+      {{#if usesReliability}}
+        {{#unless system.reliability.value}}
+          <p class="hint gear-broken-hint">{{localize "YZE.Item.BrokenGearHint"}}</p>
+        {{/unless}}
+      {{/if}}
     </section>
   {{/if}}
 
   {{#if isGear}}
-    <section class="yze-section form-grid">
-      {{#unless useStepDice}}
+    {{#unless useStepDice}}
+      <section class="yze-section form-grid">
         <label>
           {{localize "YZE.Item.Bonus"}}
           <input name="system.bonus" type="number" value="{{system.bonus}}" min="0">
@@ -148,8 +164,8 @@
             {{#each artifactDieOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
           </select>
         </label>
-      {{/unless}}
-    </section>
+      </section>
+    {{/unless}}
   {{/if}}
 
   {{#if isWeapon}}
@@ -500,7 +516,11 @@
     </section>
   {{/if}}
 
-  {{#if showItemEffects}}<section class="yze-section item-effects-section">
+  </div>
+
+  {{#if showItemEffects}}
+  <div class="tab yze-sheet-tab {{tabs.effects.cssClass}}" data-group="sheet" data-tab="effects">
+  <section class="yze-section item-effects-section">
     <div class="section-heading-row">
       <h2>{{localize "YZE.ItemEffects.Title"}}</h2>
       <button type="button" data-action="addItemEffect"><i class="fa-solid fa-plus"></i> {{localize "YZE.ItemEffects.Add"}}</button>
@@ -602,10 +622,14 @@
         <li class="empty-state">{{localize "YZE.ItemEffects.Empty"}}</li>
       {{/each}}
     </ol>
-  </section>{{/if}}
+  </section>
+  </div>
+  {{/if}}
 
-  <section class="yze-section">
+  <div class="tab yze-sheet-tab {{tabs.description.cssClass}}" data-group="sheet" data-tab="description">
+  <section class="yze-section item-description-section">
     <h2>{{localize "YZE.Item.Description"}}</h2>
     <textarea name="system.description" rows="12">{{system.description}}</textarea>
   </section>
+  </div>
 </div>

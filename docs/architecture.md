@@ -96,6 +96,12 @@ Inventory, Weapons and Armour, and Spells occupy four dedicated tabs. The
 header and tab navigation remain fixed while the active tab scrolls vertically.
 Typed drop-zone semantics are unchanged by this presentation layer.
 
+Mechanically applicable Item sheets use the same native tab system. Their
+type-specific fields are grouped under Attributes, long-form rules text uses a
+full-width Description tab, and Universal Item Effects have a dedicated tab.
+Archetypes omit the effects tab because they define character creation choices
+rather than becoming active embedded Items.
+
 ## Core dice variants
 
 The world selects either D6 dice pools or stepped dice. Both sets of ratings
