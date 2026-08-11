@@ -324,7 +324,7 @@ identity fields can also be labelled and enabled per world.
 - selectable push-cost policy (core policies implemented);
 - opposed-roll workflow and active-party-only pushing (implemented);
 - Gear Bonus degradation and stepped-dice Reliability tracking (implemented);
-- Backpack capacity/Mobility effects, general Supply rolls and transfers,
+- Item-defined carry-capacity and automatic Mobility effects, general Supply rolls and transfers,
   Artifact Dice, and permanent Gear-repair consequences (implemented);
 - universal multi-effect Item automation for all-roll, Attribute, and
   individual-Skill modifiers and extra pushes, alternate Attributes,
@@ -347,7 +347,7 @@ identity fields can also be labelled and enabled per world.
 - configurable Pride, Weakness, Dark Secret, Big Dream, Buddy, and linked
   Relationship data with world labels and XP-question integration
   (implemented);
-- encumbrance calculation, Backpack automation, consumable representations,
+- encumbrance calculation, reusable container effects, consumable representations,
   and general Supply-roll/transfer execution (implemented).
 
 ### Slice 4: conflict and optional subsystems

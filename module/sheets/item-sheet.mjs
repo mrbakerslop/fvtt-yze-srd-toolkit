@@ -242,7 +242,11 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     context.itemEffects = effects.map((effect, index) => ({
       ...effect,
       index,
-      isRollModifier: effect.type === ITEM_EFFECT_TYPES.ROLL_MODIFIER,
+      isRollModifier: [
+        ITEM_EFFECT_TYPES.ROLL_MODIFIER,
+        ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER
+      ].includes(effect.type),
+      isCarryCapacityMultiplier: effect.type === ITEM_EFFECT_TYPES.CARRY_CAPACITY_MULTIPLIER,
       isExtraPush: effect.type === ITEM_EFFECT_TYPES.EXTRA_PUSH,
       isAlternateAttribute: effect.type === ITEM_EFFECT_TYPES.ALTERNATE_ATTRIBUTE,
       isInitiativeCards: effect.type === ITEM_EFFECT_TYPES.INITIATIVE_CARDS,

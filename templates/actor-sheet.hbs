@@ -645,8 +645,8 @@
           {{#if encumbrance.excluded.length}}
             <p class="hint">{{localize "YZE.Encumbrance.Excluded" items=encumbrance.excludedLabel}}</p>
           {{/if}}
-          {{#if encumbrance.backpack}}
-            <p class="hint">{{localize "YZE.Encumbrance.BackpackActive" backpack=encumbrance.backpack}}</p>
+          {{#if encumbrance.capacityEffects.length}}
+            <p class="hint">{{localize "YZE.Encumbrance.CapacityEffects" effects=encumbrance.capacityEffectsLabel}}</p>
           {{/if}}
         </section>
       {{/if}}

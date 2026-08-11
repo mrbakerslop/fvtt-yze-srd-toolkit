@@ -188,7 +188,7 @@ major world-level change.
 - Universal Item Effects for modifiers, resources, automatic successes, harm,
   recovery, statuses, armour, and guided outcomes
 - Contextual and stack-aware Speciality effects
-- Gear degradation, repairs, permanent damage, and Backpack capacity
+- Gear degradation, repairs, permanent damage, and Item-defined carry capacity
 - Exact and Supply-based Consumables with transfers and food actions
 - Item-powered Willpower activations and shared Doom expenditures
 

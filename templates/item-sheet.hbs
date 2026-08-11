@@ -149,10 +149,6 @@
           </select>
         </label>
       {{/unless}}
-      <label class="checkbox-row">
-        <input name="system.isBackpack" type="checkbox" {{checked system.isBackpack}}>
-        {{localize "YZE.Item.IsBackpack"}}
-      </label>
     </section>
   {{/if}}
 
@@ -537,6 +533,10 @@
           {{#if isDerivedStat}}
             <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target">{{#each derivedTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
             <label>{{localize "YZE.ItemEffects.Value"}}<select name="system.effects.{{index}}.value">{{#each derivedOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isCarryCapacityMultiplier}}
+            <label>{{localize "YZE.ItemEffects.CapacityMultiplier"}}<input name="system.effects.{{index}}.value" type="number" value="{{value}}" min="1" max="10" step="1"></label>
+            <span class="hint">{{localize "YZE.ItemEffects.CapacityMultiplierHint"}}</span>
           {{/if}}
           {{#if isHitInterception}}
             <label>{{localize "YZE.ItemEffects.Skill"}}<select name="system.effects.{{index}}.target"><option value="" {{#if usesDefaultInterceptionSkill}}selected{{/if}}>{{localize "YZE.ItemEffects.DefaultMobility"}}</option>{{#each skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>

@@ -162,8 +162,23 @@ export const SRD_GEAR = [
       quantity: 1,
       weight: 0,
       equipped: false,
-      isBackpack: true,
       bonus: 0,
+      effects: [
+        {
+          id: "srd-backpack-capacity",
+          active: true,
+          type: "carryCapacityMultiplier",
+          target: "",
+          value: 2
+        },
+        {
+          id: "srd-backpack-mobility",
+          active: true,
+          type: "automaticRollModifier",
+          target: "skill:mobility",
+          value: -2
+        }
+      ],
       description: paragraph("Carries additional regular items equal to the wearer's carry limit, but gives −2 to Mobility while carried.")
     }
   },
@@ -187,7 +202,6 @@ export const SRD_GEAR = [
       quantity: 1,
       weight: 0.25,
       equipped: false,
-      isBackpack: false,
       bonus: 0,
       description: paragraph("Simple trapping gear used to catch suitable prey after a successful hunting roll.")
     }

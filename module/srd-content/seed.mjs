@@ -1,5 +1,5 @@
 import { SYSTEM_ID } from "../constants.mjs";
-import { SPELL_EFFECT_TYPES } from "../item-effects.mjs";
+import { ITEM_EFFECT_TYPES, SPELL_EFFECT_TYPES } from "../item-effects.mjs";
 import {
   specialtyItemEffects,
   SRD_CONSUMABLES,
@@ -9,7 +9,7 @@ import {
 } from "./items.mjs";
 import { SRD_CRITICAL_INJURIES } from "./critical-injuries.mjs";
 
-const SRD_CONTENT_VERSION = 23;
+const SRD_CONTENT_VERSION = 24;
 
 const MAGIC_DISCIPLINES = new Set([
   "awareness", "healing", "shapeshifting", "blood magic",
@@ -168,11 +168,6 @@ function equipmentMechanicsUpdate(item) {
     update["system.maxBonus"] = startingBonus;
     changed = true;
   }
-  if (item.type === "gear" && item.getFlag(SYSTEM_ID, "srdKey")
-    && normalize(item.name) === "backpack" && source.isBackpack !== true) {
-    update["system.isBackpack"] = true;
-    changed = true;
-  }
   return changed ? update : null;
 }
 
@@ -181,6 +176,65 @@ async function migrateEquipmentMechanics() {
   if (worldUpdates.length > 0) await Item.implementation.updateDocuments(worldUpdates);
   for (const actor of game.actors) {
     const embeddedUpdates = [...actor.items].map(equipmentMechanicsUpdate).filter(Boolean);
+    if (embeddedUpdates.length > 0) {
+      await actor.updateEmbeddedDocuments("Item", embeddedUpdates);
+    }
+  }
+}
+
+function backpackEffectsUpdate(item) {
+  if (item.type !== "gear") return null;
+  const source = item._source?.system ?? {};
+  const isSeededBackpack = item.getFlag(SYSTEM_ID, "srdKey") === "item:gear:backpack";
+  if (source.isBackpack !== true && !isSeededBackpack) return null;
+
+  const effects = Array.isArray(source.effects) ? foundry.utils.deepClone(source.effects) : [];
+  let changed = false;
+  if (!effects.some((effect) => effect.type === ITEM_EFFECT_TYPES.CARRY_CAPACITY_MULTIPLIER)) {
+    effects.push({
+      id: `migrated-${item.id}-capacity`,
+      active: true,
+      type: ITEM_EFFECT_TYPES.CARRY_CAPACITY_MULTIPLIER,
+      application: "passive",
+      target: "",
+      value: 2
+    });
+    changed = true;
+  }
+
+  const mobility = effects.find((effect) => (
+    [ITEM_EFFECT_TYPES.ROLL_MODIFIER, ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER]
+      .includes(effect.type)
+    && effect.target === "skill:mobility"
+    && Number(effect.value) === -2
+  ));
+  if (mobility && mobility.type !== ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER) {
+    mobility.type = ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER;
+    changed = true;
+  } else if (!mobility) {
+    effects.push({
+      id: `migrated-${item.id}-mobility`,
+      active: true,
+      type: ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER,
+      application: "passive",
+      target: "skill:mobility",
+      value: -2
+    });
+    changed = true;
+  }
+
+  const update = { _id: item.id };
+  if (changed) update["system.effects"] = effects;
+  if (source.isBackpack !== false) update["system.isBackpack"] = false;
+  if (Number(source.weight) !== 0) update["system.weight"] = 0;
+  return Object.keys(update).length > 1 ? update : null;
+}
+
+async function migrateBackpackEffects() {
+  const worldUpdates = [...game.items].map(backpackEffectsUpdate).filter(Boolean);
+  if (worldUpdates.length > 0) await Item.implementation.updateDocuments(worldUpdates);
+  for (const actor of game.actors) {
+    const embeddedUpdates = [...actor.items].map(backpackEffectsUpdate).filter(Boolean);
     if (embeddedUpdates.length > 0) {
       await actor.updateEmbeddedDocuments("Item", embeddedUpdates);
     }
@@ -427,6 +481,7 @@ export async function migrateWorldData({ force = false } = {}) {
   if (force || currentVersion < 19) await migrateAerialVehicles();
   if (force || currentVersion < 20) await migrateSeededFood();
   if (force || currentVersion < 13) await migrateEquipmentMechanics();
+  if (force || currentVersion < 24) await migrateBackpackEffects();
   if (force || currentVersion < 16) await migrateUniversalItemEffects();
   if (force || currentVersion < 21) await migrateCriticalInjuryRestrictions();
   if (force || currentVersion < 22) await migrateExperienceLedgers();

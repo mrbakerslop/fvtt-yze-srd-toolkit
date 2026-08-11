@@ -15,8 +15,7 @@ import { getCriticalInjuryModifier } from "../critical-injuries.mjs";
 import { getPanicModifier } from "../panic.mjs";
 import { specialtyEffect } from "../specialties.mjs";
 import { getMagicAutomaticSuccesses, getMagicRollModifier } from "../magic.mjs";
-import { backpackMobilityModifier } from "../encumbrance.mjs";
-import { rollModifierEffects } from "../item-effects.mjs";
+import { automaticRollModifierEffects, rollModifierEffects } from "../item-effects.mjs";
 import { combatActionState } from "../combat.mjs";
 import { helperCandidates, MAX_HELPERS } from "../helping.mjs";
 import { zoneRollModifiers } from "../zones.mjs";
@@ -448,10 +447,10 @@ export async function promptRollModifiers({
 }) {
   const advantageMode = getDiceSystem() === DICE_SYSTEMS.STEP
     && getStepModifierMethod() === STEP_MODIFIER_METHODS.ADVANTAGE;
-  const backpack = backpackMobilityModifier(actor, skillName);
+  const automaticItemEffects = automaticRollModifierEffects(actor, attributeKey, skillName);
   const combinedFixedModifiers = [
     ...fixedModifiers,
-    ...backpack.sources.map((source) => [source.name, source.value]),
+    ...automaticItemEffects.map((effect) => [effect.item.name, effect.value]),
     ...zoneRollModifiers(actor, skillName)
   ];
   const magicModifier = getMagicRollModifier(actor, attributeKey, skillName);

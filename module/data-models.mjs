@@ -345,8 +345,9 @@ class DescribedItemDataModel extends foundry.abstract.TypeDataModel {
           nullable: false,
           blank: false,
           choices: [
-            "rollModifier", "extraPush", "alternateAttribute",
+            "rollModifier", "automaticRollModifier", "extraPush", "alternateAttribute",
             "initiativeCards", "healingTime", "derivedStat",
+            "carryCapacityMultiplier",
             "hitInterception", "coupDeGrace",
             "willpowerActivation", "doomExpenditure",
             "spellDamage", "spellRecovery", "spellModifier",

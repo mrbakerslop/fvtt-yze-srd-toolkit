@@ -2,11 +2,13 @@ import { ATTRIBUTE_KEYS } from "./constants.mjs";
 
 export const ITEM_EFFECT_TYPES = Object.freeze({
   ROLL_MODIFIER: "rollModifier",
+  AUTOMATIC_ROLL_MODIFIER: "automaticRollModifier",
   EXTRA_PUSH: "extraPush",
   ALTERNATE_ATTRIBUTE: "alternateAttribute",
   INITIATIVE_CARDS: "initiativeCards",
   HEALING_TIME: "healingTime",
   DERIVED_STAT: "derivedStat",
+  CARRY_CAPACITY_MULTIPLIER: "carryCapacityMultiplier",
   HIT_INTERCEPTION: "hitInterception",
   COUP_DE_GRACE: "coupDeGrace",
   WILLPOWER_ACTIVATION: "willpowerActivation",
@@ -100,6 +102,12 @@ export function rollModifierEffects(actor, attributeKey, skillName = null) {
     .filter((effect) => Number(effect.value) !== 0);
 }
 
+export function automaticRollModifierEffects(actor, attributeKey, skillName = null) {
+  return actorItemEffects(actor, ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER)
+    .filter((effect) => effectTargetsRoll(effect, attributeKey, skillName))
+    .filter((effect) => Number(effect.value) !== 0);
+}
+
 export function extraPushes(actor, attributeKey, skillName = null) {
   return actorItemEffects(actor, ITEM_EFFECT_TYPES.EXTRA_PUSH)
     .filter((effect) => effectTargetsRoll(effect, attributeKey, skillName))
@@ -127,6 +135,11 @@ export function derivedStatBonus(actor, target) {
   return actorItemEffects(actor, ITEM_EFFECT_TYPES.DERIVED_STAT)
     .filter((effect) => effect.target === target)
     .reduce((total, effect) => total + Math.trunc(Number(effect.value) || 0), 0);
+}
+
+export function carryCapacityMultiplierEffects(actor) {
+  return actorItemEffects(actor, ITEM_EFFECT_TYPES.CARRY_CAPACITY_MULTIPLIER)
+    .filter((effect) => Number(effect.value) > 0);
 }
 
 export function hitInterceptionEffects(actor) {

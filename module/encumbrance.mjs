@@ -9,6 +9,7 @@ import {
   isStepDiceEnabled
 } from "./settings.mjs";
 import { specialtyDerivedBonuses } from "./specialties.mjs";
+import { carryCapacityMultiplierEffects } from "./item-effects.mjs";
 
 const CARRYABLE_TYPES = Object.freeze(["gear", "weapon", "armor", "consumable"]);
 
@@ -18,21 +19,10 @@ function nonNegative(value) {
 }
 
 function itemLoad(item, consumableMode) {
-  // The SRD Backpack expands capacity but does not itself consume capacity.
-  if (item.type === "gear" && item.system.isBackpack === true) return 0;
   if (item.type === "consumable" && consumableMode === CONSUMABLE_MODES.SUPPLY) {
     return 1;
   }
   return nonNegative(item.system.weight) * Math.trunc(nonNegative(item.system.quantity));
-}
-
-export function activeBackpack(actor) {
-  return actor?.items?.find((item) => (
-    item.type === "gear"
-    && item.system.isBackpack === true
-    && item.system.equipped === true
-    && Number(item.system.quantity) > 0
-  )) ?? null;
 }
 
 function carryLimit(actor) {
@@ -43,24 +33,6 @@ function carryLimit(actor) {
     ? getStepRating(strength.stepRating).faces
     : Math.max(0, Math.trunc(Number(strength.value) || 0) * 2);
   return Math.max(0, base + specialtyDerivedBonuses(actor).carry);
-}
-
-/** The carried Backpack doubles capacity and penalizes Mobility by two dice. */
-export function backpackMobilityModifier(actor, skillName) {
-  if (getEncumbranceMode() === ENCUMBRANCE_MODES.DISABLED) {
-    return { value: 0, sources: [] };
-  }
-  const backpack = activeBackpack(actor);
-  if (!backpack || String(skillName ?? "").localeCompare("Mobility", undefined, {
-    sensitivity: "base"
-  }) !== 0) return { value: 0, sources: [] };
-  return {
-    value: -2,
-    sources: [{
-      name: game.i18n.format("YZE.Encumbrance.BackpackModifier", { backpack: backpack.name }),
-      value: -2
-    }]
-  };
 }
 
 /** Calculate current carried load under the world's selected SRD encumbrance variant. */
@@ -94,9 +66,18 @@ export function actorEncumbrance(actor) {
     load += loadValue;
   }
 
-  const backpack = activeBackpack(actor);
   const baseLimit = carryLimit(actor);
-  const limit = backpack ? baseLimit * 2 : baseLimit;
+  const capacityEffects = carryCapacityMultiplierEffects(actor);
+  const capacityMultiplier = capacityEffects.reduce((total, effect) => (
+    total * Math.max(1, Math.trunc(Number(effect.value) || 1))
+  ), 1);
+  const limit = Math.max(0, baseLimit * capacityMultiplier);
+  const capacityEffectsLabel = capacityEffects.map((effect) => (
+    game.i18n.format("YZE.Encumbrance.CapacityMultiplierSource", {
+      item: effect.item.name,
+      multiplier: Math.max(1, Math.trunc(Number(effect.value) || 1))
+    })
+  )).join(", ");
   return {
     enabled: true,
     mode,
@@ -104,7 +85,8 @@ export function actorEncumbrance(actor) {
     loadLabel: Number.isInteger(load) ? String(load) : String(Number(load.toFixed(2))),
     limit,
     overLimit: load > limit,
-    backpack: backpack?.name ?? null,
+    capacityEffects,
+    capacityEffectsLabel,
     excluded,
     excludedLabel: excluded.join(", ")
   };

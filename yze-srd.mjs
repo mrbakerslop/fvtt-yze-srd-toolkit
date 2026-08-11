@@ -41,7 +41,7 @@ import {
   isTravelEnabled,
   isVehicleSubsystemEnabled
 } from "./module/settings.mjs";
-import { activeBackpack, actorEncumbrance, backpackMobilityModifier } from "./module/encumbrance.mjs";
+import { actorEncumbrance } from "./module/encumbrance.mjs";
 import { rollConsumableSupply, transferConsumableSupply } from "./module/equipment.mjs";
 import {
   addConsumableAmount,
@@ -56,6 +56,8 @@ import {
 import {
   actorItemEffects,
   alternateAttributeEffects,
+  automaticRollModifierEffects,
+  carryCapacityMultiplierEffects,
   derivedStatBonus,
   effectTargetsAttribute,
   effectTargetsRoll,
@@ -444,8 +446,6 @@ Hooks.once("ready", async () => {
     getInitiativeMode,
     getWorldRuleOptions,
     actorEncumbrance,
-    activeBackpack,
-    backpackMobilityModifier,
     rollConsumableSupply,
     transferConsumableSupply,
     addConsumableAmount,
@@ -461,6 +461,8 @@ Hooks.once("ready", async () => {
     effectTargetsAttribute,
     effectTargetsRoll,
     rollModifierEffects,
+    automaticRollModifierEffects,
+    carryCapacityMultiplierEffects,
     skillEffectTarget,
     extraPushes,
     alternateAttributeEffects,

@@ -6,7 +6,6 @@
     "quantity": 1,
     "weight": 0.25,
     "equipped": false,
-    "isBackpack": false,
     "bonus": 0,
     "description": "<p>Simple trapping gear used to catch suitable prey after a successful hunting roll.</p>",
     "maxBonus": 0,
