@@ -1,0 +1,30 @@
+{
+  "name": "Awareness",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "",
+    "effectTarget": "",
+    "magicDiscipline": true,
+    "rank": 1,
+    "effects": [],
+    "description": "<p>A magic discipline for perceiving hidden things, viewing the past, and sensing possible futures.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:awareness"
+    }
+  },
+  "_id": "8GNZFeshBIQYYjls",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!8GNZFeshBIQYYjls"
+}

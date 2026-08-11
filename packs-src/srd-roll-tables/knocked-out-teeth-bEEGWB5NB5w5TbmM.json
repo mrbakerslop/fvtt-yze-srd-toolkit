@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Knocked Out Teeth",
+  "description": "<p>Non-lethal. Persuasion −2; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.UszGG96mtFYILhdO",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    24,
+    24
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-24-24-knocked-out-teeth"
+    }
+  },
+  "_id": "bEEGWB5NB5w5TbmM",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.bEEGWB5NB5w5TbmM"
+}

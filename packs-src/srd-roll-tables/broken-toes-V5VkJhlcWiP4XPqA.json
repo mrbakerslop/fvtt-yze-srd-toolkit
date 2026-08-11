@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Broken Toes",
+  "description": "<p>Non-lethal. Movement becomes a slow action; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.fRGKYO96tMDR16QJ",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    22,
+    22
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-22-22-broken-toes"
+    }
+  },
+  "_id": "V5VkJhlcWiP4XPqA",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.V5VkJhlcWiP4XPqA"
+}

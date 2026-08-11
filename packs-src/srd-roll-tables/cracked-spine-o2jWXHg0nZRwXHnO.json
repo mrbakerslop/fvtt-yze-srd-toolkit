@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Cracked Spine",
+  "description": "<p>Non-lethal. Paralyzed from the neck down; without a timely Healing roll the effect is permanent. Healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.V7Y1w2im5DONitCw",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    56,
+    56
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-56-56-cracked-spine"
+    }
+  },
+  "_id": "o2jWXHg0nZRwXHnO",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.o2jWXHg0nZRwXHnO"
+}

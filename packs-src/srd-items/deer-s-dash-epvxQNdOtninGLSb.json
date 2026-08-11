@@ -1,0 +1,65 @@
+{
+  "name": "Deer's Dash",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Shapeshifting",
+    "rank": 2,
+    "range": "Personal",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-deer-s-dash-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellModifier",
+        "target": "skill:mobility",
+        "attribute": "",
+        "label": "Magical modifier",
+        "description": "Gain a Mobility modifier equal to power.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Stretch",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Move with animal speed and gain a Mobility modifier equal to the power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:deer-s-dash"
+    }
+  },
+  "_id": "epvxQNdOtninGLSb",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!epvxQNdOtninGLSb"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Quick Draw",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "quickDraw",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [],
+    "description": "<p>Drawing a weapon does not cost an action.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:quick-draw"
+    }
+  },
+  "_id": "SaN41RzxJYThpbGl",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!SaN41RzxJYThpbGl"
+}

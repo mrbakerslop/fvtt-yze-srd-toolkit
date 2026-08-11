@@ -1,0 +1,65 @@
+{
+  "name": "Flood Wave",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 3,
+    "range": "Medium",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-flood-wave-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Distribute damage equal to power among selected targets and knock each damaged victim prone.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "prone",
+        "duration": "",
+        "handler": "distributeDamage",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Unleash water or snow, distribute damage among targets, and knock damaged victims down.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:flood-wave"
+    }
+  },
+  "_id": "tI7yfAxzXWwqZqXN",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!tI7yfAxzXWwqZqXN"
+}

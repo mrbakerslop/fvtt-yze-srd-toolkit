@@ -1,0 +1,33 @@
+{
+  "name": "Initiative 8",
+  "type": "base",
+  "suit": "Initiative",
+  "value": 8,
+  "faces": [
+    {
+      "name": "Initiative 8",
+      "img": "icons/svg/card-joker.svg",
+      "text": ""
+    }
+  ],
+  "back": {
+    "name": "YZE Initiative",
+    "img": "icons/svg/card-joker.svg",
+    "text": ""
+  },
+  "face": 0,
+  "drawn": false,
+  "description": "<p>Initiative 8. Lower values act first.</p>",
+  "sort": 800000,
+  "flags": {
+    "fvtt-yze-srd": {
+      "initiativeValue": 8
+    }
+  },
+  "_id": "v1V111PsuaxCs7Yn",
+  "system": {},
+  "origin": null,
+  "rotation": 0,
+  "img": "icons/svg/card-joker.svg",
+  "_key": "!cards.cards!TVKg6uM8CPT4ZGzj.v1V111PsuaxCs7Yn"
+}

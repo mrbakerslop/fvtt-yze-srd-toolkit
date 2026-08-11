@@ -1,0 +1,59 @@
+{
+  "name": "Impaled Thigh",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "25",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "slow",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-25-25-impaled-thigh",
+      "srdKey": "item:criticalInjury:impaled-thigh"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "tZ8cAmMFj6P38AKL",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!tZ8cAmMFj6P38AKL"
+}

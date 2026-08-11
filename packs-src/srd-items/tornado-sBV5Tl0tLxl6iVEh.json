@@ -1,0 +1,89 @@
+{
+  "name": "Tornado",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 3,
+    "range": "Medium",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-tornado-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Distribute damage equal to power among selected zone targets; armour applies.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "distributeDamage",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": true,
+        "multiplier": 0,
+        "value": 0
+      },
+      {
+        "id": "srd-spell-tornado-1",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Each selected target makes an unpushable Force roll and is knocked prone on failure.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "forceStanding",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Distribute damage among targets in a zone and force everyone there to remain standing.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:tornado"
+    }
+  },
+  "_id": "sBV5Tl0tLxl6iVEh",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!sBV5Tl0tLxl6iVEh"
+}

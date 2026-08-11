@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Crushed Elbow",
+  "description": "<p>Non-lethal. The arm cannot be used; healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.tvvifnYkVn9h9X9Z",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    43,
+    43
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-43-43-crushed-elbow"
+    }
+  },
+  "_id": "8ojSuKfalmVJOSVD",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.8ojSuKfalmVJOSVD"
+}

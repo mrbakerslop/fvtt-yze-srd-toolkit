@@ -1,0 +1,65 @@
+{
+  "name": "Portal",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Symbolism",
+    "rank": 3,
+    "range": "Short",
+    "duration": "One shift per power level",
+    "cost": 1,
+    "ritual": true,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-portal-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Record the linked destinations, duration, and dangerous passage conditions.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "One shift per power level",
+        "handler": "narrative",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Open a dangerous passage between worlds or create a linked portal to another place.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:portal"
+    }
+  },
+  "_id": "aKd9JmFve8F6lpvv",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!aKd9JmFve8F6lpvv"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Blood in Eyes",
+  "description": "<p>Non-lethal. Observation and Marksmanship −2 until a Healing roll is made; no healing time.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.bcwYgiZk0U8hQbcw",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    15,
+    15
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-15-15-blood-in-eyes"
+    }
+  },
+  "_id": "kgg6PuJTy4ltlFLU",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.kgg6PuJTy4ltlFLU"
+}

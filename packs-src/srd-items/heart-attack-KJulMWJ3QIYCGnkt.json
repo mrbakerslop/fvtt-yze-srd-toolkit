@@ -1,0 +1,59 @@
+{
+  "name": "Heart Attack",
+  "type": "criticalInjury",
+  "img": "icons/svg/terror.svg",
+  "system": {
+    "category": "mental",
+    "active": true,
+    "lethal": true,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "",
+    "permanent": true,
+    "instantDeath": true,
+    "stabilized": false,
+    "deathSaveSkill": "Stamina",
+    "rollRange": "66",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Your heart stops and you die of fright.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-66-66-heart-attack",
+      "srdKey": "item:criticalInjury:heart-attack"
+    }
+  },
+  "folder": "UsvsCyRyoo9EILz6",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "KJulMWJ3QIYCGnkt",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!KJulMWJ3QIYCGnkt"
+}

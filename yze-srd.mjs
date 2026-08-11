@@ -81,8 +81,9 @@ import {
   specialtyDerivedBonuses,
   specialtyEffect
 } from "./module/specialties.mjs";
-import { createDefaultSkills } from "./module/default-content.mjs";
-import { createSRDContent } from "./module/srd-content/seed.mjs";
+import { migrateWorldData } from "./module/srd-content/seed.mjs";
+import { launchWorldSetup } from "./module/apps/world-setup.mjs";
+import { openWorldSetupGuide } from "./module/srd-content/packs.mjs";
 import { startCharacterCreation } from "./module/character-creation.mjs";
 import { YZEActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { YZEVehicleSheet } from "./module/sheets/vehicle-sheet.mjs";
@@ -628,9 +629,9 @@ Hooks.once("ready", async () => {
     resolveEnvironmentalInterval,
     clearEnvironmentalHazard,
     applyHazardRoll,
-    createDefaultSkills,
     startCharacterCreation,
-    createSRDContent,
+    launchWorldSetup,
+    openWorldSetupGuide,
     zoneData,
     isYZEZone,
     sceneZones,
@@ -667,12 +668,14 @@ Hooks.once("ready", async () => {
   }
 
   try {
-    await createSRDContent();
+    await migrateWorldData();
   } catch (error) {
-    console.error("YZE System Toolkit | SRD content seed failed", error);
+    console.error("YZE System Toolkit | World data migration failed", error);
     ui.notifications.error(
       game.i18n.format("YZE.Defaults.SRDContentFailed", { error: error.message }),
       { permanent: true }
     );
   }
+
+  launchWorldSetup();
 });

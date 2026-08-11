@@ -1,0 +1,65 @@
+{
+  "name": "Dispel Magic",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "General",
+    "rank": 2,
+    "range": "Medium",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": true,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-dispel-magic-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Reduce a selected active magical effect by this spell's power level and remove it at zero.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "dispel",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>React to another spell and reduce its power level; negate it if reduced to zero.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:dispel-magic"
+    }
+  },
+  "_id": "i4dMxu4Z24PBuLDT",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!i4dMxu4Z24PBuLDT"
+}

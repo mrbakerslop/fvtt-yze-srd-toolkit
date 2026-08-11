@@ -1,0 +1,65 @@
+{
+  "name": "Cat's Paw",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Shapeshifting",
+    "rank": 1,
+    "range": "Personal",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-cat-s-paw-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellAutomaticSuccess",
+        "target": "stealth",
+        "attribute": "",
+        "label": "Automatic Stealth successes",
+        "description": "The next Stealth roll is replaced by automatic successes equal to power.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "replace",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Replace a Stealth roll with automatic successes equal to the power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:cat-s-paw"
+    }
+  },
+  "_id": "DHF6A1zJCYeleNjM",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!DHF6A1zJCYeleNjM"
+}

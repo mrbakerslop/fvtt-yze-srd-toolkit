@@ -1,0 +1,65 @@
+{
+  "name": "Bear's Claw",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Shapeshifting",
+    "rank": 2,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "damage",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": true,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-bear-s-claw-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellDamage",
+        "target": "",
+        "attribute": "",
+        "label": "Damage",
+        "description": "Automatic physical hit equal to power; it cannot be parried or dodged.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": true,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Automatically hit for damage equal to the power level; armor applies but the attack cannot be parried or dodged.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:bear-s-claw"
+    }
+  },
+  "_id": "RiwWBFLtPNdH5b7P",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!RiwWBFLtPNdH5b7P"
+}

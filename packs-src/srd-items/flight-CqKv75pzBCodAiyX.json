@@ -1,0 +1,65 @@
+{
+  "name": "Flight",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 2,
+    "range": "Engaged",
+    "duration": "Round",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-flight-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "flight",
+        "description": "Fly two zones per move; record extra duration or passengers bought with power.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Round",
+        "handler": "",
+        "filter": "",
+        "status": "flight",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Fly two zones per move action; power extends duration or adds passengers.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:flight"
+    }
+  },
+  "_id": "CqKv75pzBCodAiyX",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!CqKv75pzBCodAiyX"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Sleepless",
+  "description": "<p>You cannot sleep for D6 days.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    1,
+    1
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "MyrquryO9aM77qui",
+  "flags": {},
+  "_key": "!tables.results!v4eiqQmNY7CZMa5G.MyrquryO9aM77qui"
+}

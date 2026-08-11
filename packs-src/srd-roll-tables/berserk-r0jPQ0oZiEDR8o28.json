@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Berserk",
+  "description": "<p>Attack the nearest creature until you or it is broken. Witnessing PCs make an immediate panic roll.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    14,
+    14
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "r0jPQ0oZiEDR8o28",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.r0jPQ0oZiEDR8o28"
+}

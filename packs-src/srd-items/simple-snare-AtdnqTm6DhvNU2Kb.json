@@ -1,0 +1,34 @@
+{
+  "name": "Simple Snare",
+  "type": "gear",
+  "img": "icons/tools/fishing/net-simple-tan.webp",
+  "system": {
+    "quantity": 1,
+    "weight": 0.25,
+    "equipped": false,
+    "isBackpack": false,
+    "bonus": 0,
+    "description": "<p>Simple trapping gear used to catch suitable prey after a successful hunting roll.</p>",
+    "maxBonus": 0,
+    "price": 0,
+    "effects": [],
+    "reliability": {
+      "value": 5,
+      "max": 5
+    },
+    "artifactDie": 0
+  },
+  "folder": "n26lBBnvGhaGLNyU",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:gear:simple-snare"
+    }
+  },
+  "_id": "AtdnqTm6DhvNU2Kb",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!AtdnqTm6DhvNU2Kb"
+}

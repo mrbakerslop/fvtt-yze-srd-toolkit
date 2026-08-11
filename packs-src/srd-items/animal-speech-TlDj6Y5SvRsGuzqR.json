@@ -1,0 +1,65 @@
+{
+  "name": "Animal Speech",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Shapeshifting",
+    "rank": 1,
+    "range": "Short",
+    "duration": "Stretch",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-animal-speech-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "animal-speech",
+        "description": "Speak with a mammal and ask one question per power level.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Stretch",
+        "handler": "",
+        "filter": "",
+        "status": "animal-speech",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Speak with a mammal and ask one question per power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:animal-speech"
+    }
+  },
+  "_id": "TlDj6Y5SvRsGuzqR",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!TlDj6Y5SvRsGuzqR"
+}

@@ -22,6 +22,7 @@ import {
   travelMapState
 } from "./travel-map.mjs";
 import { promptAmbush } from "./surprise.mjs";
+import { getSRDRollTable } from "./srd-content/packs.mjs";
 
 const APPLIED_FLAG = "travelApplied";
 const SHIFTS = Object.freeze(["morning", "day", "evening", "night"]);
@@ -329,7 +330,7 @@ export function renderTravelControl(state) {
 }
 
 async function drawNamedTable(name, draws = 1, { messageMode = null } = {}) {
-  const table = game.tables?.find((entry) => entry.name === name);
+  const table = await getSRDRollTable(name);
   if (!table) {
     ui.notifications.error(game.i18n.format("YZE.Travel.TableMissing", { table: name }));
     return false;
@@ -359,7 +360,7 @@ async function loseRandomCampGear(actor) {
 async function resolveCampMishap(clock) {
   const roll = await new Roll("1d10").evaluate();
   const result = wholeNumber(roll.total);
-  const table = game.tables?.find((entry) => entry.name === "YZE Camp Mishaps");
+  const table = await getSRDRollTable("YZE Camp Mishaps");
   if (table) await table.draw({ displayChat: true, messageMode: "blindroll", roll });
   const party = travelPartyActors(clock.day);
   if (result === 1) {
@@ -507,7 +508,7 @@ async function resolveHuntingShot(message, preyIndex) {
 }
 
 async function drawTrackedPrey(actor, successes, clock) {
-  const table = game.tables?.find((entry) => entry.name === "YZE Sample Hunting");
+  const table = await getSRDRollTable("YZE Sample Hunting");
   if (!table) {
     ui.notifications.error(game.i18n.format("YZE.Travel.TableMissing", { table: "YZE Sample Hunting" }));
     return null;
@@ -625,7 +626,7 @@ async function resultMessage(actor, key, data = {}) {
 export async function rollDrivingMishap(vehicle) {
   const roll = await new Roll("2d6").evaluate();
   const result = wholeNumber(roll.total);
-  const table = game.tables?.find((entry) => entry.name === "YZE Driving Mishaps");
+  const table = await getSRDRollTable("YZE Driving Mishaps");
   if (table) await table.draw({ displayChat: true, roll });
   const conditionKeys = {
     2: "Broken Axle", 4: "Busted Gearbox", 5: "Dirty Fuel", 6: "Bogged Down",

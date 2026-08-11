@@ -1,0 +1,29 @@
+{
+  "name": "Water",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 1,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "none",
+    "foodState": "safe",
+    "description": "<p>A supply of drinking water.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:water"
+    }
+  },
+  "_id": "CYSt1utY6SYQQhXu",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!CYSt1utY6SYQQhXu"
+}

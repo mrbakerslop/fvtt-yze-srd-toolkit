@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Crowd",
+  "description": "<p>Hide gains +2. Otherwise the pursuer must pass Observation or lose the maneuver; failed shooting hits a bystander.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    4,
+    4
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "jkLxSf7mlGxBomU7",
+  "flags": {},
+  "_key": "!tables.results!ANWY9sCrmZY0GXHT.jkLxSf7mlGxBomU7"
+}

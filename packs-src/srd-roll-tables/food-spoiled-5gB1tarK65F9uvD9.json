@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Food Spoiled",
+  "description": "<p>Half of the group's carried rations spoil.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    1,
+    1
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "5gB1tarK65F9uvD9",
+  "flags": {},
+  "_key": "!tables.results!3c9CFCTMLN0NURuY.5gB1tarK65F9uvD9"
+}

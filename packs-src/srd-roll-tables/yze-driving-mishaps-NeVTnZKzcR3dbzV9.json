@@ -1,0 +1,34 @@
+{
+  "name": "YZE Driving Mishaps",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "2d6",
+  "description": "<p>Roll 2D6 after a failed driving roll during travel.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-driving-mishaps",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "oNKlq6sN8Ws1bMGU",
+    "Y9bREncOQdU2OA3B",
+    "PPmmLINEeW0NbUgS",
+    "eTqAyH503d4NrlHF",
+    "rNN17vkm95CKR9oK",
+    "AtcDJL78ReJcjGu3",
+    "ZdBrSBSVk34XrUja",
+    "qQF2HutxlJca5KH1",
+    "FzIGAWNMOuohFpW2",
+    "zXhqRRCl1LrSHkXF",
+    "EGurh1DvVFxhfLre"
+  ],
+  "_id": "NeVTnZKzcR3dbzV9",
+  "sort": 0,
+  "_key": "!tables!NeVTnZKzcR3dbzV9"
+}

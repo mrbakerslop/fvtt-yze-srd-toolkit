@@ -1,0 +1,30 @@
+{
+  "name": "Blood Magic",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "",
+    "effectTarget": "",
+    "magicDiscipline": true,
+    "rank": 1,
+    "effects": [],
+    "description": "<p>A magic discipline that draws power from life and blood.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:blood-magic"
+    }
+  },
+  "_id": "BVBLJY3Dl6WrhjZ3",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!BVBLJY3Dl6WrhjZ3"
+}

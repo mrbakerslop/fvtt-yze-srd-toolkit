@@ -1,0 +1,59 @@
+{
+  "name": "Broken Leg",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "41",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "slow",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-41-41-broken-leg",
+      "srdKey": "item:criticalInjury:broken-leg"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "hts1vzJwm2wpDewl",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!hts1vzJwm2wpDewl"
+}

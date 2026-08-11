@@ -1,0 +1,29 @@
+{
+  "name": "Electric Power",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 1,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "none",
+    "foodState": "safe",
+    "description": "<p>A portable or stored supply of electrical power.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:electric-power"
+    }
+  },
+  "_id": "XEsSW3pb9zy47UVq",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!XEsSW3pb9zy47UVq"
+}

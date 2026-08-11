@@ -1,0 +1,29 @@
+{
+  "name": "Torches",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 1,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "none",
+    "foodState": "safe",
+    "description": "<p>A supply of portable light sources.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:torches"
+    }
+  },
+  "_id": "Z3xcjzAPg3sVS9c0",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Z3xcjzAPg3sVS9c0"
+}

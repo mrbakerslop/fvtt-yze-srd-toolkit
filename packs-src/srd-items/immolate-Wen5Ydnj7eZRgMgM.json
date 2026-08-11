@@ -1,0 +1,89 @@
+{
+  "name": "Immolate",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Blood Magic",
+    "rank": 2,
+    "range": "Short",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "damage",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-immolate-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellDamage",
+        "target": "",
+        "attribute": "",
+        "label": "Damage",
+        "description": "Inflict physical damage equal to power; armour does not apply.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      },
+      {
+        "id": "srd-spell-immolate-1",
+        "active": true,
+        "application": "spell",
+        "type": "spellHazard",
+        "target": "",
+        "attribute": "",
+        "label": "fire",
+        "description": "Set the target on fire at twice power in dice-pool mode or the power-matched step rating.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "fire",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 2,
+        "value": 0
+      }
+    ],
+    "description": "<p>Inflict damage equal to the power level and set the target alight; armor does not protect.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:immolate"
+    }
+  },
+  "_id": "Wen5Ydnj7eZRgMgM",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Wen5Ydnj7eZRgMgM"
+}

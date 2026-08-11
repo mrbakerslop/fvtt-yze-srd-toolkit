@@ -1,0 +1,33 @@
+{
+  "name": "YZE Camp Mishaps",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d10",
+  "description": "<p>Roll secretly after a failed attempt to make camp; re-roll inapplicable results.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-camp-mishaps",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "5gB1tarK65F9uvD9",
+    "C6R2zgOPo7IJH26I",
+    "GaTzR4XjeS70IeUU",
+    "Tv8DC7ekoep9c46F",
+    "bnOHxIa75ZSJAciE",
+    "5srKbwjK5GBSme50",
+    "x3rXKXcv6qfTyQnu",
+    "Ax6uRexjXIE2ixer",
+    "4J6UB7OOxYRVje3i",
+    "57g6PD3PWRIyCC2Y"
+  ],
+  "_id": "3c9CFCTMLN0NURuY",
+  "sort": 0,
+  "_key": "!tables!3c9CFCTMLN0NURuY"
+}

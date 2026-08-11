@@ -1,0 +1,65 @@
+{
+  "name": "Nature's Cure",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Healing",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-nature-s-cure-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Cure an active disease or poison when power meets its virulence or toxicity requirement.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "cureHazard",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Cure sickness or poison when the power level meets the required virulence or toxicity.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:nature-s-cure"
+    }
+  },
+  "_id": "TuGnn7KjPKpblgde",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!TuGnn7KjPKpblgde"
+}

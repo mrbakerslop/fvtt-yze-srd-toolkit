@@ -1,0 +1,30 @@
+{
+  "name": "Musician",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 1,
+    "effect": "musician",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [],
+    "description": "<p>Gain +1 to Persuasion when singing or playing an instrument is helpful, at the GM's discretion.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:musician"
+    }
+  },
+  "_id": "RE4sIxU4DOOQRaBT",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!RE4sIxU4DOOQRaBT"
+}

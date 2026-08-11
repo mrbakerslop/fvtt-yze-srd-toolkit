@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "White Hair",
+  "description": "<p>No mechanical effect; permanent.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.Ka3GmjE7XNY9rqIK",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    21,
+    21
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-21-21-white-hair"
+    }
+  },
+  "_id": "MAuOh3IPh6LVrUbR",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.MAuOh3IPh6LVrUbR"
+}

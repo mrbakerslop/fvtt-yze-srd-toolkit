@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Flee",
+  "description": "<p>Flee to safety and refuse danger. Lose one stress; every PC who hears you makes an immediate panic roll.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    13,
+    13
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "8etJOuT4A3uCvpXu",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.8etJOuT4A3uCvpXu"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Raise the Dead",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Death Magic",
+    "rank": 2,
+    "range": "Short",
+    "duration": "Shift",
+    "cost": 1,
+    "ritual": true,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-raise-the-dead-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Record animated corpses and select improvements permitted by power.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Shift",
+        "handler": "summon",
+        "filter": "Dead humanoid or animal",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Animate one or more dead humanoids or animals and improve them with higher power.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:raise-the-dead"
+    }
+  },
+  "_id": "QClc70UkzvvemT9q",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!QClc70UkzvvemT9q"
+}

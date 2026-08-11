@@ -1,0 +1,65 @@
+{
+  "name": "Mend Wounds",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Healing",
+    "rank": 2,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-mend-wounds-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellCriticalInjury",
+        "target": "",
+        "attribute": "",
+        "label": "Critical Injury effect",
+        "description": "Heal one Critical Injury immediately; lethal injuries require power 2.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "heal",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 2
+      }
+    ],
+    "description": "<p>Immediately heal a critical injury; lethal injuries require power level 2.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:mend-wounds"
+    }
+  },
+  "_id": "hRTfXMgKX4vM3Ts6",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!hRTfXMgKX4vM3Ts6"
+}

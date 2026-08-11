@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Paranoia",
+  "description": "<p>You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.4FV6j3SO2C7qCGf0",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    53,
+    54
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-53-54-paranoia"
+    }
+  },
+  "_id": "SaON2tdWZwVtJYMo",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.SaON2tdWZwVtJYMo"
+}

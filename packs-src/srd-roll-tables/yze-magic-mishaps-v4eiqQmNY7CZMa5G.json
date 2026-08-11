@@ -1,0 +1,35 @@
+{
+  "name": "YZE Magic Mishaps",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d12",
+  "description": "<p>Roll D12 when uncontrolled magic causes a mishap.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-magic-mishaps",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "MyrquryO9aM77qui",
+    "Dfx2ZT3CI32d4HYL",
+    "J0sAfnIEIJvL9xKQ",
+    "SB2oSqENDkASNao0",
+    "ftUYevSK5YJeymiN",
+    "FY1sFEeE4h1zCRQe",
+    "SGav2qOypRLKIzWi",
+    "lv3PGhRalNxqbc4I",
+    "qTiM7z4MnBSkaWr9",
+    "8C778RrcPDFPWAVE",
+    "gDc5X9m1LiYuEzVe",
+    "VJIfpIgxkb1T0Q8j"
+  ],
+  "_id": "v4eiqQmNY7CZMa5G",
+  "sort": 0,
+  "_key": "!tables!v4eiqQmNY7CZMa5G"
+}

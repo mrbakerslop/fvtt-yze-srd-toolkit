@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Red Lights",
+  "description": "<p>Cut Off is advantaged; Pursue/Flee and Stand and Shoot are disadvantaged, with failure causing collateral damage.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    4,
+    4
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "FvfTdsfzUNIa21KR",
+  "flags": {},
+  "_key": "!tables.results!AU3ULdz2UFWXJfEF.FvfTdsfzUNIa21KR"
+}

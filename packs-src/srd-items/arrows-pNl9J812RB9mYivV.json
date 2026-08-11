@@ -1,0 +1,29 @@
+{
+  "name": "Arrows",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 1,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "none",
+    "foodState": "safe",
+    "description": "<p>A supply of arrows for bows or crossbows.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:arrows"
+    }
+  },
+  "_id": "pNl9J812RB9mYivV",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!pNl9J812RB9mYivV"
+}

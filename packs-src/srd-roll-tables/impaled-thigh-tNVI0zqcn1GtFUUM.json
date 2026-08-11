@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Impaled Thigh",
+  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.tZ8cAmMFj6P38AKL",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    25,
+    25
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-25-25-impaled-thigh"
+    }
+  },
+  "_id": "tNVI0zqcn1GtFUUM",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.tNVI0zqcn1GtFUUM"
+}

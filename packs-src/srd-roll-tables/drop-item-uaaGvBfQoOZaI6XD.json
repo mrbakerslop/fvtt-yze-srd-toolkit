@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Drop Item",
+  "description": "<p>Drop a weapon or another important item chosen by the GM.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    9,
+    9
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "uaaGvBfQoOZaI6XD",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.uaaGvBfQoOZaI6XD"
+}

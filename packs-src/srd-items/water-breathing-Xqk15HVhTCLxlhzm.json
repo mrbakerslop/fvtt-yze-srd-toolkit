@@ -1,0 +1,65 @@
+{
+  "name": "Water Breathing",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Stretch",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-water-breathing-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "water-breathing",
+        "description": "Allow touched targets to breathe underwater; record extra targets or duration bought with power.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Stretch",
+        "handler": "",
+        "filter": "",
+        "status": "water-breathing",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Allow touched creatures to breathe underwater; power increases targets or duration.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:water-breathing"
+    }
+  },
+  "_id": "Xqk15HVhTCLxlhzm",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Xqk15HVhTCLxlhzm"
+}

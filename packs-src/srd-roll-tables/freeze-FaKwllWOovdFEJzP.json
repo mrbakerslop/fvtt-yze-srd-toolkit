@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Freeze",
+  "description": "<p>Lose your next turn, frozen by fear or stress.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    10,
+    10
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "FaKwllWOovdFEJzP",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.FaKwllWOovdFEJzP"
+}

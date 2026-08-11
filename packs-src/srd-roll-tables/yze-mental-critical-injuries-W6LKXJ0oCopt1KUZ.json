@@ -1,0 +1,40 @@
+{
+  "name": "YZE Mental Critical Injuries",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d6 * 10 + 1d6",
+  "description": "<p>Roll D66 for a mental critical injury. Drag the resulting Item from chat onto a Character or NPC sheet.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-mental-critical-injuries",
+      "criticalInjuryCategory": "mental"
+    }
+  },
+  "results": [
+    "o0Pa4VOcJNmdyWoD",
+    "MAuOh3IPh6LVrUbR",
+    "3ZFIs8uso2fivwWt",
+    "tssDFOUyxOYZc7ch",
+    "4s7L43KCj68Sni8E",
+    "74XD87jHaCM1kJbg",
+    "eUo4EMR4R6G1O0IJ",
+    "977wShPbypelvtcU",
+    "CBQ9xIQ2CNl6IC8Y",
+    "ciAZ0uMBhbsck6Zu",
+    "SaON2tdWZwVtJYMo",
+    "tUR52DNXT5j18YOm",
+    "PgvtI7QTMP79h7UE",
+    "HPiQ3ev0k4IwSCMK",
+    "DGJ0EEgRYNZWDTeQ",
+    "yqrTd34A2ubE1Iuq",
+    "t7LowoLrTtG5u4EW"
+  ],
+  "_id": "W6LKXJ0oCopt1KUZ",
+  "sort": 0,
+  "_key": "!tables!W6LKXJ0oCopt1KUZ"
+}

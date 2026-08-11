@@ -1,0 +1,59 @@
+{
+  "name": "Sullen",
+  "type": "criticalInjury",
+  "img": "icons/svg/terror.svg",
+  "system": {
+    "category": "mental",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "25–31",
+    "rollModifier": -1,
+    "affectedAttributes": "empathy",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Modifier −1 on all Empathy-based rolls; healing time D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-25-31-sullen",
+      "srdKey": "item:criticalInjury:sullen"
+    }
+  },
+  "folder": "UsvsCyRyoo9EILz6",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "G5yK4XOXuSjInmhP",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!G5yK4XOXuSjInmhP"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Broken Leg",
+  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.hts1vzJwm2wpDewl",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    41,
+    41
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-41-41-broken-leg"
+    }
+  },
+  "_id": "Uk0gqzj2eH4Apvnz",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.Uk0gqzj2eH4Apvnz"
+}

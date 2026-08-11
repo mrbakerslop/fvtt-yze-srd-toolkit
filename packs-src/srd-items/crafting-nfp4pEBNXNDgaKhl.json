@@ -1,0 +1,27 @@
+{
+  "name": "Crafting",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "wits",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Crafting to build, understand, operate, or repair equipment and mechanisms.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:crafting"
+    }
+  },
+  "_id": "nfp4pEBNXNDgaKhl",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!nfp4pEBNXNDgaKhl"
+}

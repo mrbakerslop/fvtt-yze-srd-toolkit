@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Moose",
+  "description": "<p>Health 5; cannot be trapped; yields 2D6×4 food rations.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    6,
+    6
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "HACIL9yi8zGNYmmw",
+  "flags": {},
+  "_key": "!tables.results!WM3aRCwrR8SLaQm0.HACIL9yi8zGNYmmw"
+}

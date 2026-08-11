@@ -8,6 +8,7 @@ import { linkOpposedRolls } from "./dice/opposed.mjs";
 import { getCriticalInjuryRestrictions, notifyCriticalInjuryRestriction } from "./critical-injuries.mjs";
 import { attackWithWeapon } from "./combat.mjs";
 import { promptSneakAttack } from "./surprise.mjs";
+import { getSRDRollTable } from "./srd-content/packs.mjs";
 
 const RANGE_ORDER = Object.freeze(["engaged", "short", "medium", "long", "extreme"]);
 const MANEUVERS = Object.freeze(["pursueFlee", "hide", "block", "cutOff", "standShoot", "other"]);
@@ -699,7 +700,7 @@ export async function drawChaseObstacle({ vehicle = false, saveToTracker = true 
     return null;
   }
   const name = vehicle ? "YZE Vehicle Chase Obstacles" : "YZE Foot Chase Obstacles";
-  const table = game.tables?.find((entry) => entry.name === name);
+  const table = await getSRDRollTable(name);
   if (!table) {
     ui.notifications.error(game.i18n.format("YZE.Chase.TableMissing", { table: name }));
     return null;

@@ -1,0 +1,27 @@
+{
+  "name": "Observation",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "wits",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Observation to search an area, notice details, or detect distant and approaching threats.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:observation"
+    }
+  },
+  "_id": "Vfog4Qz0TOze0Iv1",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Vfog4Qz0TOze0Iv1"
+}

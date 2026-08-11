@@ -1,0 +1,59 @@
+{
+  "name": "Punctured Lung",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": true,
+    "deathSaveModifier": 0,
+    "timeLimit": "one shift",
+    "healingTime": "D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "Stamina",
+    "rollRange": "44",
+    "rollModifier": -2,
+    "affectedAttributes": "",
+    "affectedSkills": "Stamina, Mobility",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Lethal, time limit one shift. Stamina and Mobility −2; healing time D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-44-44-punctured-lung",
+      "srdKey": "item:criticalInjury:punctured-lung"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "LkbNBms2UYqZl4ax",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!LkbNBms2UYqZl4ax"
+}

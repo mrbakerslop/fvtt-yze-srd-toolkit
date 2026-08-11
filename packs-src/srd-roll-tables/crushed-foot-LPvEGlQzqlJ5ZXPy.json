@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Crushed Foot",
+  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.pQDqrHfgHa56G41w",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    42,
+    42
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-42-42-crushed-foot"
+    }
+  },
+  "_id": "LPvEGlQzqlJ5ZXPy",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.LPvEGlQzqlJ5ZXPy"
+}

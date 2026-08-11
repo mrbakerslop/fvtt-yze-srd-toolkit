@@ -1,0 +1,29 @@
+{
+  "name": "Raw Meat",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 0.25,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "meat",
+    "foodState": "raw",
+    "description": "<p>Uncooked meat. Eating it raw risks virulence 6/C food poisoning.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:raw-meat"
+    }
+  },
+  "_id": "AUsALP2isOvUJhoZ",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!AUsALP2isOvUJhoZ"
+}

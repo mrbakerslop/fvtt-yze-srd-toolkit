@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Sprained Ankle",
+  "description": "<p>Non-lethal. Mobility −2 and movement is a slow action until a Healing roll is made; no healing time.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.KQZkRACexCa1k73C",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    14,
+    14
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-14-14-sprained-ankle"
+    }
+  },
+  "_id": "Z4YSgT7Mgml8PKE3",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.Z4YSgT7Mgml8PKE3"
+}

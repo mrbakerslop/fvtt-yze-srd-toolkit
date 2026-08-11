@@ -26,6 +26,7 @@ import {
   YZEPushingConfig,
   YZERuleVariantsConfig
 } from "./apps/system-config.mjs";
+import { YZEWorldSetup } from "./apps/world-setup.mjs";
 
 const SETTING_KEYS = Object.freeze({
   strength: "attributeLabelStrength",
@@ -60,6 +61,7 @@ const CORE_SETTING_KEYS = Object.freeze([
 ]);
 
 const CONFIGURATION_MENU_KEYS = Object.freeze([
+  "worldSetup",
   "pushingConsequences",
   "ruleVariants",
   "characterSheetFeatures",
@@ -107,6 +109,22 @@ export function registerSettingsConfigLayoutHook() {
 }
 
 export function registerSystemSettings() {
+  game.settings.registerMenu(SYSTEM_ID, "worldSetup", {
+    name: "YZE.WorldSetup.MenuName",
+    label: "YZE.WorldSetup.MenuButton",
+    hint: "YZE.WorldSetup.MenuHint",
+    icon: "fa-solid fa-wand-magic-sparkles",
+    type: YZEWorldSetup,
+    restricted: true
+  });
+
+  game.settings.register(SYSTEM_ID, "showWorldSetupOnStartup", {
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: true
+  });
+
   game.settings.register(SYSTEM_ID, "diceSystem", {
     name: "YZE.Settings.DiceSystem.Name",
     hint: "YZE.Settings.DiceSystem.Hint",

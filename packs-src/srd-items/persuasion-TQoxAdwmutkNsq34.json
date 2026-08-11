@@ -1,0 +1,27 @@
+{
+  "name": "Persuasion",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "empathy",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Persuasion to influence, deceive, negotiate with, or convince another person.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:persuasion"
+    }
+  },
+  "_id": "TQoxAdwmutkNsq34",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!TQoxAdwmutkNsq34"
+}

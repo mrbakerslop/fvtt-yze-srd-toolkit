@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Weapon Disabled",
+  "description": "<p>A random mounted weapon is disabled; re-roll if none are present.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    9,
+    9
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "K3FbHP3UfSup9VDt",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.K3FbHP3UfSup9VDt"
+}

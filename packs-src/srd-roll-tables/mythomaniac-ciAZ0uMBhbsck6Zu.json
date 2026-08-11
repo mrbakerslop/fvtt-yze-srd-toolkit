@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Mythomaniac",
+  "description": "<p>You cannot stop lying and must roleplay the effect; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.PX8G20Kdt7hoBN4c",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    52,
+    52
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-52-52-mythomaniac"
+    }
+  },
+  "_id": "ciAZ0uMBhbsck6Zu",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.ciAZ0uMBhbsck6Zu"
+}

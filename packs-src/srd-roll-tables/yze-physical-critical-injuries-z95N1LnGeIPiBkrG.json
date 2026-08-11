@@ -1,0 +1,59 @@
+{
+  "name": "YZE Physical Critical Injuries",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d6 * 10 + 1d6",
+  "description": "<p>Roll D66 for a physical critical injury. Drag the resulting Item from chat onto a Character or NPC sheet.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-physical-critical-injuries",
+      "criticalInjuryCategory": "physical"
+    }
+  },
+  "results": [
+    "hlazcRdhUly19EVZ",
+    "cbw8Hcb4QJC8OINU",
+    "RQYOjPn155cTB5el",
+    "Z4YSgT7Mgml8PKE3",
+    "kgg6PuJTy4ltlFLU",
+    "OfuRKz4cAKpOf8o0",
+    "3A71IDF8qnj89dHV",
+    "V5VkJhlcWiP4XPqA",
+    "ZjV7BzEC1ooU5PHb",
+    "bEEGWB5NB5w5TbmM",
+    "tNVI0zqcn1GtFUUM",
+    "CB1uIfXTjKeWQN1e",
+    "0k7F0xda6fMprcfW",
+    "7sslR6VcuVk41cr2",
+    "9Jk7u9dT71YlEetM",
+    "rTl1yiXf7zh2GUkH",
+    "x5lCQURWdyRVDAoC",
+    "5gE11VxiXq6T39rp",
+    "Uk0gqzj2eH4Apvnz",
+    "LPvEGlQzqlJ5ZXPy",
+    "8ojSuKfalmVJOSVD",
+    "n07GmZ01Oup95gzB",
+    "gJptbe22CEDGzhue",
+    "ILx1xEXKw6hlGS4U",
+    "zvM5aTjVFSYSj9H7",
+    "htrIOwn7BN1naYxr",
+    "sIywoRVTsghCLCq6",
+    "0EJAJQZtUdtrbyak",
+    "WwKlompnKjAcrAO4",
+    "o2jWXHg0nZRwXHnO",
+    "62iuUWlBBsWCmK9n",
+    "uPPG9v8j9PgfISq9",
+    "VGPdVBtsNTZnUL4h",
+    "TYxY8bh2IQD4xEnH",
+    "PCLGQevN1o035Sc6",
+    "rS71L1EdlLUHAyPk"
+  ],
+  "_id": "z95N1LnGeIPiBkrG",
+  "sort": 0,
+  "_key": "!tables!z95N1LnGeIPiBkrG"
+}

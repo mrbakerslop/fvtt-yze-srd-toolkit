@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Winded",
+  "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ckDYXeCkh1hDx9Ow",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    11,
+    11
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-11-11-winded"
+    }
+  },
+  "_id": "hlazcRdhUly19EVZ",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.hlazcRdhUly19EVZ"
+}

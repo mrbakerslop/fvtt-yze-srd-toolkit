@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Severed Arm Artery",
+  "description": "<p>Lethal with −1 to death saves, time limit one stretch. The arm cannot be used; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.VU2ovLxqtgJqnulU",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    52,
+    52
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-52-52-severed-arm-artery"
+    }
+  },
+  "_id": "htrIOwn7BN1naYxr",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.htrIOwn7BN1naYxr"
+}

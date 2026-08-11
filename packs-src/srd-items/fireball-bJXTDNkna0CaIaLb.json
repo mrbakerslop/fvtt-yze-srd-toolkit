@@ -1,0 +1,89 @@
+{
+  "name": "Fireball",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 3,
+    "range": "Long",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "damage",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-fireball-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellDamage",
+        "target": "",
+        "attribute": "",
+        "label": "Damage",
+        "description": "Inflict physical damage equal to power on the first selected target.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      },
+      {
+        "id": "srd-spell-fireball-1",
+        "active": true,
+        "application": "spell",
+        "type": "spellHazard",
+        "target": "",
+        "attribute": "",
+        "label": "fire",
+        "description": "Expose all selected nearby targets to fire at twice power in dice-pool mode or the power-matched step rating.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "fire",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 2,
+        "value": 0
+      }
+    ],
+    "description": "<p>Strike a target for damage equal to power and expose everyone nearby to intense fire.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:fireball"
+    }
+  },
+  "_id": "bJXTDNkna0CaIaLb",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!bJXTDNkna0CaIaLb"
+}

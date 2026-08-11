@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Nervous Twitch",
+  "description": "<p>You and all PCs within Short range gain one stress.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    7,
+    7
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "h5ECoFNHbaRzIfpl",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.h5ECoFNHbaRzIfpl"
+}

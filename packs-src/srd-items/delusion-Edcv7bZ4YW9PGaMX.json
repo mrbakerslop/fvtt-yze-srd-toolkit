@@ -1,0 +1,59 @@
+{
+  "name": "Delusion",
+  "type": "criticalInjury",
+  "img": "icons/svg/terror.svg",
+  "system": {
+    "category": "mental",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "3D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "55",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>You believe something entirely untrue; healing time 3D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-55-55-delusion",
+      "srdKey": "item:criticalInjury:delusion"
+    }
+  },
+  "folder": "UsvsCyRyoo9EILz6",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "Edcv7bZ4YW9PGaMX",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Edcv7bZ4YW9PGaMX"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Air Supply",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 1,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "none",
+    "foodState": "safe",
+    "description": "<p>A limited supply of breathable air.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:air-supply"
+    }
+  },
+  "_id": "xcor9jcxC6rdNsNs",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!xcor9jcxC6rdNsNs"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Severed Ear",
+  "description": "<p>Non-lethal. Observation −2; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.rARypjFY39TH5mAk",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    21,
+    21
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-21-21-severed-ear"
+    }
+  },
+  "_id": "3A71IDF8qnj89dHV",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.3A71IDF8qnj89dHV"
+}

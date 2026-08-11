@@ -1,0 +1,65 @@
+{
+  "name": "Blind",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Symbolism",
+    "rank": 2,
+    "range": "Medium",
+    "duration": "Shift",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-blind-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Blind the target if its Insight roll at a penalty equal to power fails.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Shift",
+        "handler": "opposedTest",
+        "filter": "Non-monster; animals are affected automatically",
+        "status": "blinded",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Blind a target that fails Insight; animals are affected automatically and monsters are immune.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:blind"
+    }
+  },
+  "_id": "xz14Zt6tNIMK1j2z",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!xz14Zt6tNIMK1j2z"
+}

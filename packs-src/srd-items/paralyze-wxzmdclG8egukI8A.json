@@ -1,0 +1,65 @@
+{
+  "name": "Paralyze",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Symbolism",
+    "rank": 1,
+    "range": "Medium",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-paralyze-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "paralyzed",
+        "description": "Remove one fast action at power 1, the slow action at power 2, both at power 3, and bonus actions at power 4.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Round",
+        "handler": "",
+        "filter": "Non-monster target",
+        "status": "paralyzed",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Mesmerize a target and remove actions according to the power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:paralyze"
+    }
+  },
+  "_id": "wxzmdclG8egukI8A",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!wxzmdclG8egukI8A"
+}

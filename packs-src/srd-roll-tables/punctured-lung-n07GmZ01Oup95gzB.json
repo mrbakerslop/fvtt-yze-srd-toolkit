@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Punctured Lung",
+  "description": "<p>Lethal, time limit one shift. Stamina and Mobility −2; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.LkbNBms2UYqZl4ax",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    44,
+    44
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-44-44-punctured-lung"
+    }
+  },
+  "_id": "n07GmZ01Oup95gzB",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.n07GmZ01Oup95gzB"
+}

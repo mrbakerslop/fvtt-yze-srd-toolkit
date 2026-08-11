@@ -1,6 +1,6 @@
 # YZE System Toolkit for Foundry VTT
 
-An early, private Foundry Virtual Tabletop Version 14 game system based on the
+An early Foundry Virtual Tabletop Version 14 game system based on the
 Year Zero Engine Standard Reference Document. The goal is to provide a toolkit
 for building original games rather than reproduce a specific published game.
 
@@ -11,8 +11,8 @@ This first vertical slice provides:
 - A dedicated Vehicle Actor model and resizable sheet
 - Four attributes with world-configurable display names
 - Skills implemented as configurable Item documents
-- SRD example Items and random RollTables seeded into editable world folders
-- A hybrid SRD Journal with a searchable native index and fully formatted PDF
+- SRD example Actors, Items, RollTables, and Cards supplied as Compendium Packs
+- A native Game World Setup guide supplied as a Journal Compendium
 - World-selectable D6 dice-pool or stepped-dice core resolution
 - Type-aware sheet drop zones for Skills, Specialties, Inventory, Weapons,
   Armour, and Spells
@@ -60,8 +60,11 @@ directory at:
 {Foundry user data}/Data/systems/fvtt-yze-srd
 ```
 
-Restart Foundry, create a world using **YZE System Toolkit**, then configure the
-world rules and sheet features under **Configure Settings → System Settings**.
+Restart Foundry and create a world using **YZE System Toolkit**. The GM setup
+wizard opens on startup until its launch checkbox is cleared. It configures the
+core dice system, damage model, and pushing consequences, with links to the
+more detailed Journal guide. The wizard can always be reopened under
+**Configure Settings → System Settings**.
 Core Mechanics are grouped at the top of that page. Separate buttons beneath
 them open the Pushing & Consequences, Equipment & Combat Rules, Character Sheet
 Features, Currency & Prices, Personality & Relationships, Optional Subsystems,
@@ -272,10 +275,9 @@ Injuries** panels side by side. Character State combines Resources with a
 single Harm, Recovery & Broken block; its actions use compact icon controls and
 show their instructions on hover.
 
-The SRD content seeder also creates an editable **YZE Initiative Cards** deck in
-Foundry's Cards sidebar, with black-and-white cards numbered 1–10. It can be
-used for manual table draws and chat reveals. Automatic Combat Tracker draws
-use the same values but do not consume cards from this world deck.
+The **YZE SRD Cards** Compendium supplies an initiative deck numbered 1–10. A
+GM can import it for manual draws and chat reveals. Automatic Combat Tracker
+draws use the same values but do not consume cards from an imported deck.
 
 Actors in the active Combat display a **Combat Actions** panel. It tracks one
 Slow plus one Fast Action, or two Fast Actions, including reactions spent out
@@ -356,7 +358,7 @@ single-die roll, this toolkit adds one matching die for Advantage and preserves
 the sole die under Disadvantage, and reports that compatibility case in chat.
 
 Speciality Items have an editable rules-effect selector and optional target.
-The seeded SRD Specialities are migrated to stable effect identifiers. Generic
+The supplied SRD Specialities use stable effect identifiers. Generic
 custom Specialities can still expose a manually selected modifier on every
 roll, while conditional SRD bonuses are limited to the correct context:
 Field Surgeon applies only to lethal-injury stabilization, Musician is offered
@@ -372,14 +374,14 @@ pushed, and resets only after the Actor is no longer Broken. Healer displays
 halved Critical Injury healing time. Attacking with an unready Weapon normally
 spends the SRD Fast Action to draw it, while Quick Draw waives that cost.
 Flyweight is applied automatically to Block reactions. Bodyguard and Merciless
-use the universal Item Effects system rather than being tied to those seeded
+use the universal Item Effects system rather than being tied to those supplied
 Speciality names. **Hit interception** lets any active Item grant a pushable,
 action-free reaction using a configured Skill to redirect an ally's hit from
-within Short range; the seeded Bodyguard uses Mobility. **Coup-de-grâce
+within Short range; the supplied Bodyguard uses Mobility. **Coup-de-grâce
 permission** lets any active Item bypass the normal
 Empathy-only roll when killing a defenseless target. The coup still spends a
 Slow Action in combat and applies one point of mental harm to the executioner
-through the world's selected damage model. Legacy seeded Bodyguard and
+through the world's selected damage model. Legacy world-seeded Bodyguard and
 Merciless Items are recognised for compatibility and are migrated to the new
 effects automatically.
 
@@ -426,14 +428,16 @@ An embedded Skill can be removed from an Actor with its trash button after a
 confirmation prompt. This removes only the Actor-owned copy; the reusable world
 Skill remains available.
 
-The first time a GM opens a world, the system creates editable SRD example
-content in category folders. The current seed contains 189 Items, 8 Vehicle
-Actors, and one reference Journal:
+The system supplies its editable SRD examples in five Compendium Packs: Actors,
+Items, Roll Tables, Cards, and the Game World Setup Guide. Drag individual
+documents into a world or use Foundry's pack import controls when a world-owned
+copy is needed. The Items pack contains 193 Items and the Actors pack contains
+8 Vehicle Actors:
 
 - 12 core Skills;
 - 30 Specialties, including seven example magic disciplines;
 - 12 Weapons;
-- 2 pieces of Gear and 7 Consumables;
+- 3 pieces of Gear and 10 Consumables;
 - 70 Spells with discipline, rank, range, duration, ritual, and power-word
   metadata;
 - 3 example Vehicle Components covering engine, mobility, and mounted-weapon
@@ -452,14 +456,14 @@ half the Vehicle's maximum Hull automatically rolls D6 critical vehicle damage
 for close attacks or D12 for other attacks and applies statuses which can be
 represented directly by the Actor data.
 
-With Magic enabled, the seven seeded discipline Specialities are tiered
+With Magic enabled, the seven supplied discipline Specialities are tiered
 prerequisites. Casting from the Actor's Spells tab spends personal Willpower or
 Willpower stored by a Power Rune, rolls one Magic Die per point spent, adds
 overcharge power for 6s, and triggers the D12 Magic Mishap workflow for banes or
 chance casting. The dialog supports safe casting, grimoires, NPC base power,
 normal, power-word, and ritual timing; Magic rolls cannot be pushed.
 
-All 70 seeded spells contain ordered Universal Item Effect recipes. Spell
+All 70 supplied spells contain ordered Universal Item Effect recipes. Spell
 sheets retain only casting metadata and expose conditional effect rows for
 damage, recovery, resources, modifiers, armour, automatic successes, Critical
 Injuries, hazards, statuses, and guided workflows. The generic resolver handles
@@ -505,7 +509,7 @@ engine-disabled aerial Vehicle can make one controlled one-zone descent per
 combat round. Wrecking an aerial Vehicle starts a D3-plus-altitude crash (D6
 for Massive Crash), resets altitude, and creates a Mobility bracing card for
 every Driver and occupant before Vehicle armour and final falling damage are
-applied. The seeded Helicopter is migrated to the aerial type automatically.
+applied. Legacy world-seeded Helicopters are migrated to the aerial type automatically.
 
 Ricochet, result 1 on the Critical Vehicle Damage table, now gathers other
 Actors in the Vehicle's configured canvas zone (including recorded occupants),
@@ -561,7 +565,7 @@ the terrain-adjusted detour cost to the route. Group movement is still applied
 only once unless one of these resumable route stages is pending. Without a
 configured grid route, all abstract travel-distance workflows remain available.
 
-It also creates ten RollTables in **YZE SRD Roll Tables**: sample panic,
+The **YZE SRD Roll Tables** Compendium contains ten RollTables: sample panic,
 physical and mental critical injuries, critical vehicle damage, foot and
 vehicle chase obstacles, magic mishaps, driving mishaps, sample hunting, and
 camp mishaps. The panic table cannot infer an Actor's stress from a directory
@@ -588,25 +592,12 @@ but no Critical Injury is rolled. Broken Actors cannot make normal sheet rolls.
 Lethal injuries expose stabilization and death-save controls; instant-death
 results mark the Actor deceased.
 
-The **Year Zero Engine SRD** Journal is created in **YZE SRD Reference** with
-player Observer permission. Its native **Rules Index** page is searchable in
-Foundry and points to the six chapters and their page ranges. Its **Full SRD
-(PDF)** page embeds the original document so its layout, tables, and pagination
-remain unchanged; use the PDF viewer's Find command to search the complete
-rules text.
-
-Seeded documents are not recreated after initial setup, and ordinary content
-fields are not overwritten. Targeted version migrations may repair document
-links or add newly required system fields to system-seeded documents. Existing
-same-type Items, same-type Vehicle Actors, or same-named RollTables are also
-respected. To restore missing SRD content from the browser console:
-
-```js
-await game.yze.createSRDContent({ force: true });
-```
-
-The earlier `createDefaultSkills` API remains available when only the twelve
-core Skills are wanted.
+The **YZE Game World Setup Guide** Journal Compendium explains each choice made
+by the startup wizard. It is native Foundry content and contains no embedded
+SRD PDF. The system no longer creates reference or example documents directly
+in a world. Existing world documents from older toolkit versions are preserved
+because a GM may have edited them; only the obsolete system-created SRD
+reference Journal is removed by migration.
 
 ## Development status
 
@@ -625,9 +616,6 @@ This game is not affiliated with, sponsored, or endorsed by Fria Ligan AB. The
 Year Zero Engine System Reference Document is used under Fria Ligan AB's Free
 Tabletop License.
 
-The source SRD and licence PDFs are intentionally ignored by Git while the
-project is private. The hybrid Journal currently loads the local SRD from
-`systems/fvtt-yze-srd/YZE-Standard-Reference-Document.pdf`. A distributable
-build must include that file explicitly. A public release must also include a
-copy of or link to the Free Tabletop License and be reviewed against all of its
-terms.
+Source SRD and licence PDFs, screenshots, and other raster assets are
+intentionally excluded from the repository and release archive. The setup
+guide and system Compendiums use native Foundry documents and core icons.

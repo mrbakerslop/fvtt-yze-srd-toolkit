@@ -1,0 +1,27 @@
+{
+  "name": "Force",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "strength",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Force for feats of raw strength such as lifting, pushing, pulling, or breaking obstacles.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:force"
+    }
+  },
+  "_id": "tLm8oNMrZY35Qjm9",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!tLm8oNMrZY35Qjm9"
+}

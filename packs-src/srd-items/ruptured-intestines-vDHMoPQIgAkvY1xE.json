@@ -1,0 +1,59 @@
+{
+  "name": "Ruptured Intestines",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": true,
+    "deathSaveModifier": 0,
+    "timeLimit": "one shift",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "Stamina",
+    "rollRange": "46",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "rupturedIntestines",
+    "description": "<p>Lethal, time limit one shift. Disease with virulence 6; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-46-46-ruptured-intestines",
+      "srdKey": "item:criticalInjury:ruptured-intestines"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "vDHMoPQIgAkvY1xE",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!vDHMoPQIgAkvY1xE"
+}

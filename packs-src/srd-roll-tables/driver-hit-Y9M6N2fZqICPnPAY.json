@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Driver Hit",
+  "description": "<p>The driver suffers damage equal to that inflicted on the vehicle.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    4,
+    4
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "Y9M6N2fZqICPnPAY",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.Y9M6N2fZqICPnPAY"
+}

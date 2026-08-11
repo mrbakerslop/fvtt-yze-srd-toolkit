@@ -1,0 +1,65 @@
+{
+  "name": "Firewalker",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Blood Magic",
+    "rank": 1,
+    "range": "Personal",
+    "duration": "Shift",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-firewalker-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "firewalker",
+        "description": "Immune to heat, cold, and fire damage.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Shift",
+        "handler": "",
+        "filter": "",
+        "status": "firewalker",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Become immune to heat and cold and take no damage from fire.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:firewalker"
+    }
+  },
+  "_id": "iUBAQIO76XLX5iOE",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!iUBAQIO76XLX5iOE"
+}

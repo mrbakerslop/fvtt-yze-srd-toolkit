@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Engine Overheated",
+  "description": "<p>Stop for the remainder of the shift.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    9,
+    9
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "qQF2HutxlJca5KH1",
+  "flags": {},
+  "_key": "!tables.results!NeVTnZKzcR3dbzV9.qQF2HutxlJca5KH1"
+}

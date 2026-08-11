@@ -1,0 +1,29 @@
+{
+  "name": "Raw Fish",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 0.25,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "fish",
+    "foodState": "raw",
+    "description": "<p>Uncooked fish. Eating it raw risks virulence 6/C food poisoning.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:raw-fish"
+    }
+  },
+  "_id": "izb1pjAxHtvEnSd2",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!izb1pjAxHtvEnSd2"
+}

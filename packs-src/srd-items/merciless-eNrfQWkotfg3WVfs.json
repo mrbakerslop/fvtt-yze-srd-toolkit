@@ -1,0 +1,55 @@
+{
+  "name": "Merciless",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "merciless",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [
+      {
+        "id": "srd-merciless-0",
+        "active": true,
+        "attribute": "",
+        "type": "coupDeGrace",
+        "target": "",
+        "value": 0,
+        "application": "passive",
+        "label": "",
+        "description": "",
+        "targetMode": "",
+        "scaling": "",
+        "category": "",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0
+      }
+    ],
+    "description": "<p>You can perform a coup de grace without first rolling Empathy.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:merciless"
+    }
+  },
+  "_id": "eNrfQWkotfg3WVfs",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!eNrfQWkotfg3WVfs"
+}

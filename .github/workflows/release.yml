@@ -36,6 +36,11 @@ jobs:
             --exclude '.agents/' \
             --exclude '.codex/' \
             --exclude 'dist/' \
+            --exclude 'node_modules/' \
+            --exclude 'packs-src/' \
+            --exclude 'scripts/' \
+            --exclude 'package.json' \
+            --exclude 'package-lock.json' \
             --exclude '*.pdf' \
             --exclude '*.avif' \
             --exclude '*.bmp' \

@@ -1,0 +1,65 @@
+{
+  "name": "Contaminate",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Death Magic",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-contaminate-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellHazard",
+        "target": "",
+        "attribute": "",
+        "label": "disease",
+        "description": "Apply disease at three times power in dice-pool mode or the power-matched step rating.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "disease",
+        "filter": "Living humanoid",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 3,
+        "value": 0
+      }
+    ],
+    "description": "<p>Infect a living humanoid with a disease whose virulence scales with power.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:contaminate"
+    }
+  },
+  "_id": "HUcSODGgDPaYNiNI",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!HUcSODGgDPaYNiNI"
+}

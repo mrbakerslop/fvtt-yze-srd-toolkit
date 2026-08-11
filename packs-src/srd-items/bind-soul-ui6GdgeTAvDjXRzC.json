@@ -1,0 +1,65 @@
+{
+  "name": "Bind Soul",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Blood Magic",
+    "rank": 3,
+    "range": "Engaged",
+    "duration": "Varies",
+    "cost": 1,
+    "ritual": true,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-bind-soul-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellWorkflow",
+        "target": "",
+        "attribute": "",
+        "label": "Guided resolution",
+        "description": "Bind the victim's soul if its Insight roll at a penalty equal to power fails; record the vessel and release condition.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Varies",
+        "handler": "opposedTest",
+        "filter": "Living victim and prepared vessel",
+        "status": "soul-bound",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Extract a victim's soul into a vessel, leaving the body unconscious until freed.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:bind-soul"
+    }
+  },
+  "_id": "ui6GdgeTAvDjXRzC",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!ui6GdgeTAvDjXRzC"
+}

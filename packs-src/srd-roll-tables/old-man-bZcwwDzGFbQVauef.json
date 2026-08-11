@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Old Man",
+  "description": "<p>The pursuer must pay or pass Force; failure cancels their maneuver.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    7,
+    7
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "bZcwwDzGFbQVauef",
+  "flags": {},
+  "_key": "!tables.results!ANWY9sCrmZY0GXHT.bZcwwDzGFbQVauef"
+}

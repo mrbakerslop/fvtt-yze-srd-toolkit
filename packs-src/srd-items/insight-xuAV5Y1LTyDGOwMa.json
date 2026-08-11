@@ -1,0 +1,27 @@
+{
+  "name": "Insight",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "empathy",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Insight to read emotions, see through deception, and resist persuasion.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:insight"
+    }
+  },
+  "_id": "xuAV5Y1LTyDGOwMa",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!xuAV5Y1LTyDGOwMa"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Hawk's Eye",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Shapeshifting",
+    "rank": 1,
+    "range": "Extreme",
+    "duration": "Stretch",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-hawk-s-eye-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "hawks-eye",
+        "description": "See fine detail and identify individuals within Extreme range.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Stretch",
+        "handler": "",
+        "filter": "",
+        "status": "hawks-eye",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>See fine details and identify individuals anywhere within Extreme range.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:hawk-s-eye"
+    }
+  },
+  "_id": "VH4gEogM9OiMTzOY",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!VH4gEogM9OiMTzOY"
+}

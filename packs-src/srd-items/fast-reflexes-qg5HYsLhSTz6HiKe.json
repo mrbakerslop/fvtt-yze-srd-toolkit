@@ -1,0 +1,55 @@
+{
+  "name": "Fast Reflexes",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "fastReflexes",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [
+      {
+        "id": "srd-fastReflexes-0",
+        "active": true,
+        "attribute": "",
+        "type": "initiativeCards",
+        "target": "",
+        "value": 1,
+        "application": "passive",
+        "label": "",
+        "description": "",
+        "targetMode": "",
+        "scaling": "",
+        "category": "",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0
+      }
+    ],
+    "description": "<p>Draw two initiative cards and choose which one to use.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:fast-reflexes"
+    }
+  },
+  "_id": "qg5HYsLhSTz6HiKe",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!qg5HYsLhSTz6HiKe"
+}

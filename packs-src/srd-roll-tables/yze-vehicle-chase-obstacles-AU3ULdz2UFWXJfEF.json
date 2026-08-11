@@ -1,0 +1,33 @@
+{
+  "name": "YZE Vehicle Chase Obstacles",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d10",
+  "description": "<p>Roll once per chase round to generate a vehicle-chase obstacle.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-vehicle-chase-obstacles",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "4Bi3at7os9k6Dnmz",
+    "v95wBqMvbixz4MzX",
+    "Y6xNL9aOyHPEW65I",
+    "FvfTdsfzUNIa21KR",
+    "ZwJJBA9cUCqzdJLU",
+    "KShvgKco2lpTXsJb",
+    "dGTRr1UZQJyxWnzf",
+    "uFelRXEyhtdgqh7J",
+    "Zj9yNYzqmiCUeKBM",
+    "JzdSoa63yTYATgH2"
+  ],
+  "_id": "AU3ULdz2UFWXJfEF",
+  "sort": 0,
+  "_key": "!tables!AU3ULdz2UFWXJfEF"
+}

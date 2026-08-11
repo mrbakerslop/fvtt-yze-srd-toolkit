@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Ruptured Jugular",
+  "description": "<p>Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.SgAY99Njg0fXPM9e",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    61,
+    61
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-61-61-ruptured-jugular"
+    }
+  },
+  "_id": "62iuUWlBBsWCmK9n",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.62iuUWlBBsWCmK9n"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Slashed Shoulder",
+  "description": "<p>Non-lethal. The arm cannot be used; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.rdHEhBu3QePmu1rb",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    26,
+    26
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-26-26-slashed-shoulder"
+    }
+  },
+  "_id": "CB1uIfXTjKeWQN1e",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.CB1uIfXTjKeWQN1e"
+}

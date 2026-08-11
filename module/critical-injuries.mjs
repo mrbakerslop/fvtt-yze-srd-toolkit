@@ -16,6 +16,7 @@ import {
 } from "./settings.mjs";
 import { hasSpecialty } from "./specialties.mjs";
 import { countStateSuccesses } from "./dice/successes.mjs";
+import { getSRDRollTable } from "./srd-content/packs.mjs";
 
 const CATEGORIES = Object.freeze(["physical", "mental"]);
 const TABLE_NAMES = Object.freeze({
@@ -267,12 +268,6 @@ export function getActorCriticalInjuryTriggerState(
   return { ...state, triggered: categories.length > 0, categories };
 }
 
-function injuryTable(category) {
-  return game.tables.find((table) => (
-    table.getFlag(SYSTEM_ID, "criticalInjuryCategory") === category
-  )) ?? game.tables.getName(TABLE_NAMES[category]);
-}
-
 /** Draw the SRD table whose results are linked Critical Injury Items. */
 async function criticalCandidate(table, formula) {
   const roll = String(formula ?? "").trim()
@@ -325,7 +320,7 @@ export async function rollCriticalInjury(actor, category, {
     return null;
   }
 
-  const table = injuryTable(category);
+  const table = await getSRDRollTable(TABLE_NAMES[category], { category });
   if (!table) {
     ui.notifications.error(game.i18n.format("YZE.CriticalInjury.TableMissing", {
       category: categoryLabel(category)

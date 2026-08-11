@@ -1,0 +1,35 @@
+{
+  "name": "YZE Critical Vehicle Damage",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d12",
+  "description": "<p>Roll D12 for critical vehicle component damage. The SRD also provides equivalent D66 ranges and D6 results for the first six entries.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-critical-vehicle-damage",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "LDvsrLJ4cLlwVfmI",
+    "OX22briNOk2Oimjo",
+    "5UX3tc9qRDPRRcRa",
+    "Y9M6N2fZqICPnPAY",
+    "T4v1629rmOrQyzQk",
+    "IsD514jh1GYPmDOA",
+    "LVJP1BTWiSeQHxaN",
+    "Tt8A3PMEPxOZFYDU",
+    "K3FbHP3UfSup9VDt",
+    "HA0msDI11wj7VGoP",
+    "hNjcsxi60e0UrmHo",
+    "x6L4QfuNlvKJo1F5"
+  ],
+  "_id": "EPlEQMNE1XqxCnFQ",
+  "sort": 0,
+  "_key": "!tables!EPlEQMNE1XqxCnFQ"
+}

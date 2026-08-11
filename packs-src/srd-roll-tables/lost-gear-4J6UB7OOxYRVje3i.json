@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Lost Gear",
+  "description": "<p>A random character loses a piece of gear selected by the GM.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    9,
+    9
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "4J6UB7OOxYRVje3i",
+  "flags": {},
+  "_key": "!tables.results!3c9CFCTMLN0NURuY.4J6UB7OOxYRVje3i"
+}

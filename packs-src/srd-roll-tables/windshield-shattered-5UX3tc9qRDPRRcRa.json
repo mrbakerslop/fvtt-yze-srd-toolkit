@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Windshield Shattered",
+  "description": "<p>Reduce Maneuverability by one step.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    3,
+    3
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "5UX3tc9qRDPRRcRa",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.5UX3tc9qRDPRRcRa"
+}

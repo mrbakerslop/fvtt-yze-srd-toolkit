@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Wrong Turn",
+  "description": "<p>Lose one hex of movement this shift.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    7,
+    7
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "AtcDJL78ReJcjGu3",
+  "flags": {},
+  "_key": "!tables.results!NeVTnZKzcR3dbzV9.AtcDJL78ReJcjGu3"
+}

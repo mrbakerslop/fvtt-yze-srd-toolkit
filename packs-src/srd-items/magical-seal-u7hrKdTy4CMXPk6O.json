@@ -1,0 +1,65 @@
+{
+  "name": "Magical Seal",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "General",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Shift",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-magical-seal-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "magical-seal",
+        "description": "Reduce the power level of hostile spells against the protected target by this spell's power level.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Shift",
+        "handler": "",
+        "filter": "",
+        "status": "magical-seal",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>Protect a person or human-sized location, reducing the power level of spells cast against it by this spell's power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:magical-seal"
+    }
+  },
+  "_id": "u7hrKdTy4CMXPk6O",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!u7hrKdTy4CMXPk6O"
+}

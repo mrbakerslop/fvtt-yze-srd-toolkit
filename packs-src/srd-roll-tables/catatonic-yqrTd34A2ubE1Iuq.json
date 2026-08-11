@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Catatonic",
+  "description": "<p>You stare into oblivion and respond to no stimuli; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.4y039bmKtqalteqn",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    64,
+    65
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-64-65-catatonic"
+    }
+  },
+  "_id": "yqrTd34A2ubE1Iuq",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.yqrTd34A2ubE1Iuq"
+}

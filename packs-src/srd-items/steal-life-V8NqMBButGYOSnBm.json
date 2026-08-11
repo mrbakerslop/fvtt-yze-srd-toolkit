@@ -1,0 +1,65 @@
+{
+  "name": "Steal Life",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Death Magic",
+    "rank": 3,
+    "range": "Short",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": true,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-steal-life-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellResource",
+        "target": "",
+        "attribute": "",
+        "label": "willpower",
+        "description": "Kill nearby plants and animals and gain Willpower equal to twice power.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "willpower",
+        "mode": "gain",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 2,
+        "value": 0
+      }
+    ],
+    "description": "<p>Kill nearby plants and animals to gain WP equal to twice the power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:steal-life"
+    }
+  },
+  "_id": "V8NqMBButGYOSnBm",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!V8NqMBButGYOSnBm"
+}

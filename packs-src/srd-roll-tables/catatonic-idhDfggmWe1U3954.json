@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Catatonic",
+  "description": "<p>Collapse, unable to speak or move, and stare blankly into oblivion.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    15,
+    100
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "idhDfggmWe1U3954",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.idhDfggmWe1U3954"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Severed Leg",
+  "description": "<p>Lethal with −1 to death saves, time limit one shift. Movement becomes a slow action; permanent.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.imm7a9vSksa31qr6",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    55,
+    55
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-55-55-severed-leg"
+    }
+  },
+  "_id": "WwKlompnKjAcrAO4",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.WwKlompnKjAcrAO4"
+}

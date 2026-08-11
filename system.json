@@ -8,7 +8,7 @@
       "url": "https://github.com/mrbakerslop"
     }
   ],
-  "version": "14.0.80",
+  "version": "14.0.81",
   "url": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit",
   "manifest": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit/releases/latest/download/system.json",
   "download": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit/releases/latest/download/fvtt-yze-srd-toolkit.zip",
@@ -27,6 +27,43 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "srd-actors",
+      "label": "YZE SRD Actors",
+      "path": "packs/srd-actors",
+      "type": "Actor",
+      "system": "fvtt-yze-srd"
+    },
+    {
+      "name": "srd-items",
+      "label": "YZE SRD Items",
+      "path": "packs/srd-items",
+      "type": "Item",
+      "system": "fvtt-yze-srd"
+    },
+    {
+      "name": "srd-roll-tables",
+      "label": "YZE SRD Roll Tables",
+      "path": "packs/srd-roll-tables",
+      "type": "RollTable",
+      "system": "fvtt-yze-srd"
+    },
+    {
+      "name": "srd-cards",
+      "label": "YZE SRD Cards",
+      "path": "packs/srd-cards",
+      "type": "Cards",
+      "system": "fvtt-yze-srd"
+    },
+    {
+      "name": "world-setup-guide",
+      "label": "YZE Game World Setup Guide",
+      "path": "packs/world-setup-guide",
+      "type": "JournalEntry",
+      "system": "fvtt-yze-srd"
     }
   ],
   "documentTypes": {

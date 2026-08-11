@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Ruptured Aorta",
+  "description": "<p>Lethal with −2 to death saves, time limit one round. Stamina −2; healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.L7gU2Rsi5u6Xz6Me",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    62,
+    62
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-62-62-ruptured-aorta"
+    }
+  },
+  "_id": "uPPG9v8j9PgfISq9",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.uPPG9v8j9PgfISq9"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Nightmares",
+  "description": "<p>Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.GeLak20iGFJwEoY5",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    32,
+    35
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-32-35-nightmares"
+    }
+  },
+  "_id": "4s7L43KCj68Sni8E",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.4s7L43KCj68Sni8E"
+}

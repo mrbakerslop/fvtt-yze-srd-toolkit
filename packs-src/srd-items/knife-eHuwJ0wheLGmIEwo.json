@@ -1,0 +1,48 @@
+{
+  "name": "Knife",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "grip": "1H",
+    "bonus": 1,
+    "damage": 2,
+    "range": "engaged",
+    "weight": 0.5,
+    "quantity": 1,
+    "equipped": false,
+    "usesAmmunition": false,
+    "requiresPreparation": false,
+    "ammunition": {
+      "value": 0,
+      "max": 0
+    },
+    "reloadAction": "fast",
+    "rateOfFire": 0,
+    "fullAuto": false,
+    "telescopicSight": false,
+    "description": "<p>An example weapon from the Year Zero Engine SRD weapon table.</p>",
+    "maxBonus": 1,
+    "price": 0,
+    "effects": [],
+    "reliability": {
+      "value": 5,
+      "max": 5
+    },
+    "artifactDie": 0,
+    "critThreshold": 0,
+    "critFormula": "1d6 * 10 + 1d6"
+  },
+  "folder": "JvYUekBGLhXpqjnq",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:weapon:knife"
+    }
+  },
+  "_id": "eHuwJ0wheLGmIEwo",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!eHuwJ0wheLGmIEwo"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Deer",
+  "description": "<p>Health 2; cannot be trapped; yields 2D6 food rations.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    4,
+    4
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "wayY2PG0w62A727D",
+  "flags": {},
+  "_key": "!tables.results!WM3aRCwrR8SLaQm0.wayY2PG0w62A727D"
+}

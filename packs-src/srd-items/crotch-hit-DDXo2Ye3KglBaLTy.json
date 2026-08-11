@@ -1,0 +1,59 @@
+{
+  "name": "Crotch Hit",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "32",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "Mobility, Melee",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-32-32-crotch-hit",
+      "srdKey": "item:criticalInjury:crotch-hit"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "DDXo2Ye3KglBaLTy",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!DDXo2Ye3KglBaLTy"
+}

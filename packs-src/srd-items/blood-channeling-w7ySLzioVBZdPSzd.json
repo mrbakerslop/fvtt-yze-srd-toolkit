@@ -1,0 +1,65 @@
+{
+  "name": "Blood Channeling",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Blood Magic",
+    "rank": 3,
+    "range": "Personal",
+    "duration": "Round",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-blood-channeling-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellResource",
+        "target": "",
+        "attribute": "",
+        "label": "willpower",
+        "description": "Gain temporary Willpower equal to twice power; unused points expire after the next round.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "willpower",
+        "mode": "gain",
+        "duration": "Next round",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 2,
+        "value": 0
+      }
+    ],
+    "description": "<p>Gain temporary WP equal to twice the power level, which must be spent in the next round.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:blood-channeling"
+    }
+  },
+  "_id": "w7ySLzioVBZdPSzd",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!w7ySLzioVBZdPSzd"
+}

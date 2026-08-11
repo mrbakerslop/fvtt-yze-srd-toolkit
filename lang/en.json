@@ -2187,6 +2187,43 @@
       "InvalidEquipmentCount": "Choose exactly {count} starting equipment choices.",
       "NotAllowed": "You do not have permission to run character creation for this Actor."
     },
+    "WorldSetup": {
+      "Title": "YZE Game World Setup",
+      "MenuName": "Game World Setup Wizard",
+      "MenuButton": "Open Setup Wizard",
+      "MenuHint": "Review and configure the world's core dice, damage, and pushing rules.",
+      "Progress": "Step {current} of {total}",
+      "Steps": {
+        "overview": {
+          "Title": "Welcome",
+          "Intro": "Set the foundation of this game world before play begins."
+        },
+        "dice": {
+          "Title": "Core Dice System",
+          "Intro": "Choose the dice engine used for Attribute and Skill rolls."
+        },
+        "damage": {
+          "Title": "Damage Model",
+          "Intro": "Choose how physical and mental harm affect characters."
+        },
+        "pushing": {
+          "Title": "Pushing & Consequences",
+          "Intro": "Choose what pushed rolls cost and what happens when banes are rolled."
+        }
+      },
+      "Overview": "This wizard covers the three choices which most strongly shape a Year Zero Engine game:",
+      "OverviewDice": "Dice Pool or Stepped Dice for the core roll mechanic.",
+      "OverviewDamage": "Health, Resolve, Conditions, or Attribute Damage for harm.",
+      "OverviewPushing": "Bane damage, Stress Dice, Doom Points, and Conditions for pushing.",
+      "Compendiums": "All supplied SRD Actors, Items, Roll Tables, and Cards are available from the Compendium Packs tab. Import or drag only the content your world needs.",
+      "ReadGuide": "Read detailed guide",
+      "Previous": "Previous",
+      "Finish": "Save & Finish",
+      "ShowOnStartup": "Launch this wizard when the world starts",
+      "ShowOnStartupHint": "Uncheck this once the world rules are settled. The wizard remains available under System Settings.",
+      "Saved": "Game world setup saved.",
+      "GuideMissing": "The YZE Game World Setup Guide Compendium could not be opened."
+    },
     "Common": {
       "Add": "Add",
       "Remove": "Remove",

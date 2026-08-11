@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Heart Attack",
+  "description": "<p>Your heart stops and you die of fright.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.KJulMWJ3QIYCGnkt",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    66,
+    66
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-66-66-heart-attack"
+    }
+  },
+  "_id": "t7LowoLrTtG5u4EW",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.t7LowoLrTtG5u4EW"
+}

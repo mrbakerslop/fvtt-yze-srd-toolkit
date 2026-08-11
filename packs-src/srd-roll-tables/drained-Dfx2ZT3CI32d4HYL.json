@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Drained",
+  "description": "<p>Suffer one stress.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    2,
+    2
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "Dfx2ZT3CI32d4HYL",
+  "flags": {},
+  "_key": "!tables.results!v4eiqQmNY7CZMa5G.Dfx2ZT3CI32d4HYL"
+}

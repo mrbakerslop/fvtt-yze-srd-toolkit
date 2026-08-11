@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Broken Arm",
+  "description": "<p>Non-lethal. The arm cannot be used; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.9IdJWL12XD3O0hM0",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    36,
+    36
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-36-36-broken-arm"
+    }
+  },
+  "_id": "5gE11VxiXq6T39rp",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.5gE11VxiXq6T39rp"
+}

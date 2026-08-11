@@ -1,21 +1,15 @@
 import { SYSTEM_ID } from "../constants.mjs";
 import { SPELL_EFFECT_TYPES } from "../item-effects.mjs";
-import { CORE_SKILLS } from "../default-content.mjs";
 import {
   specialtyItemEffects,
   SRD_CONSUMABLES,
-  SRD_ITEM_GROUPS,
   SRD_SPECIALTIES,
   SRD_SPELLS,
-  SRD_VEHICLES,
   SRD_WEAPONS
 } from "./items.mjs";
-import { SRD_JOURNAL } from "./journals.mjs";
-import { SRD_ROLL_TABLES } from "./tables.mjs";
 import { SRD_CRITICAL_INJURIES } from "./critical-injuries.mjs";
-import { SRD_INITIATIVE_DECK } from "./cards.mjs";
 
-const SRD_CONTENT_VERSION = 22;
+const SRD_CONTENT_VERSION = 23;
 
 const MAGIC_DISCIPLINES = new Set([
   "awareness", "healing", "shapeshifting", "blood magic",
@@ -23,91 +17,11 @@ const MAGIC_DISCIPLINES = new Set([
 ]);
 
 function normalize(value) {
-  return String(value).trim().toLowerCase();
+  return String(value ?? "").trim().toLowerCase();
 }
 
 function contentKey(documentType, type, name) {
   return `${documentType}:${type}:${normalize(name).replaceAll(/[^a-z0-9]+/g, "-")}`;
-}
-
-async function getOrCreateFolder(name, type) {
-  let folder = game.folders.find((candidate) => (
-    candidate.type === type && candidate.name === name
-  ));
-
-  if (!folder) {
-    [folder] = await Folder.implementation.createDocuments([{ name, type }]);
-  }
-  return folder;
-}
-
-function coreSkillItems() {
-  return CORE_SKILLS.map((skill) => ({
-    name: skill.name,
-    type: "skill",
-    img: "icons/svg/book.svg",
-    system: {
-      attribute: skill.attribute,
-      rating: 0,
-      stepRating: 0,
-      usedSuccessfully: false,
-      description: `<p>${skill.description}</p>`
-    }
-  }));
-}
-
-function itemExists(definition, key) {
-  return game.items.some((item) => (
-    item.getFlag(SYSTEM_ID, "srdKey") === key
-    || (item.type === definition.type && normalize(item.name) === normalize(definition.name))
-  ));
-}
-
-async function createItems() {
-  const groups = [
-    { folder: "YZE Core Skills", items: coreSkillItems() },
-    ...SRD_ITEM_GROUPS
-  ];
-  const created = [];
-
-  for (const group of groups) {
-    const folder = await getOrCreateFolder(group.folder, "Item");
-    const missing = group.items.flatMap((definition) => {
-      const key = contentKey("item", definition.type, definition.name);
-      if (itemExists(definition, key)) return [];
-      const source = foundry.utils.deepClone(definition);
-      if (["gear", "weapon"].includes(source.type)) {
-        source.system.maxBonus ??= Number(source.system.bonus) || 0;
-      }
-
-      return [{
-        ...source,
-        folder: folder.id,
-        ownership: source.ownership ?? {
-          default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER
-        },
-        flags: {
-          ...(source.flags ?? {}),
-          [SYSTEM_ID]: {
-            ...(source.flags?.[SYSTEM_ID] ?? {}),
-            srdKey: key
-          }
-        }
-      }];
-    });
-
-    if (missing.length > 0) {
-      try {
-        created.push(...await Item.implementation.createDocuments(missing));
-      } catch (error) {
-        throw new Error(`Could not seed Item group "${group.folder}": ${error.message}`, {
-          cause: error
-        });
-      }
-    }
-  }
-
-  return created;
 }
 
 async function migrateCriticalInjuryItems() {
@@ -485,189 +399,24 @@ async function migrateAdvancedWeapons() {
   }
 }
 
-function actorExists(definition, key) {
-  return game.actors.some((actor) => (
-    actor.getFlag(SYSTEM_ID, "srdKey") === key
-    || (actor.type === definition.type && normalize(actor.name) === normalize(definition.name))
+async function removeObsoleteReferenceJournal() {
+  const journal = game.journal.find((entry) => (
+    entry.getFlag(SYSTEM_ID, "srdKey") === "journal:reference:year-zero-engine-srd"
   ));
-}
+  if (journal) await journal.delete();
 
-async function createVehicleActors() {
-  const folder = await getOrCreateFolder("YZE SRD Vehicles", "Actor");
-  const missing = SRD_VEHICLES.flatMap((definition) => {
-    const key = contentKey("actor", definition.type, definition.name);
-    if (actorExists(definition, key)) return [];
-
-    return [{
-      ...definition,
-      folder: folder.id,
-      flags: {
-        ...(definition.flags ?? {}),
-        [SYSTEM_ID]: {
-          ...(definition.flags?.[SYSTEM_ID] ?? {}),
-          srdKey: key
-        }
-      }
-    }];
-  });
-
-  if (missing.length === 0) return [];
-  return Actor.implementation.createDocuments(missing);
-}
-
-function tableResultData(entry) {
-  const injuryItem = entry.criticalInjuryKey
-    ? game.items.find((item) => item.getFlag(SYSTEM_ID, "criticalInjuryKey") === entry.criticalInjuryKey)
-    : null;
-
-  if (injuryItem) {
-    return {
-      type: CONST.TABLE_RESULT_TYPES.DOCUMENT,
-      name: injuryItem.name,
-      description: entry.description,
-      documentUuid: injuryItem.uuid,
-      img: injuryItem.img,
-      range: entry.range,
-      weight: 1,
-      drawn: false,
-      flags: { [SYSTEM_ID]: { criticalInjuryKey: entry.criticalInjuryKey } }
-    };
-  }
-
-  return {
-    type: CONST.TABLE_RESULT_TYPES.TEXT,
-    name: entry.name,
-    description: entry.description,
-    img: "icons/svg/d20-black.svg",
-    range: entry.range,
-    weight: 1,
-    drawn: false
-  };
-}
-
-function rollTableData(definition, folder, key) {
-  return {
-    name: definition.name,
-    img: "icons/svg/d20-grey.svg",
-    folder: folder.id,
-    formula: definition.formula,
-    description: definition.description,
-    replacement: true,
-    displayRoll: true,
-    ownership: {
-      default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER
-    },
-    flags: {
-      [SYSTEM_ID]: {
-        srdKey: key,
-        criticalInjuryCategory: definition.criticalInjuryCategory
-      }
-    },
-    results: definition.results.map(tableResultData)
-  };
-}
-
-async function synchronizeCriticalInjuryTable(table, definition, key) {
-  await table.update({
-    formula: definition.formula,
-    description: definition.description,
-    replacement: true,
-    displayRoll: true,
-    "ownership.default": CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER,
-    [`flags.${SYSTEM_ID}.srdKey`]: key,
-    [`flags.${SYSTEM_ID}.criticalInjuryCategory`]: definition.criticalInjuryCategory
-  });
-
-  const resultIds = [...table.results].map((entry) => entry.id);
-  if (resultIds.length > 0) {
-    await table.deleteEmbeddedDocuments("TableResult", resultIds);
-  }
-  await table.createEmbeddedDocuments("TableResult", definition.results.map(tableResultData));
-}
-
-async function createRollTables({ upgradeCriticalInjuries = false } = {}) {
-  const folder = await getOrCreateFolder("YZE SRD Roll Tables", "RollTable");
-  const created = [];
-
-  for (const definition of SRD_ROLL_TABLES) {
-    const key = contentKey("table", "roll-table", definition.name);
-    const existing = game.tables.find((table) => (
-      table.getFlag(SYSTEM_ID, "srdKey") === key
-      || normalize(table.name) === normalize(definition.name)
-    ));
-
-    if (!existing) {
-      created.push(...await RollTable.implementation.createDocuments([
-        rollTableData(definition, folder, key)
-      ]));
-      continue;
-    }
-
-    const isSeededTable = existing.getFlag(SYSTEM_ID, "srdKey") === key;
-    if (upgradeCriticalInjuries && definition.criticalInjuryCategory && isSeededTable) {
-      await synchronizeCriticalInjuryTable(existing, definition, key);
-    }
-  }
-
-  return created;
-}
-
-function journalExists(definition, key) {
-  return game.journal.some((journal) => (
-    journal.getFlag(SYSTEM_ID, "srdKey") === key
-    || normalize(journal.name) === normalize(definition.name)
+  const folder = game.folders.find((entry) => (
+    entry.type === "JournalEntry" && entry.name === "YZE SRD Reference"
   ));
+  if (folder && folder.contents.length === 0 && folder.children.length === 0) await folder.delete();
 }
 
-async function createReferenceJournal() {
-  const folder = await getOrCreateFolder("YZE SRD Reference", "JournalEntry");
-  const key = contentKey("journal", "reference", SRD_JOURNAL.name);
-  if (journalExists(SRD_JOURNAL, key)) return [];
-
-  return JournalEntry.implementation.createDocuments([{
-    ...foundry.utils.deepClone(SRD_JOURNAL),
-    folder: folder.id,
-    ownership: {
-      default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER
-    },
-    flags: {
-      [SYSTEM_ID]: { srdKey: key }
-    }
-  }]);
-}
-
-async function createInitiativeCards() {
-  const key = contentKey("cards", "deck", SRD_INITIATIVE_DECK.name);
-  const existing = game.cards?.find((stack) => (
-    stack.getFlag(SYSTEM_ID, "srdKey") === key
-    || normalize(stack.name) === normalize(SRD_INITIATIVE_DECK.name)
-  ));
-  if (existing) return [];
-
-  const source = foundry.utils.deepClone(SRD_INITIATIVE_DECK);
-  return Cards.implementation.createDocuments([{
-    ...source,
-    ownership: source.ownership ?? {
-      default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER
-    },
-    flags: {
-      ...(source.flags ?? {}),
-      [SYSTEM_ID]: {
-        ...(source.flags?.[SYSTEM_ID] ?? {}),
-        srdKey: key
-      }
-    }
-  }]);
-}
-
-export async function createSRDContent({ force = false } = {}) {
-  if (!game.user.isGM) return { items: [], actors: [], tables: [], journals: [], cards: [] };
+/** Run migrations for existing world documents without creating SRD content. */
+export async function migrateWorldData({ force = false } = {}) {
+  if (!game.user.isGM) return false;
   const currentVersion = Number(game.settings.get(SYSTEM_ID, "srdContentVersion")) || 0;
-  if (!force && currentVersion >= SRD_CONTENT_VERSION) {
-    return { items: [], actors: [], tables: [], journals: [], cards: [] };
-  }
+  if (!force && currentVersion >= SRD_CONTENT_VERSION) return false;
 
-  const items = await createItems();
   if (currentVersion < 5) await migrateCriticalInjuryItems();
   if (currentVersion < 6) await migrateGearReliability();
   if (currentVersion < 8) await migrateHarmMaximums();
@@ -681,23 +430,7 @@ export async function createSRDContent({ force = false } = {}) {
   if (force || currentVersion < 16) await migrateUniversalItemEffects();
   if (force || currentVersion < 21) await migrateCriticalInjuryRestrictions();
   if (force || currentVersion < 22) await migrateExperienceLedgers();
-  const actors = await createVehicleActors();
-  const tables = await createRollTables({ upgradeCriticalInjuries: force || currentVersion < 4 });
-  const journals = await createReferenceJournal();
-  const cards = await createInitiativeCards();
-  await game.settings.set(SYSTEM_ID, "srdContentCreated", true);
+  if (force || currentVersion < 23) await removeObsoleteReferenceJournal();
   await game.settings.set(SYSTEM_ID, "srdContentVersion", SRD_CONTENT_VERSION);
-  await game.settings.set(SYSTEM_ID, "coreSkillsCreated", true);
-
-  if (items.length > 0 || actors.length > 0 || tables.length > 0 || journals.length > 0 || cards.length > 0) {
-    ui.notifications.info(game.i18n.format("YZE.Defaults.SRDContentCreated", {
-      items: items.length,
-      actors: actors.length,
-      tables: tables.length,
-      journals: journals.length,
-      cards: cards.length
-    }));
-  }
-
-  return { items, actors, tables, journals, cards };
+  return true;
 }

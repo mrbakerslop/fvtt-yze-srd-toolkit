@@ -1,0 +1,27 @@
+{
+  "name": "Healing",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "empathy",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Healing to treat injuries, help a broken character recover, or stabilize a critical injury.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:healing"
+    }
+  },
+  "_id": "tJG20FnVBE73pv5W",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!tJG20FnVBE73pv5W"
+}

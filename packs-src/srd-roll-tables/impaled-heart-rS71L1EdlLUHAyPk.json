@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Impaled Heart",
+  "description": "<p>Lethal. Your heart beats for the last time.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.kxjXZLpG69g3Dlns",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    66,
+    66
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-66-66-impaled-heart"
+    }
+  },
+  "_id": "rS71L1EdlLUHAyPk",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.rS71L1EdlLUHAyPk"
+}

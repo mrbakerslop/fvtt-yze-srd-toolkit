@@ -1,0 +1,65 @@
+{
+  "name": "Suffocate",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 1,
+    "range": "Short",
+    "duration": "One round per power level",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-suffocate-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellHazard",
+        "target": "",
+        "attribute": "",
+        "label": "suffocation",
+        "description": "Apply recurring suffocation damage and prevent speech.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "One round per power level",
+        "handler": "suffocation",
+        "filter": "Breathing target",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Pull air from a victim's lungs, causing recurring damage and preventing speech.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:suffocate"
+    }
+  },
+  "_id": "phcUDTVTmS7qAJaD",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!phcUDTVTmS7qAJaD"
+}

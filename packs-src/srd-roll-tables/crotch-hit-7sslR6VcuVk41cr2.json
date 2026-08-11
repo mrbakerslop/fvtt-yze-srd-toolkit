@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Crotch Hit",
+  "description": "<p>Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.DDXo2Ye3KglBaLTy",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    32,
+    32
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-32-32-crotch-hit"
+    }
+  },
+  "_id": "7sslR6VcuVk41cr2",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.7sslR6VcuVk41cr2"
+}

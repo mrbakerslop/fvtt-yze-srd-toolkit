@@ -1928,6 +1928,90 @@
   overflow: hidden;
 }
 
+.yze.world-setup .window-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+.yze-world-setup {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.85rem;
+}
+
+.yze-world-setup .setup-heading {
+  border-bottom: 2px solid var(--yze-ink);
+}
+
+.yze-world-setup .setup-heading h1 {
+  margin: 0.15rem 0 0.35rem;
+  font-family: var(--font-h1);
+}
+
+.yze-world-setup .setup-heading p {
+  margin: 0.25rem 0 0.55rem;
+}
+
+.yze-world-setup .setup-progress {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.yze-world-setup .setup-overview,
+.yze-world-setup .form-group,
+.yze-world-setup > .checkbox-row {
+  padding: 0.65rem;
+  border: 1px solid var(--yze-border);
+}
+
+.yze-world-setup .form-group.stacked {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3rem;
+}
+
+.yze-world-setup .form-group.is-disabled {
+  opacity: 0.55;
+}
+
+.yze-world-setup > .checkbox-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.yze-world-setup .checkbox-row span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.yze-world-setup .checkbox-row small,
+.yze-world-setup .hint {
+  color: #444;
+}
+
+.yze-world-setup .setup-startup-toggle {
+  margin-top: 0.35rem;
+  border-width: 2px;
+}
+
+.yze-world-setup .setup-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 2px solid var(--yze-ink);
+}
+
+.yze-world-setup .setup-action-spacer {
+  flex: 1;
+}
+
 .yze.doom-pool-panel .window-content {
   padding: 0;
 }

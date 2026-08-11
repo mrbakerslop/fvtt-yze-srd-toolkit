@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Boar",
+  "description": "<p>Health 3; cannot be trapped; yields 2D6×2 food rations.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    5,
+    5
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "5hhc60SdEI60Ikuq",
+  "flags": {},
+  "_key": "!tables.results!WM3aRCwrR8SLaQm0.5hhc60SdEI60Ikuq"
+}

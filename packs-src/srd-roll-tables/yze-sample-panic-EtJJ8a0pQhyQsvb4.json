@@ -1,0 +1,33 @@
+{
+  "name": "YZE Sample Panic",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d6",
+  "description": "<p>Roll D6 and add the character's current stress. Foundry cannot infer an Actor's stress in a directory RollTable, so add it to the displayed D6 result or temporarily change the formula to 1d6 + X.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-sample-panic",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "bZ35Mkwkzn0rkHwS",
+    "h5ECoFNHbaRzIfpl",
+    "9AdZpTD1Xlo0jDGT",
+    "uaaGvBfQoOZaI6XD",
+    "FaKwllWOovdFEJzP",
+    "DnmbQd3iyOr2kDLS",
+    "fBI3DMrHFfwj5ktS",
+    "8etJOuT4A3uCvpXu",
+    "r0jPQ0oZiEDR8o28",
+    "idhDfggmWe1U3954"
+  ],
+  "_id": "EtJJ8a0pQhyQsvb4",
+  "sort": 0,
+  "_key": "!tables!EtJJ8a0pQhyQsvb4"
+}

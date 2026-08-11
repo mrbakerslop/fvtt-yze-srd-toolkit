@@ -1,0 +1,30 @@
+{
+  "name": "Lucky",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "lucky",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [],
+    "description": "<p>When you suffer a critical injury, re-roll and choose the preferred result.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:lucky"
+    }
+  },
+  "_id": "ikx9KFCY7M1Sufel",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!ikx9KFCY7M1Sufel"
+}

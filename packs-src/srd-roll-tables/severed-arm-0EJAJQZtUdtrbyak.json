@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Severed Arm",
+  "description": "<p>Lethal with −1 to death saves, time limit one shift. The arm cannot be used; permanent.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.OWEP1JtPtxH1tsca",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    54,
+    54
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-54-54-severed-arm"
+    }
+  },
+  "_id": "0EJAJQZtUdtrbyak",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.0EJAJQZtUdtrbyak"
+}

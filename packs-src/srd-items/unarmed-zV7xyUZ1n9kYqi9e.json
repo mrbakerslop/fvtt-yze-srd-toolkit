@@ -1,0 +1,48 @@
+{
+  "name": "Unarmed",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "grip": "",
+    "bonus": 0,
+    "damage": 1,
+    "range": "engaged",
+    "weight": 0,
+    "quantity": 1,
+    "equipped": false,
+    "usesAmmunition": false,
+    "requiresPreparation": false,
+    "ammunition": {
+      "value": 0,
+      "max": 0
+    },
+    "reloadAction": "fast",
+    "rateOfFire": 0,
+    "fullAuto": false,
+    "telescopicSight": false,
+    "description": "<p>An example weapon from the Year Zero Engine SRD weapon table.</p>",
+    "maxBonus": 0,
+    "price": 0,
+    "effects": [],
+    "reliability": {
+      "value": 5,
+      "max": 5
+    },
+    "artifactDie": 0,
+    "critThreshold": 0,
+    "critFormula": "1d6 * 10 + 1d6"
+  },
+  "folder": "JvYUekBGLhXpqjnq",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:weapon:unarmed"
+    }
+  },
+  "_id": "zV7xyUZ1n9kYqi9e",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!zV7xyUZ1n9kYqi9e"
+}

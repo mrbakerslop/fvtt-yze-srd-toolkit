@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Sullen",
+  "description": "<p>Modifier −1 on all Empathy-based rolls; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.G5yK4XOXuSjInmhP",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    25,
+    31
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-25-31-sullen"
+    }
+  },
+  "_id": "tssDFOUyxOYZc7ch",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.tssDFOUyxOYZc7ch"
+}

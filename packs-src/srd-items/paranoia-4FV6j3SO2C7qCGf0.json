@@ -1,0 +1,59 @@
+{
+  "name": "Paranoia",
+  "type": "criticalInjury",
+  "img": "icons/svg/terror.svg",
+  "system": {
+    "category": "mental",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "53–54",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-53-54-paranoia",
+      "srdKey": "item:criticalInjury:paranoia"
+    }
+  },
+  "folder": "UsvsCyRyoo9EILz6",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "4FV6j3SO2C7qCGf0",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!4FV6j3SO2C7qCGf0"
+}

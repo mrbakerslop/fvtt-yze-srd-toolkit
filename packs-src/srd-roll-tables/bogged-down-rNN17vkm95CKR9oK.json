@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Bogged Down",
+  "description": "<p>Movement ends for the shift; one Force or assisted-vehicle attempt can free it per shift.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    6,
+    6
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "rNN17vkm95CKR9oK",
+  "flags": {},
+  "_key": "!tables.results!NeVTnZKzcR3dbzV9.rNN17vkm95CKR9oK"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Sunder",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-sunder-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellItemDamage",
+        "target": "",
+        "attribute": "",
+        "label": "Item effect",
+        "description": "Reduce Gear bonus or structural integrity equal to power.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "gearBonus",
+        "duration": "",
+        "handler": "",
+        "filter": "Non-living, non-magical object",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Break a non-living, non-magical object, reducing its gear bonus or dealing structural damage.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:sunder"
+    }
+  },
+  "_id": "WwAxLykLpGqbwH2D",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!WwAxLykLpGqbwH2D"
+}

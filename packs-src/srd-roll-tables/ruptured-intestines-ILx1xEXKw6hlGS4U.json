@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Ruptured Intestines",
+  "description": "<p>Lethal, time limit one shift. Disease with virulence 6; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.vDHMoPQIgAkvY1xE",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    46,
+    46
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-46-46-ruptured-intestines"
+    }
+  },
+  "_id": "ILx1xEXKw6hlGS4U",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.ILx1xEXKw6hlGS4U"
+}

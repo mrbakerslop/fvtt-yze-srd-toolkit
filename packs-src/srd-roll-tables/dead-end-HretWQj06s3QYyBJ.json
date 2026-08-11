@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Dead End",
+  "description": "<p>Pursue/Flee, Hide, or Block chosen by the prey fails automatically.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    1,
+    1
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "HretWQj06s3QYyBJ",
+  "flags": {},
+  "_key": "!tables.results!ANWY9sCrmZY0GXHT.HretWQj06s3QYyBJ"
+}

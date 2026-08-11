@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Broken Nose",
+  "description": "<p>Non-lethal. Persuasion and Observation −1; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.zRmaW1Dhxb4zmDgM",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    31,
+    31
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-31-31-broken-nose"
+    }
+  },
+  "_id": "0k7F0xda6fMprcfW",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.0k7F0xda6fMprcfW"
+}

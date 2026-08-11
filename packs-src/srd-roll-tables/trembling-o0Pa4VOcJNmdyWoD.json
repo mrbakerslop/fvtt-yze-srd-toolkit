@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Trembling",
+  "description": "<p>Modifier −1 on all Agility-based rolls; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.HC8Dbt7kbY48umqi",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    11,
+    16
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-11-16-trembling"
+    }
+  },
+  "_id": "o0Pa4VOcJNmdyWoD",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.o0Pa4VOcJNmdyWoD"
+}

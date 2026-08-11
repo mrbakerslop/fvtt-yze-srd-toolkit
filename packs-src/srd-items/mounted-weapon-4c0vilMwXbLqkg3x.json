@@ -1,0 +1,30 @@
+{
+  "name": "Mounted Weapon",
+  "type": "vehicleComponent",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "componentType": "weapon",
+    "active": true,
+    "damaged": false,
+    "modifier": 0,
+    "damage": 2,
+    "range": "long",
+    "description": "<p>An example vehicle-mounted weapon. Configure its damage and range for the setting.</p>",
+    "price": 0,
+    "effects": [],
+    "targetingSystem": false
+  },
+  "folder": "HVT7sYtnXeeP2XPw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:vehicleComponent:mounted-weapon"
+    }
+  },
+  "_id": "4c0vilMwXbLqkg3x",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!4c0vilMwXbLqkg3x"
+}

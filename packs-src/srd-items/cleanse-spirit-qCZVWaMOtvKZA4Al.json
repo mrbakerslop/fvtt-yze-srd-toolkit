@@ -1,0 +1,65 @@
+{
+  "name": "Cleanse Spirit",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Healing",
+    "rank": 1,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "healing",
+    "targetMode": "selected",
+    "effectCategory": "mental",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-cleanse-spirit-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellRecovery",
+        "target": "",
+        "attribute": "",
+        "label": "Recovery",
+        "description": "Recover Resolve or a mental Attribute equal to power.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "mental",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "A target other than the caster",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Heal Resolve or a mental attribute equal to the power level; you cannot target yourself.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:cleanse-spirit"
+    }
+  },
+  "_id": "qCZVWaMOtvKZA4Al",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!qCZVWaMOtvKZA4Al"
+}

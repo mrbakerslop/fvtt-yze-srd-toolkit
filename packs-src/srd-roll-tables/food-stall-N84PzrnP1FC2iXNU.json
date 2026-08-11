@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Food Stall",
+  "description": "<p>The prey must Force through it before Flee, Hide, or Block; failure cancels the maneuver and causes D3 damage.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    2,
+    2
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "N84PzrnP1FC2iXNU",
+  "flags": {},
+  "_key": "!tables.results!ANWY9sCrmZY0GXHT.N84PzrnP1FC2iXNU"
+}

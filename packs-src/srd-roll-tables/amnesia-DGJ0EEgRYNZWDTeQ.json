@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Amnesia",
+  "description": "<p>You lose all memory of yourself and the other PCs; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.U8sHCxoFLmGDPNfa",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    63,
+    63
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-63-63-amnesia"
+    }
+  },
+  "_id": "DGJ0EEgRYNZWDTeQ",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.DGJ0EEgRYNZWDTeQ"
+}

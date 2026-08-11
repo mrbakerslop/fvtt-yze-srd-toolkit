@@ -1,0 +1,30 @@
+{
+  "name": "Standard Engine",
+  "type": "vehicleComponent",
+  "img": "icons/svg/gear.svg",
+  "system": {
+    "componentType": "engine",
+    "active": true,
+    "damaged": false,
+    "modifier": 0,
+    "damage": 0,
+    "range": "",
+    "description": "<p>The vehicle's primary engine or drive system.</p>",
+    "price": 0,
+    "effects": [],
+    "targetingSystem": false
+  },
+  "folder": "HVT7sYtnXeeP2XPw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:vehicleComponent:standard-engine"
+    }
+  },
+  "_id": "5vvWO6pxsjPMFVOL",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!5vvWO6pxsjPMFVOL"
+}

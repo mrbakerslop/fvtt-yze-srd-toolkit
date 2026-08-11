@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Grouse",
+  "description": "<p>Health 1; cannot be trapped; yields 1 food ration.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    1,
+    1
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "UnqhvlzETV22YMM4",
+  "flags": {},
+  "_key": "!tables.results!WM3aRCwrR8SLaQm0.UnqhvlzETV22YMM4"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Crushed Skull",
+  "description": "<p>Lethal. Your story ends here.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.6necsWOOCIFxP10V",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    64,
+    64
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-64-64-crushed-skull"
+    }
+  },
+  "_id": "TYxY8bh2IQD4xEnH",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.TYxY8bh2IQD4xEnH"
+}

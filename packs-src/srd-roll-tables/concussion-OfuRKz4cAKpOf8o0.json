@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Concussion",
+  "description": "<p>Non-lethal. Mobility −2; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.xPvWOMVsH2A67eOI",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    16,
+    16
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-16-16-concussion"
+    }
+  },
+  "_id": "OfuRKz4cAKpOf8o0",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.OfuRKz4cAKpOf8o0"
+}

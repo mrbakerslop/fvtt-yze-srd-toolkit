@@ -1,0 +1,65 @@
+{
+  "name": "Befoul",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Death Magic",
+    "rank": 1,
+    "range": "Short",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-befoul-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellItemDamage",
+        "target": "",
+        "attribute": "",
+        "label": "Item effect",
+        "description": "Destroy one food ration per power level and mark it poisonous.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "food",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Corrupt one food ration per power level into poisonous, inedible matter.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:befoul"
+    }
+  },
+  "_id": "Q2gH5CaSGcbYcpa9",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!Q2gH5CaSGcbYcpa9"
+}

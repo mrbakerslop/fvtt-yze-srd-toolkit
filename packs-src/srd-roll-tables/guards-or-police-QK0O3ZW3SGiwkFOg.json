@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Guards or Police",
+  "description": "<p>Pursue/Flee, Hide, and Stand and Shoot suffer −2; shooting draws an attack from the guards.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    6,
+    6
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "QK0O3ZW3SGiwkFOg",
+  "flags": {},
+  "_key": "!tables.results!ANWY9sCrmZY0GXHT.QK0O3ZW3SGiwkFOg"
+}

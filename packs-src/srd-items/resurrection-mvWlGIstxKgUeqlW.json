@@ -1,0 +1,89 @@
+{
+  "name": "Resurrection",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Healing",
+    "rank": 3,
+    "range": "Engaged",
+    "duration": "Immediate",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-resurrection-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellCriticalInjury",
+        "target": "",
+        "attribute": "",
+        "label": "Critical Injury effect",
+        "description": "Restore a recently dead person to life after confirming the elapsed-time requirement.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "resurrect",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      },
+      {
+        "id": "srd-spell-resurrection-1",
+        "active": true,
+        "application": "spell",
+        "type": "spellResource",
+        "target": "",
+        "attribute": "",
+        "label": "empathy",
+        "description": "Permanently lose one Empathy.",
+        "targetMode": "selected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "empathy",
+        "mode": "lose",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 1
+      }
+    ],
+    "description": "<p>Restore a recently dead person to true life; difficulty rises with elapsed time and the target permanently loses Empathy.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:resurrection"
+    }
+  },
+  "_id": "mvWlGIstxKgUeqlW",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!mvWlGIstxKgUeqlW"
+}

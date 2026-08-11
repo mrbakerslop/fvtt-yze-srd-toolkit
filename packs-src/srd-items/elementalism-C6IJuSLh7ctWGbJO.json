@@ -1,0 +1,30 @@
+{
+  "name": "Elementalism",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "",
+    "effectTarget": "",
+    "magicDiscipline": true,
+    "rank": 1,
+    "effects": [],
+    "description": "<p>A magic discipline manipulating earth, air, fire, and water.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:elementalism"
+    }
+  },
+  "_id": "C6IJuSLh7ctWGbJO",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!C6IJuSLh7ctWGbJO"
+}

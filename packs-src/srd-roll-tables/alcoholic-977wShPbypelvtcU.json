@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Alcoholic",
+  "description": "<p>Drink alcohol every day or suffer one stress or Agility damage; healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.iDKpmepyF1TCUD93",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    44,
+    45
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-44-45-alcoholic"
+    }
+  },
+  "_id": "977wShPbypelvtcU",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.977wShPbypelvtcU"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Severe Spin",
+  "description": "<p>The driver immediately rolls; failure wrecks the vehicle and passengers suffer falling damage.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    7,
+    7
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "LVJP1BTWiSeQHxaN",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.LVJP1BTWiSeQHxaN"
+}

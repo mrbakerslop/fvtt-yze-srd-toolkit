@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Fox",
+  "description": "<p>Health 1; can be trapped; yields D3 food rations.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    3,
+    3
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "FLvHPHkvxowgEI7S",
+  "flags": {},
+  "_key": "!tables.results!WM3aRCwrR8SLaQm0.FLvHPHkvxowgEI7S"
+}

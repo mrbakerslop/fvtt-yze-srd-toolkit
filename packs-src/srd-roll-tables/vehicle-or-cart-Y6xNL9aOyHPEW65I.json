@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Vehicle or Cart",
+  "description": "<p>Block is advantaged; Pursue/Flee is disadvantaged and failure causes D3 vehicle damage.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    3,
+    3
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "Y6xNL9aOyHPEW65I",
+  "flags": {},
+  "_key": "!tables.results!AU3ULdz2UFWXJfEF.Y6xNL9aOyHPEW65I"
+}

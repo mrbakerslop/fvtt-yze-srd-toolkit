@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Pierced Head",
+  "description": "<p>Lethal. You die immediately.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.cora2r2MfldHrfja",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    65,
+    65
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-65-65-pierced-head"
+    }
+  },
+  "_id": "PCLGQevN1o035Sc6",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.PCLGQevN1o035Sc6"
+}

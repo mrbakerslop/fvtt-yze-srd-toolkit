@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Fire!",
+  "description": "<p>A tent is destroyed. Everyone faces intensity D fire and rolls Mobility to save their gear.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    4,
+    4
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "Tv8DC7ekoep9c46F",
+  "flags": {},
+  "_key": "!tables.results!3c9CFCTMLN0NURuY.Tv8DC7ekoep9c46F"
+}

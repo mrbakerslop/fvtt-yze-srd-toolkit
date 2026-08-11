@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Stunned",
+  "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.vT8Q7U8eRnlMqXwD",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    12,
+    12
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-12-12-stunned"
+    }
+  },
+  "_id": "cbw8Hcb4QJC8OINU",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.cbw8Hcb4QJC8OINU"
+}

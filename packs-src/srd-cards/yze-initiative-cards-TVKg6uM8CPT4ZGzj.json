@@ -1,0 +1,33 @@
+{
+  "name": "YZE Initiative Cards",
+  "type": "deck",
+  "img": "icons/svg/card-joker.svg",
+  "description": "<p>Ten initiative cards numbered 1–10. Lower values act first. This editable world deck is available for manual draws; the Combat Tracker uses the same values without consuming these cards.</p>",
+  "displayCount": true,
+  "cards": [
+    "UX9PvNjYufTYlaS2",
+    "qCeVpP2Slp8RmiBN",
+    "uwp1mKnTZC3AUJUE",
+    "pNfXTgBrh4IbD0QV",
+    "ZivN5EyN21KaAwtL",
+    "sMRcMUgpiIsyc74n",
+    "O6oZbTd8KnZkweWy",
+    "v1V111PsuaxCs7Yn",
+    "3gJe8fc2TReNdOrw",
+    "dBD7NC2CrmEZW3FZ"
+  ],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "cards:deck:yze-initiative-cards"
+    }
+  },
+  "_id": "TVKg6uM8CPT4ZGzj",
+  "system": {},
+  "rotation": 0,
+  "folder": null,
+  "sort": 0,
+  "_key": "!cards!TVKg6uM8CPT4ZGzj"
+}

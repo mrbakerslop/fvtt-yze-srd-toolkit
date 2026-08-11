@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Keeping It Together",
+  "description": "<p>You barely keep your nerves in check.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    1,
+    6
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "bZ35Mkwkzn0rkHwS",
+  "flags": {},
+  "_key": "!tables.results!EtJJ8a0pQhyQsvb4.bZ35Mkwkzn0rkHwS"
+}

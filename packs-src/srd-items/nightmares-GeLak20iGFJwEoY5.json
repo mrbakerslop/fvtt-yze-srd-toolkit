@@ -1,0 +1,59 @@
+{
+  "name": "Nightmares",
+  "type": "criticalInjury",
+  "img": "icons/svg/terror.svg",
+  "system": {
+    "category": "mental",
+    "active": true,
+    "lethal": false,
+    "deathSaveModifier": 0,
+    "timeLimit": "",
+    "healingTime": "D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "",
+    "rollRange": "32–35",
+    "rollModifier": 0,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "insight",
+    "sleepSkill": "Insight",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-32-35-nightmares",
+      "srdKey": "item:criticalInjury:nightmares"
+    }
+  },
+  "folder": "UsvsCyRyoo9EILz6",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "GeLak20iGFJwEoY5",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!GeLak20iGFJwEoY5"
+}

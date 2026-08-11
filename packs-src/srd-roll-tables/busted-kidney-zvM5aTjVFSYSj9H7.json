@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Busted Kidney",
+  "description": "<p>Lethal, time limit one day. Mobility −2 and movement is a slow action; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ttEI4S6n72W3n6c9",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    51,
+    51
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-51-51-busted-kidney"
+    }
+  },
+  "_id": "zvM5aTjVFSYSj9H7",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.zvM5aTjVFSYSj9H7"
+}

@@ -1,0 +1,71 @@
+<section class="yze-world-setup">
+  <header class="setup-heading">
+    <p class="setup-progress">{{localize "YZE.WorldSetup.Progress" current=step.number total=step.total}}</p>
+    <h1>{{step.title}}</h1>
+    <p>{{step.intro}}</p>
+  </header>
+
+  {{#if step.isOverview}}
+    <div class="setup-overview">
+      <p>{{localize "YZE.WorldSetup.Overview"}}</p>
+      <ul>
+        <li>{{localize "YZE.WorldSetup.OverviewDice"}}</li>
+        <li>{{localize "YZE.WorldSetup.OverviewDamage"}}</li>
+        <li>{{localize "YZE.WorldSetup.OverviewPushing"}}</li>
+      </ul>
+      <p>{{localize "YZE.WorldSetup.Compendiums"}}</p>
+    </div>
+  {{/if}}
+
+  {{#if step.isDice}}
+    <div class="form-group stacked">
+      <label for="yze-setup-dice-system">{{localize "YZE.Settings.DiceSystem.Name"}}</label>
+      <select id="yze-setup-dice-system" name="diceSystem">
+        {{#each diceSystems}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{localize label}}</option>{{/each}}
+      </select>
+      <p class="hint">{{localize "YZE.Settings.DiceSystem.Hint"}}</p>
+    </div>
+    <div class="form-group stacked">
+      <label for="yze-setup-step-method">{{localize "YZE.Settings.StepModifierMethod.Name"}}</label>
+      <select id="yze-setup-step-method" name="stepModifierMethod">
+        {{#each stepMethods}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{localize label}}</option>{{/each}}
+      </select>
+      <p class="hint">{{localize "YZE.Settings.StepModifierMethod.Hint"}}</p>
+    </div>
+  {{/if}}
+
+  {{#if step.isDamage}}
+    <div class="form-group stacked">
+      <label for="yze-setup-harm-model">{{localize "YZE.Settings.HarmModel.Name"}}</label>
+      <select id="yze-setup-harm-model" name="harmModel">
+        {{#each damageModels}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{localize label}}</option>{{/each}}
+      </select>
+      <p class="hint">{{localize "YZE.Settings.HarmModel.Hint"}}</p>
+    </div>
+  {{/if}}
+
+  {{#if step.isPushing}}
+    <div class="form-group stacked">
+      <label for="yze-setup-bane-damage">{{localize "YZE.Settings.PushBaneDamageMode.Name"}}</label>
+      <select id="yze-setup-bane-damage" name="pushBaneDamageMode">
+        {{#each baneDamageModes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{localize label}}</option>{{/each}}
+      </select>
+      <p class="hint">{{localize "YZE.Settings.PushBaneDamageMode.Hint"}}</p>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" name="useStressDice" {{checked draft.useStressDice}}> <span><strong>{{localize "YZE.Settings.StressDice.Name"}}</strong><small>{{localize "YZE.Settings.StressDice.Hint"}}</small></span></label>
+    <label class="checkbox-row"><input type="checkbox" name="useDoomPoints" {{checked draft.useDoomPoints}}> <span><strong>{{localize "YZE.Settings.DoomPoints.Name"}}</strong><small>{{localize "YZE.Settings.DoomPoints.Hint"}}</small></span></label>
+    <label class="checkbox-row"><input type="checkbox" name="useConditions" {{checked draft.useConditions}}> <span><strong>{{localize "YZE.Settings.Conditions.Name"}}</strong><small>{{localize "YZE.Settings.Conditions.Hint"}}</small></span></label>
+    <label class="checkbox-row setup-startup-toggle"><input type="checkbox" name="showWorldSetupOnStartup" {{checked draft.showWorldSetupOnStartup}}> <span><strong>{{localize "YZE.WorldSetup.ShowOnStartup"}}</strong><small>{{localize "YZE.WorldSetup.ShowOnStartupHint"}}</small></span></label>
+  {{/if}}
+
+  <footer class="setup-actions">
+    <button type="button" data-action="guide" data-page="{{step.key}}"><i class="fa-solid fa-book-open"></i> {{localize "YZE.WorldSetup.ReadGuide"}}</button>
+    <span class="setup-action-spacer"></span>
+    {{#unless step.first}}<button type="button" data-action="previous"><i class="fa-solid fa-arrow-left"></i> {{localize "YZE.WorldSetup.Previous"}}</button>{{/unless}}
+    {{#if step.last}}
+      <button type="submit"><i class="fa-solid fa-floppy-disk"></i> {{localize "YZE.WorldSetup.Finish"}}</button>
+    {{else}}
+      <button type="button" data-action="next">{{localize "YZE.Common.Next"}} <i class="fa-solid fa-arrow-right"></i></button>
+    {{/if}}
+  </footer>
+</section>

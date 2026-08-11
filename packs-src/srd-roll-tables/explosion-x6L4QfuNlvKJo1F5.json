@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Explosion",
+  "description": "<p>The vehicle is destroyed beyond repair and everyone inside is exposed to blast power 9/B.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    12,
+    12
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "x6L4QfuNlvKJo1F5",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.x6L4QfuNlvKJo1F5"
+}

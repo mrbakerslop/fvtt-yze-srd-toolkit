@@ -1,0 +1,29 @@
+{
+  "name": "YZE Sample Hunting",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d6",
+  "description": "<p>Roll D6 after successfully tracking prey.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-sample-hunting",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "UnqhvlzETV22YMM4",
+    "w1gkyQvkxNR1pZIz",
+    "FLvHPHkvxowgEI7S",
+    "wayY2PG0w62A727D",
+    "5hhc60SdEI60Ikuq",
+    "HACIL9yi8zGNYmmw"
+  ],
+  "_id": "WM3aRCwrR8SLaQm0",
+  "sort": 0,
+  "_key": "!tables!WM3aRCwrR8SLaQm0"
+}

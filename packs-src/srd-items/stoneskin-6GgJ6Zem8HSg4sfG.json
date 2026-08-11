@@ -1,0 +1,65 @@
+{
+  "name": "Stoneskin",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Elementalism",
+    "rank": 3,
+    "range": "Personal",
+    "duration": "Stretch",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-stoneskin-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellArmor",
+        "target": "",
+        "attribute": "",
+        "label": "Magical armor",
+        "description": "Gain armour equal to twice power in dice-pool mode or one step per power in stepped-dice mode.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Stretch",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 2,
+        "value": 0
+      }
+    ],
+    "description": "<p>Cover yourself in living stone, gaining armor determined by power level.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:stoneskin"
+    }
+  },
+  "_id": "6GgJ6Zem8HSg4sfG",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!6GgJ6Zem8HSg4sfG"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Rift",
+  "description": "<p>A demon drags you into another dimension. The character returns as a changed NPC after D66 days.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    12,
+    12
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "VJIfpIgxkb1T0Q8j",
+  "flags": {},
+  "_key": "!tables.results!v4eiqQmNY7CZMa5G.VJIfpIgxkb1T0Q8j"
+}

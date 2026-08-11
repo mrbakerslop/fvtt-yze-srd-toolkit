@@ -1,0 +1,29 @@
+{
+  "name": "Food",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 0.25,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "prepared",
+    "foodState": "safe",
+    "description": "<p>Rations of prepared food used to stave off starvation.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:food"
+    }
+  },
+  "_id": "sc03kiie6Pyb42h2",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!sc03kiie6Pyb42h2"
+}

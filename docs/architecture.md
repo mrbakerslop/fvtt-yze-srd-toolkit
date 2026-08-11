@@ -41,35 +41,29 @@ A Skill Item stores:
 World-level Skill Items act as definitions. Dragging one onto an Actor creates
 an embedded copy whose rating and advancement state belong to that Actor.
 
-On first world startup, the active GM receives the twelve SRD core Skills in a
-**YZE Core Skills** Item folder. A hidden world setting prevents later startup
-from overwriting renamed, edited, or deleted Skills. Missing defaults can be
-restored explicitly through the public system API.
+The twelve SRD core Skills are supplied in the **YZE SRD Items** Compendium.
+Importing or dragging a Skill creates an editable world definition; dragging a
+world Skill onto an Actor creates the rating-bearing embedded copy.
 
 ## SRD example content
 
-On first startup for a GM, an idempotent seed process creates the SRD's formal
-example content as editable world documents. Stable flags identify documents
-created by the system, while type-and-name matching respects equivalent Items
-that users created themselves. Targeted seed migrations can repair links and
-newly required fields on flagged system documents, but do not touch equivalent
-user-created content. A forced run restores missing examples without undoing
-world customisation.
+The SRD's formal examples are distributed as system Compendium Packs for
+Actors, Items, RollTables, and Cards. Readable JSON sources in `packs-src/` are
+compiled into Foundry v14 LevelDB packs by `npm run build:packs`. A world can
+import only the documents it needs, while system updates replace the source
+packs without overwriting edited world copies. Legacy migrations still repair
+newly required fields on older world documents, but no longer seed content.
 
 Vehicles are Actor documents rather than Items. Their Hull is a trackable
 resource with current and maximum values, and their dedicated sheet exposes
 the other SRD vehicle statistics. Vehicle Component Items are embedded in those
 Actors and contribute driving modifiers while active and undamaged. This
 provides a stable ownership model for later, game-specific component expansion
-without requiring a document-type conversion. Seed versioning ensures worlds
-created with an older content seed receive the Vehicle Actors and example
-components on their next GM startup.
+without requiring a document-type conversion.
 
-The same versioned seed creates a player-readable reference Journal. A native
-HTML index supplies Foundry-searchable chapter topics and page ranges, while a
-PDF page embeds the supplied SRD unchanged for its original layout and its own
-full-text search. The source PDF must be explicitly included by any future
-distributable build.
+The Game World Setup Guide is a native Journal Compendium. The GM startup
+wizard links directly to its overview, dice, damage, and pushing pages. It does
+not embed the temporary development-reference SRD PDF.
 
 Random-result tables are native Foundry RollTable documents. D66 tables use
 the formula `1d6 * 10 + 1d6`; other tables retain their stated D6, D10, D12,
@@ -77,7 +71,7 @@ or 2D6 formula. The panic table documents its special D6-plus-current-stress
 procedure because a directory RollTable has no Actor context from which to
 read stress automatically.
 
-Physical and mental Critical Injury results are linked world Items rather than
+Physical and mental Critical Injury results are linked Compendium Items rather than
 plain table text. Foundry renders those results as draggable chat links, and
 the Actor sheet accepts them in a typed Critical Injuries drop zone. Active
 injury Items feed configured Attribute/Skill penalties into the roll engine;
@@ -196,7 +190,7 @@ ordered list of Universal Item Effects. Eleven spell effect types cover damage,
 recovery, modifiers, resources, statuses, armour, automatic successes, Item
 damage, Critical Injuries, hazards, and guided workflows. Each row owns its
 target mode, eligibility instruction, power formula, duration, and the small
-amount of type-specific data needed by its generic handler. The 70 seeded SRD
+amount of type-specific data needed by its generic handler. The 70 supplied SRD
 spells are data recipes built from those rows rather than spell-name branches.
 
 Persistent outcomes are Actor flags with world-time and combat-round expiry.

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Broken Hand",
+  "description": "<p>Non-lethal. The hand cannot be used; healing time D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ChbSgfbHFAfYX1u0",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    23,
+    23
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-23-23-broken-hand"
+    }
+  },
+  "_id": "ZjV7BzEC1ooU5PHb",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.ZjV7BzEC1ooU5PHb"
+}

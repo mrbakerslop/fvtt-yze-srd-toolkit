@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Massive Crash",
+  "description": "<p>The vehicle is wrecked and each passenger suffers D6 falling damage plus altitude, reduced by armor.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    10,
+    10
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "HA0msDI11wj7VGoP",
+  "flags": {},
+  "_key": "!tables.results!EPlEQMNE1XqxCnFQ.HA0msDI11wj7VGoP"
+}

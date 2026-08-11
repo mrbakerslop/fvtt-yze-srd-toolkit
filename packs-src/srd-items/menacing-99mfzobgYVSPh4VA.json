@@ -1,0 +1,55 @@
+{
+  "name": "Menacing",
+  "type": "specialty",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "active": true,
+    "bonus": 0,
+    "effect": "menacing",
+    "effectTarget": "",
+    "magicDiscipline": false,
+    "rank": 0,
+    "effects": [
+      {
+        "id": "srd-menacing-0",
+        "active": true,
+        "attribute": "strength",
+        "type": "alternateAttribute",
+        "target": "persuasion",
+        "value": 0,
+        "application": "passive",
+        "label": "",
+        "description": "",
+        "targetMode": "",
+        "scaling": "",
+        "category": "",
+        "resource": "",
+        "mode": "",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0
+      }
+    ],
+    "description": "<p>Use Strength instead of Empathy for Persuasion rolls made to threaten someone.</p>",
+    "price": 0,
+    "used": false
+  },
+  "folder": "03dlRYtabBtfZOu9",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:specialty:menacing"
+    }
+  },
+  "_id": "99mfzobgYVSPh4VA",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!99mfzobgYVSPh4VA"
+}

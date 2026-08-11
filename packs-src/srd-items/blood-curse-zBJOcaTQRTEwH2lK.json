@@ -1,0 +1,65 @@
+{
+  "name": "Blood Curse",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Blood Magic",
+    "rank": 3,
+    "range": "Unlimited",
+    "duration": "One shift per power level",
+    "cost": 1,
+    "ritual": true,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-blood-curse-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellHazard",
+        "target": "",
+        "attribute": "",
+        "label": "bloodCurse",
+        "description": "Choose damage or stress. Apply one point each shift until the total equals power; natural healing is prevented.",
+        "targetMode": "firstSelected",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "One shift per power level",
+        "handler": "bloodCurse",
+        "filter": "Known living humanoid",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 1,
+        "value": 0
+      }
+    ],
+    "description": "<p>Curse a known living humanoid to take gradual damage or stress and prevent natural healing.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:blood-curse"
+    }
+  },
+  "_id": "zBJOcaTQRTEwH2lK",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!zBJOcaTQRTEwH2lK"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Hallucinations",
+  "description": "<p>Roll Insight every shift; on failure the GM introduces a powerful hallucination. Healing time 3D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.uOAYrPSEsmOBrOVY",
+  "img": "icons/svg/terror.svg",
+  "range": [
+    56,
+    56
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "mental-56-56-hallucinations"
+    }
+  },
+  "_id": "PgvtI7QTMP79h7UE",
+  "_key": "!tables.results!W6LKXJ0oCopt1KUZ.PgvtI7QTMP79h7UE"
+}

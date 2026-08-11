@@ -1,0 +1,59 @@
+{
+  "name": "Busted Kidney",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": true,
+    "deathSaveModifier": 0,
+    "timeLimit": "one day",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "Stamina",
+    "rollRange": "51",
+    "rollModifier": -2,
+    "affectedAttributes": "",
+    "affectedSkills": "Mobility",
+    "damageOnSkills": "",
+    "movementRestriction": "slow",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Lethal, time limit one day. Mobility −2 and movement is a slow action; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-51-51-busted-kidney",
+      "srdKey": "item:criticalInjury:busted-kidney"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "ttEI4S6n72W3n6c9",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!ttEI4S6n72W3n6c9"
+}

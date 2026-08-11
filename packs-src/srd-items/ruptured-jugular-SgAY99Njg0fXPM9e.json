@@ -1,0 +1,59 @@
+{
+  "name": "Ruptured Jugular",
+  "type": "criticalInjury",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "category": "physical",
+    "active": true,
+    "lethal": true,
+    "deathSaveModifier": -1,
+    "timeLimit": "one round",
+    "healingTime": "2D6 days",
+    "permanent": false,
+    "instantDeath": false,
+    "stabilized": false,
+    "deathSaveSkill": "Stamina",
+    "rollRange": "61",
+    "rollModifier": -1,
+    "affectedAttributes": "",
+    "affectedSkills": "Stamina",
+    "damageOnSkills": "",
+    "movementRestriction": "",
+    "disabledHands": 0,
+    "blockedAttributes": "",
+    "blocksActions": false,
+    "sleepRestriction": "",
+    "sleepSkill": "",
+    "triggerKind": "",
+    "specialRule": "",
+    "description": "<p>Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.</p>",
+    "price": 0,
+    "effects": [],
+    "recovery": {
+      "initialized": false,
+      "totalDays": 0,
+      "remainingDays": 0,
+      "lastProcessedAt": 0,
+      "careCredits": 0,
+      "lastCareDay": -1,
+      "deathSaveDue": false,
+      "nextDeathSaveAt": 0,
+      "nextDeathSaveRound": 0,
+      "treatmentLocked": false
+    }
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-61-61-ruptured-jugular",
+      "srdKey": "item:criticalInjury:ruptured-jugular"
+    }
+  },
+  "folder": "5leINEuWBtfQWIwD",
+  "ownership": {
+    "default": 2
+  },
+  "_id": "SgAY99Njg0fXPM9e",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!SgAY99Njg0fXPM9e"
+}

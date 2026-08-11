@@ -1,0 +1,20 @@
+{
+  "type": "document",
+  "name": "Busted Kneecap",
+  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+  "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ssEgqP4CFBvaTkyZ",
+  "img": "icons/svg/blood.svg",
+  "range": [
+    35,
+    35
+  ],
+  "weight": 1,
+  "drawn": false,
+  "flags": {
+    "fvtt-yze-srd": {
+      "criticalInjuryKey": "physical-35-35-busted-kneecap"
+    }
+  },
+  "_id": "x5lCQURWdyRVDAoC",
+  "_key": "!tables.results!z95N1LnGeIPiBkrG.x5lCQURWdyRVDAoC"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "True Sight",
+  "type": "spell",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "discipline": "Awareness",
+    "rank": 1,
+    "range": "Extreme",
+    "duration": "Round",
+    "cost": 1,
+    "ritual": false,
+    "ritualRequirements": "",
+    "powerWord": false,
+    "automation": "none",
+    "targetMode": "selected",
+    "effectCategory": "physical",
+    "effectBase": 0,
+    "effectPerPower": 1,
+    "effectModifier": 0,
+    "armorApplies": false,
+    "affectedAttributes": "",
+    "affectedSkills": "",
+    "effects": [
+      {
+        "id": "srd-spell-true-sight-0",
+        "active": true,
+        "application": "spell",
+        "type": "spellStatus",
+        "target": "",
+        "attribute": "",
+        "label": "true-sight",
+        "description": "See distant detail, darkness, smoke, fog, disguises, and shapeshifting.",
+        "targetMode": "self",
+        "scaling": "linear",
+        "category": "physical",
+        "resource": "",
+        "mode": "",
+        "duration": "Round",
+        "handler": "",
+        "filter": "",
+        "status": "true-sight",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 0
+      }
+    ],
+    "description": "<p>See distant detail, darkness, smoke, fog, disguises, and shapeshifting with supernatural clarity.</p>",
+    "price": 0
+  },
+  "folder": "Ve4gxde1LtVRa0Ob",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:spell:true-sight"
+    }
+  },
+  "_id": "U1vBYFSijwrObvd4",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!U1vBYFSijwrObvd4"
+}

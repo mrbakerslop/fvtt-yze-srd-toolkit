@@ -1,0 +1,29 @@
+{
+  "name": "Raw Plants",
+  "type": "consumable",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "quantity": 1,
+    "weight": 0.25,
+    "equipped": false,
+    "supply": 0,
+    "foodType": "plants",
+    "foodState": "raw",
+    "description": "<p>Foraged plants. Eating them raw risks virulence 3/D food poisoning.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "pogfnL37tLcbpGTF",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:consumable:raw-plants"
+    }
+  },
+  "_id": "X9MvVQV8W7NzFFP3",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!X9MvVQV8W7NzFFP3"
+}

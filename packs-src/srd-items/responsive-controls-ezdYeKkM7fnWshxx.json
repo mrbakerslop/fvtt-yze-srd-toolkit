@@ -1,0 +1,30 @@
+{
+  "name": "Responsive Controls",
+  "type": "vehicleComponent",
+  "img": "icons/svg/wing.svg",
+  "system": {
+    "componentType": "mobility",
+    "active": true,
+    "damaged": false,
+    "modifier": 1,
+    "damage": 0,
+    "range": "",
+    "description": "<p>Agile controls granting +1 to vehicle manoeuvre rolls while operational.</p>",
+    "price": 0,
+    "effects": [],
+    "targetingSystem": false
+  },
+  "folder": "HVT7sYtnXeeP2XPw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:vehicleComponent:responsive-controls"
+    }
+  },
+  "_id": "ezdYeKkM7fnWshxx",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!ezdYeKkM7fnWshxx"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "fvtt-yze-srd-toolkit",
+  "version": "14.0.81",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:packs": "node scripts/build-packs.mjs",
+    "export:packs": "node scripts/export-world-packs.mjs"
+  },
+  "devDependencies": {
+    "classic-level": "3.0.0"
+  }
+}

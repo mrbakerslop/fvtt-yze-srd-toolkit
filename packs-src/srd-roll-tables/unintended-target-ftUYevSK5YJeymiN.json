@@ -1,0 +1,15 @@
+{
+  "type": "text",
+  "name": "Unintended Target",
+  "description": "<p>The spell also affects an unintended victim; helpful magic may aid an enemy.</p>",
+  "img": "icons/svg/d20-black.svg",
+  "range": [
+    5,
+    5
+  ],
+  "weight": 1,
+  "drawn": false,
+  "_id": "ftUYevSK5YJeymiN",
+  "flags": {},
+  "_key": "!tables.results!v4eiqQmNY7CZMa5G.ftUYevSK5YJeymiN"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Melee",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "attribute": "strength",
+    "rating": 0,
+    "stepRating": 0,
+    "usedSuccessfully": false,
+    "description": "<p>Use Melee to attack or defend at close range with your body or a hand-to-hand weapon.</p>",
+    "price": 0,
+    "effects": []
+  },
+  "folder": "Fq2I20Mwc8QJMdjw",
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "item:skill:melee"
+    }
+  },
+  "_id": "ZWL2iZhtWl2qGKQv",
+  "effects": [],
+  "sort": 0,
+  "_key": "!items!ZWL2iZhtWl2qGKQv"
+}

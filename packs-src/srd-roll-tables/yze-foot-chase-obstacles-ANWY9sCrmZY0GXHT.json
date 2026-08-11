@@ -1,0 +1,33 @@
+{
+  "name": "YZE Foot Chase Obstacles",
+  "img": "icons/svg/d20-grey.svg",
+  "folder": "S8f8krOmizXOQhvg",
+  "formula": "1d10",
+  "description": "<p>Roll once per chase round to generate a foot-chase obstacle.</p>",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "fvtt-yze-srd": {
+      "srdKey": "table:roll-table:yze-foot-chase-obstacles",
+      "criticalInjuryCategory": null
+    }
+  },
+  "results": [
+    "HretWQj06s3QYyBJ",
+    "N84PzrnP1FC2iXNU",
+    "7bnbRvB68H05NuA0",
+    "jkLxSf7mlGxBomU7",
+    "n6BWCiQegvvC44w9",
+    "QK0O3ZW3SGiwkFOg",
+    "bZcwwDzGFbQVauef",
+    "h1qP5lsD1HIvlcfS",
+    "qh6FRdUuOPpbaCrI",
+    "VenDsJTwSslhWs8N"
+  ],
+  "_id": "ANWY9sCrmZY0GXHT",
+  "sort": 0,
+  "_key": "!tables!ANWY9sCrmZY0GXHT"
+}
