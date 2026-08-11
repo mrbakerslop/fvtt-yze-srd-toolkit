@@ -31,13 +31,21 @@ jobs:
               continue
             fi
             release_summary="$(cat "$summary_file")"
-            if [[ "$current_notes" == "$release_summary"* ]]; then
+            marker="<!-- yze-release-summary:end -->"
+            if [[ "$current_notes" == "$release_summary"* && "$current_notes" == *"$marker"* ]]; then
               echo "$tag already starts with its human-readable summary."
               continue
             fi
+            if [[ "$current_notes" == *"$marker"* ]]; then
+              generated_notes="${current_notes#*"$marker"}"
+            elif [[ "$current_notes" == *"**Full Changelog**"* ]]; then
+              generated_notes="**Full Changelog**${current_notes#*"**Full Changelog**"}"
+            else
+              generated_notes="$current_notes"
+            fi
             {
-              printf '%s\n\n' "$release_summary"
-              printf '%s\n' "$current_notes"
+              printf '%s\n\n%s\n' "$release_summary" "$marker"
+              printf '%s\n' "$generated_notes"
             } > release-notes.md
             gh release edit "$tag" --notes-file release-notes.md
           done

@@ -69,9 +69,12 @@ jobs:
         shell: bash
         run: |
           release_summary="$(cat "release-summaries/${GITHUB_REF_NAME}.md")"
+          release_preamble="${release_summary}
+
+          <!-- yze-release-summary:end -->"
           gh release create "$GITHUB_REF_NAME" \
             dist/system.json \
             dist/fvtt-yze-srd-toolkit.zip \
             --generate-notes \
-            --notes "$release_summary" \
+            --notes "$release_preamble" \
             --title "$GITHUB_REF_NAME"
