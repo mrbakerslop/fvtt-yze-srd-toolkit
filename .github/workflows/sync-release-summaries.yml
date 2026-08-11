@@ -1,0 +1,43 @@
+name: Sync release summaries
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "release-summaries/v*.md"
+      - ".github/workflows/sync-release-summaries.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepend summaries to published releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          for summary_file in release-summaries/v*.md; do
+            tag="$(basename "$summary_file" .md)"
+            if ! current_notes="$(gh release view "$tag" --json body --jq '.body')"; then
+              echo "Skipping $tag because it has not been published."
+              continue
+            fi
+            release_summary="$(cat "$summary_file")"
+            if [[ "$current_notes" == "$release_summary"* ]]; then
+              echo "$tag already starts with its human-readable summary."
+              continue
+            fi
+            {
+              printf '%s\n\n' "$release_summary"
+              printf '%s\n' "$current_notes"
+            } > release-notes.md
+            gh release edit "$tag" --notes-file release-notes.md
+          done

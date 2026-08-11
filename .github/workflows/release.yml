@@ -25,6 +25,11 @@ jobs:
             echo "Tag version $tag_version does not match system.json version $manifest_version."
             exit 1
           fi
+          summary_file="release-summaries/${GITHUB_REF_NAME}.md"
+          if [[ ! -s "$summary_file" ]]; then
+            echo "Missing human-readable release summary: $summary_file"
+            exit 1
+          fi
 
       - name: Build Foundry package
         shell: bash
@@ -38,6 +43,7 @@ jobs:
             --exclude 'dist/' \
             --exclude 'node_modules/' \
             --exclude 'packs-src/' \
+            --exclude 'release-summaries/' \
             --exclude 'scripts/' \
             --exclude 'package.json' \
             --exclude 'package-lock.json' \
@@ -62,8 +68,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
+          release_summary="$(cat "release-summaries/${GITHUB_REF_NAME}.md")"
           gh release create "$GITHUB_REF_NAME" \
             dist/system.json \
             dist/fvtt-yze-srd-toolkit.zip \
             --generate-notes \
+            --notes "$release_summary" \
             --title "$GITHUB_REF_NAME"
