@@ -1,0 +1,611 @@
+<div class="yze-sheet-body">
+  <header class="yze-sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" data-action="editImage" data-edit="img">
+    <div class="yze-header-fields">
+      <input class="document-name" name="name" type="text" value="{{item.name}}">
+      <span class="document-type">{{item.type}}</span>
+    </div>
+  </header>
+
+  {{#if showPrice}}
+    <section class="yze-section form-grid item-price-fields">
+      <label>
+        {{priceLabel}}
+        <input name="system.price" type="number" value="{{system.price}}" min="0" step="0.01">
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if isSkill}}
+    <section class="yze-section form-grid">
+      <label>
+        {{localize "YZE.Item.LinkedAttribute"}}
+        <select name="system.attribute">
+          {{#each attributeOptions}}
+            <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+      <label>
+        {{#if useStepDice}}
+          {{localize "YZE.Item.StepRating"}}
+          <select name="system.stepRating">
+            {{#each stepRatingOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          {{localize "YZE.Item.Rating"}}
+          <input name="system.rating" type="number" value="{{system.rating}}" min="0" max="5">
+        {{/if}}
+      </label>
+      {{#if showSuccessfulUse}}
+        <label class="checkbox-row" data-successful-use>
+          <input name="system.usedSuccessfully" type="checkbox" {{checked system.usedSuccessfully}}>
+          {{localize "YZE.Item.UsedSuccessfully"}}
+        </label>
+      {{/if}}
+    </section>
+  {{/if}}
+
+  {{#if isArchetype}}
+    <section class="yze-section archetype-fields">
+      <h2>{{localize "YZE.CharacterCreation.ArchetypeRules"}}</h2>
+      <div class="form-grid">
+        <label>{{localize "YZE.CharacterCreation.KeyAttribute"}}<select name="system.keyAttribute">{{#each archetypeAttributeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>{{localize "YZE.CharacterCreation.SpecialtyChoices"}}<input name="system.specialtyChoices" type="number" value="{{system.specialtyChoices}}" min="0" max="{{archetypeSpecialtyMaximum}}"></label>
+        <label>{{localize "YZE.CharacterCreation.EquipmentChoices"}}<input name="system.equipmentChoices" type="number" value="{{system.equipmentChoices}}" min="0" max="{{archetypeEquipmentMaximum}}"></label>
+      </div>
+
+      <div class="archetype-list-heading"><h3>{{localize "YZE.CharacterCreation.KeySkills"}}</h3><button type="button" data-action="addArchetypeEntry" data-field="keySkills"><i class="fa-solid fa-plus"></i> {{localize "YZE.Common.Add"}}</button></div>
+      <ol class="archetype-entry-list">{{#each archetypeKeySkills}}<li data-archetype-field="keySkills" data-entry-index="{{index}}"><select name="system.keySkills.{{index}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><button class="icon-button" type="button" data-action="removeArchetypeEntry"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.CharacterCreation.NoKeySkills"}}</li>{{/each}}</ol>
+
+      <div class="archetype-list-heading"><h3>{{localize "YZE.CharacterCreation.AvailableSpecialties"}}</h3><button type="button" data-action="addArchetypeEntry" data-field="availableSpecialties"><i class="fa-solid fa-plus"></i> {{localize "YZE.Common.Add"}}</button></div>
+      <ol class="archetype-entry-list">{{#each archetypeSpecialties}}<li data-archetype-field="availableSpecialties" data-entry-index="{{index}}"><select name="system.availableSpecialties.{{index}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><button class="icon-button" type="button" data-action="removeArchetypeEntry"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.CharacterCreation.NoSpecialties"}}</li>{{/each}}</ol>
+
+      <div class="archetype-list-heading"><h3>{{localize "YZE.CharacterCreation.GrantedEquipment"}}</h3><button type="button" data-action="addArchetypeEntry" data-field="grantedItems"><i class="fa-solid fa-plus"></i> {{localize "YZE.Common.Add"}}</button></div>
+      <ol class="archetype-entry-list">{{#each archetypeGrantedItems}}<li data-archetype-field="grantedItems" data-entry-index="{{index}}"><select name="system.grantedItems.{{index}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><button class="icon-button" type="button" data-action="removeArchetypeEntry"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.CharacterCreation.NoGrantedEquipment"}}</li>{{/each}}</ol>
+
+      <div class="archetype-list-heading"><h3>{{localize "YZE.CharacterCreation.AvailableEquipment"}}</h3><button type="button" data-action="addArchetypeEntry" data-field="availableEquipment"><i class="fa-solid fa-plus"></i> {{localize "YZE.Common.Add"}}</button></div>
+      <ol class="archetype-entry-list">{{#each archetypeEquipment}}<li data-archetype-field="availableEquipment" data-entry-index="{{index}}"><select name="system.availableEquipment.{{index}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><button class="icon-button" type="button" data-action="removeArchetypeEntry"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.CharacterCreation.NoAvailableEquipment"}}</li>{{/each}}</ol>
+    </section>
+  {{/if}}
+
+  {{#if isSpecialty}}
+    <section class="yze-section form-grid">
+      <label class="checkbox-row">
+        <input name="system.active" type="checkbox" {{checked system.active}}>
+        {{localize "YZE.Item.Active"}}
+      </label>
+      <label>
+        {{localize "YZE.Specialty.Effect"}}
+        <select name="system.effect">
+          {{#each specialtyEffectOptions}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+      {{#if showSpecialtyTarget}}
+        <label>
+          {{localize "YZE.Specialty.EffectTarget"}}
+          <input name="system.effectTarget" type="text" value="{{system.effectTarget}}" placeholder="{{localize 'YZE.Specialty.WeaponTargetPlaceholder'}}">
+        </label>
+      {{/if}}
+    </section>
+  {{/if}}
+
+  {{#if isCarryable}}
+    <section class="yze-section form-grid">
+      {{#if showQuantity}}
+        <label>
+          {{localize "YZE.Item.Quantity"}}
+          <input name="system.quantity" type="number" value="{{system.quantity}}" min="0">
+        </label>
+      {{/if}}
+      {{#if showWeight}}
+        <label>
+          {{localize "YZE.Item.Weight"}}
+          <input name="system.weight" type="number" value="{{system.weight}}" min="0" step="0.25">
+        </label>
+      {{/if}}
+      <label class="checkbox-row">
+        <input name="system.equipped" type="checkbox" {{checked system.equipped}}>
+        {{localize "YZE.Item.Equipped"}}
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if usesReliability}}
+    <section class="yze-section form-grid">
+      <label>
+        {{localize "YZE.Item.Reliability"}}
+        <input name="system.reliability.value" type="number" value="{{system.reliability.value}}" min="0" max="{{system.reliability.max}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.MaximumReliability"}}
+        <input name="system.reliability.max" type="number" value="{{system.reliability.max}}" min="0">
+      </label>
+      {{#unless system.reliability.value}}
+        <p class="hint gear-broken-hint">{{localize "YZE.Item.BrokenGearHint"}}</p>
+      {{/unless}}
+    </section>
+  {{/if}}
+
+  {{#if isGear}}
+    <section class="yze-section form-grid">
+      {{#unless useStepDice}}
+        <label>
+          {{localize "YZE.Item.Bonus"}}
+          <input name="system.bonus" type="number" value="{{system.bonus}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.Item.MaximumBonus"}}
+          <input name="system.maxBonus" type="number" value="{{system.maxBonus}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.Item.ArtifactDie"}}
+          <select name="system.artifactDie">
+            {{#each artifactDieOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+          </select>
+        </label>
+      {{/unless}}
+      <label class="checkbox-row">
+        <input name="system.isBackpack" type="checkbox" {{checked system.isBackpack}}>
+        {{localize "YZE.Item.IsBackpack"}}
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if isWeapon}}
+    <section class="yze-section form-grid">
+      <label>
+        {{localize "YZE.Item.Grip"}}
+        <input name="system.grip" type="text" value="{{system.grip}}">
+      </label>
+      {{#unless useStepDice}}
+        <label>
+          {{localize "YZE.Item.Bonus"}}
+          <input name="system.bonus" type="number" value="{{system.bonus}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.Item.MaximumBonus"}}
+          <input name="system.maxBonus" type="number" value="{{system.maxBonus}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.Item.ArtifactDie"}}
+          <select name="system.artifactDie">
+            {{#each artifactDieOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+          </select>
+        </label>
+      {{/unless}}
+      <label>
+        {{localize "YZE.Item.Damage"}}
+        <input name="system.damage" type="number" value="{{system.damage}}" min="0">
+      </label>
+      <label>
+        {{localize "YZE.Item.Range"}}
+        <select name="system.range">
+          {{#each rangeOptions}}
+            <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+      {{#if showCriticalWeaponFields}}
+        {{#if showCriticalThreshold}}
+          <label>
+            {{localize "YZE.Item.CritThreshold"}}
+            <input name="system.critThreshold" type="number" value="{{system.critThreshold}}" min="0">
+          </label>
+        {{/if}}
+        <label>
+          {{localize "YZE.Item.CritFormula"}}
+          <input name="system.critFormula" type="text" value="{{system.critFormula}}">
+        </label>
+      {{/if}}
+      {{#if showAmmunitionTracking}}
+        <label class="checkbox-row">
+          <input name="system.usesAmmunition" type="checkbox" {{checked system.usesAmmunition}}>
+          <span>{{localize "YZE.Item.UsesAmmunition"}}</span>
+        </label>
+        <label class="checkbox-row">
+          <input name="system.requiresPreparation" type="checkbox" {{checked system.requiresPreparation}}>
+          <span>{{localize "YZE.Item.RequiresPreparation"}}</span>
+        </label>
+        {{#if showAmmunitionSupply}}
+          <label>
+            {{localize "YZE.Item.AmmunitionSupply"}}
+            <input name="system.ammunition.value" type="number" value="{{system.ammunition.value}}" min="0" max="6">
+          </label>
+        {{else}}
+          <label>
+            {{localize "YZE.Item.Ammunition"}}
+            <span>
+              <input name="system.ammunition.value" type="number" value="{{system.ammunition.value}}" min="0" max="{{system.ammunition.max}}">
+              /
+              <input name="system.ammunition.max" type="number" value="{{system.ammunition.max}}" min="0">
+            </span>
+          </label>
+        {{/if}}
+        <label>
+          {{localize "YZE.Item.ReloadAction"}}
+          <select name="system.reloadAction">
+            {{#each reloadActionOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
+        </label>
+      {{/if}}
+      {{#if showRateOfFire}}
+        <label>
+          {{localize "YZE.Item.RateOfFire"}}
+          <input name="system.rateOfFire" type="number" value="{{system.rateOfFire}}" min="0">
+        </label>
+      {{/if}}
+      {{#if showBasicAutofire}}
+        <label class="checkbox-row">
+          <input name="system.fullAuto" type="checkbox" {{checked system.fullAuto}}>
+          <span>{{localize "YZE.Item.FullAutoCapable"}}</span>
+        </label>
+      {{/if}}
+      <label class="checkbox-row">
+        <input name="system.telescopicSight" type="checkbox" {{checked system.telescopicSight}}>
+        <span>{{localize "YZE.Item.TelescopicSight"}}</span>
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if isArmor}}
+    <section class="yze-section form-grid">
+      {{#if useStepDice}}
+        <label>
+          {{localize "YZE.Item.ArmorRating"}}
+          <select name="system.stepRating">
+            {{#each armorRatingOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
+        </label>
+        <label>
+          {{localize "YZE.Item.MaximumArmorRating"}}
+          <select name="system.maxStepRating">
+            {{#each armorMaximumOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
+        </label>
+      {{else}}
+        <label>
+          {{localize "YZE.Item.ArmorRating"}}
+          <input name="system.rating" type="number" value="{{system.rating}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.Item.MaximumArmorRating"}}
+          <input name="system.maxRating" type="number" value="{{system.maxRating}}" min="0">
+        </label>
+      {{/if}}
+    </section>
+  {{/if}}
+
+  {{#if isConsumable}}
+    <section class="yze-section form-grid">
+      {{#if useSupplyConsumables}}
+        <label>
+          {{localize "YZE.Item.Supply"}}
+          <input name="system.supply" type="number" value="{{system.supply}}" min="0">
+        </label>
+      {{else}}
+        <p class="hint">{{localize "YZE.Item.ExactConsumableHint"}}</p>
+      {{/if}}
+      <label>
+        {{localize "YZE.Food.Type"}}
+        <select name="system.foodType">
+          {{#each foodTypeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+      {{#if isFood}}
+        <label>
+          {{localize "YZE.Food.State"}}
+          <select name="system.foodState">
+            {{#each foodStateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+          </select>
+        </label>
+        <p class="hint">{{localize "YZE.Food.ItemHint"}}</p>
+      {{/if}}
+    </section>
+  {{/if}}
+
+  {{#if isSpell}}
+    <section class="yze-section form-grid">
+      <label>
+        {{localize "YZE.Item.Discipline"}}
+        <input name="system.discipline" type="text" value="{{system.discipline}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.Rank"}}
+        <input name="system.rank" type="number" value="{{system.rank}}" min="0">
+      </label>
+      <label>
+        {{localize "YZE.Item.Cost"}}
+        <input name="system.cost" type="number" value="{{system.cost}}" min="0">
+      </label>
+      <label>
+        {{localize "YZE.Item.SpellRange"}}
+        <input name="system.range" type="text" value="{{system.range}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.Duration"}}
+        <input name="system.duration" type="text" value="{{system.duration}}">
+      </label>
+      <label class="checkbox-row">
+        <input name="system.ritual" type="checkbox" {{checked system.ritual}}>
+        {{localize "YZE.Item.Ritual"}}
+      </label>
+      {{#if system.ritual}}<label>{{localize "YZE.Magic.RitualRequirements"}}<input name="system.ritualRequirements" type="text" value="{{system.ritualRequirements}}"></label>{{/if}}
+      <label class="checkbox-row">
+        <input name="system.powerWord" type="checkbox" {{checked system.powerWord}}>
+        {{localize "YZE.Item.PowerWord"}}
+      </label>
+      <p class="hint">{{localize "YZE.SpellEffects.CoreHint"}}</p>
+    </section>
+  {{/if}}
+
+  {{#if showMagicFields}}
+    <section class="yze-section form-grid">
+      <label class="checkbox-row">
+        <input name="system.magicDiscipline" type="checkbox" {{checked system.magicDiscipline}}>
+        {{localize "YZE.Item.MagicDiscipline"}}
+      </label>
+      <label>
+        {{localize "YZE.Item.DisciplineRank"}}
+        <input name="system.rank" type="number" value="{{system.rank}}" min="0" max="5">
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if isVehicleComponent}}
+    <section class="yze-section form-grid">
+      <label>
+        {{localize "YZE.Vehicle.ComponentType"}}
+        <select name="system.componentType">
+          {{#each componentTypeOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+      <label class="checkbox-row"><input name="system.active" type="checkbox" {{checked system.active}}> {{localize "YZE.Item.Active"}}</label>
+      <label class="checkbox-row"><input name="system.damaged" type="checkbox" {{checked system.damaged}}> {{localize "YZE.Vehicle.Damaged"}}</label>
+      <label class="checkbox-row"><input name="system.targetingSystem" type="checkbox" {{checked system.targetingSystem}}> {{localize "YZE.Vehicle.TargetingSystem"}}</label>
+      <label>{{localize "YZE.Item.Modifier"}}<input name="system.modifier" type="number" value="{{system.modifier}}"></label>
+      <label>{{localize "YZE.Item.Damage"}}<input name="system.damage" type="number" value="{{system.damage}}" min="0"></label>
+      <label>{{localize "YZE.Item.Range"}}<input name="system.range" type="text" value="{{system.range}}"></label>
+    </section>
+  {{/if}}
+
+  {{#if isCriticalInjury}}
+    <section class="yze-section form-grid critical-injury-fields">
+      <label>
+        {{localize "YZE.Item.InjuryCategory"}}
+        <select name="system.category">
+          {{#each injuryCategoryOptions}}
+            <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+      <label>
+        {{localize "YZE.Item.RollRange"}}
+        <input name="system.rollRange" type="text" value="{{system.rollRange}}">
+      </label>
+      <label class="checkbox-row">
+        <input name="system.active" type="checkbox" {{checked system.active}}>
+        {{localize "YZE.Item.Active"}}
+      </label>
+      <label class="checkbox-row">
+        <input name="system.lethal" type="checkbox" {{checked system.lethal}}>
+        {{localize "YZE.Item.Lethal"}}
+      </label>
+      <label>
+        {{localize "YZE.Item.DeathSaveModifier"}}
+        <input name="system.deathSaveModifier" type="number" value="{{system.deathSaveModifier}}" step="1">
+      </label>
+      <label>
+        {{localize "YZE.Item.TimeLimit"}}
+        <input name="system.timeLimit" type="text" value="{{system.timeLimit}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.HealingTime"}}
+        <input name="system.healingTime" type="text" value="{{system.healingTime}}">
+      </label>
+      {{#if system.recovery.initialized}}
+        <label>
+          {{localize "YZE.InjuryTiming.RemainingDays"}}
+          <input name="system.recovery.remainingDays" type="number" value="{{system.recovery.remainingDays}}" min="0">
+        </label>
+        <label>
+          {{localize "YZE.InjuryTiming.TotalDays"}}
+          <input name="system.recovery.totalDays" type="number" value="{{system.recovery.totalDays}}" min="0">
+        </label>
+        {{#if system.lethal}}
+          <label class="checkbox-row">
+            <input name="system.recovery.deathSaveDue" type="checkbox" {{checked system.recovery.deathSaveDue}}>
+            {{localize "YZE.InjuryTiming.DeathSaveDue"}}
+          </label>
+        {{/if}}
+      {{/if}}
+      <label class="checkbox-row">
+        <input name="system.permanent" type="checkbox" {{checked system.permanent}}>
+        {{localize "YZE.Item.Permanent"}}
+      </label>
+      <label class="checkbox-row">
+        <input name="system.instantDeath" type="checkbox" {{checked system.instantDeath}}>
+        {{localize "YZE.Item.InstantDeath"}}
+      </label>
+      <label class="checkbox-row">
+        <input name="system.stabilized" type="checkbox" {{checked system.stabilized}}>
+        {{localize "YZE.Item.Stabilized"}}
+      </label>
+      <label>
+        {{localize "YZE.Item.DeathSaveSkill"}}
+        <input name="system.deathSaveSkill" type="text" value="{{system.deathSaveSkill}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.InjuryRollModifier"}}
+        <input name="system.rollModifier" type="number" value="{{system.rollModifier}}" step="1">
+      </label>
+      <label>
+        {{localize "YZE.Item.AffectedAttributes"}}
+        <input name="system.affectedAttributes" type="text" value="{{system.affectedAttributes}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.AffectedSkills"}}
+        <input name="system.affectedSkills" type="text" value="{{system.affectedSkills}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.DamageOnSkills"}}
+        <input name="system.damageOnSkills" type="text" value="{{system.damageOnSkills}}">
+      </label>
+      <label>
+        {{localize "YZE.Item.MovementRestriction"}}
+        <select name="system.movementRestriction">
+          {{#each injuryMovementOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+      <label>
+        {{localize "YZE.Item.DisabledHands"}}
+        <input name="system.disabledHands" type="number" value="{{system.disabledHands}}" min="0" max="2" step="1">
+      </label>
+      <label>
+        {{localize "YZE.Item.BlockedAttributes"}}
+        <input name="system.blockedAttributes" type="text" value="{{system.blockedAttributes}}">
+      </label>
+      <label class="checkbox-row">
+        <input name="system.blocksActions" type="checkbox" {{checked system.blocksActions}}>
+        {{localize "YZE.Item.BlocksActions"}}
+      </label>
+      <label>
+        {{localize "YZE.Item.SleepRestriction"}}
+        <select name="system.sleepRestriction">
+          {{#each injurySleepOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+      <label>
+        {{localize "YZE.Item.SleepSkill"}}
+        <input name="system.sleepSkill" type="text" value="{{system.sleepSkill}}" placeholder="Insight">
+      </label>
+      <label>
+        {{localize "YZE.Item.InjuryTrigger"}}
+        <select name="system.triggerKind">
+          {{#each injuryTriggerOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+      <label>
+        {{localize "YZE.Item.InjurySpecialRule"}}
+        <select name="system.specialRule">
+          {{#each injurySpecialRuleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      </label>
+    </section>
+  {{/if}}
+
+  {{#if showItemEffects}}<section class="yze-section item-effects-section">
+    <div class="section-heading-row">
+      <h2>{{localize "YZE.ItemEffects.Title"}}</h2>
+      <button type="button" data-action="addItemEffect"><i class="fa-solid fa-plus"></i> {{localize "YZE.ItemEffects.Add"}}</button>
+    </div>
+    <p class="hint">{{localize "YZE.ItemEffects.Hint"}}</p>
+    <ol class="item-effects-list">
+      {{#each itemEffects}}
+        <li class="item-effect-row" data-effect-index="{{index}}">
+          <input name="system.effects.{{index}}.id" type="hidden" value="{{id}}">
+          <label class="checkbox-row effect-active"><input name="system.effects.{{index}}.active" type="checkbox" {{checked active}}> {{localize "YZE.ItemEffects.Active"}}</label>
+          <label>{{localize "YZE.ItemEffects.Effect"}}<select name="system.effects.{{index}}.type">{{#each typeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{#if isRollModifier}}
+            <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target"><option value="all" {{#if allRollsSelected}}selected{{/if}}>{{localize "YZE.ItemEffects.AllRolls"}}</option><optgroup label="{{localize 'YZE.ItemEffects.AttributeTargets'}}">{{#each attributeTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup><optgroup label="{{localize 'YZE.ItemEffects.SkillTargets'}}">{{#each skillTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup></select></label>
+            <label>{{localize "YZE.ItemEffects.Value"}}<select name="system.effects.{{index}}.value">{{#each modifierOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isExtraPush}}
+            <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target"><option value="all" {{#if allRollsSelected}}selected{{/if}}>{{localize "YZE.ItemEffects.AllRolls"}}</option><optgroup label="{{localize 'YZE.ItemEffects.AttributeTargets'}}">{{#each attributeTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup><optgroup label="{{localize 'YZE.ItemEffects.SkillTargets'}}">{{#each skillTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup></select></label>
+            <label>{{localize "YZE.ItemEffects.ExtraPushes"}}<select name="system.effects.{{index}}.value">{{#each countOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isAlternateAttribute}}
+            <label>{{localize "YZE.ItemEffects.Skill"}}<select name="system.effects.{{index}}.target">{{#each skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>{{localize "YZE.ItemEffects.UseAttribute"}}<select name="system.effects.{{index}}.attribute">{{#each replacementAttributeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInitiativeCards}}
+            <label>{{localize "YZE.ItemEffects.ExtraCards"}}<select name="system.effects.{{index}}.value">{{#each countOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isHealingTime}}
+            <label>{{localize "YZE.ItemEffects.HealingMultiplier"}}<select name="system.effects.{{index}}.value">{{#each healingOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isDerivedStat}}
+            <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target">{{#each derivedTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>{{localize "YZE.ItemEffects.Value"}}<select name="system.effects.{{index}}.value">{{#each derivedOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isHitInterception}}
+            <label>{{localize "YZE.ItemEffects.Skill"}}<select name="system.effects.{{index}}.target"><option value="" {{#if usesDefaultInterceptionSkill}}selected{{/if}}>{{localize "YZE.ItemEffects.DefaultMobility"}}</option>{{#each skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <span class="hint">{{localize "YZE.ItemEffects.HitInterceptionHint"}}</span>
+          {{/if}}
+          {{#if isCoupDeGrace}}
+            <span class="hint">{{localize "YZE.ItemEffects.CoupDeGraceHint"}}</span>
+          {{/if}}
+          {{#if isResourceActivation}}
+            <label>{{localize "YZE.ItemEffects.ActivationName"}}<input name="system.effects.{{index}}.label" type="text" value="{{label}}" placeholder="{{../item.name}}"></label>
+            <label>{{localize "YZE.ItemEffects.ResourceCost"}}<input name="system.effects.{{index}}.value" type="number" value="{{value}}" min="1" max="99" step="1"></label>
+            <label class="effect-description">{{localize "YZE.ItemEffects.ActivationDescription"}}<textarea name="system.effects.{{index}}.description" rows="2">{{description}}</textarea></label>
+            {{#if isWillpowerActivation}}<span class="hint">{{localize "YZE.ItemEffects.WillpowerActivationHint"}}</span>{{/if}}
+            {{#if isDoomExpenditure}}<span class="hint">{{localize "YZE.ItemEffects.DoomExpenditureHint"}}</span>{{/if}}
+          {{/if}}
+          {{#if isSpellEffect}}
+            <label>{{localize "YZE.SpellEffects.Label"}}<input name="system.effects.{{index}}.label" type="text" value="{{label}}"></label>
+            <label>{{localize "YZE.SpellEffects.TargetMode"}}<select name="system.effects.{{index}}.targetMode">{{#each spellTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>{{localize "YZE.SpellEffects.TargetFilter"}}<input name="system.effects.{{index}}.filter" type="text" value="{{filter}}" placeholder="{{localize 'YZE.SpellEffects.TargetFilterPlaceholder'}}"></label>
+            {{#if spellHasAmount}}
+              <label>{{localize "YZE.SpellEffects.BaseAmount"}}<input name="system.effects.{{index}}.value" type="number" value="{{value}}"></label>
+              <label>{{localize "YZE.SpellEffects.PerPower"}}<input name="system.effects.{{index}}.multiplier" type="number" value="{{multiplier}}"></label>
+            {{/if}}
+            {{#if spellHasDuration}}<label>{{localize "YZE.SpellEffects.Duration"}}<input name="system.effects.{{index}}.duration" type="text" value="{{duration}}" placeholder="{{localize 'YZE.SpellEffects.InheritDuration'}}"></label>{{/if}}
+            {{#if isSpellDamage}}
+              <label>{{localize "YZE.Magic.EffectCategory"}}<select name="system.effects.{{index}}.category">{{#each spellCategoryOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+              <label class="checkbox-row"><input name="system.effects.{{index}}.armorApplies" type="checkbox" {{checked armorApplies}}> {{localize "YZE.Magic.ArmorApplies"}}</label>
+            {{/if}}
+            {{#if isSpellRecovery}}<label>{{localize "YZE.Magic.EffectCategory"}}<select name="system.effects.{{index}}.category">{{#each spellCategoryOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+            {{#if isSpellModifier}}
+              <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target"><option value="all" {{#if allRollsSelected}}selected{{/if}}>{{localize "YZE.ItemEffects.AllRolls"}}</option><optgroup label="{{localize 'YZE.ItemEffects.AttributeTargets'}}">{{#each attributeTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup><optgroup label="{{localize 'YZE.ItemEffects.SkillTargets'}}">{{#each skillTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup></select></label>
+            {{/if}}
+            {{#if isSpellResource}}
+              <label>{{localize "YZE.SpellEffects.Resource"}}<select name="system.effects.{{index}}.resource">{{#each spellResourceOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+              <label>{{localize "YZE.SpellEffects.ResourceMode"}}<select name="system.effects.{{index}}.mode">{{#each spellResourceModeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            {{/if}}
+            {{#if isSpellStatus}}
+              <label>{{localize "YZE.SpellEffects.Status"}}<input name="system.effects.{{index}}.status" type="text" value="{{status}}"></label>
+            {{/if}}
+            {{#if isSpellAutomaticSuccess}}
+              <label>{{localize "YZE.ItemEffects.Skill"}}<select name="system.effects.{{index}}.target">{{#each skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+              <label>{{localize "YZE.SpellEffects.AutomaticMode"}}<select name="system.effects.{{index}}.mode">{{#each spellAutomaticModeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            {{/if}}
+            {{#if isSpellItemDamage}}
+              <label>{{localize "YZE.SpellEffects.ItemMode"}}<select name="system.effects.{{index}}.mode">{{#each spellItemModeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            {{/if}}
+            {{#if isSpellCriticalInjury}}
+              <label>{{localize "YZE.SpellEffects.InjuryMode"}}<select name="system.effects.{{index}}.mode">{{#each spellInjuryModeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+              <label>{{localize "YZE.SpellEffects.MinimumPower"}}<input name="system.effects.{{index}}.value" type="number" value="{{value}}" min="0"></label>
+            {{/if}}
+            {{#if isSpellHazard}}
+              <label>{{localize "YZE.SpellEffects.Hazard"}}<select name="system.effects.{{index}}.handler">{{#each spellHazardOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            {{/if}}
+            {{#if isSpellWorkflow}}
+              <label>{{localize "YZE.SpellEffects.Workflow"}}<select name="system.effects.{{index}}.handler">{{#each spellWorkflowOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+              {{#if isSpellOpposedWorkflow}}<label>{{localize "YZE.SpellEffects.OpposedMode"}}<select name="system.effects.{{index}}.mode">{{#each spellOpposedModeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+            {{/if}}
+            <label class="effect-description">{{localize "YZE.SpellEffects.Instruction"}}<textarea name="system.effects.{{index}}.description" rows="2">{{description}}</textarea></label>
+          {{/if}}
+          <button class="icon-button effect-remove" type="button" data-action="removeItemEffect" aria-label="{{localize 'YZE.ItemEffects.Remove'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty-state">{{localize "YZE.ItemEffects.Empty"}}</li>
+      {{/each}}
+    </ol>
+  </section>{{/if}}
+
+  <section class="yze-section">
+    <h2>{{localize "YZE.Item.Description"}}</h2>
+    <textarea name="system.description" rows="12">{{system.description}}</textarea>
+  </section>
+</div>

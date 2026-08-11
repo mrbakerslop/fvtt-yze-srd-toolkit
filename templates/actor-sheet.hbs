@@ -1,0 +1,979 @@
+<div class="yze-sheet-body">
+  <header class="character-identity">
+    <img
+      class="profile-img"
+      src="{{actor.img}}"
+      alt="{{actor.name}}"
+      data-action="editImage"
+      data-edit="img"
+    >
+    <div class="identity-fields">
+      <label class="character-name-field">
+        <span>{{localize "YZE.Actor.CharacterName"}}</span>
+        <input class="document-name" name="name" type="text" value="{{actor.name}}">
+      </label>
+      {{#if headerFields.length}}
+        <div class="custom-field-grid">
+          {{#each headerFields}}
+            <label>
+              <span>{{label}}</span>
+              <input name="system.details.{{key}}" type="text" value="{{value}}" {{#if isArchetype}}readonly{{/if}}>
+            </label>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+  </header>
+
+  <section class="attributes-band">
+    <h2>{{localize "YZE.Actor.AttributesAndSkills"}}</h2>
+    <div class="attribute-grid">
+      {{#each attributeRows}}
+        <div
+          class="attribute drop-zone"
+          data-attribute="{{key}}"
+          data-drop-zone="{{label}} Skills"
+          data-accepts="skill"
+        >
+          <div class="attribute-header {{#if showMaximum}}has-maximum{{/if}}">
+            <button type="button" data-action="rollAttribute" data-attribute="{{key}}">
+              {{label}}
+            </button>
+            {{#if useStepDice}}
+              <span class="attribute-rating-pair">
+                <select
+                  class="attribute-rating step-rating"
+                  name="system.attributes.{{key}}.stepRating"
+                  aria-label="{{localize 'YZE.Item.StepRating'}}"
+                >
+                  {{#each stepOptions}}
+                    <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                  {{/each}}
+                </select>
+                {{#if showMaximum}}
+                  <span>/</span>
+                  <select
+                    class="attribute-maximum step-rating"
+                    name="system.attributes.{{key}}.maxStepRating"
+                    aria-label="{{localize 'YZE.Actor.StartingMaximum'}}"
+                  >
+                    {{#each maximumStepOptions}}
+                      <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                    {{/each}}
+                  </select>
+                {{/if}}
+              </span>
+            {{else}}
+              <span class="attribute-rating-pair">
+                <input
+                  class="attribute-rating"
+                  name="system.attributes.{{key}}.value"
+                  type="number"
+                  value="{{value}}"
+                  min="{{minimum}}"
+                  max="5"
+                >
+                {{#if showMaximum}}
+                  <span>/</span>
+                  <input
+                    class="attribute-maximum"
+                    name="system.attributes.{{key}}.maxValue"
+                    type="number"
+                    value="{{maximum}}"
+                    min="0"
+                    max="5"
+                    aria-label="{{localize 'YZE.Actor.StartingMaximum'}}"
+                  >
+                {{/if}}
+              </span>
+            {{/if}}
+            {{#if ../showSuccessfulUse}}
+              <span class="attribute-skill-action-spacer" aria-hidden="true"></span>
+            {{/if}}
+          </div>
+          <ol class="item-list attribute-skills">
+            {{#each skills}}
+              <li class="item-row skill-row" data-item-id="{{id}}">
+                <button
+                  class="item-name"
+                  type="button"
+                  data-action="rollSkill"
+                  data-tooltip-html="{{description}}"
+                  data-tooltip-direction="UP"
+                >{{name}}</button>
+                {{#if useStepDice}}
+                  <select
+                    class="skill-rating step-rating"
+                    data-item-id="{{id}}"
+                    data-item-field="system.stepRating"
+                    data-value-type="number"
+                    aria-label="{{localize 'YZE.Item.StepRating'}}"
+                  >
+                    {{#each stepOptions}}
+                      <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                    {{/each}}
+                  </select>
+                {{else}}
+                  <input
+                    class="skill-rating"
+                    type="number"
+                    value="{{rating}}"
+                    min="0"
+                    max="5"
+                    data-item-id="{{id}}"
+                    data-item-field="system.rating"
+                    aria-label="{{localize 'YZE.Item.Rating'}}"
+                  >
+                {{/if}}
+                {{#if showSuccessfulUse}}
+                  <span class="skill-actions">
+                    <label
+                      class="skill-used"
+                      data-successful-use
+                      data-tooltip="YZE.Item.UsedSuccessfully"
+                      data-tooltip-direction="UP"
+                    >
+                      <input
+                        type="checkbox"
+                        {{checked usedSuccessfully}}
+                        data-item-id="{{id}}"
+                        data-item-field="system.usedSuccessfully"
+                        aria-label="{{localize 'YZE.Item.UsedSuccessfully'}}"
+                      >
+                    </label>
+                  </span>
+                {{/if}}
+              </li>
+            {{else}}
+              <li class="empty-state">{{localize "YZE.Actor.NoAttributeSkills" attribute=../label}}</li>
+            {{/each}}
+          </ol>
+        </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <nav class="yze-sheet-tabs tabs" data-group="sheet" aria-label="{{localize 'YZE.Tabs.Navigation'}}">
+    {{#each tabs}}
+      <button
+        type="button"
+        class="{{cssClass}}"
+        data-action="tab"
+        data-group="sheet"
+        data-tab="{{id}}"
+      >
+        <i class="{{icon}}" aria-hidden="true"></i>
+        <span>{{localize label}}</span>
+      </button>
+    {{/each}}
+  </nav>
+
+  <div class="tab yze-sheet-tab {{tabs.general.cssClass}}" data-group="sheet" data-tab="general">
+    <div data-general-attributes></div>
+    <div class="general-grid">
+      <section class="sheet-panel equipped-panel">
+        <h2>{{localize "YZE.Actor.EquippedItems"}}</h2>
+        <ol class="item-list compact-item-list">
+          <li class="item-table-header equipped-row" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span>
+            <span>{{localize "YZE.Actor.Type"}}</span>
+            <span>{{localize "YZE.Item.Quantity"}}</span>
+            <span></span>
+          </li>
+          {{#each equippedItems}}
+            <li class="item-row equipped-row" data-item-id="{{id}}">
+              <span class="item-name">{{name}}</span>
+              <span>{{typeLabel}}</span>
+              <span>{{quantity}}</span>
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Actor.NoEquippedItems"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+
+      {{#if combatActions.active}}
+        <section class="sheet-panel combat-actions-panel">
+          <h2>{{localize "YZE.Combat.Actions"}}</h2>
+          <div class="combat-action-status">
+            <span>{{localize "YZE.Combat.FastActions"}}: <strong>{{combatActions.fastRemaining}}</strong></span>
+            <span>{{localize "YZE.Combat.SlowActions"}}: <strong>{{combatActions.slowRemaining}}</strong></span>
+          </div>
+          <div class="combat-action-buttons">
+            <button type="button" data-action="spendFastAction" {{#unless combatActions.canFast}}disabled{{/unless}}>{{localize "YZE.Combat.UseFastAction"}}</button>
+            <button type="button" data-action="spendSlowAction" {{#unless combatActions.canSlow}}disabled{{/unless}}>{{localize "YZE.Combat.UseSlowAction"}}</button>
+            <button type="button" data-action="exchangeInitiative" {{#unless combatActions.canExchange}}disabled{{/unless}}>{{localize "YZE.Combat.ExchangeInitiative"}}</button>
+            {{#if combatActions.showReset}}
+              <button type="button" data-action="resetCombatActions">{{localize "YZE.Combat.ResetActions"}}</button>
+            {{/if}}
+          </div>
+          <div class="combat-action-buttons advanced-combat-buttons">
+            {{#if advancedCombat.prone}}
+              <button type="button" data-action="toggleProne">{{localize "YZE.Combat.GetUp"}}</button>
+            {{else}}
+              <button type="button" data-action="toggleProne">{{localize "YZE.Combat.DropProne"}}</button>
+            {{/if}}
+            <button type="button" data-action="retreat">{{localize "YZE.Combat.Retreat"}}</button>
+            {{#if advancedCombat.coverActive}}
+              <button type="button" data-action="leaveCover">{{localize "YZE.Combat.LeaveCover"}} — {{advancedCombat.coverLabel}} {{advancedCombat.coverRatingLabel}}</button>
+            {{else}}
+              <button type="button" data-action="takeCover">{{localize "YZE.Combat.TakeCover"}}</button>
+            {{/if}}
+            {{#if advancedCombat.overwatchActive}}
+              <button type="button" data-action="fireOverwatch">{{localize "YZE.Combat.FireOverwatch"}}</button>
+              <button type="button" data-action="cancelOverwatch">{{localize "YZE.Combat.CancelOverwatch"}}</button>
+            {{else}}
+              <button type="button" data-action="assumeOverwatch">{{localize "YZE.Combat.AssumeOverwatch"}}</button>
+            {{/if}}
+            {{#if advancedCombat.aimActive}}
+              <button type="button" data-action="cancelPreparedAim">{{localize "YZE.Combat.CancelPreparedAim"}}</button>
+            {{else}}
+              <button type="button" data-action="prepareTelescopicAim">{{localize "YZE.Combat.PrepareTelescopicAim"}}</button>
+            {{/if}}
+            {{#if advancedCombat.grappled}}
+              {{#if advancedCombat.grappling}}
+                <button type="button" data-action="releaseGrapple">{{localize "YZE.Combat.ReleaseGrapple"}}</button>
+              {{else}}
+                <button type="button" data-action="breakGrapple">{{localize "YZE.Combat.BreakGrapple"}}</button>
+              {{/if}}
+            {{/if}}
+          </div>
+          {{#if advancedCombat.overwatchActive}}<p class="hint">{{localize "YZE.Combat.OverwatchStatus" direction=advancedCombat.overwatchDirection}}</p>{{/if}}
+        </section>
+      {{/if}}
+
+      {{#if hasAttemptLocks}}
+        <section class="sheet-panel attempt-locks-panel">
+          <div class="section-heading-row">
+            <h2>{{localize "YZE.Attempts.Title"}}</h2>
+            {{#if canClearAttempts}}
+              <button type="button" data-action="clearAllAttempts">{{localize "YZE.Attempts.ClearAll"}}</button>
+            {{/if}}
+          </div>
+          <ol class="item-list attempt-lock-list">
+            {{#each attemptLocks}}
+              <li class="item-row" data-attempt-id="{{id}}">
+                <span class="item-name" data-tooltip="{{rollLabel}} — {{createdLabel}}">{{goal}}</span>
+                <span>{{rollLabel}}</span>
+                {{#if ../canClearAttempts}}
+                  <button class="icon-button" type="button" data-action="clearAttempt" aria-label="{{localize 'YZE.Attempts.Clear'}}" data-tooltip="YZE.Attempts.Clear"><i class="fa-solid fa-unlock"></i></button>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ol>
+          <p class="hint">{{localize "YZE.Attempts.SheetHint"}}</p>
+        </section>
+      {{/if}}
+
+      <section class="sheet-panel surprise-panel">
+        <h2>{{localize "YZE.Surprise.Title"}}</h2>
+        <ol class="manoeuvre-list">
+          <li class="manoeuvre-row" data-tooltip="YZE.Surprise.SneakAttackSheetHint" data-tooltip-direction="UP">
+            <span class="manoeuvre-name">{{localize "YZE.Surprise.SneakAttack"}}</span>
+            <button class="icon-button manoeuvre-button" type="button" data-action="sneakAttack" aria-label="{{localize 'YZE.Surprise.SneakAttack'}}"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></button>
+          </li>
+          <li class="manoeuvre-row" data-tooltip="{{#if coupDeGrace.bypassEmpathy}}YZE.Surprise.CoupDeGraceBypassSheetHint{{else}}YZE.Surprise.CoupDeGraceSheetHint{{/if}}" data-tooltip-direction="UP">
+            <span class="manoeuvre-name">{{localize "YZE.Coup.Action"}}</span>
+            <button class="icon-button manoeuvre-button" type="button" data-action="coupDeGrace" aria-label="{{localize 'YZE.Coup.Action'}}"><i class="fa-solid fa-skull" aria-hidden="true"></i></button>
+          </li>
+          {{#if surprise.canManageAmbush}}
+            <li class="manoeuvre-row" data-tooltip="YZE.Surprise.AmbushSheetHint" data-tooltip-direction="UP">
+              <span class="manoeuvre-name">{{localize "YZE.Surprise.Ambush"}}</span>
+              <button class="icon-button manoeuvre-button" type="button" data-action="resolveAmbush" aria-label="{{localize 'YZE.Surprise.Ambush'}}"><i class="fa-solid fa-people-arrows" aria-hidden="true"></i></button>
+            </li>
+          {{/if}}
+          {{#if surprise.canChooseInitiative}}
+            <li class="manoeuvre-row" data-tooltip="YZE.Surprise.ChooseInitiativeSheetHint" data-tooltip-direction="UP">
+              <span class="manoeuvre-name">{{localize "YZE.Surprise.ChooseInitiative"}}</span>
+              <button class="icon-button manoeuvre-button" type="button" data-action="surpriseInitiative" aria-label="{{localize 'YZE.Surprise.ChooseInitiative'}}"><i class="fa-solid fa-cards" aria-hidden="true"></i></button>
+            </li>
+          {{/if}}
+          {{#if surprise.pending}}
+            <li class="manoeuvre-row prepared-manoeuvre-row" data-tooltip="{{localize 'YZE.Surprise.PendingSheet' target=surprise.pending.targetName}}" data-tooltip-direction="UP">
+              <span class="manoeuvre-name">{{localize "YZE.Surprise.CancelSneakAttack"}}</span>
+              <button class="icon-button manoeuvre-button" type="button" data-action="cancelSneakAttack" aria-label="{{localize 'YZE.Surprise.CancelSneakAttack'}}"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </li>
+          {{/if}}
+        </ol>
+      </section>
+
+      <section class="sheet-panel character-state-panel {{#if brokenState.broken}}is-broken{{/if}}">
+        <h2>{{localize "YZE.Actor.CharacterState"}}</h2>
+        <div class="character-state-grid">
+          {{#if showResources}}
+            <div class="character-state-section resources-section">
+              <h3>{{localize "YZE.Actor.Resources"}}</h3>
+              <div class="resource-grid">
+                {{#if showHealth}}
+                  <label>
+                    {{localize "YZE.Actor.Health"}}
+                    <span>
+                      <input name="system.resources.health.value" type="number" value="{{system.resources.health.value}}" min="0">
+                      /
+                      <output aria-label="{{localize 'YZE.Actor.MaximumHealth'}}">{{system.resources.health.max}}</output>
+                    </span>
+                  </label>
+                {{/if}}
+                {{#if showResolve}}
+                  <label>
+                    {{localize "YZE.Actor.Resolve"}}
+                    <span>
+                      <input name="system.resources.resolve.value" type="number" value="{{system.resources.resolve.value}}" min="0">
+                      /
+                      <output aria-label="{{localize 'YZE.Actor.MaximumResolve'}}">{{system.resources.resolve.max}}</output>
+                    </span>
+                  </label>
+                {{/if}}
+                {{#if showWillpower}}
+                  <div class="resource-control">
+                    <label>
+                      {{localize "YZE.Actor.Willpower"}}
+                      <input name="system.resources.willpower.value" type="number" value="{{system.resources.willpower.value}}" min="0">
+                    </label>
+                    <div class="resource-buttons">
+                      <button type="button" data-action="gainWillpower">{{localize "YZE.Willpower.GainButton"}}</button>
+                      <button type="button" data-action="spendWillpower">{{localize "YZE.Willpower.SpendButton"}}</button>
+                    </div>
+                  </div>
+                {{/if}}
+                {{#if showStress}}
+                  <div class="resource-control">
+                    <label>
+                      {{localize "YZE.Actor.Stress"}}
+                      <input name="system.resources.stress.value" type="number" value="{{system.resources.stress.value}}" min="0">
+                    </label>
+                    <div class="resource-buttons">
+                      <button type="button" data-action="rollPanic">
+                        <i class="fa-solid fa-dice-d6" aria-hidden="true"></i>
+                        {{localize "YZE.Panic.RollButton"}}
+                      </button>
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          {{/if}}
+
+          <div class="character-state-section recovery-section {{#if brokenState.broken}}is-broken{{/if}}">
+            <h3>{{localize "YZE.Recovery.HarmAndRecovery"}}</h3>
+            <ol class="state-action-list">
+              <li class="state-action-row" data-tooltip="YZE.Recovery.ApplyDamageSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Combat.ApplyDamage"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="applyDamage" aria-label="{{localize 'YZE.Combat.ApplyDamage'}}"><i class="fa-solid fa-heart-crack" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Environment.StressfulSituationHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Environment.StressfulSituation"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="stressfulSituation" aria-label="{{localize 'YZE.Environment.StressfulSituation'}}"><i class="fa-solid fa-brain" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.ManualRecoverySheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.HealRecover"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="manualRecovery" aria-label="{{localize 'YZE.Recovery.HealRecover'}}"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.RecoverShiftSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.RecoverShift"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="recoverShift" aria-label="{{localize 'YZE.Recovery.RecoverShift'}}"><i class="fa-solid fa-campground" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.HealingRollSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.UseHealing"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="healingRoll" aria-label="{{localize 'YZE.Recovery.UseHealing'}}"><i class="fa-solid fa-hand-holding-medical" aria-hidden="true"></i></button>
+              </li>
+              {{#if showStress}}
+                <li class="state-action-row" data-tooltip="YZE.Recovery.RelieveStressSheetHint" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{localize "YZE.Recovery.RelieveStress"}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="relieveStress" aria-label="{{localize 'YZE.Recovery.RelieveStress'}}"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></button>
+                </li>
+              {{/if}}
+            </ol>
+            <div class="broken-inline-state">
+              <h4>{{localize "YZE.Actor.Broken"}}</h4>
+              <div class="broken-compact-controls">
+                <label class="checkbox-row deceased-control">
+                  <input name="system.dead" type="checkbox" {{checked system.dead}}>
+                  {{localize "YZE.Actor.Deceased"}}
+                </label>
+                {{#if allowManualBroken}}
+                  <label class="checkbox-row">
+                    <input name="system.broken.physical" type="checkbox" {{checked system.broken.physical}}>
+                    {{localize "YZE.Actor.PhysicallyBroken"}}
+                  </label>
+                  <label class="checkbox-row">
+                    <input name="system.broken.mental" type="checkbox" {{checked system.broken.mental}}>
+                    {{localize "YZE.Actor.MentallyBroken"}}
+                  </label>
+                {{else}}
+                  <span class="broken-status {{#if brokenState.physical}}active{{/if}}">
+                    {{localize "YZE.Actor.PhysicallyBroken"}}: {{#if brokenState.physical}}{{localize "YZE.Common.Yes"}}{{else}}{{localize "YZE.Common.No"}}{{/if}}
+                  </span>
+                  <span class="broken-status {{#if brokenState.mental}}active{{/if}}">
+                    {{localize "YZE.Actor.MentallyBroken"}}: {{#if brokenState.mental}}{{localize "YZE.Common.Yes"}}{{else}}{{localize "YZE.Common.No"}}{{/if}}
+                  </span>
+                {{/if}}
+              </div>
+              {{#if allowManualBroken}}
+                <p class="hint broken-condition-hint">{{localize "YZE.Actor.BrokenConditionHint"}}</p>
+              {{/if}}
+              {{#if secondWind.show}}
+                <div class="state-action-row second-wind-row" data-tooltip="{{#if secondWind.used}}YZE.Specialty.SecondWindUsed{{else}}YZE.Specialty.SecondWindSheetHint{{/if}}" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{#if secondWind.used}}{{localize "YZE.Specialty.SecondWindUsedButton"}}{{else}}{{localize "YZE.Specialty.SecondWindButton"}}{{/if}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="secondWind" aria-label="{{localize 'YZE.Specialty.SecondWindButton'}}" {{#if secondWind.used}}disabled{{/if}}><i class="fa-solid fa-wind" aria-hidden="true"></i></button>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{#if hasResourcePowers}}
+        <section class="sheet-panel resource-powers-panel">
+          <h2>{{localize "YZE.ResourceEffects.ActorTitle"}}</h2>
+          <ol class="item-list resource-power-list">
+            {{#each resourcePowers}}
+              <li class="item-row" data-item-id="{{itemId}}">
+                <span><strong>{{name}}</strong>{{#if description}}<small>{{description}}</small>{{/if}}<small>{{itemName}}</small></span>
+                <span>{{cost}} {{resource}}</span>
+                <button type="button" data-action="activateResourceEffect" data-effect-id="{{effectId}}"><i class="fa-solid fa-bolt" aria-hidden="true"></i> {{localize "YZE.ResourceEffects.Activate"}}</button>
+              </li>
+            {{/each}}
+          </ol>
+        </section>
+      {{/if}}
+
+      {{#if panic.active}}
+        <section class="sheet-panel panic-panel">
+          <h2>{{localize "YZE.Panic.ActiveEffect"}}</h2>
+          {{#each panic.effects}}
+            <div class="panic-effect">
+              <h3>{{total}}: {{title}}</h3>
+              <p>{{effect}}</p>
+            </div>
+          {{/each}}
+          <p class="hint">{{localize "YZE.Panic.ActiveUntilStressRelieved"}}</p>
+        </section>
+      {{/if}}
+
+      {{#if showVehicleSubsystem}}
+        {{#if currentMount}}
+          <section class="sheet-panel mount-panel">
+            <h2>{{localize "YZE.Mount.MountedOn" mount=currentMount.name}}</h2>
+            <div class="resource-buttons">
+              <button type="button" data-action="openMount">{{localize "YZE.Mount.OpenSheet"}}</button>
+              <button type="button" data-action="mountedMove">{{localize "YZE.Mount.Movement"}}</button>
+              {{#if showTravel}}<button type="button" data-action="mountedTravel">{{localize "YZE.Mount.RideShift"}}</button>{{/if}}
+            </div>
+          </section>
+        {{/if}}
+        <section class="sheet-panel chase-panel">
+          <h2>{{localize "YZE.Chase.Title"}}</h2>
+          <div class="resource-buttons">
+            <button type="button" data-action="chaseManeuver">{{localize "YZE.Chase.Maneuver"}}</button>
+            {{#if isGM}}{{#if chaseTracker.active}}<button type="button" data-action="endChase">{{localize "YZE.Chase.EndTracker"}}</button>{{else}}<button type="button" data-action="startChase">{{localize "YZE.Chase.StartTracker"}}</button>{{/if}}{{/if}}
+            {{#if isGM}}<button type="button" data-action="chaseObstacle">{{localize "YZE.Chase.DrawFootObstacle"}}</button>{{/if}}
+          </div>
+          {{#if chaseTracker.active}}<p><strong>{{localize "YZE.Chase.Tracker"}}:</strong> {{chaseTracker.summary}}</p>{{/if}}
+          <p class="hint">{{localize "YZE.Chase.SheetHint"}}</p>
+        </section>
+      {{/if}}
+
+      <section class="sheet-panel environmental-panel">
+        <div class="panel-heading-row">
+          <h2>{{localize "YZE.Environment.Title"}}</h2>
+          <button type="button" data-action="environmentalHazard">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            {{localize "YZE.Environment.ResolveHazard"}}
+          </button>
+        </div>
+        <ol class="item-list compact-item-list">
+          {{#each environmentalHazards}}
+            <li class="item-row" data-hazard-key="{{key}}">
+              <span class="item-name">{{label}}{{#if detail}} — {{detail}}{{/if}}</span>
+              {{#if due}}<strong class="hazard-due">{{localize "YZE.Environment.Due"}}</strong>{{/if}}
+              {{#if canExtinguish}}
+                <button class="icon-button" type="button" data-action="extinguishEnvironmentalFire" data-tooltip="YZE.Environment.ExtinguishFire" aria-label="{{localize 'YZE.Environment.ExtinguishFire'}}"><i class="fa-solid fa-fire-extinguisher"></i></button>
+              {{/if}}
+              {{#if canResolve}}
+                <button class="icon-button" type="button" data-action="resolveEnvironmentalHazard" data-tooltip="YZE.Environment.ResolveInterval" aria-label="{{localize 'YZE.Environment.ResolveInterval'}}"><i class="fa-solid fa-dice-d6"></i></button>
+              {{/if}}
+              <button class="icon-button" type="button" data-action="clearEnvironmentalHazard" data-tooltip="YZE.Environment.ClearHazard" aria-label="{{localize 'YZE.Environment.ClearHazard'}}"><i class="fa-solid fa-xmark"></i></button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Environment.NoActiveHazards"}}</li>
+          {{/each}}
+        </ol>
+        <p class="hint">{{localize "YZE.Environment.SheetHint"}}</p>
+      </section>
+
+      {{#if showConditions}}
+        <section class="sheet-panel conditions-panel">
+          <h2>{{localize "YZE.Actor.Conditions"}}</h2>
+          <div class="condition-grid">
+            {{#each conditionGroups}}
+              <fieldset>
+                <legend>{{label}}</legend>
+                {{#each conditions}}
+                  <label class="checkbox-row">
+                    <input name="system.conditions.{{key}}" type="checkbox" {{checked checked}}>
+                    {{label}}
+                  </label>
+                {{/each}}
+              </fieldset>
+            {{/each}}
+          </div>
+        </section>
+      {{/if}}
+
+      {{#if showCriticalInjuries}}
+        <section
+          class="sheet-panel critical-injuries-panel drop-zone"
+          data-drop-zone="{{localize 'YZE.Actor.CriticalInjuries'}}"
+          data-accepts="criticalInjury"
+        >
+          <header class="panel-heading-row">
+            <h2>{{localize "YZE.Actor.CriticalInjuries"}}</h2>
+            <div class="critical-injury-rolls">
+              <button type="button" data-action="rollCriticalInjury" data-category="physical">
+                <i class="fa-solid fa-dice-d6" aria-hidden="true"></i>
+                {{localize "YZE.Actor.RollPhysicalInjury"}}
+              </button>
+              <button type="button" data-action="rollCriticalInjury" data-category="mental">
+                <i class="fa-solid fa-dice-d6" aria-hidden="true"></i>
+                {{localize "YZE.Actor.RollMentalInjury"}}
+              </button>
+            </div>
+          </header>
+          {{#if criticalInjuryRestrictionSummary.length}}
+            <div class="critical-injury-restriction-summary">
+              <strong>{{localize "YZE.CriticalInjury.EnforcedRestrictions"}}</strong>
+              {{#each criticalInjuryRestrictionSummary}}<span>{{this}}</span>{{/each}}
+            </div>
+          {{/if}}
+          <ol class="item-list critical-injury-list">
+            {{#each criticalInjuries}}
+              <li class="critical-injury-row {{#unless active}}inactive{{/unless}}" data-item-id="{{id}}">
+                <div class="critical-injury-heading">
+                  <button
+                    class="item-name"
+                    type="button"
+                    data-action="editItem"
+                    data-tooltip-html="{{description}}"
+                    data-tooltip-direction="UP"
+                  >{{name}}</button>
+                  <span class="injury-category">{{categoryLabel}}</span>
+                  {{#if lethal}}<strong class="injury-lethal">{{localize "YZE.Item.Lethal"}}</strong>{{/if}}
+                  {{#if permanent}}<strong>{{localize "YZE.Item.Permanent"}}</strong>{{/if}}
+                  {{#if instantDeath}}<strong class="injury-lethal">{{localize "YZE.Item.InstantDeath"}}</strong>{{/if}}
+                  {{#if stabilized}}<strong>{{localize "YZE.Item.Stabilized"}}</strong>{{/if}}
+                </div>
+                <div class="critical-injury-details">
+                  {{#if timeLimit}}<span>{{localize "YZE.Item.TimeLimit"}}: {{timeLimit}}</span>{{/if}}
+                  {{#if healingTime}}<span>{{localize "YZE.Item.HealingTime"}}: {{healingTime}}</span>{{/if}}
+                  {{#if timedRecovery}}<span>{{localize "YZE.InjuryTiming.Remaining" remaining=recoveryRemaining total=recoveryTotal}}</span>{{/if}}
+                  {{#if deathSaveDue}}<strong class="injury-lethal">{{localize "YZE.InjuryTiming.DeathSaveDue"}}</strong>{{/if}}
+                  {{#if treatmentLocked}}<span>{{localize "YZE.InjuryTiming.TreatmentLockedShort"}}</span>{{/if}}
+                  {{#if rollModifier}}<span>{{localize "YZE.Item.InjuryRollModifier"}}: {{rollModifier}}</span>{{/if}}
+                  {{#each restrictionLabels}}<span class="injury-restriction">{{this}}</span>{{/each}}
+                </div>
+                <div class="critical-injury-effect">{{{description}}}</div>
+                <div class="critical-injury-actions">
+                  {{#if canTrigger}}<button type="button" data-action="triggerCriticalInjury"><i class="fa-solid fa-bolt"></i> {{localize "YZE.CriticalInjury.ResolveTrigger"}}</button>{{/if}}
+                  {{#if lethal}}
+                    <label class="checkbox-row">
+                      <input
+                        type="checkbox"
+                        {{checked stabilized}}
+                        data-item-id="{{id}}"
+                        data-item-field="system.stabilized"
+                      >
+                      {{localize "YZE.Item.Stabilized"}}
+                    </label>
+                  {{/if}}
+                  {{#if canRollDeathSave}}
+                    <button type="button" data-action="rollDeathSave">
+                      <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                      {{localize "YZE.Actor.DeathSave"}}
+                    </button>
+                  {{/if}}
+                  <label class="checkbox-row">
+                    <input
+                      type="checkbox"
+                      {{checked active}}
+                      data-item-id="{{id}}"
+                      data-item-field="system.active"
+                    >
+                    {{localize "YZE.Item.Active"}}
+                  </label>
+                  <button
+                    class="icon-button"
+                    type="button"
+                    data-action="removeCriticalInjury"
+                    data-tooltip="YZE.Actor.RemoveCriticalInjury"
+                    aria-label="{{localize 'YZE.Actor.RemoveCriticalInjury'}}"
+                  ><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </li>
+            {{else}}
+              <li class="empty-state">{{localize "YZE.Drop.DropCriticalInjuries"}}</li>
+            {{/each}}
+          </ol>
+          <label class="critical-injury-notes">
+            <span>{{localize "YZE.Actor.CriticalInjuryNotes"}}</span>
+            <textarea name="system.criticalInjuries" rows="3" placeholder="{{localize 'YZE.Actor.CriticalInjuriesPlaceholder'}}">{{system.criticalInjuries}}</textarea>
+          </label>
+        </section>
+      {{/if}}
+
+    </div>
+  </div>
+
+  <div class="tab yze-sheet-tab {{tabs.state.cssClass}}" data-group="sheet" data-tab="state">
+    <div class="state-grid" data-state-grid></div>
+  </div>
+
+  <div class="tab yze-sheet-tab {{tabs.inventory.cssClass}}" data-group="sheet" data-tab="inventory">
+    <div class="inventory-grid">
+      {{#if encumbrance.enabled}}
+        <section class="sheet-panel encumbrance-panel {{#if encumbrance.overLimit}}is-over-limit{{/if}}">
+          <h2>{{localize "YZE.Encumbrance.Title"}}</h2>
+          <p>
+            {{localize "YZE.Encumbrance.Summary" load=encumbrance.loadLabel limit=encumbrance.limit}}
+          </p>
+          {{#if encumbrance.overLimit}}
+            <p class="hint encumbrance-warning">{{localize "YZE.Encumbrance.OverLimit"}}</p>
+          {{/if}}
+          {{#if encumbrance.excluded.length}}
+            <p class="hint">{{localize "YZE.Encumbrance.Excluded" items=encumbrance.excludedLabel}}</p>
+          {{/if}}
+          {{#if encumbrance.backpack}}
+            <p class="hint">{{localize "YZE.Encumbrance.BackpackActive" backpack=encumbrance.backpack}}</p>
+          {{/if}}
+        </section>
+      {{/if}}
+      {{#if showCurrency}}
+        <section class="sheet-panel currency-panel">
+          <h2>{{currencyLabel}}</h2>
+          <label class="currency-balance">
+            <span>{{localize "YZE.Currency.Balance"}}</span>
+            <input name="system.currency" type="number" value="{{system.currency}}" min="0" step="0.01">
+          </label>
+        </section>
+      {{/if}}
+      <section class="sheet-panel inventory-section drop-zone" data-drop-zone="Weapons" data-accepts="weapon">
+        <h2>{{localize "YZE.Actor.Weapons"}}</h2>
+        <ol class="item-list">
+          <li class="item-table-header weapon-row {{#if showAmmunitionTracking}}has-ammunition{{/if}}" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span><span>{{#if useStepDice}}{{localize "YZE.Item.Reliability"}}{{else}}{{localize "YZE.Item.Bonus"}}{{/if}}</span><span>{{localize "YZE.Item.Damage"}}</span>{{#if showAmmunitionTracking}}<span>{{localize "YZE.Item.AmmunitionShort"}}</span>{{/if}}<span></span><span></span>
+          </li>
+          {{#each weapons}}
+            <li class="item-row weapon-row {{#if ../showAmmunitionTracking}}has-ammunition{{/if}}" data-item-id="{{id}}">
+              <span class="item-name">{{name}}{{#unless ../useStepDice}}{{#if system.artifactDie}} · D{{system.artifactDie}}{{/if}}{{/unless}}</span>
+              {{#if ../useStepDice}}
+                <span class="reliability-inline">
+                  <input type="number" value="{{system.reliability.value}}" min="0" max="{{system.reliability.max}}" data-item-id="{{id}}" data-item-field="system.reliability.value" aria-label="{{localize 'YZE.Item.Reliability'}}">
+                  <span>/ {{system.reliability.max}}</span>
+                </span>
+              {{else}}
+                <span>{{system.bonus}} / {{system.maxBonus}}</span>
+              {{/if}}
+              <span>{{system.damage}}</span>
+              {{#if ../showAmmunitionTracking}}
+                <span class="ammunition-inline">
+                  <input type="number" value="{{system.ammunition.value}}" min="0" {{#if ../showAmmunitionSupply}}max="6"{{else}}max="{{system.ammunition.max}}"{{/if}} data-item-id="{{id}}" data-item-field="system.ammunition.value" aria-label="{{#if ../showAmmunitionSupply}}{{localize 'YZE.Item.AmmunitionSupply'}}{{else}}{{localize 'YZE.Item.Ammunition'}}{{/if}}">
+                  {{#unless ../showAmmunitionSupply}}<span>/ {{system.ammunition.max}}{{#if ../showRateOfFire}} · {{localize "YZE.Item.RateOfFireShort"}} {{system.rateOfFire}}{{/if}}</span>{{/unless}}
+                </span>
+              {{/if}}
+              <span class="item-actions">
+                <button class="icon-button" type="button" data-action="attackWeapon" aria-label="{{localize 'YZE.Combat.Attack'}}" data-tooltip="YZE.Combat.Attack"><i class="fa-solid fa-burst"></i></button>
+                {{#if ../showAmmunitionTracking}}{{#if system.usesAmmunition}}<button class="icon-button" type="button" data-action="reloadWeapon" aria-label="{{localize 'YZE.Combat.Reload'}}" data-tooltip="YZE.Combat.Reload"><i class="fa-solid fa-rotate"></i></button>{{/if}}{{/if}}
+                <button class="icon-button" type="button" data-action="repairGear" aria-label="{{localize 'YZE.Recovery.RepairGear'}}" data-tooltip="YZE.Recovery.RepairGear"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+              </span>
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Drop.DropWeapons"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+
+      <section class="sheet-panel inventory-section drop-zone" data-drop-zone="Armour" data-accepts="armor">
+        <h2>{{localize "YZE.Actor.Armor"}}</h2>
+        <ol class="item-list">
+          <li class="item-table-header armor-row" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span><span>{{localize "YZE.Item.Equipped"}}</span><span>{{localize "YZE.Item.ArmorRating"}}</span><span></span><span></span>
+          </li>
+          {{#each armor}}
+            <li class="item-row armor-row" data-item-id="{{id}}">
+              <span class="item-name">{{name}}</span>
+              <label class="inline-checkbox" data-tooltip="YZE.Item.Equipped">
+                <input type="checkbox" {{checked system.equipped}} data-item-id="{{id}}" data-item-field="system.equipped" aria-label="{{localize 'YZE.Item.Equipped'}}">
+              </label>
+              {{#if ../useStepDice}}
+                <span class="armor-rating-inline">
+                  <select data-item-id="{{id}}" data-item-field="system.stepRating" data-value-type="number" aria-label="{{localize 'YZE.Item.ArmorRating'}}">
+                    {{#each ratingOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+                  </select>
+                  <span>/</span>
+                  <select data-item-id="{{id}}" data-item-field="system.maxStepRating" data-value-type="number" aria-label="{{localize 'YZE.Item.MaximumArmorRating'}}">
+                    {{#each maximumOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+                  </select>
+                </span>
+              {{else}}
+                <span class="armor-rating-inline">
+                  <input type="number" value="{{rating}}" min="0" max="{{maximum}}" data-item-id="{{id}}" data-item-field="system.rating" aria-label="{{localize 'YZE.Item.ArmorRating'}}">
+                  <span>/</span>
+                  <input type="number" value="{{maximum}}" min="0" data-item-id="{{id}}" data-item-field="system.maxRating" aria-label="{{localize 'YZE.Item.MaximumArmorRating'}}">
+                </span>
+              {{/if}}
+              <button class="icon-button" type="button" data-action="repairArmor" aria-label="{{localize 'YZE.Recovery.RepairArmor'}}" data-tooltip="YZE.Recovery.RepairArmor"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Drop.DropArmor"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+
+      <section class="sheet-panel inventory-section drop-zone" data-drop-zone="Gear" data-accepts="gear">
+        <h2>{{localize "YZE.Actor.Gear"}}</h2>
+        <ol class="item-list">
+          <li class="item-table-header gear-row" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span><span>{{localize "YZE.Item.Quantity"}}</span><span>{{localize "YZE.Item.Weight"}}</span><span>{{#if useStepDice}}{{localize "YZE.Item.Reliability"}}{{else}}{{localize "YZE.Item.Bonus"}}{{/if}}</span><span></span>
+          </li>
+          {{#each gear}}
+            <li class="item-row gear-row" data-item-id="{{id}}">
+              <span class="item-name">{{name}}{{#unless ../useStepDice}}{{#if system.artifactDie}} · D{{system.artifactDie}}{{/if}}{{/unless}}</span><span>{{system.quantity}}</span><span>{{system.weight}}</span>
+              {{#if ../useStepDice}}
+                <span class="reliability-inline">
+                  <input type="number" value="{{system.reliability.value}}" min="0" max="{{system.reliability.max}}" data-item-id="{{id}}" data-item-field="system.reliability.value" aria-label="{{localize 'YZE.Item.Reliability'}}">
+                  <span>/ {{system.reliability.max}}</span>
+                </span>
+              {{else}}
+                <span>{{system.bonus}} / {{system.maxBonus}}</span>
+              {{/if}}
+              <span class="item-actions">
+                <button class="icon-button" type="button" data-action="repairGear" aria-label="{{localize 'YZE.Recovery.RepairGear'}}" data-tooltip="YZE.Recovery.RepairGear"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+                <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+              </span>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Drop.DropGear"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+
+      <section class="sheet-panel inventory-section drop-zone" data-drop-zone="Consumables" data-accepts="consumable">
+        <h2>{{localize "YZE.Actor.Consumables"}}</h2>
+        <ol class="item-list">
+          <li class="item-table-header consumable-row" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span><span>{{#if useSupplyConsumables}}{{localize "YZE.Item.Supply"}}{{else}}{{localize "YZE.Item.Quantity"}}{{/if}}</span><span></span><span></span>
+          </li>
+          {{#each consumables}}
+            <li class="item-row consumable-row" data-item-id="{{id}}">
+              <span class="item-name"{{#if foodStatus}} data-tooltip="{{foodStatus}}"{{/if}}>{{name}}</span>
+              {{#if ../useSupplyConsumables}}
+                <input type="number" value="{{system.supply}}" min="0" data-item-id="{{id}}" data-item-field="system.supply" aria-label="{{localize 'YZE.Item.Supply'}}">
+              {{else}}
+                <input type="number" value="{{system.quantity}}" min="0" data-item-id="{{id}}" data-item-field="system.quantity" aria-label="{{localize 'YZE.Item.Quantity'}}">
+              {{/if}}
+              {{#if ../useSupplyConsumables}}
+                <span class="item-actions">
+                  <button class="icon-button" type="button" data-action="rollSupply" aria-label="{{localize 'YZE.Supply.Roll'}}" data-tooltip="YZE.Supply.Roll"><i class="fa-solid fa-dice-d6"></i></button>
+                  <button class="icon-button" type="button" data-action="transferSupply" aria-label="{{localize 'YZE.Supply.Transfer'}}" data-tooltip="YZE.Supply.Transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                  {{#if isFood}}<button class="icon-button" type="button" data-action="consumeFood" aria-label="{{localize 'YZE.Food.Consume'}}" data-tooltip="YZE.Food.Consume"><i class="fa-solid fa-utensils"></i></button>{{/if}}
+                </span>
+              {{else}}<span class="item-actions">{{#if isFood}}<button class="icon-button" type="button" data-action="consumeFood" aria-label="{{localize 'YZE.Food.Consume'}}" data-tooltip="YZE.Food.Consume"><i class="fa-solid fa-utensils"></i></button>{{/if}}</span>{{/if}}
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Drop.DropConsumables"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+    </div>
+  </div>
+
+  <div class="tab yze-sheet-tab {{tabs.specialties.cssClass}}" data-group="sheet" data-tab="specialties">
+    <section class="sheet-panel drop-zone" data-drop-zone="Specialities" data-accepts="specialty">
+      <h2>{{localize "YZE.Actor.Specialties"}}</h2>
+      <ol class="item-list">
+        <li class="item-table-header specialty-row {{#unless showMagic}}without-magic{{/unless}}" aria-hidden="true">
+          <span>{{localize "YZE.Actor.Item"}}</span><span>{{localize "YZE.Specialty.Effect"}}</span><span>{{localize "YZE.Item.Active"}}</span>{{#if showMagic}}<span>{{localize "YZE.Item.DisciplineRank"}}</span>{{/if}}<span></span>
+        </li>
+        {{#each specialties}}
+          <li class="item-row specialty-row {{#unless ../showMagic}}without-magic{{/unless}}" data-item-id="{{id}}">
+            <span class="item-name" data-tooltip-html="{{system.description}}">{{name}}{{#if system.effectTarget}} — {{system.effectTarget}}{{/if}}</span>
+            <span>{{#if isMagicDiscipline}}{{localize "YZE.Specialty.MagicDiscipline"}}{{else}}{{#if effectLabel}}{{effectLabel}}{{else}}{{#if hasResourceActivations}}{{localize "YZE.ResourceEffects.Available" count=resourceActivationCount}}{{else}}{{localize "YZE.Specialty.CustomModifier" modifier=system.bonus}}{{/if}}{{/if}}{{/if}}</span>
+            <label class="inline-checkbox"><input type="checkbox" {{checked system.active}} data-item-id="{{id}}" data-item-field="system.active" aria-label="{{localize 'YZE.Item.Active'}}"></label>
+            {{#if ../showMagic}}<span>{{#if isMagicDiscipline}}{{system.rank}}{{else}}—{{/if}}</span>{{/if}}
+            <span class="specialty-actions">
+              {{#if hasResourceActivations}}<button class="icon-button" type="button" data-action="activateResourceEffect" aria-label="{{localize 'YZE.ResourceEffects.Activate'}}" data-tooltip="{{localize 'YZE.ResourceEffects.Available' count=resourceActivationCount}}"><i class="fa-solid fa-bolt"></i></button>{{/if}}
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+            </span>
+          </li>
+        {{else}}
+          <li class="empty-state">{{localize "YZE.Drop.DropSpecialties"}}</li>
+        {{/each}}
+      </ol>
+    </section>
+  </div>
+
+  {{#if showPersonality}}
+    <div class="tab yze-sheet-tab personality-tab {{tabs.personality.cssClass}}" data-group="sheet" data-tab="personality">
+      <div class="personality-grid">
+        {{#if personalityFields.pride.enabled}}
+          <section class="sheet-panel personality-field pride-field">
+            <div class="panel-heading-row"><h2>{{personalityFields.pride.label}}</h2><label class="checkbox-row"><input name="system.personality.pride.used" type="checkbox" {{checked system.personality.pride.used}}> {{localize "YZE.Personality.UsedThisSession"}}</label></div>
+            <textarea name="system.personality.pride.value" placeholder="{{localize 'YZE.Personality.PridePlaceholder'}}">{{system.personality.pride.value}}</textarea>
+            <p class="hint">{{localize "YZE.Personality.PrideHint"}}</p>
+          </section>
+        {{/if}}
+        {{#if personalityFields.weakness.enabled}}
+          <section class="sheet-panel personality-field"><h2>{{personalityFields.weakness.label}}</h2><textarea name="system.personality.weakness" placeholder="{{localize 'YZE.Personality.WeaknessPlaceholder'}}">{{system.personality.weakness}}</textarea></section>
+        {{/if}}
+        {{#if personalityFields.darkSecret.enabled}}
+          {{#if canViewSecrets}}<section class="sheet-panel personality-field"><h2>{{personalityFields.darkSecret.label}}</h2><textarea name="system.personality.darkSecret" placeholder="{{localize 'YZE.Personality.DarkSecretPlaceholder'}}">{{system.personality.darkSecret}}</textarea></section>{{/if}}
+        {{/if}}
+        {{#if personalityFields.bigDream.enabled}}
+          <section class="sheet-panel personality-field"><h2>{{personalityFields.bigDream.label}}</h2><textarea name="system.personality.bigDream" placeholder="{{localize 'YZE.Personality.BigDreamPlaceholder'}}">{{system.personality.bigDream}}</textarea></section>
+        {{/if}}
+        {{#if personalityFields.buddy.enabled}}
+          <section class="sheet-panel personality-field buddy-field"><h2>{{personalityFields.buddy.label}}</h2><select name="system.personality.buddyUuid">{{#each buddyOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><p class="hint">{{localize "YZE.Personality.BuddyHint"}}</p></section>
+        {{/if}}
+      </div>
+      {{#if personalityFields.relationships.enabled}}
+        <section class="sheet-panel relationships-panel">
+          <div class="panel-heading-row"><h2>{{personalityFields.relationships.label}}</h2><button type="button" data-action="addRelationship"><i class="fa-solid fa-plus"></i> {{localize "YZE.Personality.AddRelationship"}}</button></div>
+          <ol class="relationship-list">
+            {{#each relationships}}
+              <li data-relationship-index="{{index}}">
+                <input name="system.personality.relationships.{{index}}.id" type="hidden" value="{{id}}">
+                <select name="system.personality.relationships.{{index}}.actorUuid">{{#each actorOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+                <input name="system.personality.relationships.{{index}}.description" type="text" value="{{description}}" placeholder="{{localize 'YZE.Personality.RelationshipPlaceholder'}}">
+                <button class="icon-button" type="button" data-action="removeRelationship" aria-label="{{localize 'YZE.Personality.RemoveRelationship'}}"><i class="fa-solid fa-trash"></i></button>
+              </li>
+            {{else}}<li class="empty-state">{{localize "YZE.Personality.NoRelationships"}}</li>{{/each}}
+          </ol>
+        </section>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if showExperience}}
+    <div class="tab yze-sheet-tab experience-tab {{tabs.experience.cssClass}}" data-group="sheet" data-tab="experience">
+      <section class="sheet-panel experience-summary-panel">
+        <div class="experience-balance">
+          <span>{{localize "YZE.Actor.ExperiencePoints"}}</span>
+          <strong>{{system.experience}}</strong>
+        </div>
+        {{#if canManageExperience}}
+          <div class="experience-actions">
+            <button type="button" data-action="awardExperience">
+              <i class="fa-solid fa-award" aria-hidden="true"></i>
+              {{localize "YZE.Advancement.AwardXP"}}
+            </button>
+            <button type="button" data-action="advanceCharacter">
+              <i class="fa-solid fa-arrow-up-right-dots" aria-hidden="true"></i>
+              {{localize "YZE.Advancement.SpendXP"}}
+            </button>
+            <button type="button" data-action="adjustExperience">
+              <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+              {{localize "YZE.Advancement.AdjustXP"}}
+            </button>
+          </div>
+        {{/if}}
+      </section>
+
+      <section class="sheet-panel experience-ledger-panel">
+        <h2>{{localize "YZE.Advancement.LedgerTitle"}}</h2>
+        <div class="experience-ledger-scroll">
+          <ol class="experience-ledger">
+            <li class="experience-ledger-header" aria-hidden="true">
+              <span>{{localize "YZE.Advancement.Date"}}</span>
+              <span>{{localize "YZE.Advancement.Type"}}</span>
+              <span>{{localize "YZE.Advancement.Description"}}</span>
+              <span>{{localize "YZE.Advancement.Change"}}</span>
+              <span>{{localize "YZE.Advancement.Balance"}}</span>
+              <span>{{localize "YZE.Advancement.RecordedBy"}}</span>
+            </li>
+            {{#each experienceLedger}}
+              <li class="experience-ledger-row">
+                <span class="ledger-date">{{timestampLabel}}</span>
+                <span class="ledger-type">{{typeLabel}}</span>
+                <span class="ledger-description">{{description}}</span>
+                <strong class="ledger-change {{amountClass}}">{{amountLabel}}</strong>
+                <strong class="ledger-balance">{{balance}}</strong>
+                <span class="ledger-user">{{#if userName}}{{userName}}{{else}}—{{/if}}</span>
+              </li>
+            {{else}}
+              <li class="empty-state">{{localize "YZE.Advancement.NoLedgerEntries"}}</li>
+            {{/each}}
+          </ol>
+        </div>
+        <p class="hint">{{localize "YZE.Advancement.LedgerHint"}}</p>
+      </section>
+    </div>
+  {{/if}}
+
+  {{#if showMagic}}
+    <div class="tab yze-sheet-tab {{tabs.spells.cssClass}}" data-group="sheet" data-tab="spells">
+      <section class="sheet-panel drop-zone" data-drop-zone="Magic / Spells" data-accepts="spell">
+        <h2>{{localize "YZE.Actor.Spells"}}</h2>
+        <ol class="item-list">
+          <li class="item-table-header spell-row" aria-hidden="true">
+            <span>{{localize "YZE.Actor.Item"}}</span><span>{{localize "YZE.Item.Discipline"}}</span><span>{{localize "YZE.Item.Rank"}}</span><span>{{localize "YZE.Item.Cost"}}</span><span></span><span></span>
+          </li>
+          {{#each spells}}
+            <li class="item-row spell-row" data-item-id="{{id}}">
+              <span class="item-name" data-tooltip-html="{{system.description}}">{{name}}</span><span>{{system.discipline}}</span><span>{{system.rank}}</span><span>{{system.cost}}</span>
+              <button class="icon-button" type="button" data-action="castSpell" data-tooltip="YZE.Magic.Cast" aria-label="{{localize 'YZE.Magic.Cast'}}"><i class="fa-solid fa-wand-sparkles"></i></button>
+              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+            </li>
+          {{else}}
+            <li class="empty-state">{{localize "YZE.Drop.DropSpells"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+      <section class="sheet-panel magic-effects-panel">
+        <h2>{{localize "YZE.Magic.ActiveEffects"}}</h2>
+        <ol class="item-list">
+          {{#each magicEffects}}
+            <li class="item-row magic-effect-row" data-effect-id="{{id}}"><span class="item-name" data-tooltip="{{description}}">{{name}}</span><span>{{summary}}</span><span>{{expires}}</span><button class="icon-button" type="button" data-action="clearMagicEffect" aria-label="{{localize 'YZE.Magic.ClearEffect'}}"><i class="fa-solid fa-xmark"></i></button></li>
+          {{else}}<li class="empty-state">{{localize "YZE.Magic.NoActiveEffects"}}</li>{{/each}}
+        </ol>
+      </section>
+    </div>
+  {{/if}}
+
+  {{#if showTravel}}
+    <div class="tab yze-sheet-tab {{tabs.travel.cssClass}}" data-group="sheet" data-tab="travel">
+      <section class="sheet-panel travel-panel">
+        <h2>{{localize "YZE.Travel.Title"}}</h2>
+        <p class="travel-clock">{{travelClock.summary}}</p>
+        <p>{{localize "YZE.Travel.Distance"}}: <strong>{{travelClock.distance}}</strong> {{localize "YZE.Travel.Hexes"}}</p>
+        {{#if travelTaskSummary}}<p>{{localize "YZE.Travel.CurrentTasks"}}: {{travelTaskSummary}}</p>{{/if}}
+        {{#if travelMap.configured}}
+          <div class="yze-travel-map-summary">
+            <p><strong>{{localize "YZE.TravelMap.Map"}}:</strong> {{travelMap.sceneName}} · <strong>{{localize "YZE.TravelMap.PartyToken"}}:</strong> {{travelMap.partyTokenName}}</p>
+            <p><strong>{{localize "YZE.TravelMap.CurrentHex"}}:</strong> {{travelMap.current.label}} ({{travelMap.current.terrainLabel}}){{#if travelMap.destination}} · <strong>{{localize "YZE.TravelMap.Destination"}}:</strong> {{travelMap.destination.label}} · <strong>{{localize "YZE.TravelMap.Remaining"}}:</strong> {{travelMap.remaining}}{{/if}}</p>
+          </div>
+        {{/if}}
+        <div class="resource-buttons">
+          <button type="button" data-action="travelActivity"><i class="fa-solid fa-route" aria-hidden="true"></i> {{localize "YZE.Travel.ChooseActivity"}}</button>
+          {{#if canAdvanceTravel}}<button type="button" data-action="advanceTravelShift"><i class="fa-solid fa-clock" aria-hidden="true"></i> {{localize "YZE.Travel.AdvanceShift"}}</button>{{/if}}
+          {{#if canAdvanceTravel}}<button type="button" data-action="configureTravelMap"><i class="fa-solid fa-map" aria-hidden="true"></i> {{localize "YZE.TravelMap.Configure"}}</button>{{/if}}
+          {{#if canAdvanceTravel}}<button type="button" data-action="planTravelRoute"><i class="fa-solid fa-route" aria-hidden="true"></i> {{localize "YZE.TravelMap.PlanRoute"}}</button>{{/if}}
+          {{#if canAdvanceTravel}}<button type="button" data-action="clearTravelRoute"><i class="fa-solid fa-eraser" aria-hidden="true"></i> {{localize "YZE.TravelMap.ClearRoute"}}</button>{{/if}}
+        </div>
+        <p class="hint">{{localize "YZE.Travel.SheetHint"}}</p>
+      </section>
+    </div>
+  {{/if}}
+
+  <div class="tab yze-sheet-tab notes-tab {{tabs.notes.cssClass}}" data-group="sheet" data-tab="notes">
+    <section class="sheet-panel notes-panel">
+      <h2>{{localize "YZE.Actor.Notes"}}</h2>
+      <textarea name="system.biography" placeholder="{{localize 'YZE.Actor.NotesPlaceholder'}}">{{system.biography}}</textarea>
+    </section>
+  </div>
+</div>

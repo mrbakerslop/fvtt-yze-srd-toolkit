@@ -1,0 +1,111 @@
+{
+  "id": "fvtt-yze-srd",
+  "title": "YZE System Toolkit",
+  "description": "A configurable Year Zero Engine toolkit for creating original games. This game is not affiliated with, sponsored, or endorsed by Fria Ligan AB. The Year Zero Engine System Reference Document is used under Fria Ligan AB's Free Tabletop License.",
+  "authors": [
+    {
+      "name": "MrBaker",
+      "url": "https://github.com/mrbakerslop"
+    }
+  ],
+  "version": "14.0.80",
+  "url": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit",
+  "manifest": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit/releases/latest/download/system.json",
+  "download": "https://github.com/mrbakerslop/fvtt-yze-srd-toolkit/releases/latest/download/fvtt-yze-srd-toolkit.zip",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "esmodules": [
+    "yze-srd.mjs"
+  ],
+  "styles": [
+    "styles/yze-srd.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "biography"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "biography"
+        ]
+      },
+      "vehicle": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "mount": {
+        "htmlFields": [
+          "description"
+        ]
+      }
+    },
+    "Item": {
+      "archetype": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "skill": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "specialty": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "gear": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "weapon": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "armor": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "consumable": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "spell": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "criticalInjury": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "vehicleComponent": {
+        "htmlFields": [
+          "description"
+        ]
+      }
+    }
+  },
+  "primaryTokenAttribute": "resources.health",
+  "secondaryTokenAttribute": "resources.resolve",
+  "socket": true
+}

@@ -1,0 +1,54 @@
+<div class="yze-sheet-body">
+  <header class="yze-sheet-header">
+    <img class="profile-img" src="{{actor.img}}" alt="{{actor.name}}" data-action="editImage" data-edit="img">
+    <div class="yze-header-fields">
+      <input class="document-name" name="name" type="text" value="{{actor.name}}">
+      <span class="document-type">{{localize "YZE.Mount.Type"}}</span>
+      <label>{{localize "YZE.Mount.Rider"}}<select name="system.riderUuid"><option value="">{{localize "YZE.Common.None"}}</option>{{#each riderOptions}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
+    </div>
+  </header>
+
+  <section class="yze-section">
+    <h2>{{localize "YZE.Mount.Statistics"}}</h2>
+    <div class="resource-grid vehicle-stat-grid">
+      <label>{{attributeLabels.strength}}{{#if useStepDice}}<input name="system.attributes.strength.stepRating" type="number" value="{{system.attributes.strength.stepRating}}" min="0" max="4">{{else}}<input name="system.attributes.strength.value" type="number" value="{{system.attributes.strength.value}}" min="0" max="5">{{/if}}</label>
+      <label>{{attributeLabels.agility}}{{#if useStepDice}}<input name="system.attributes.agility.stepRating" type="number" value="{{system.attributes.agility.stepRating}}" min="0" max="4">{{else}}<input name="system.attributes.agility.value" type="number" value="{{system.attributes.agility.value}}" min="0" max="5">{{/if}}</label>
+      <label>{{localize "YZE.Actor.Health"}}<span><input name="system.resources.health.value" type="number" value="{{system.resources.health.value}}" min="0"> / <strong>{{system.resources.health.max}}</strong></span></label>
+      <label>{{localize "YZE.Vehicle.Armor"}}{{#if useStepDice}}<input name="system.armorStepRating" type="number" value="{{system.armorStepRating}}" min="0" max="4">{{else}}<input name="system.armor" type="number" value="{{system.armor}}" min="0">{{/if}}</label>
+      <label>{{localize "YZE.Mount.MobilitySkill"}}<input name="system.mobilitySkillName" type="text" value="{{system.mobilitySkillName}}"></label>
+      <label>{{localize "YZE.Mount.CarryCapacity"}}<input name="system.carryCapacity" type="number" value="{{system.carryCapacity}}" min="0"></label>
+      <label>{{localize "YZE.Mount.TravelSpeed"}}<input name="system.travelSpeed" type="number" value="{{system.travelSpeed}}" min="0"></label>
+      <label class="checkbox-row"><input name="system.lame" type="checkbox" {{checked system.lame}}> {{localize "YZE.Mount.Lame"}}</label>
+      <label class="checkbox-row"><input name="system.perished" type="checkbox" {{checked system.perished}}> {{localize "YZE.Mount.Perished"}}</label>
+    </div>
+  </section>
+
+  <section class="yze-section">
+    <h2>{{localize "YZE.Mount.Actions"}}</h2>
+    <div class="recovery-actions">
+      <button type="button" data-action="mountedMove"><i class="fa-solid fa-horse"></i> {{localize "YZE.Mount.Movement"}}</button>
+      <button type="button" data-action="applyDamage">{{localize "YZE.Combat.ApplyDamage"}}</button>
+      <button type="button" data-action="recover">{{localize "YZE.Recovery.ApplyRecovery"}}</button>
+      {{#if showChases}}<button type="button" data-action="chaseManeuver">{{localize "YZE.Chase.Maneuver"}}</button>{{/if}}
+      {{#if isGM}}{{#if chaseTracker.active}}<button type="button" data-action="endChase">{{localize "YZE.Chase.EndTracker"}}</button>{{else}}<button type="button" data-action="startChase">{{localize "YZE.Chase.StartTracker"}}</button>{{/if}}{{/if}}
+      {{#if isGM}}{{#if showChases}}<button type="button" data-action="chaseObstacle">{{localize "YZE.Chase.DrawFootObstacle"}}</button>{{/if}}{{/if}}
+    </div>
+    {{#if chaseTracker.active}}<p>{{chaseTracker.summary}}</p>{{/if}}
+  </section>
+
+  {{#if showTravel}}<section class="yze-section">
+    <h2>{{localize "YZE.Travel.Title"}}</h2>
+    {{#if travelMap.configured}}<p class="yze-travel-map-summary"><strong>{{travelMap.current.label}}</strong> ({{travelMap.current.terrainLabel}}){{#if travelMap.destination}} · {{localize "YZE.TravelMap.Remaining"}}: <strong>{{travelMap.remaining}}</strong>{{/if}}</p>{{/if}}
+    <p>{{localize "YZE.Mount.RiddenShifts"}}: <strong>{{travelState.ridden}}</strong> · {{localize "YZE.Mount.RestStatus"}}: <strong>{{#if travelState.rested}}{{localize "YZE.Mount.Rested"}}{{else}}{{localize "YZE.Mount.NeedsRest"}}{{/if}}</strong></p>
+    <div class="recovery-actions"><button type="button" data-action="mountedTravel">{{localize "YZE.Mount.RideShift"}}</button><button type="button" data-action="restMount">{{localize "YZE.Mount.RestMount"}}</button>{{#if isGM}}<button type="button" data-action="advanceTravelShift">{{localize "YZE.Travel.AdvanceShift"}}</button>{{/if}}</div>
+  </section>{{/if}}
+
+  <section class="yze-section drop-zone" data-drop-zone="{{localize 'YZE.Mount.CarriedItems'}}" data-accepts="gear weapon armor consumable">
+    <h2>{{localize "YZE.Mount.CarriedItems"}}</h2>
+    {{#if encumbrance.enabled}}<p>{{localize "YZE.Encumbrance.Summary" load=encumbrance.loadLabel limit=encumbrance.limit}}{{#if encumbrance.overLimit}} <strong>{{localize "YZE.Encumbrance.OverLimit"}}</strong>{{/if}}</p>{{/if}}
+    <p class="drop-instruction">{{localize "YZE.Mount.DropHint"}}</p>
+    <ol class="item-list">{{#each items}}<li class="item-row" data-item-id="{{id}}"><span class="item-name">{{name}}</span><span>{{type}}</span><span>{{quantity}}</span><button class="icon-button" type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button><button class="icon-button" type="button" data-action="removeItem"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.Mount.NoItems"}}</li>{{/each}}</ol>
+  </section>
+
+  <section class="yze-section"><h2>{{localize "YZE.Item.Description"}}</h2><textarea name="system.description" rows="8">{{system.description}}</textarea></section>
+</div>

@@ -1,0 +1,21 @@
+# The SRD and licence PDFs are local reference material. Review distribution
+# requirements before adding them to a public repository or release archive.
+*.pdf
+
+# Artwork and screenshots will be added once publication assets are ready.
+*.avif
+*.bmp
+*.gif
+*.ico
+*.jpeg
+*.jpg
+*.png
+*.svg
+*.tif
+*.tiff
+*.webp
+
+# Common local/editor output.
+.DS_Store
+Thumbs.db
+*.log

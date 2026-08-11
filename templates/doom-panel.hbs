@@ -1,0 +1,50 @@
+<section class="doom-panel-content">
+  <div class="doom-total" aria-label="{{localize 'YZE.Doom.SharedPool'}}">
+    <strong>{{doomPoints}}</strong>
+    <span>{{localize "YZE.Doom.SharedPool"}}</span>
+  </div>
+
+  <p class="doom-access">
+    {{localize "YZE.Doom.ManagementAccess" role=managerRoleLabel}}
+  </p>
+
+  {{#if canManage}}
+    <div class="doom-actions">
+      <button type="button" data-action="gainDoom">
+        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+        {{localize "YZE.Doom.GainButton"}}
+      </button>
+      <button type="button" data-action="spendDoom">
+        <i class="fa-solid fa-minus" aria-hidden="true"></i>
+        {{localize "YZE.Doom.SpendButton"}}
+      </button>
+      <button type="button" data-action="resetDoom">
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+        {{localize "YZE.Doom.ResetButton"}}
+      </button>
+    </div>
+  {{else}}
+    <p class="hint doom-read-only">{{localize "YZE.Doom.ReadOnly"}}</p>
+  {{/if}}
+
+  <section class="doom-expenditures">
+    <h3>{{localize "YZE.Doom.Expenditures"}}</h3>
+    <p class="hint">{{localize "YZE.Doom.ExpendituresHint"}}</p>
+    <ol>
+      {{#each expenditures}}
+        <li>
+          <div class="doom-expenditure-copy">
+            <strong>{{name}}</strong>
+            {{#if description}}<span>{{description}}</span>{{/if}}
+            <small>{{itemName}}</small>
+          </div>
+          <button type="button" data-action="useExpenditure" data-item-id="{{itemId}}" data-effect-id="{{effectId}}" {{#unless canUse}}disabled{{/unless}}>
+            <i class="fa-solid fa-skull" aria-hidden="true"></i> {{cost}}
+          </button>
+        </li>
+      {{else}}
+        <li class="empty-state">{{localize "YZE.Doom.NoExpenditures"}}</li>
+      {{/each}}
+    </ol>
+  </section>
+</section>

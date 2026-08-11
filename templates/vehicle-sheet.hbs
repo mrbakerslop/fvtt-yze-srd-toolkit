@@ -1,0 +1,127 @@
+<div class="yze-sheet-body">
+  <header class="yze-sheet-header">
+    <img class="profile-img" src="{{actor.img}}" alt="{{actor.name}}" data-action="editImage" data-edit="img">
+    <div class="yze-header-fields">
+      <input class="document-name" name="name" type="text" value="{{actor.name}}">
+      <span class="document-type">{{localize "YZE.Vehicle.Type"}}</span>
+    </div>
+  </header>
+
+  <section class="yze-section">
+    <h2>{{localize "YZE.Vehicle.Statistics"}}</h2>
+    <div class="resource-grid vehicle-stat-grid">
+      <label>
+        {{localize "YZE.Vehicle.Hull"}}
+        <span>
+          <input name="system.hull.value" type="number" value="{{system.hull.value}}" min="0">
+          /
+          <input name="system.hull.max" type="number" value="{{system.hull.max}}" min="0">
+        </span>
+      </label>
+      {{#if showVehicleSubsystem}}
+        <label>{{localize "YZE.Vehicle.Driver"}}<select name="system.driverUuid"><option value="">{{localize "YZE.Common.None"}}</option>{{#each driverOptions}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
+        <label>{{localize "YZE.Vehicle.Occupants"}}<select data-occupant-select multiple size="4">{{#each occupantOptions}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select><span class="hint">{{occupantNames}}</span></label>
+        <label>{{localize "YZE.Vehicle.DrivingSkill"}}<input name="system.drivingSkillName" type="text" value="{{system.drivingSkillName}}"></label>
+        <label>{{localize "YZE.Vehicle.DrivingPenalty"}}<input name="system.drivingPenalty" type="number" value="{{system.drivingPenalty}}"></label>
+        <label class="checkbox-row"><input name="system.isAerial" type="checkbox" {{checked system.isAerial}}> {{localize "YZE.Vehicle.Aerial"}}</label>
+        <label class="checkbox-row"><input name="system.isWatercraft" type="checkbox" {{checked system.isWatercraft}}> {{localize "YZE.Vehicle.Watercraft"}}</label>
+        <label class="checkbox-row"><input name="system.quickAccess" type="checkbox" {{checked system.quickAccess}}> {{localize "YZE.Vehicle.QuickAccess"}}</label>
+        <label class="checkbox-row"><input name="system.engineRunning" type="checkbox" {{checked system.engineRunning}}> {{localize "YZE.Vehicle.EngineRunning"}}</label>
+        {{#if system.isAerial}}<label>{{localize "YZE.Vehicle.Altitude"}}<input name="system.altitude" type="number" value="{{system.altitude}}" min="0"></label>{{/if}}
+        <label class="checkbox-row"><input name="system.wrecked" type="checkbox" {{checked system.wrecked}}> {{localize "YZE.Vehicle.Wrecked"}}</label>
+        <label class="checkbox-row"><input name="system.engineDisabled" type="checkbox" {{checked system.engineDisabled}}> {{localize "YZE.Vehicle.EngineDisabled"}}</label>
+        <label class="checkbox-row"><input name="system.destroyed" type="checkbox" {{checked system.destroyed}}> {{localize "YZE.Vehicle.Destroyed"}}</label>
+        <label>{{localize "YZE.Vehicle.TravelCondition"}}<input name="system.travelCondition" type="text" value="{{system.travelCondition}}"></label>
+      {{/if}}
+      <label>
+        {{localize "YZE.Vehicle.Armor"}}
+        {{#if useStepDice}}
+          <span>
+            <select name="system.armorStepRating">
+              {{#each armorRatingOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+            </select>
+            /
+            <select name="system.armorStepMax" aria-label="{{localize 'YZE.Item.MaximumArmorRating'}}">
+              {{#each armorMaximumOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+            </select>
+          </span>
+        {{else}}
+          <span>
+            <input name="system.armor" type="number" value="{{system.armor}}" min="0">
+            /
+            <input name="system.armorMax" type="number" value="{{system.armorMax}}" min="0" aria-label="{{localize 'YZE.Item.MaximumArmorRating'}}">
+          </span>
+        {{/if}}
+      </label>
+      <label>
+        {{localize "YZE.Vehicle.Passengers"}}
+        <input name="system.passengers" type="number" value="{{system.passengers}}" min="0">
+      </label>
+      <label>
+        {{localize "YZE.Vehicle.Maneuverability"}}
+        <input name="system.maneuverability" type="number" value="{{system.maneuverability}}">
+      </label>
+      <label>
+        {{localize "YZE.Vehicle.TravelSpeedRoad"}}
+        <input name="system.travelSpeedRoad" type="number" value="{{system.travelSpeedRoad}}" min="0">
+      </label>
+      <label>
+        {{localize "YZE.Vehicle.TravelSpeedOffRoad"}}
+        <input name="system.travelSpeedOffRoad" type="number" value="{{system.travelSpeedOffRoad}}" min="0">
+      </label>
+    </div>
+  </section>
+
+  {{#if showVehicleSubsystem}}
+    <section class="yze-section vehicle-action-panel">
+      <h2>{{localize "YZE.Vehicle.Actions"}}</h2>
+      <div class="recovery-actions">
+        <button type="button" data-action="vehicleManeuver">{{localize "YZE.Vehicle.Maneuver"}}</button>
+        <button type="button" data-action="enterVehicle">{{localize "YZE.Vehicle.CrewActions.enter"}}</button>
+        <button type="button" data-action="exitVehicle">{{localize "YZE.Vehicle.CrewActions.exit"}}</button>
+        <button type="button" data-action="startVehicle">{{localize "YZE.Vehicle.CrewActions.start"}}</button>
+        <button type="button" data-action="grabWheel">{{localize "YZE.Vehicle.CrewActions.grabWheel"}}</button>
+        {{#if system.isAerial}}{{#if system.engineDisabled}}{{#unless system.wrecked}}{{#if system.altitude}}<button type="button" data-action="controlledLanding">{{localize "YZE.Vehicle.ControlledLanding"}}</button>{{/if}}{{/unless}}{{/if}}{{/if}}
+        {{#if system.isAerial}}{{#if system.wrecked}}{{#if system.altitude}}<button type="button" data-action="resolveAerialCrash">{{localize "YZE.Vehicle.ResolveAerialCrash"}}</button>{{/if}}{{/if}}{{/if}}
+        <button type="button" data-action="ramVehicle">{{localize "YZE.Vehicle.Ram"}}</button>
+        <button type="button" data-action="chaseManeuver">{{localize "YZE.Chase.Maneuver"}}</button>
+        {{#if isGM}}{{#if chaseTracker.active}}<button type="button" data-action="endChase">{{localize "YZE.Chase.EndTracker"}}</button>{{else}}<button type="button" data-action="startChase">{{localize "YZE.Chase.StartTracker"}}</button>{{/if}}{{/if}}
+        {{#if canAdvanceTravel}}<button type="button" data-action="chaseObstacle">{{localize "YZE.Chase.DrawVehicleObstacle"}}</button>{{/if}}
+      </div>
+      {{#if chaseTracker.active}}<p>{{localize "YZE.Chase.TrackerSummary" prey=chaseTracker.preyName pursuer=chaseTracker.pursuerName range=chaseTracker.rangeLabel round=chaseTracker.round}}</p>{{/if}}
+    </section>
+  {{/if}}
+
+  {{#if showTravel}}
+    <section class="yze-section vehicle-travel-panel">
+      <h2>{{localize "YZE.Travel.Title"}}</h2>
+      <p>{{travelClock.summary}}</p>
+      <p>{{localize "YZE.Travel.Distance"}}: <strong>{{travelClock.distance}}</strong> {{localize "YZE.Travel.Hexes"}}</p>
+      {{#if travelMap.configured}}<p class="yze-travel-map-summary"><strong>{{travelMap.current.label}}</strong> ({{travelMap.current.terrainLabel}}){{#if travelMap.destination}} · {{localize "YZE.TravelMap.Remaining"}}: <strong>{{travelMap.remaining}}</strong>{{/if}}</p>{{/if}}
+      <div class="resource-grid">
+        <label>{{localize "YZE.Vehicle.Fuel"}}<span><input name="system.fuel.value" type="number" value="{{system.fuel.value}}" min="0"> / <input name="system.fuel.max" type="number" value="{{system.fuel.max}}" min="0"></span></label>
+        <label>{{localize "YZE.Vehicle.FuelPerHex"}}<input name="system.fuelPerHex" type="number" value="{{system.fuelPerHex}}" min="0" step="0.1"></label>
+      </div>
+      <div class="recovery-actions"><button type="button" data-action="vehicleTravel">{{localize "YZE.Travel.DriveShift"}}</button>{{#if canAdvanceTravel}}<button type="button" data-action="advanceTravelShift">{{localize "YZE.Travel.AdvanceShift"}}</button>{{/if}}</div>
+    </section>
+  {{/if}}
+
+  <section class="yze-section vehicle-damage-actions">
+    <h2>{{localize "YZE.Recovery.DamageAndRepairs"}}</h2>
+    <div class="recovery-actions">
+      <button type="button" data-action="applyDamage"><i class="fa-solid fa-heart-crack" aria-hidden="true"></i> {{localize "YZE.Combat.ApplyDamage"}}</button>
+      <button type="button" data-action="repairHull"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> {{localize "YZE.Vehicle.RepairVehicle"}}</button>
+    </div>
+  </section>
+
+  {{#if showVehicleSubsystem}}<section class="yze-section vehicle-components drop-zone" data-drop-zone="{{localize 'YZE.Vehicle.Components'}}" data-accepts="vehicleComponent">
+    <h2>{{localize "YZE.Vehicle.Components"}}</h2>
+    <p class="drop-instruction"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i> {{localize "YZE.Vehicle.DropComponentHint"}}</p>
+    <ol class="item-list">{{#each components}}<li class="item-row vehicle-component-row" data-item-id="{{id}}"><span class="item-name">{{name}}</span><span>{{componentTypeLabel}}</span><span>{{system.modifier}}</span><label class="checkbox-row"><input data-item-id="{{id}}" data-item-field="system.damaged" type="checkbox" {{checked system.damaged}}> {{localize "YZE.Vehicle.Damaged"}}</label><button class="icon-button" type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button><button class="icon-button" type="button" data-action="removeComponent"><i class="fa-solid fa-trash"></i></button></li>{{else}}<li class="empty-state">{{localize "YZE.Vehicle.ComponentsHint"}}</li>{{/each}}</ol>
+  </section>{{/if}}
+
+  <section class="yze-section">
+    <h2>{{localize "YZE.Item.Description"}}</h2>
+    <textarea name="system.description" rows="10">{{system.description}}</textarea>
+  </section>
+</div>

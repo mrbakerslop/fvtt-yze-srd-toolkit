@@ -1,0 +1,115 @@
+<div class="yze-system-config">
+  <p class="config-intro">{{intro}}</p>
+
+  <fieldset class="config-section">
+    <legend>{{sectionTitle}}</legend>
+
+    {{#each selectSettings}}
+      <label class="config-setting">
+        <span class="config-copy">
+          <strong>{{name}}</strong>
+          <small>{{hint}}</small>
+        </span>
+        <select name="{{key}}">
+          {{#each choices}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+    {{/each}}
+
+    {{#each settings}}
+      <label class="config-setting is-checkbox {{#if disabled}}is-disabled{{/if}}">
+        <span class="config-copy">
+          <strong>{{name}}</strong>
+          <small>{{hint}}</small>
+        </span>
+        <input name="{{key}}" type="checkbox" {{checked checked}} {{#if disabled}}disabled{{/if}}>
+      </label>
+    {{/each}}
+
+    {{#if doomManagerRole}}
+      <label class="config-setting">
+        <span class="config-copy">
+          <strong>{{doomManagerRole.name}}</strong>
+          <small>{{doomManagerRole.hint}}</small>
+        </span>
+        <select name="{{doomManagerRole.key}}">
+          {{#each doomManagerRole.choices}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+    {{/if}}
+
+    {{#if currency}}
+      <div class="currency-config" data-currency-config>
+        <label class="config-setting">
+          <span class="config-copy">
+            <strong>{{localize "YZE.Settings.Currency.LabelName"}}</strong>
+            <small>{{localize "YZE.Settings.Currency.LabelHint"}}</small>
+          </span>
+          <input name="{{currency.labelKey}}" type="text" value="{{currency.label}}">
+        </label>
+
+        <fieldset class="currency-item-types">
+          <legend>{{localize "YZE.Settings.Currency.ItemTypesTitle"}}</legend>
+          <p class="section-hint">{{localize "YZE.Settings.Currency.ItemTypesHint"}}</p>
+          <div class="currency-item-type-grid">
+            {{#each currency.itemTypes}}
+              <label class="currency-item-type">
+                <span>{{name}}</span>
+                <input name="{{key}}" type="checkbox" {{checked checked}}>
+              </label>
+            {{/each}}
+          </div>
+        </fieldset>
+      </div>
+    {{/if}}
+
+    {{#each attributeLabels}}
+      <label class="config-setting">
+        <span class="config-copy">
+          <strong>{{name}}</strong>
+          <small>{{hint}}</small>
+        </span>
+        <input name="{{key}}" type="text" value="{{value}}">
+      </label>
+    {{/each}}
+
+    {{#each headerFields}}
+      <div class="header-field-setting" data-header-field>
+        <label class="header-field-toggle">
+          <input name="{{enabledKey}}" type="checkbox" {{checked enabled}}>
+          <strong>{{localize "YZE.Settings.Config.HeaderField" number=slot}}</strong>
+        </label>
+        <label class="header-field-label">
+          <span>{{localize "YZE.Settings.Config.HeaderFieldLabel"}}</span>
+          <input name="{{labelKey}}" type="text" value="{{label}}">
+        </label>
+        <small>{{enabledHint}}</small>
+      </div>
+    {{/each}}
+
+    {{#each personalityFields}}
+      <div class="header-field-setting" data-personality-field="{{key}}">
+        <label class="header-field-toggle">
+          <input name="{{enabledKey}}" type="checkbox" {{checked enabled}}>
+          <strong>{{defaultName}}</strong>
+        </label>
+        <label class="header-field-label">
+          <span>{{localize "YZE.Settings.Config.PersonalityFieldLabel"}}</span>
+          <input name="{{labelKey}}" type="text" value="{{label}}">
+        </label>
+        <small>{{localize "YZE.Settings.PersonalityFields.FieldHint" field=defaultName}}</small>
+      </div>
+    {{/each}}
+  </fieldset>
+
+  <footer class="config-footer">
+    <button type="submit">
+      <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+      {{localize "YZE.Settings.Config.Save"}}
+    </button>
+  </footer>
+</div>
