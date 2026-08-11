@@ -54,7 +54,7 @@ Restart Foundry, then create a world using **YZE System Toolkit**.
 - System ID: `fvtt-yze-srd`
 
 Versions use `FoundryVersion.GameSystemMajorVersion.MinorFeatureVersion`. For
-example, version `14.0.81` is tagged `v14.0.81` for Foundry VTT 14.
+example, version `14.0.82` is tagged `v14.0.82` for Foundry VTT 14.
 
 ## First world setup
 
