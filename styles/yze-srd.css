@@ -798,51 +798,6 @@
   border-top: 1px solid var(--yze-border, #555);
 }
 
-.yze.actor-sheet .surprise-panel {
-  grid-column: span 1;
-  min-width: 0;
-}
-
-.yze.actor-sheet .manoeuvre-list {
-  display: grid;
-  gap: 0.2rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.yze.actor-sheet .manoeuvre-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 1.75rem;
-  gap: 0.35rem;
-  align-items: center;
-  min-height: 1.75rem;
-  padding: 0.1rem 0.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--yze-border), transparent 55%);
-  cursor: help;
-}
-
-.yze.actor-sheet .manoeuvre-row:last-child {
-  border-bottom: 0;
-}
-
-.yze.actor-sheet .manoeuvre-name {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.yze.actor-sheet .manoeuvre-row .manoeuvre-button {
-  display: grid;
-  width: 1.75rem;
-  min-width: 1.75rem;
-  height: 1.75rem;
-  min-height: 1.75rem;
-  padding: 0;
-  place-items: center;
-}
-
 .yze.actor-sheet .prepared-manoeuvre-row {
   font-style: italic;
 }
@@ -1119,6 +1074,41 @@
   grid-column: 1 / -1;
 }
 
+.yze.actor-sheet .actions-panel {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.yze.actor-sheet .action-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.yze.actor-sheet .action-section {
+  min-width: 0;
+  padding: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--yze-ink), transparent 45%);
+  background: color-mix(in srgb, var(--yze-paper), white 35%);
+}
+
+.yze.actor-sheet .action-section h3 {
+  margin: 0 0 0.45rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--yze-ink);
+  color: var(--yze-ink);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.yze.actor-sheet .action-section.is-broken,
+.yze.actor-sheet .broken-section.is-broken {
+  border-width: 2px;
+  background: color-mix(in srgb, #8d1b1b, white 94%);
+}
+
 .yze.actor-sheet .general-grid > .sheet-panel:last-child:nth-child(even),
 .yze.actor-sheet .inventory-grid > .sheet-panel:last-child:nth-child(odd),
 .yze.actor-sheet .personality-grid > .sheet-panel:last-child:nth-child(odd),
@@ -1220,12 +1210,6 @@
   margin-bottom: 0;
 }
 
-.yze.actor-sheet .recovery-section.is-broken {
-  border-width: 2px;
-  background: color-mix(in srgb, #8d1b1b, white 94%);
-  color: var(--yze-ink);
-}
-
 .yze.actor-sheet .state-action-list {
   display: grid;
   gap: 0.2rem;
@@ -1245,6 +1229,10 @@
   cursor: help;
 }
 
+.yze.actor-sheet .state-action-row:last-child {
+  border-bottom: 0;
+}
+
 .yze.actor-sheet .state-action-label {
   min-width: 0;
   overflow: hidden;
@@ -1260,20 +1248,6 @@
   min-height: 1.75rem;
   padding: 0;
   place-items: center;
-}
-
-.yze.actor-sheet .broken-inline-state {
-  margin-top: 0.4rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--yze-border);
-}
-
-.yze.actor-sheet .broken-inline-state h4 {
-  margin: 0 0 0.35rem;
-  color: var(--yze-ink);
-  font-size: 0.74rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .yze.actor-sheet .second-wind-row {
@@ -1987,6 +1961,10 @@
   }
 
   .yze.actor-sheet .character-state-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yze.actor-sheet .action-section-grid {
     grid-template-columns: 1fr;
   }
 

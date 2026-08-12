@@ -268,36 +268,73 @@
         </section>
       {{/if}}
 
-      <section class="sheet-panel surprise-panel">
-        <h2>{{localize "YZE.Surprise.Title"}}</h2>
-        <ol class="manoeuvre-list">
-          <li class="manoeuvre-row" data-tooltip="YZE.Surprise.SneakAttackSheetHint" data-tooltip-direction="UP">
-            <span class="manoeuvre-name">{{localize "YZE.Surprise.SneakAttack"}}</span>
-            <button class="icon-button manoeuvre-button" type="button" data-action="sneakAttack" aria-label="{{localize 'YZE.Surprise.SneakAttack'}}"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></button>
-          </li>
-          <li class="manoeuvre-row" data-tooltip="{{#if coupDeGrace.bypassEmpathy}}YZE.Surprise.CoupDeGraceBypassSheetHint{{else}}YZE.Surprise.CoupDeGraceSheetHint{{/if}}" data-tooltip-direction="UP">
-            <span class="manoeuvre-name">{{localize "YZE.Coup.Action"}}</span>
-            <button class="icon-button manoeuvre-button" type="button" data-action="coupDeGrace" aria-label="{{localize 'YZE.Coup.Action'}}"><i class="fa-solid fa-skull" aria-hidden="true"></i></button>
-          </li>
-          {{#if surprise.canManageAmbush}}
-            <li class="manoeuvre-row" data-tooltip="YZE.Surprise.AmbushSheetHint" data-tooltip-direction="UP">
-              <span class="manoeuvre-name">{{localize "YZE.Surprise.Ambush"}}</span>
-              <button class="icon-button manoeuvre-button" type="button" data-action="resolveAmbush" aria-label="{{localize 'YZE.Surprise.Ambush'}}"><i class="fa-solid fa-people-arrows" aria-hidden="true"></i></button>
-            </li>
-          {{/if}}
-          {{#if surprise.canChooseInitiative}}
-            <li class="manoeuvre-row" data-tooltip="YZE.Surprise.ChooseInitiativeSheetHint" data-tooltip-direction="UP">
-              <span class="manoeuvre-name">{{localize "YZE.Surprise.ChooseInitiative"}}</span>
-              <button class="icon-button manoeuvre-button" type="button" data-action="surpriseInitiative" aria-label="{{localize 'YZE.Surprise.ChooseInitiative'}}"><i class="fa-solid fa-cards" aria-hidden="true"></i></button>
-            </li>
-          {{/if}}
-          {{#if surprise.pending}}
-            <li class="manoeuvre-row prepared-manoeuvre-row" data-tooltip="{{localize 'YZE.Surprise.PendingSheet' target=surprise.pending.targetName}}" data-tooltip-direction="UP">
-              <span class="manoeuvre-name">{{localize "YZE.Surprise.CancelSneakAttack"}}</span>
-              <button class="icon-button manoeuvre-button" type="button" data-action="cancelSneakAttack" aria-label="{{localize 'YZE.Surprise.CancelSneakAttack'}}"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-            </li>
-          {{/if}}
-        </ol>
+      <section class="sheet-panel actions-panel">
+        <h2>{{localize "YZE.Actor.Actions"}}</h2>
+        <div class="action-section-grid">
+          <div class="action-section">
+            <h3>{{localize "YZE.Surprise.Title"}}</h3>
+            <ol class="state-action-list">
+              <li class="state-action-row" data-tooltip="YZE.Surprise.SneakAttackSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Surprise.SneakAttack"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="sneakAttack" aria-label="{{localize 'YZE.Surprise.SneakAttack'}}"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="{{#if coupDeGrace.bypassEmpathy}}YZE.Surprise.CoupDeGraceBypassSheetHint{{else}}YZE.Surprise.CoupDeGraceSheetHint{{/if}}" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Coup.Action"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="coupDeGrace" aria-label="{{localize 'YZE.Coup.Action'}}"><i class="fa-solid fa-skull" aria-hidden="true"></i></button>
+              </li>
+              {{#if surprise.canManageAmbush}}
+                <li class="state-action-row" data-tooltip="YZE.Surprise.AmbushSheetHint" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{localize "YZE.Surprise.Ambush"}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="resolveAmbush" aria-label="{{localize 'YZE.Surprise.Ambush'}}"><i class="fa-solid fa-people-arrows" aria-hidden="true"></i></button>
+                </li>
+              {{/if}}
+              {{#if surprise.canChooseInitiative}}
+                <li class="state-action-row" data-tooltip="YZE.Surprise.ChooseInitiativeSheetHint" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{localize "YZE.Surprise.ChooseInitiative"}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="surpriseInitiative" aria-label="{{localize 'YZE.Surprise.ChooseInitiative'}}"><i class="fa-solid fa-cards" aria-hidden="true"></i></button>
+                </li>
+              {{/if}}
+              {{#if surprise.pending}}
+                <li class="state-action-row prepared-manoeuvre-row" data-tooltip="{{localize 'YZE.Surprise.PendingSheet' target=surprise.pending.targetName}}" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{localize "YZE.Surprise.CancelSneakAttack"}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="cancelSneakAttack" aria-label="{{localize 'YZE.Surprise.CancelSneakAttack'}}"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+                </li>
+              {{/if}}
+            </ol>
+          </div>
+
+          <div class="action-section {{#if brokenState.broken}}is-broken{{/if}}">
+            <h3>{{localize "YZE.Recovery.HarmAndRecovery"}}</h3>
+            <ol class="state-action-list">
+              <li class="state-action-row" data-tooltip="YZE.Recovery.ApplyDamageSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Combat.ApplyDamage"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="applyDamage" aria-label="{{localize 'YZE.Combat.ApplyDamage'}}"><i class="fa-solid fa-heart-crack" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Environment.StressfulSituationHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Environment.StressfulSituation"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="stressfulSituation" aria-label="{{localize 'YZE.Environment.StressfulSituation'}}"><i class="fa-solid fa-brain" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.ManualRecoverySheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.HealRecover"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="manualRecovery" aria-label="{{localize 'YZE.Recovery.HealRecover'}}"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.RecoverShiftSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.RecoverShift"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="recoverShift" aria-label="{{localize 'YZE.Recovery.RecoverShift'}}"><i class="fa-solid fa-campground" aria-hidden="true"></i></button>
+              </li>
+              <li class="state-action-row" data-tooltip="YZE.Recovery.HealingRollSheetHint" data-tooltip-direction="UP">
+                <span class="state-action-label">{{localize "YZE.Recovery.UseHealing"}}</span>
+                <button class="icon-button state-action-button" type="button" data-action="healingRoll" aria-label="{{localize 'YZE.Recovery.UseHealing'}}"><i class="fa-solid fa-hand-holding-medical" aria-hidden="true"></i></button>
+              </li>
+              {{#if showStress}}
+                <li class="state-action-row" data-tooltip="YZE.Recovery.RelieveStressSheetHint" data-tooltip-direction="UP">
+                  <span class="state-action-label">{{localize "YZE.Recovery.RelieveStress"}}</span>
+                  <button class="icon-button state-action-button" type="button" data-action="relieveStress" aria-label="{{localize 'YZE.Recovery.RelieveStress'}}"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></button>
+                </li>
+              {{/if}}
+            </ol>
+          </div>
+        </div>
       </section>
 
       <section class="sheet-panel character-state-panel {{#if brokenState.broken}}is-broken{{/if}}">
@@ -357,38 +394,9 @@
             </div>
           {{/if}}
 
-          <div class="character-state-section recovery-section {{#if brokenState.broken}}is-broken{{/if}}">
-            <h3>{{localize "YZE.Recovery.HarmAndRecovery"}}</h3>
-            <ol class="state-action-list">
-              <li class="state-action-row" data-tooltip="YZE.Recovery.ApplyDamageSheetHint" data-tooltip-direction="UP">
-                <span class="state-action-label">{{localize "YZE.Combat.ApplyDamage"}}</span>
-                <button class="icon-button state-action-button" type="button" data-action="applyDamage" aria-label="{{localize 'YZE.Combat.ApplyDamage'}}"><i class="fa-solid fa-heart-crack" aria-hidden="true"></i></button>
-              </li>
-              <li class="state-action-row" data-tooltip="YZE.Environment.StressfulSituationHint" data-tooltip-direction="UP">
-                <span class="state-action-label">{{localize "YZE.Environment.StressfulSituation"}}</span>
-                <button class="icon-button state-action-button" type="button" data-action="stressfulSituation" aria-label="{{localize 'YZE.Environment.StressfulSituation'}}"><i class="fa-solid fa-brain" aria-hidden="true"></i></button>
-              </li>
-              <li class="state-action-row" data-tooltip="YZE.Recovery.ManualRecoverySheetHint" data-tooltip-direction="UP">
-                <span class="state-action-label">{{localize "YZE.Recovery.HealRecover"}}</span>
-                <button class="icon-button state-action-button" type="button" data-action="manualRecovery" aria-label="{{localize 'YZE.Recovery.HealRecover'}}"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></button>
-              </li>
-              <li class="state-action-row" data-tooltip="YZE.Recovery.RecoverShiftSheetHint" data-tooltip-direction="UP">
-                <span class="state-action-label">{{localize "YZE.Recovery.RecoverShift"}}</span>
-                <button class="icon-button state-action-button" type="button" data-action="recoverShift" aria-label="{{localize 'YZE.Recovery.RecoverShift'}}"><i class="fa-solid fa-campground" aria-hidden="true"></i></button>
-              </li>
-              <li class="state-action-row" data-tooltip="YZE.Recovery.HealingRollSheetHint" data-tooltip-direction="UP">
-                <span class="state-action-label">{{localize "YZE.Recovery.UseHealing"}}</span>
-                <button class="icon-button state-action-button" type="button" data-action="healingRoll" aria-label="{{localize 'YZE.Recovery.UseHealing'}}"><i class="fa-solid fa-hand-holding-medical" aria-hidden="true"></i></button>
-              </li>
-              {{#if showStress}}
-                <li class="state-action-row" data-tooltip="YZE.Recovery.RelieveStressSheetHint" data-tooltip-direction="UP">
-                  <span class="state-action-label">{{localize "YZE.Recovery.RelieveStress"}}</span>
-                  <button class="icon-button state-action-button" type="button" data-action="relieveStress" aria-label="{{localize 'YZE.Recovery.RelieveStress'}}"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></button>
-                </li>
-              {{/if}}
-            </ol>
-            <div class="broken-inline-state">
-              <h4>{{localize "YZE.Actor.Broken"}}</h4>
+          <div class="character-state-section broken-section {{#if brokenState.broken}}is-broken{{/if}}">
+            <h3>{{localize "YZE.Actor.Broken"}}</h3>
+            <div class="broken-state-controls">
               <div class="broken-compact-controls">
                 <label class="checkbox-row deceased-control">
                   <input name="system.dead" type="checkbox" {{checked system.dead}}>
