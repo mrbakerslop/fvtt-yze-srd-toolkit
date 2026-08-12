@@ -287,10 +287,7 @@
       "RemoveSkillConfirm": "Remove {skill} from this Actor? The reusable world Skill will not be deleted.",
       "Specialties": "Specialities",
       "Inventory": "Inventory",
-      "EquippedItems": "Equipped items",
-      "NoEquippedItems": "No items are currently equipped.",
       "Item": "Item",
-      "Type": "Type",
       "Weapons": "Weapons",
       "Armor": "Armour",
       "Gear": "Gear",
@@ -313,13 +310,7 @@
       "Experience": "Experience",
       "ExperiencePoints": "Experience points",
       "Notes": "Notes",
-      "NotesPlaceholder": "Write character and session notes here.",
-      "ItemTypes": {
-        "gear": "Gear",
-        "weapon": "Weapon",
-        "armor": "Armour",
-        "consumable": "Consumable"
-      }
+      "NotesPlaceholder": "Write character and session notes here."
     },
     "Item": {
       "LinkedAttribute": "Linked attribute",

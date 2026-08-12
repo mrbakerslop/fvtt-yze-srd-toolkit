@@ -171,30 +171,6 @@
   <div class="tab yze-sheet-tab {{tabs.general.cssClass}}" data-group="sheet" data-tab="general">
     <div data-general-attributes></div>
     <div class="general-grid">
-      <section class="sheet-panel equipped-panel">
-        <h2>{{localize "YZE.Actor.EquippedItems"}}</h2>
-        <ol class="item-list compact-item-list">
-          <li class="item-table-header equipped-row" aria-hidden="true">
-            <span>{{localize "YZE.Actor.Item"}}</span>
-            <span>{{localize "YZE.Actor.Type"}}</span>
-            <span>{{localize "YZE.Item.Quantity"}}</span>
-            <span></span>
-          </li>
-          {{#each equippedItems}}
-            <li class="item-row equipped-row" data-item-id="{{id}}">
-              <span class="item-name">{{name}}</span>
-              <span>{{typeLabel}}</span>
-              <span>{{quantity}}</span>
-              <button class="icon-button" type="button" data-action="editItem" aria-label="{{localize 'YZE.Item.Edit'}}">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-            </li>
-          {{else}}
-            <li class="empty-state">{{localize "YZE.Actor.NoEquippedItems"}}</li>
-          {{/each}}
-        </ol>
-      </section>
-
       {{#if combatActions.active}}
         <section class="sheet-panel combat-actions-panel">
           <h2>{{localize "YZE.Combat.Actions"}}</h2>

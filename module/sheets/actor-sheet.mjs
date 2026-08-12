@@ -659,16 +659,6 @@ export class YZEActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           ? new Date(Number(effect.endsAt) * 1000).toLocaleString()
           : game.i18n.localize("YZE.Magic.ManualDuration")
     }));
-    context.equippedItems = this.actor.items
-      .filter((item) => ["gear", "weapon", "armor", "consumable"].includes(item.type))
-      .filter((item) => item.system.equipped)
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((item) => ({
-        id: item.id,
-        name: item.name,
-        quantity: item.system.quantity,
-        typeLabel: game.i18n.localize(`YZE.Actor.ItemTypes.${item.type}`)
-      }));
     context.showResources = context.showHealth || context.showResolve || context.showWillpower
       || context.showStress;
     context.combatActions = combatActionState(this.actor);

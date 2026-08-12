@@ -1070,10 +1070,6 @@
   align-content: start;
 }
 
-.yze.actor-sheet .equipped-panel {
-  grid-column: 1 / -1;
-}
-
 .yze.actor-sheet .actions-panel {
   grid-column: 1 / -1;
   min-width: 0;
@@ -1643,10 +1639,6 @@
   text-transform: uppercase;
 }
 
-.yze.actor-sheet .equipped-row {
-  grid-template-columns: minmax(6rem, 1fr) 7rem 3rem 2rem;
-}
-
 .yze.actor-sheet .weapon-row,
 .yze.actor-sheet .armor-row,
 .yze.actor-sheet .consumable-row {
@@ -1923,7 +1915,6 @@
 }
 
 .yze.actor-sheet .inventory-section .item-row,
-.yze.actor-sheet .equipped-panel .item-row,
 .yze.actor-sheet .yze-sheet-tab[data-tab="specialties"] .item-row,
 .yze.actor-sheet .yze-sheet-tab[data-tab="spells"] .item-row {
   padding-block: 0.2rem;
@@ -1984,9 +1975,6 @@
     grid-row: auto;
   }
 
-  .yze.actor-sheet .equipped-panel {
-    grid-column: auto;
-  }
 }
 
 .vehicle-components-placeholder {
