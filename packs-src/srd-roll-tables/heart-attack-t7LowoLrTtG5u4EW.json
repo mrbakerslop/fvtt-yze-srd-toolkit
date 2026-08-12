@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Heart Attack",
-  "description": "<p>Your heart stops and you die of fright.</p>",
+  "description": "Your heart stops and you die of fright.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.KJulMWJ3QIYCGnkt",
   "img": "icons/svg/terror.svg",
   "range": [

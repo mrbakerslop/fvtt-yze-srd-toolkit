@@ -46,7 +46,7 @@
         "value": 0
       }
     ],
-    "description": "<p>Automatically hit for damage equal to the power level; armor applies but the attack cannot be parried or dodged.</p>",
+    "description": "Automatically hit for damage equal to the power level; armor applies but the attack cannot be parried or dodged.",
     "price": 0
   },
   "folder": "Ve4gxde1LtVRa0Ob",

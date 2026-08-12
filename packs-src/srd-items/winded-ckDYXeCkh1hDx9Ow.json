@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "11",
     "blocksActions": false,
-    "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+    "description": "Non-lethal; no ongoing effect; no healing time.",
     "price": 0,
     "effects": [],
     "recovery": {

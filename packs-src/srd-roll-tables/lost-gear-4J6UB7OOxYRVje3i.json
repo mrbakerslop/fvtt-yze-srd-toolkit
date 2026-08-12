@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Lost Gear",
-  "description": "<p>A random character loses a piece of gear selected by the GM.</p>",
+  "description": "A random character loses a piece of gear selected by the GM.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     9,

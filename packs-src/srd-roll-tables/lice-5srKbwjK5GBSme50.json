@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Lice",
-  "description": "<p>One character suffers daily stress or Empathy damage and cannot sleep until a Healing roll succeeds.</p>",
+  "description": "One character suffers daily stress or Empathy damage and cannot sleep until a Healing roll succeeds.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     6,

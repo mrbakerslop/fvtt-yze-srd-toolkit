@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Cracked Spine",
-  "description": "<p>Non-lethal. Paralyzed from the neck down; without a timely Healing roll the effect is permanent. Healing time 3D6 days.</p>",
+  "description": "Non-lethal. Paralyzed from the neck down; without a timely Healing roll the effect is permanent. Healing time 3D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.V7Y1w2im5DONitCw",
   "img": "icons/svg/blood.svg",
   "range": [

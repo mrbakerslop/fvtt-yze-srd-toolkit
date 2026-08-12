@@ -9,7 +9,7 @@
     "modifier": 0,
     "damage": 0,
     "range": "",
-    "description": "<p>The vehicle's primary engine or drive system.</p>",
+    "description": "The vehicle's primary engine or drive system.",
     "price": 0,
     "effects": [],
     "targetingSystem": false

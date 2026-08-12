@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d12",
-  "description": "<p>Roll D12 for critical vehicle component damage. The SRD also provides equivalent D66 ranges and D6 results for the first six entries.</p>",
+  "description": "Roll D12 for critical vehicle component damage. The SRD also provides equivalent D66 ranges and D6 results for the first six entries.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

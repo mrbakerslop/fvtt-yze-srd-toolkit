@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "56",
     "blocksActions": false,
-    "description": "<p>Roll Insight every shift; on failure the GM introduces a powerful hallucination. Healing time 3D6 days.</p>",
+    "description": "Roll Insight every shift; on failure the GM introduces a powerful hallucination. Healing time 3D6 days.",
     "price": 0,
     "effects": [
       {

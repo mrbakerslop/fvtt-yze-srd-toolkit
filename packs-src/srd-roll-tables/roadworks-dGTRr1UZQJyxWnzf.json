@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Roadworks",
-  "description": "<p>Hide, Block, and Cut Off are advantaged; Pursue/Flee and shooting are disadvantaged, and failed pursuit causes D3 vehicle damage.</p>",
+  "description": "Hide, Block, and Cut Off are advantaged; Pursue/Flee and shooting are disadvantaged, and failed pursuit causes D3 vehicle damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     7,

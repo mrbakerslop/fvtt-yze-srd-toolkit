@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Driver Hit",
-  "description": "<p>The driver suffers damage equal to that inflicted on the vehicle.</p>",
+  "description": "The driver suffers damage equal to that inflicted on the vehicle.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     4,

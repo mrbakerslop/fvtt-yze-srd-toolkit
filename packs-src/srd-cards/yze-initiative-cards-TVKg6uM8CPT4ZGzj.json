@@ -2,7 +2,7 @@
   "name": "YZE Initiative Cards",
   "type": "deck",
   "img": "icons/svg/card-joker.svg",
-  "description": "<p>Ten initiative cards numbered 1–10. Lower values act first. This editable world deck is available for manual draws; the Combat Tracker uses the same values without consuming these cards.</p>",
+  "description": "Ten initiative cards numbered 1–10. Lower values act first. This editable world deck is available for manual draws; the Combat Tracker uses the same values without consuming these cards.",
   "displayCount": true,
   "cards": [
     "UX9PvNjYufTYlaS2",

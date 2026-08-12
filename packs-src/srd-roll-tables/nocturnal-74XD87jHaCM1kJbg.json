@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Nocturnal",
-  "description": "<p>You can sleep only during the light part of the day; healing time 2D6 days.</p>",
+  "description": "You can sleep only during the light part of the day; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.jArMNriuYHEhcTsA",
   "img": "icons/svg/terror.svg",
   "range": [

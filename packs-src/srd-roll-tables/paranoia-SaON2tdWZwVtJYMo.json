@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Paranoia",
-  "description": "<p>You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.</p>",
+  "description": "You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.4FV6j3SO2C7qCGf0",
   "img": "icons/svg/terror.svg",
   "range": [

@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d10",
-  "description": "<p>Roll secretly after a failed attempt to make camp; re-roll inapplicable results.</p>",
+  "description": "Roll secretly after a failed attempt to make camp; re-roll inapplicable results.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

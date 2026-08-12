@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Dirty Fuel",
-  "description": "<p>Drain all fuel and refuel before continuing.</p>",
+  "description": "Drain all fuel and refuel before continuing.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

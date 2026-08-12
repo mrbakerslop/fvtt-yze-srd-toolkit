@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Alcoholic",
-  "description": "<p>Drink alcohol every day or suffer one stress or Agility damage; healing time 3D6 days.</p>",
+  "description": "Drink alcohol every day or suffer one stress or Agility damage; healing time 3D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.iDKpmepyF1TCUD93",
   "img": "icons/svg/terror.svg",
   "range": [

@@ -16,7 +16,7 @@
     "travelSpeedRoad": 8,
     "travelSpeedOffRoad": 6,
     "isAerial": false,
-    "description": "<p>An example vehicle from the Year Zero Engine SRD.</p>",
+    "description": "An example vehicle from the Year Zero Engine SRD.",
     "fuel": {
       "value": 0,
       "max": 0

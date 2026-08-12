@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "fish",
     "foodState": "raw",
-    "description": "<p>Uncooked fish. Eating it raw risks virulence 6/C food poisoning.</p>",
+    "description": "Uncooked fish. Eating it raw risks virulence 6/C food poisoning.",
     "price": 0,
     "effects": []
   },

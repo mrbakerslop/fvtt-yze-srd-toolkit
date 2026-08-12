@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>You can perform a coup de grace without first rolling Empathy.</p>",
+    "description": "You can perform a coup de grace without first rolling Empathy.",
     "price": 0,
     "used": false
   },

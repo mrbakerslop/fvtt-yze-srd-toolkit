@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Severed Leg Artery",
-  "description": "<p>Lethal with −1 to death saves, time limit one stretch. Movement becomes a slow action; healing time D6 days.</p>",
+  "description": "Lethal with −1 to death saves, time limit one stretch. Movement becomes a slow action; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.Xd1j3l5E4oliVXyF",
   "img": "icons/svg/blood.svg",
   "range": [

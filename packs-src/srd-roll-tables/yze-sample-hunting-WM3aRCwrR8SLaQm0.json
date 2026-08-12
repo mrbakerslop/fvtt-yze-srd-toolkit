@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d6",
-  "description": "<p>Roll D6 after successfully tracking prey.</p>",
+  "description": "Roll D6 after successfully tracking prey.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

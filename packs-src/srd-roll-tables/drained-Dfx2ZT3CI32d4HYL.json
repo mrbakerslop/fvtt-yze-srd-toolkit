@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Drained",
-  "description": "<p>Suffer one stress.</p>",
+  "description": "Suffer one stress.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

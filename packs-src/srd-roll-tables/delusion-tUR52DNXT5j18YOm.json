@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Delusion",
-  "description": "<p>You believe something entirely untrue; healing time 3D6 days.</p>",
+  "description": "You believe something entirely untrue; healing time 3D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.Edcv7bZ4YW9PGaMX",
   "img": "icons/svg/terror.svg",
   "range": [

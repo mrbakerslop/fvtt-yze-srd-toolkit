@@ -4,10 +4,6 @@ import {
   SRD_PHYSICAL_CRITICAL_INJURIES
 } from "./critical-injuries.mjs";
 
-function paragraph(text) {
-  return `<p>${text}</p>`;
-}
-
 export function specialtyItemEffects(effect) {
   const definitions = {
     bodyguard: [{ type: "hitInterception", target: "mobility", value: 0 }],
@@ -45,7 +41,7 @@ function specialty(name, description, bonus = 0, options = {}) {
       magicDiscipline: options.magicDiscipline ?? false,
       rank: options.rank ?? 0,
       effects: options.effects ?? specialtyItemEffects(options.effect ?? ""),
-      description: paragraph(description)
+      description
     }
   };
 }
@@ -74,7 +70,7 @@ function spell(name, discipline, rank, range, duration, description, options = {
       affectedAttributes: options.affectedAttributes ?? "",
       affectedSkills: options.affectedSkills ?? "",
       effects: options.effects ?? spellEffects(name),
-      description: paragraph(description)
+      description
     }
   };
 }
@@ -148,7 +144,7 @@ export const SRD_WEAPONS = [
     rateOfFire: firearm ? 2 : 0,
     fullAuto: false,
     telescopicSight: false,
-    description: paragraph("An example weapon from the Year Zero Engine SRD weapon table.")
+    description: "An example weapon from the Year Zero Engine SRD weapon table."
   }
   });
 });
@@ -179,7 +175,7 @@ export const SRD_GEAR = [
           value: -2
         }
       ],
-      description: paragraph("Carries additional regular items equal to the wearer's carry limit, but gives −2 to Mobility while carried.")
+      description: "Carries additional regular items equal to the wearer's carry limit, but gives −2 to Mobility while carried."
     }
   },
   {
@@ -191,7 +187,7 @@ export const SRD_GEAR = [
       weight: 1,
       equipped: false,
       bonus: 0,
-      description: paragraph("Casting a spell from a book or scroll treats its rank as one step lower. In combat, readying the grimoire costs a fast action.")
+      description: "Casting a spell from a book or scroll treats its rank as one step lower. In combat, readying the grimoire costs a fast action."
     }
   },
   {
@@ -203,7 +199,7 @@ export const SRD_GEAR = [
       weight: 0.25,
       equipped: false,
       bonus: 0,
-      description: paragraph("Simple trapping gear used to catch suitable prey after a successful hunting roll.")
+      description: "Simple trapping gear used to catch suitable prey after a successful hunting roll."
     }
   }
 ];
@@ -230,7 +226,7 @@ export const SRD_CONSUMABLES = [
     supply: 0,
     foodType,
     foodState,
-    description: paragraph(description)
+    description
   }
 }));
 
@@ -258,7 +254,7 @@ export const SRD_VEHICLES = [
     travelSpeedRoad,
     travelSpeedOffRoad,
     isAerial: name === "Helicopter",
-    description: paragraph("An example vehicle from the Year Zero Engine SRD.")
+    description: "An example vehicle from the Year Zero Engine SRD."
   }
 }));
 
@@ -500,7 +496,7 @@ export const SRD_VEHICLE_COMPONENTS = [
     img: "icons/svg/gear.svg",
     system: {
       componentType: "engine", active: true, damaged: false, modifier: 0,
-      damage: 0, range: "", description: paragraph("The vehicle's primary engine or drive system.")
+      damage: 0, range: "", description: "The vehicle's primary engine or drive system."
     }
   },
   {
@@ -509,7 +505,7 @@ export const SRD_VEHICLE_COMPONENTS = [
     img: "icons/svg/wing.svg",
     system: {
       componentType: "mobility", active: true, damaged: false, modifier: 1,
-      damage: 0, range: "", description: paragraph("Agile controls granting +1 to vehicle manoeuvre rolls while operational.")
+      damage: 0, range: "", description: "Agile controls granting +1 to vehicle manoeuvre rolls while operational."
     }
   },
   {
@@ -518,7 +514,7 @@ export const SRD_VEHICLE_COMPONENTS = [
     img: "icons/svg/explosion.svg",
     system: {
       componentType: "weapon", active: true, damaged: false, modifier: 0,
-      damage: 2, range: "long", description: paragraph("An example vehicle-mounted weapon. Configure its damage and range for the setting.")
+      damage: 2, range: "long", description: "An example vehicle-mounted weapon. Configure its damage and range for the setting."
     }
   }
 ];

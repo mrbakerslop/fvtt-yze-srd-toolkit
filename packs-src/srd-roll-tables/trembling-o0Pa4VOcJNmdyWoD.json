@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Trembling",
-  "description": "<p>Modifier −1 on all Agility-based rolls; healing time D6 days.</p>",
+  "description": "Modifier −1 on all Agility-based rolls; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.HC8Dbt7kbY48umqi",
   "img": "icons/svg/terror.svg",
   "range": [

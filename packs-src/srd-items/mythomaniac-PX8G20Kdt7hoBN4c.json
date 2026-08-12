@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "52",
     "blocksActions": false,
-    "description": "<p>You cannot stop lying and must roleplay the effect; healing time 2D6 days.</p>",
+    "description": "You cannot stop lying and must roleplay the effect; healing time 2D6 days.",
     "price": 0,
     "effects": [],
     "recovery": {

@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Ruptured Intestines",
-  "description": "<p>Lethal, time limit one shift. Disease with virulence 6; healing time 2D6 days.</p>",
+  "description": "Lethal, time limit one shift. Disease with virulence 6; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.vDHMoPQIgAkvY1xE",
   "img": "icons/svg/blood.svg",
   "range": [

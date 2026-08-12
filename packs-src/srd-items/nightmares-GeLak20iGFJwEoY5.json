@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "32–35",
     "blocksActions": false,
-    "description": "<p>Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.</p>",
+    "description": "Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.",
     "price": 0,
     "effects": [
       {

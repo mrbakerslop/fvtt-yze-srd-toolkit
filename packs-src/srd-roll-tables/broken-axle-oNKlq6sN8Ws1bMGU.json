@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Broken Axle",
-  "description": "<p>The vehicle is inoperable until a shift of repairs and a successful Crafting roll.</p>",
+  "description": "The vehicle is inoperable until a shift of repairs and a successful Crafting roll.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

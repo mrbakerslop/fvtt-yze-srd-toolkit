@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>Your critical injuries take half the normal time to heal.</p>",
+    "description": "Your critical injuries take half the normal time to heal.",
     "price": 0,
     "used": false
   },

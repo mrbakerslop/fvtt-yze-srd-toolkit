@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Engine Disabled",
-  "description": "<p>The vehicle cannot continue; an aerial vehicle can descend one altitude zone per round.</p>",
+  "description": "The vehicle cannot continue; an aerial vehicle can descend one altitude zone per round.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     11,

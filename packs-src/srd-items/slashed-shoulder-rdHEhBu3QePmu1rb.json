@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "26",
     "blocksActions": false,
-    "description": "<p>Non-lethal. The arm cannot be used; healing time D6 days.</p>",
+    "description": "Non-lethal. The arm cannot be used; healing time D6 days.",
     "price": 0,
     "effects": [
       {

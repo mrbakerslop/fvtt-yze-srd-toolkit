@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "64",
     "blocksActions": false,
-    "description": "<p>Lethal. Your story ends here.</p>",
+    "description": "Lethal. Your story ends here.",
     "price": 0,
     "effects": [],
     "recovery": {

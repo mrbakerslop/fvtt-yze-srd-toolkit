@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Savage Animal",
-  "description": "<p>A starving wolf, dog, boar, or bear attacks.</p>",
+  "description": "A starving wolf, dog, boar, or bear attacks.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

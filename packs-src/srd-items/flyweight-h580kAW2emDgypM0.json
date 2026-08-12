@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>When blocking in close combat, you may use Agility instead of Strength.</p>",
+    "description": "When blocking in close combat, you may use Agility instead of Strength.",
     "price": 0,
     "used": false
   },

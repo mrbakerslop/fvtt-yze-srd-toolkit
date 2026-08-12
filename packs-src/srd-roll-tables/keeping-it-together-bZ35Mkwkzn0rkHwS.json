@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Keeping It Together",
-  "description": "<p>You barely keep your nerves in check.</p>",
+  "description": "You barely keep your nerves in check.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

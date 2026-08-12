@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Old Man",
-  "description": "<p>The pursuer must pay or pass Force; failure cancels their maneuver.</p>",
+  "description": "The pursuer must pay or pass Force; failure cancels their maneuver.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     7,

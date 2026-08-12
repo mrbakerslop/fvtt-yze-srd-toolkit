@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>Draw two initiative cards and choose which one to use.</p>",
+    "description": "Draw two initiative cards and choose which one to use.",
     "price": 0,
     "used": false
   },

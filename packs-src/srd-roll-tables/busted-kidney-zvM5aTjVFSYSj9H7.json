@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Busted Kidney",
-  "description": "<p>Lethal, time limit one day. Mobility −2 and movement is a slow action; healing time 2D6 days.</p>",
+  "description": "Lethal, time limit one day. Mobility −2 and movement is a slow action; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ttEI4S6n72W3n6c9",
   "img": "icons/svg/blood.svg",
   "range": [

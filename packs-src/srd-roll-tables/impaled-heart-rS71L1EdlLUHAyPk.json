@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Impaled Heart",
-  "description": "<p>Lethal. Your heart beats for the last time.</p>",
+  "description": "Lethal. Your heart beats for the last time.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.kxjXZLpG69g3Dlns",
   "img": "icons/svg/blood.svg",
   "range": [

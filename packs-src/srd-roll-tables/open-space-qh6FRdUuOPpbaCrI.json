@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Open Space",
-  "description": "<p>Stand and Shoot gains +2 while Hide suffers −2.</p>",
+  "description": "Stand and Shoot gains +2 while Hide suffers −2.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     9,

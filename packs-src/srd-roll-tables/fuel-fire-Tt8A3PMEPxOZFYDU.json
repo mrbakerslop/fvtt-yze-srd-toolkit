@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Fuel Fire",
-  "description": "<p>The vehicle and everyone inside are exposed to intensity 6/C fire.</p>",
+  "description": "The vehicle and everyone inside are exposed to intensity 6/C fire.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

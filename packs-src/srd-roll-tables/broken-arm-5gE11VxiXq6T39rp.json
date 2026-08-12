@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Broken Arm",
-  "description": "<p>Non-lethal. The arm cannot be used; healing time 2D6 days.</p>",
+  "description": "Non-lethal. The arm cannot be used; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.9IdJWL12XD3O0hM0",
   "img": "icons/svg/blood.svg",
   "range": [

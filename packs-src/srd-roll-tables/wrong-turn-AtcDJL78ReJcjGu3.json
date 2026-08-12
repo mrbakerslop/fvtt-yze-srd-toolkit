@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Wrong Turn",
-  "description": "<p>Lose one hex of movement this shift.</p>",
+  "description": "Lose one hex of movement this shift.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     7,

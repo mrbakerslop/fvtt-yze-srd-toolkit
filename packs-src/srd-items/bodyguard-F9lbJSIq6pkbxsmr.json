@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>When someone within Short range is hit, roll Mobility without spending an action. On a success, you take the hit instead; the roll can be pushed.</p>",
+    "description": "When someone within Short range is hit, roll Mobility without spending an action. On a success, you take the hit instead; the roll can be pushed.",
     "price": 0,
     "used": false
   },

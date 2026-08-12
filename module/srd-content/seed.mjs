@@ -9,7 +9,7 @@ import {
 } from "./items.mjs";
 import { SRD_CRITICAL_INJURIES } from "./critical-injuries.mjs";
 
-const SRD_CONTENT_VERSION = 25;
+const SRD_CONTENT_VERSION = 26;
 
 const MAGIC_DISCIPLINES = new Set([
   "awareness", "healing", "shapeshifting", "blood magic",
@@ -22,6 +22,60 @@ function normalize(value) {
 
 function contentKey(documentType, type, name) {
   return `${documentType}:${type}:${normalize(name).replaceAll(/[^a-z0-9]+/g, "-")}`;
+}
+
+function plainSrdDescription(value) {
+  const match = String(value ?? "").match(/^<p>([^<>]*)<\/p>$/i);
+  return match?.[1] ?? null;
+}
+
+async function migrateSrdDescriptions() {
+  const updateDocument = async (document, path, value) => {
+    if (!document.getFlag(SYSTEM_ID, "srdKey")) return;
+    const description = plainSrdDescription(value);
+    if (description !== null) await document.update({ [path]: description });
+  };
+
+  for (const actor of game.actors) {
+    await updateDocument(actor, "system.description", actor._source?.system?.description);
+    const updates = actor.items
+      .filter((item) => item.getFlag(SYSTEM_ID, "srdKey"))
+      .map((item) => ({
+        _id: item.id,
+        description: plainSrdDescription(item._source?.system?.description)
+      }))
+      .filter((update) => update.description !== null)
+      .map(({ _id, description }) => ({ _id, "system.description": description }));
+    if (updates.length > 0) await actor.updateEmbeddedDocuments("Item", updates);
+  }
+
+  for (const item of game.items) {
+    await updateDocument(item, "system.description", item._source?.system?.description);
+  }
+
+  for (const table of game.tables) {
+    await updateDocument(table, "description", table._source?.description);
+    if (!table.getFlag(SYSTEM_ID, "srdKey")) continue;
+    const updates = [...table.results]
+      .map((result) => ({
+        _id: result.id,
+        description: plainSrdDescription(result._source?.description)
+      }))
+      .filter((update) => update.description !== null);
+    if (updates.length > 0) await table.updateEmbeddedDocuments("TableResult", updates);
+  }
+
+  for (const deck of game.cards) {
+    await updateDocument(deck, "description", deck._source?.description);
+    if (!deck.getFlag(SYSTEM_ID, "srdKey")) continue;
+    const updates = [...deck.cards]
+      .map((card) => ({
+        _id: card.id,
+        description: plainSrdDescription(card._source?.description)
+      }))
+      .filter((update) => update.description !== null);
+    if (updates.length > 0) await deck.updateEmbeddedDocuments("Card", updates);
+  }
 }
 
 async function migrateCriticalInjuryItems() {
@@ -534,6 +588,7 @@ export async function migrateWorldData({ force = false } = {}) {
   if (force || currentVersion < 13) await migrateEquipmentMechanics();
   if (force || currentVersion < 24) await migrateBackpackEffects();
   if (force || currentVersion < 25) await migrateCriticalInjuryEffects();
+  if (force || currentVersion < 26) await migrateSrdDescriptions();
   if (force || currentVersion < 16) await migrateUniversalItemEffects();
   if (force || currentVersion < 22) await migrateExperienceLedgers();
   if (force || currentVersion < 23) await removeObsoleteReferenceJournal();

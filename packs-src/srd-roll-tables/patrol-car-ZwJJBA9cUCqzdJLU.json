@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Patrol Car",
-  "description": "<p>Pursue/Flee, Hide, and Stand and Shoot are disadvantaged; shooters are fired upon by police.</p>",
+  "description": "Pursue/Flee, Hide, and Stand and Shoot are disadvantaged; shooters are fired upon by police.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

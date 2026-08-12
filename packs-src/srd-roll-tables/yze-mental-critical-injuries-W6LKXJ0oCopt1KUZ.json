@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d6 * 10 + 1d6",
-  "description": "<p>Roll D66 for a mental critical injury. Drag the resulting Item from chat onto a Character or NPC sheet.</p>",
+  "description": "Roll D66 for a mental critical injury. Drag the resulting Item from chat onto a Character or NPC sheet.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Wheel Blown",
-  "description": "<p>A wheel or thruster is destroyed, giving −2 to driving rolls.</p>",
+  "description": "A wheel or thruster is destroyed, giving −2 to driving rolls.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     6,

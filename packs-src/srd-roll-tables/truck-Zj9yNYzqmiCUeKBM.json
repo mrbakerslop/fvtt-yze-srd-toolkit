@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Truck",
-  "description": "<p>Cut Off is advantaged; Pursue/Flee is disadvantaged and failure causes D6 vehicle damage.</p>",
+  "description": "Cut Off is advantaged; Pursue/Flee is disadvantaged and failure causes D6 vehicle damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     9,

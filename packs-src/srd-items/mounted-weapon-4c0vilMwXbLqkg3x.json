@@ -9,7 +9,7 @@
     "modifier": 0,
     "damage": 2,
     "range": "long",
-    "description": "<p>An example vehicle-mounted weapon. Configure its damage and range for the setting.</p>",
+    "description": "An example vehicle-mounted weapon. Configure its damage and range for the setting.",
     "price": 0,
     "effects": [],
     "targetingSystem": false

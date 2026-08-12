@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Ravaged Mind",
-  "description": "<p>Immediately roll a mental critical injury.</p>",
+  "description": "Immediately roll a mental critical injury.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "41",
     "blocksActions": false,
-    "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+    "description": "Non-lethal. Movement becomes a slow action; healing time 2D6 days.",
     "price": 0,
     "effects": [
       {

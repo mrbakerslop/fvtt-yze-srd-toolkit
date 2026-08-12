@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d6",
-  "description": "<p>Roll D6 and add the character's current stress. Foundry cannot infer an Actor's stress in a directory RollTable, so add it to the displayed D6 result or temporarily change the formula to 1d6 + X.</p>",
+  "description": "Roll D6 and add the character's current stress. Foundry cannot infer an Actor's stress in a directory RollTable, so add it to the displayed D6 result or temporarily change the formula to 1d6 + X.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

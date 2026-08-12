@@ -9,7 +9,7 @@
     "modifier": 1,
     "damage": 0,
     "range": "",
-    "description": "<p>Agile controls granting +1 to vehicle manoeuvre rolls while operational.</p>",
+    "description": "Agile controls granting +1 to vehicle manoeuvre rolls while operational.",
     "price": 0,
     "effects": [],
     "targetingSystem": false

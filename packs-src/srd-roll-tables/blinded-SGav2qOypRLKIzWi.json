@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Blinded",
-  "description": "<p>Act as if in complete darkness for one full day.</p>",
+  "description": "Act as if in complete darkness for one full day.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     7,

@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Catatonic",
-  "description": "<p>You stare into oblivion and respond to no stimuli; healing time D6 days.</p>",
+  "description": "You stare into oblivion and respond to no stimuli; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.4y039bmKtqalteqn",
   "img": "icons/svg/terror.svg",
   "range": [

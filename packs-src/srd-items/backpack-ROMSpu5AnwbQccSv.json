@@ -7,7 +7,7 @@
     "weight": 0,
     "equipped": false,
     "bonus": 0,
-    "description": "<p>Carries additional regular items equal to the wearer's carry limit, but gives −2 to Mobility while carried.</p>",
+    "description": "Carries additional regular items equal to the wearer's carry limit, but gives −2 to Mobility while carried.",
     "maxBonus": 0,
     "price": 0,
     "effects": [

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Crash",
-  "description": "<p>The vehicle suffers damage equal to its travel speed rating.</p>",
+  "description": "The vehicle suffers damage equal to its travel speed rating.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     11,

@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>When you suffer a critical injury, re-roll and choose the preferred result.</p>",
+    "description": "When you suffer a critical injury, re-roll and choose the preferred result.",
     "price": 0,
     "used": false
   },

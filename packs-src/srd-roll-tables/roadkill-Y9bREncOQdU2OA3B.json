@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Roadkill",
-  "description": "<p>Hit a random hunting-table animal. It dies and damages the vehicle by half its hit capacity, rounded up.</p>",
+  "description": "Hit a random hunting-table animal. It dies and damages the vehicle by half its hit capacity, rounded up.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

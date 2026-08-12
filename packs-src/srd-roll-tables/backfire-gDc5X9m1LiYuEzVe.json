@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Backfire",
-  "description": "<p>The spell reverses, harms, corrupts, or turns against the caster as the GM decides.</p>",
+  "description": "The spell reverses, harms, corrupts, or turns against the caster as the GM decides.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     11,

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Seek Cover",
-  "description": "<p>Use your next action to escape danger and find safety. Lose one stress, but nearby PCs gain one; act normally after one round.</p>",
+  "description": "Use your next action to escape danger and find safety. Lose one stress, but nearby PCs gain one; act normally after one round.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     11,

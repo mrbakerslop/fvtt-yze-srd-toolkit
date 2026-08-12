@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "54",
     "blocksActions": false,
-    "description": "<p>Lethal with −1 to death saves, time limit one shift. The arm cannot be used; permanent.</p>",
+    "description": "Lethal with −1 to death saves, time limit one shift. The arm cannot be used; permanent.",
     "price": 0,
     "effects": [
       {

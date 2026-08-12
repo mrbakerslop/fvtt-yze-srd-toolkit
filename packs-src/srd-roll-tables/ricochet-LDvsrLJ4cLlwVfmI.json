@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Ricochet",
-  "description": "<p>The attack strikes another random target in the same zone for the same damage.</p>",
+  "description": "The attack strikes another random target in the same zone for the same damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

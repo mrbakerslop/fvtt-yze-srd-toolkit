@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Hurt",
-  "description": "<p>Suffer one damage.</p>",
+  "description": "Suffer one damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

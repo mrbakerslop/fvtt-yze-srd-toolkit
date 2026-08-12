@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "none",
     "foodState": "safe",
-    "description": "<p>A limited supply of breathable air.</p>",
+    "description": "A limited supply of breathable air.",
     "price": 0,
     "effects": []
   },

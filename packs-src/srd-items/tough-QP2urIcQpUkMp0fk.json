@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>Increase maximum Health by 1. This specialty may be taken up to three times.</p>",
+    "description": "Increase maximum Health by 1. This specialty may be taken up to three times.",
     "price": 0,
     "used": false
   },

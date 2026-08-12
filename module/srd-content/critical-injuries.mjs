@@ -124,7 +124,7 @@ function injury(category, range, name, effect, automation = {}) {
       rollRange: rollRange[0] === rollRange[1] ? String(rollRange[0]) : `${rollRange[0]}–${rollRange[1]}`,
       blocksActions: automation.blocksActions ?? false,
       effects: injuryEffects(automation),
-      description: `<p>${effect}</p>`
+      description: effect
     })
   });
 }

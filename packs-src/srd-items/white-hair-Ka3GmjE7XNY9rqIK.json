@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "21",
     "blocksActions": false,
-    "description": "<p>No mechanical effect; permanent.</p>",
+    "description": "No mechanical effect; permanent.",
     "price": 0,
     "effects": [],
     "recovery": {

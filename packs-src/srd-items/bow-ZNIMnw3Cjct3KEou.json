@@ -20,7 +20,7 @@
     "rateOfFire": 0,
     "fullAuto": false,
     "telescopicSight": false,
-    "description": "<p>An example weapon from the Year Zero Engine SRD weapon table.</p>",
+    "description": "An example weapon from the Year Zero Engine SRD weapon table.",
     "maxBonus": 1,
     "price": 0,
     "effects": [],

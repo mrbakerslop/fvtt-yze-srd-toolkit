@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Food Spoiled",
-  "description": "<p>Half of the group's carried rations spoil.</p>",
+  "description": "Half of the group's carried rations spoil.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

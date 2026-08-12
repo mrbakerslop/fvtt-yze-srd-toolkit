@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>Use Strength instead of Empathy for Persuasion rolls made to threaten someone.</p>",
+    "description": "Use Strength instead of Empathy for Persuasion rolls made to threaten someone.",
     "price": 0,
     "used": false
   },

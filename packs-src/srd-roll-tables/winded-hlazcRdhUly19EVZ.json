@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Winded",
-  "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+  "description": "Non-lethal; no ongoing effect; no healing time.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ckDYXeCkh1hDx9Ow",
   "img": "icons/svg/blood.svg",
   "range": [

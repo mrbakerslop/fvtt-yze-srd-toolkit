@@ -35,7 +35,7 @@
         "multiplier": 0
       }
     ],
-    "description": "<p>Use Empathy instead of Wits when rolling Observation to detect an approaching threat.</p>",
+    "description": "Use Empathy instead of Wits when rolling Observation to detect an approaching threat.",
     "price": 0,
     "used": false
   },

@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d10",
-  "description": "<p>Roll once per chase round to generate a foot-chase obstacle.</p>",
+  "description": "Roll once per chase round to generate a foot-chase obstacle.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

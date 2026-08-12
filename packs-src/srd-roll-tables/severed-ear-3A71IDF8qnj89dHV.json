@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Severed Ear",
-  "description": "<p>Non-lethal. Observation −2; healing time D6 days.</p>",
+  "description": "Non-lethal. Observation −2; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.rARypjFY39TH5mAk",
   "img": "icons/svg/blood.svg",
   "range": [

@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Severed Arm",
-  "description": "<p>Lethal with −1 to death saves, time limit one shift. The arm cannot be used; permanent.</p>",
+  "description": "Lethal with −1 to death saves, time limit one shift. The arm cannot be used; permanent.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.OWEP1JtPtxH1tsca",
   "img": "icons/svg/blood.svg",
   "range": [

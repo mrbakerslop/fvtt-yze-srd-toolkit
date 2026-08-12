@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Stunned",
-  "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+  "description": "Non-lethal; no ongoing effect; no healing time.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.vT8Q7U8eRnlMqXwD",
   "img": "icons/svg/blood.svg",
   "range": [

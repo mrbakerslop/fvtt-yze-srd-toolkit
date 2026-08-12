@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "31",
     "blocksActions": false,
-    "description": "<p>Non-lethal. Persuasion and Observation −1; healing time D6 days.</p>",
+    "description": "Non-lethal. Persuasion and Observation −1; healing time D6 days.",
     "price": 0,
     "effects": [
       {

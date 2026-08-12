@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "45",
     "blocksActions": false,
-    "description": "<p>Lethal, time limit one shift. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.</p>",
+    "description": "Lethal, time limit one shift. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.",
     "price": 0,
     "effects": [
       {

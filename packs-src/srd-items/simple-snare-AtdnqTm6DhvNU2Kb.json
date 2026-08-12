@@ -7,7 +7,7 @@
     "weight": 0.25,
     "equipped": false,
     "bonus": 0,
-    "description": "<p>Simple trapping gear used to catch suitable prey after a successful hunting roll.</p>",
+    "description": "Simple trapping gear used to catch suitable prey after a successful hunting roll.",
     "maxBonus": 0,
     "price": 0,
     "effects": [],

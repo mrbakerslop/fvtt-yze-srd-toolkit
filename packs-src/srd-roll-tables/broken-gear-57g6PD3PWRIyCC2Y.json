@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Broken Gear",
-  "description": "<p>A random character's item breaks and requires a Crafting roll to repair.</p>",
+  "description": "A random character's item breaks and requires a Crafting roll to repair.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     10,

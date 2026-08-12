@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Scream",
-  "description": "<p>Lose your next turn screaming. Lose one stress; every PC who hears you makes an immediate panic roll.</p>",
+  "description": "Lose your next turn screaming. Lose one stress; every PC who hears you makes an immediate panic roll.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     12,

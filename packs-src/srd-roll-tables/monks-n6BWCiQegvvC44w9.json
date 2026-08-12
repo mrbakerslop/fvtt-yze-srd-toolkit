@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Monks",
-  "description": "<p>The prey must Persuade them to move. Success gives Hide +2; failure cancels the maneuver.</p>",
+  "description": "The prey must Persuade them to move. Success gives Hide +2; failure cancels the maneuver.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

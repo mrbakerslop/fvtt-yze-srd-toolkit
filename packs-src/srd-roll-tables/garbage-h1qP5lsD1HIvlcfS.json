@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Garbage",
-  "description": "<p>Pursue/Flee suffers −2 while Block gains +2.</p>",
+  "description": "Pursue/Flee suffers −2 while Block gains +2.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

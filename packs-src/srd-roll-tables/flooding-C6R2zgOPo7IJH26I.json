@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Flooding",
-  "description": "<p>The camp floods. Everyone rolls Stamina against cold and nobody sleeps.</p>",
+  "description": "The camp floods. Everyone rolls Stamina against cold and nobody sleeps.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

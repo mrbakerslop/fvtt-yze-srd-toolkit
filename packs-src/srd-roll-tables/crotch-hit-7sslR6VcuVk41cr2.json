@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Crotch Hit",
-  "description": "<p>Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.</p>",
+  "description": "Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.DDXo2Ye3KglBaLTy",
   "img": "icons/svg/blood.svg",
   "range": [

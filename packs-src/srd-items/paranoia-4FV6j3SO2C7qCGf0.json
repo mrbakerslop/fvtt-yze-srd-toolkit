@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "53–54",
     "blocksActions": false,
-    "description": "<p>You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.</p>",
+    "description": "You are certain someone is out to get you and must roleplay the effect; healing time 2D6 days.",
     "price": 0,
     "effects": [],
     "recovery": {

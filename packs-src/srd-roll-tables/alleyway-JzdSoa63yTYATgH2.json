@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Alleyway",
-  "description": "<p>Pass a separate driving roll or wreck. A driver can cancel their maneuver to proceed safely.</p>",
+  "description": "Pass a separate driving roll or wreck. A driver can cancel their maneuver to proceed safely.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     10,

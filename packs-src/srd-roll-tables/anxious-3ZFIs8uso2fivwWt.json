@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Anxious",
-  "description": "<p>Modifier −1 on all Wits-based rolls; healing time D6 days.</p>",
+  "description": "Modifier −1 on all Wits-based rolls; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.TOw4Ou1zrZv0xqdm",
   "img": "icons/svg/terror.svg",
   "range": [

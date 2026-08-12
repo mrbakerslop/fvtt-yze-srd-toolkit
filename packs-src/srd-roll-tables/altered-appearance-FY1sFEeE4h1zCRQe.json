@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Altered Appearance",
-  "description": "<p>Your appearance changes permanently as the GM decides.</p>",
+  "description": "Your appearance changes permanently as the GM decides.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     6,

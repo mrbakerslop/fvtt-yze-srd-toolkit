@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "plants",
     "foodState": "raw",
-    "description": "<p>Foraged plants. Eating them raw risks virulence 3/D food poisoning.</p>",
+    "description": "Foraged plants. Eating them raw risks virulence 3/D food poisoning.",
     "price": 0,
     "effects": []
   },

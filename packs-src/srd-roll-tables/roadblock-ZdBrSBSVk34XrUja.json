@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Roadblock",
-  "description": "<p>Choose another hex or spend a shift and pass Force to clear the obstruction.</p>",
+  "description": "Choose another hex or spend a shift and pass Force to clear the obstruction.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

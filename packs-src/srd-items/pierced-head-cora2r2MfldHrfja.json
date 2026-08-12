@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "65",
     "blocksActions": false,
-    "description": "<p>Lethal. You die immediately.</p>",
+    "description": "Lethal. You die immediately.",
     "price": 0,
     "effects": [],
     "recovery": {

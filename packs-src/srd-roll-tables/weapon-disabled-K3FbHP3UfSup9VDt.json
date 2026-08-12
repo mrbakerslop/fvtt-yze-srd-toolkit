@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Weapon Disabled",
-  "description": "<p>A random mounted weapon is disabled; re-roll if none are present.</p>",
+  "description": "A random mounted weapon is disabled; re-roll if none are present.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     9,

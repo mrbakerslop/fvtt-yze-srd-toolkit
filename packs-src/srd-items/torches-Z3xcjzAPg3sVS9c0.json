@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "none",
     "foodState": "safe",
-    "description": "<p>A supply of portable light sources.</p>",
+    "description": "A supply of portable light sources.",
     "price": 0,
     "effects": []
   },

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Deer",
-  "description": "<p>Health 2; cannot be trapped; yields 2D6 food rations.</p>",
+  "description": "Health 2; cannot be trapped; yields 2D6 food rations.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     4,

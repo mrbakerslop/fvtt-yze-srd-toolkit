@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>Gain +1 to single-shot Marksmanship rolls from a hidden position at Long or greater range.</p>",
+    "description": "Gain +1 to single-shot Marksmanship rolls from a hidden position at Long or greater range.",
     "price": 0,
     "used": false
   },

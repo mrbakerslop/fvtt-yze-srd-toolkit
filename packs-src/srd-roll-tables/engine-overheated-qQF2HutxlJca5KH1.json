@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Engine Overheated",
-  "description": "<p>Stop for the remainder of the shift.</p>",
+  "description": "Stop for the remainder of the shift.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     9,

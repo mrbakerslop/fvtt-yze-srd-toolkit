@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>Choose a weapon type and gain +1 when using it. This may be taken once for each weapon type, including unarmed combat.</p>",
+    "description": "Choose a weapon type and gain +1 when using it. This may be taken once for each weapon type, including unarmed combat.",
     "price": 0,
     "used": false
   },

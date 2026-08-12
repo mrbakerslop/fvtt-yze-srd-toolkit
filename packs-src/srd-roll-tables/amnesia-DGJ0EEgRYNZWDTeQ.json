@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Amnesia",
-  "description": "<p>You lose all memory of yourself and the other PCs; healing time D6 days.</p>",
+  "description": "You lose all memory of yourself and the other PCs; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.U8sHCxoFLmGDPNfa",
   "img": "icons/svg/terror.svg",
   "range": [

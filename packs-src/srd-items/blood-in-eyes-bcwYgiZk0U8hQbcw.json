@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "15",
     "blocksActions": false,
-    "description": "<p>Non-lethal. Observation and Marksmanship −2 until a Healing roll is made; no healing time.</p>",
+    "description": "Non-lethal. Observation and Marksmanship −2 until a Healing roll is made; no healing time.",
     "price": 0,
     "effects": [
       {

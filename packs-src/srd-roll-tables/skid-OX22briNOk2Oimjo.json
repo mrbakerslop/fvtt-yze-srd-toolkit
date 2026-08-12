@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Skid",
-  "description": "<p>The driver immediately rolls their driving skill; failure costs their next turn.</p>",
+  "description": "The driver immediately rolls their driving skill; failure costs their next turn.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

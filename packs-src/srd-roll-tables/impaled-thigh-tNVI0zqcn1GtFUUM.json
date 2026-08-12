@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Impaled Thigh",
-  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 2D6 days.</p>",
+  "description": "Non-lethal. Movement becomes a slow action; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.tZ8cAmMFj6P38AKL",
   "img": "icons/svg/blood.svg",
   "range": [

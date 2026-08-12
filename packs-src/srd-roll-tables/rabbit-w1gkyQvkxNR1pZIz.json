@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Rabbit",
-  "description": "<p>Health 1; can be trapped; yields 1 food ration.</p>",
+  "description": "Health 1; can be trapped; yields 1 food ration.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

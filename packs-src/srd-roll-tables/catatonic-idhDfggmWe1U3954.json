@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Catatonic",
-  "description": "<p>Collapse, unable to speak or move, and stare blankly into oblivion.</p>",
+  "description": "Collapse, unable to speak or move, and stare blankly into oblivion.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     15,

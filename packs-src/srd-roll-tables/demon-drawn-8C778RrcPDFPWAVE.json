@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Demon Drawn",
-  "description": "<p>A demon arrives within the next shift and causes trouble.</p>",
+  "description": "A demon arrives within the next shift and causes trouble.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     10,

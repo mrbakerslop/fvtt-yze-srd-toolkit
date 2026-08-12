@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Blown Tire",
-  "description": "<p>The vehicle stops; repair needs Crafting +2, with one attempt per shift.</p>",
+  "description": "The vehicle stops; repair needs Crafting +2, with one attempt per shift.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     10,

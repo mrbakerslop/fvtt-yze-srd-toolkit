@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Crushed Foot",
-  "description": "<p>Non-lethal. Movement becomes a slow action; healing time 3D6 days.</p>",
+  "description": "Non-lethal. Movement becomes a slow action; healing time 3D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.pQDqrHfgHa56G41w",
   "img": "icons/svg/blood.svg",
   "range": [

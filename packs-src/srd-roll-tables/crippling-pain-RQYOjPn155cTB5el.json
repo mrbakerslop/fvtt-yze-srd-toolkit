@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Crippling Pain",
-  "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
+  "description": "Non-lethal; no ongoing effect; no healing time.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.FANn9vbop2mNsYRu",
   "img": "icons/svg/blood.svg",
   "range": [

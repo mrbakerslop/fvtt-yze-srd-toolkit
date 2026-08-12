@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "none",
     "foodState": "safe",
-    "description": "<p>A general supply of firearm ammunition.</p>",
+    "description": "A general supply of firearm ammunition.",
     "price": 0,
     "effects": []
   },

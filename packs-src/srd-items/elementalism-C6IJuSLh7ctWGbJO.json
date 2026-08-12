@@ -10,7 +10,7 @@
     "magicDiscipline": true,
     "rank": 1,
     "effects": [],
-    "description": "<p>A magic discipline manipulating earth, air, fire, and water.</p>",
+    "description": "A magic discipline manipulating earth, air, fire, and water.",
     "price": 0,
     "used": false
   },

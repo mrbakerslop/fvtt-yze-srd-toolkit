@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "61",
     "blocksActions": false,
-    "description": "<p>Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.</p>",
+    "description": "Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.",
     "price": 0,
     "effects": [
       {

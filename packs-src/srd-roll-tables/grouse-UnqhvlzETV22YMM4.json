@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Grouse",
-  "description": "<p>Health 1; cannot be trapped; yields 1 food ration.</p>",
+  "description": "Health 1; cannot be trapped; yields 1 food ration.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

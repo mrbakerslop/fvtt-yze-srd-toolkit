@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Fire Dies",
-  "description": "<p>The campfire goes out; unless it is warm, everyone rolls Stamina against cold.</p>",
+  "description": "The campfire goes out; unless it is warm, everyone rolls Stamina against cold.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

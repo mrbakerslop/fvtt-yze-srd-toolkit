@@ -46,7 +46,7 @@
         "value": 0
       }
     ],
-    "description": "<p>Command one animal, subject to its Strength, state, and the requested behavior.</p>",
+    "description": "Command one animal, subject to its Strength, state, and the requested behavior.",
     "price": 0
   },
   "folder": "Ve4gxde1LtVRa0Ob",

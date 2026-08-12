@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Hallucinations",
-  "description": "<p>Roll Insight every shift; on failure the GM introduces a powerful hallucination. Healing time 3D6 days.</p>",
+  "description": "Roll Insight every shift; on failure the GM introduces a powerful hallucination. Healing time 3D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.uOAYrPSEsmOBrOVY",
   "img": "icons/svg/terror.svg",
   "range": [

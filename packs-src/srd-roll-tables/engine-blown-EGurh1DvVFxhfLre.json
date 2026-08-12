@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Engine Blown",
-  "description": "<p>The vehicle is wrecked.</p>",
+  "description": "The vehicle is wrecked.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     12,

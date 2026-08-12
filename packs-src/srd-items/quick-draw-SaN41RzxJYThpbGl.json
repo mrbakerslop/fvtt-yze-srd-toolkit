@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>Drawing a weapon does not cost an action.</p>",
+    "description": "Drawing a weapon does not cost an action.",
     "price": 0,
     "used": false
   },

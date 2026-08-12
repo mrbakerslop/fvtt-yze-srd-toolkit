@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>Gain +1 to Healing when treating someone who is about to die from a critical injury.</p>",
+    "description": "Gain +1 to Healing when treating someone who is about to die from a critical injury.",
     "price": 0,
     "used": false
   },

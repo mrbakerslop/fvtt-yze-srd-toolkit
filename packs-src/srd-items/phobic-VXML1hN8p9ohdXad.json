@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "42–43",
     "blocksActions": false,
-    "description": "<p>Fear an object related to what broke you and suffer one stress or Wits damage each round within Short range of it. Healing time 2D6 days.</p>",
+    "description": "Fear an object related to what broke you and suffer one stress or Wits damage each round within Short range of it. Healing time 2D6 days.",
     "price": 0,
     "effects": [
       {

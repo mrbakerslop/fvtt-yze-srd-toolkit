@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>When broken, roll Stamina without pushing to immediately recover one relevant point per success. Usable once while broken and ineffective against critical injuries.</p>",
+    "description": "When broken, roll Stamina without pushing to immediately recover one relevant point per success. Usable once while broken and ineffective against critical injuries.",
     "price": 0,
     "used": false
   },

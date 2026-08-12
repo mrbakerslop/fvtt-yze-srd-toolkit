@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Downpour",
-  "description": "<p>Pursue/Flee is disadvantaged and Hide is advantaged.</p>",
+  "description": "Pursue/Flee is disadvantaged and Hide is advantaged.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     2,

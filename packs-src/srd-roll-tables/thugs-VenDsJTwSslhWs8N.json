@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Thugs",
-  "description": "<p>The prey must pass Persuasion. Failure cancels the maneuver and prompts an attack; success turns the thugs on the pursuer.</p>",
+  "description": "The prey must pass Persuasion. Failure cancels the maneuver and prompts an attack; success turns the thugs on the pursuer.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     10,

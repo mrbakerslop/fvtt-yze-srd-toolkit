@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Sleepless",
-  "description": "<p>You cannot sleep for D6 days.</p>",
+  "description": "You cannot sleep for D6 days.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

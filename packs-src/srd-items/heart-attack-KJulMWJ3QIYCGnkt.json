@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "66",
     "blocksActions": false,
-    "description": "<p>Your heart stops and you die of fright.</p>",
+    "description": "Your heart stops and you die of fright.",
     "price": 0,
     "effects": [],
     "recovery": {

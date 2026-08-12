@@ -15,7 +15,7 @@
     "deathSaveSkill": "Stamina",
     "rollRange": "55",
     "blocksActions": false,
-    "description": "<p>Lethal with −1 to death saves, time limit one shift. Movement becomes a slow action; permanent.</p>",
+    "description": "Lethal with −1 to death saves, time limit one shift. Movement becomes a slow action; permanent.",
     "price": 0,
     "effects": [
       {

@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "2d6",
-  "description": "<p>Roll 2D6 after a failed driving roll during travel.</p>",
+  "description": "Roll 2D6 after a failed driving roll during travel.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

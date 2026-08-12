@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Pierced Head",
-  "description": "<p>Lethal. You die immediately.</p>",
+  "description": "Lethal. You die immediately.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.cora2r2MfldHrfja",
   "img": "icons/svg/blood.svg",
   "range": [

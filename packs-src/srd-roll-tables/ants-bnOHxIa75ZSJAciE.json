@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Ants",
-  "description": "<p>Everyone suffers one stress or Empathy damage and nobody sleeps.</p>",
+  "description": "Everyone suffers one stress or Empathy damage and nobody sleeps.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

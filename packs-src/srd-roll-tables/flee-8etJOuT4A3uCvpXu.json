@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Flee",
-  "description": "<p>Flee to safety and refuse danger. Lose one stress; every PC who hears you makes an immediate panic roll.</p>",
+  "description": "Flee to safety and refuse danger. Lose one stress; every PC who hears you makes an immediate panic roll.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     13,

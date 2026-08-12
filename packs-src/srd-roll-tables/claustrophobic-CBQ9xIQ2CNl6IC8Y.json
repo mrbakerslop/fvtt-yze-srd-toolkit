@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Claustrophobic",
-  "description": "<p>Each stretch in a confined environment causes one stress or Wits damage; healing time 2D6 days.</p>",
+  "description": "Each stretch in a confined environment causes one stress or Wits damage; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.SypcrVmXRPAlbarE",
   "img": "icons/svg/terror.svg",
   "range": [

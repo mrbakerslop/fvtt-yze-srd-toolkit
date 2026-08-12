@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "none",
     "foodState": "safe",
-    "description": "<p>A portable or stored supply of electrical power.</p>",
+    "description": "A portable or stored supply of electrical power.",
     "price": 0,
     "effects": []
   },

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Tremble",
-  "description": "<p>All Agility-based skill rolls suffer −2.</p>",
+  "description": "All Agility-based skill rolls suffer −2.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

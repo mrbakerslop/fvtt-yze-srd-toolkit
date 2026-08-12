@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Busted Gearbox",
-  "description": "<p>The vehicle stops; repair requires a Crafting roll and a shift.</p>",
+  "description": "The vehicle stops; repair requires a Crafting roll and a shift.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     4,

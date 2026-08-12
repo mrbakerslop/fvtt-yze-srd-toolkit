@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "16",
     "blocksActions": false,
-    "description": "<p>Non-lethal. Mobility −2; healing time D6 days.</p>",
+    "description": "Non-lethal. Mobility −2; healing time D6 days.",
     "price": 0,
     "effects": [
       {

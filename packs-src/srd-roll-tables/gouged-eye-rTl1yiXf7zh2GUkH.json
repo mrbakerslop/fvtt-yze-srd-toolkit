@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Gouged Eye",
-  "description": "<p>Non-lethal. Marksmanship and Observation −2; healing time 2D6 days.</p>",
+  "description": "Non-lethal. Marksmanship and Observation −2; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.zrSTtki0tEdsE7Ps",
   "img": "icons/svg/blood.svg",
   "range": [

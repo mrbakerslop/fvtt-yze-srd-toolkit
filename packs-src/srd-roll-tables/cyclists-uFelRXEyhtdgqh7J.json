@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Cyclists",
-  "description": "<p>Block is advantaged; Pursue/Flee and shooting are disadvantaged, with failures causing collateral damage.</p>",
+  "description": "Block is advantaged; Pursue/Flee and shooting are disadvantaged, with failures causing collateral damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     8,

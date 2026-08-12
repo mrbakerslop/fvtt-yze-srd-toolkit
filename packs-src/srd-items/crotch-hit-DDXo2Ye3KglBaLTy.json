@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "32",
     "blocksActions": false,
-    "description": "<p>Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.</p>",
+    "description": "Non-lethal. Suffer one damage whenever making a Mobility or Melee roll; healing time D6 days.",
     "price": 0,
     "effects": [
       {

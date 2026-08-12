@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Moose",
-  "description": "<p>Health 5; cannot be trapped; yields 2D6×4 food rations.</p>",
+  "description": "Health 5; cannot be trapped; yields 2D6×4 food rations.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     6,

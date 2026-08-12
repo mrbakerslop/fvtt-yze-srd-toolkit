@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Ruptured Jugular",
-  "description": "<p>Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.</p>",
+  "description": "Lethal with −1 to death saves, time limit one round. Stamina −1; healing time 2D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.SgAY99Njg0fXPM9e",
   "img": "icons/svg/blood.svg",
   "range": [

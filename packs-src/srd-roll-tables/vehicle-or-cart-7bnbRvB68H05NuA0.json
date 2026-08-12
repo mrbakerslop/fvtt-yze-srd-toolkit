@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Vehicle or Cart",
-  "description": "<p>Pursue/Flee and Stand and Shoot gain +2; Cut Off suffers −2.</p>",
+  "description": "Pursue/Flee and Stand and Shoot gain +2; Cut Off suffers −2.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "none",
     "foodState": "safe",
-    "description": "<p>A supply of drinking water.</p>",
+    "description": "A supply of drinking water.",
     "price": 0,
     "effects": []
   },

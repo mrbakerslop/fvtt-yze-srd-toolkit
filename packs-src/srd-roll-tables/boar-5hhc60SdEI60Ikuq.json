@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Boar",
-  "description": "<p>Health 3; cannot be trapped; yields 2D6×2 food rations.</p>",
+  "description": "Health 3; cannot be trapped; yields 2D6×2 food rations.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

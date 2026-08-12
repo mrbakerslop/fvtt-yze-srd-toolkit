@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Passenger Hit",
-  "description": "<p>A random passenger takes the vehicle's damage and a critical injury; re-roll if there are no passengers.</p>",
+  "description": "A random passenger takes the vehicle's damage and a critical injury; re-roll if there are no passengers.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     5,

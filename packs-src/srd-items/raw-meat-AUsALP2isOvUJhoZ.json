@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "meat",
     "foodState": "raw",
-    "description": "<p>Uncooked meat. Eating it raw risks virulence 6/C food poisoning.</p>",
+    "description": "Uncooked meat. Eating it raw risks virulence 6/C food poisoning.",
     "price": 0,
     "effects": []
   },

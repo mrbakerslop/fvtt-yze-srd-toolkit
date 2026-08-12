@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Windshield Shattered",
-  "description": "<p>Reduce Maneuverability by one step.</p>",
+  "description": "Reduce Maneuverability by one step.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

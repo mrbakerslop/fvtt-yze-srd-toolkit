@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Slashed Shoulder",
-  "description": "<p>Non-lethal. The arm cannot be used; healing time D6 days.</p>",
+  "description": "Non-lethal. The arm cannot be used; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.rdHEhBu3QePmu1rb",
   "img": "icons/svg/blood.svg",
   "range": [

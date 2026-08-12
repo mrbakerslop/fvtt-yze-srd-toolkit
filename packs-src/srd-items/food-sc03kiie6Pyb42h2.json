@@ -9,7 +9,7 @@
     "supply": 0,
     "foodType": "prepared",
     "foodState": "safe",
-    "description": "<p>Rations of prepared food used to stave off starvation.</p>",
+    "description": "Rations of prepared food used to stave off starvation.",
     "price": 0,
     "effects": []
   },

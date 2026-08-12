@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Magical Disease",
-  "description": "<p>A virulence 2D6 disease exposes you and everyone Engaged with you during the next shift.</p>",
+  "description": "A virulence 2D6 disease exposes you and everyone Engaged with you during the next shift.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     4,

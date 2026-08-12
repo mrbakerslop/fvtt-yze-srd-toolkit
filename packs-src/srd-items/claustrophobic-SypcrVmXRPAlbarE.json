@@ -15,7 +15,7 @@
     "deathSaveSkill": "",
     "rollRange": "46–51",
     "blocksActions": false,
-    "description": "<p>Each stretch in a confined environment causes one stress or Wits damage; healing time 2D6 days.</p>",
+    "description": "Each stretch in a confined environment causes one stress or Wits damage; healing time 2D6 days.",
     "price": 0,
     "effects": [
       {

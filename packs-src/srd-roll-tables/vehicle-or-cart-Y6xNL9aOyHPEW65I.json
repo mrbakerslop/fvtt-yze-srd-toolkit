@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Vehicle or Cart",
-  "description": "<p>Block is advantaged; Pursue/Flee is disadvantaged and failure causes D3 vehicle damage.</p>",
+  "description": "Block is advantaged; Pursue/Flee is disadvantaged and failure causes D3 vehicle damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     3,

@@ -3,7 +3,7 @@
   "img": "icons/svg/d20-grey.svg",
   "folder": "S8f8krOmizXOQhvg",
   "formula": "1d12",
-  "description": "<p>Roll D12 when uncontrolled magic causes a mishap.</p>",
+  "description": "Roll D12 when uncontrolled magic causes a mishap.",
   "replacement": true,
   "displayRoll": true,
   "ownership": {

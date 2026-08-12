@@ -10,7 +10,7 @@
     "magicDiscipline": false,
     "rank": 0,
     "effects": [],
-    "description": "<p>When an enemy suffers a critical injury, roll twice and choose the result.</p>",
+    "description": "When an enemy suffers a critical injury, roll twice and choose the result.",
     "price": 0,
     "used": false
   },

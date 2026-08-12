@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Freeway",
-  "description": "<p>Pursue/Flee and Stand and Shoot are advantaged; Hide and Block are disadvantaged.</p>",
+  "description": "Pursue/Flee and Stand and Shoot are advantaged; Hide and Block are disadvantaged.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     6,

@@ -6,13 +6,13 @@ function result(range, title, effect, { criticalInjuryKey = null } = {}) {
   return {
     range: bounds,
     name: title,
-    description: `<p>${effect}</p>`,
+    description: effect,
     criticalInjuryKey
   };
 }
 
 function table(name, formula, description, results, { criticalInjuryCategory = null } = {}) {
-  return { name, formula, description: `<p>${description}</p>`, results, criticalInjuryCategory };
+  return { name, formula, description, results, criticalInjuryCategory };
 }
 
 const criticalInjuryResults = (category) => SRD_CRITICAL_INJURIES

@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Mosquito Swarm",
-  "description": "<p>Roll two D6 per character; each success causes one stress or Empathy damage.</p>",
+  "description": "Roll two D6 per character; each success causes one stress or Empathy damage.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     7,

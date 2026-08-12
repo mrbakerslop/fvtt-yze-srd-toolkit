@@ -1,7 +1,7 @@
 {
   "type": "text",
   "name": "Dead End",
-  "description": "<p>Pursue/Flee, Hide, or Block chosen by the prey fails automatically.</p>",
+  "description": "Pursue/Flee, Hide, or Block chosen by the prey fails automatically.",
   "img": "icons/svg/d20-black.svg",
   "range": [
     1,

@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Nightmares",
-  "description": "<p>Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.</p>",
+  "description": "Roll Insight every shift spent sleeping; failure means the sleep does not count. Healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.GeLak20iGFJwEoY5",
   "img": "icons/svg/terror.svg",
   "range": [

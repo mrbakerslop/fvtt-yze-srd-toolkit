@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Broken Hand",
-  "description": "<p>Non-lethal. The hand cannot be used; healing time D6 days.</p>",
+  "description": "Non-lethal. The hand cannot be used; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.ChbSgfbHFAfYX1u0",
   "img": "icons/svg/blood.svg",
   "range": [

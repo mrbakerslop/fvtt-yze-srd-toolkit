@@ -1,7 +1,7 @@
 {
   "type": "document",
   "name": "Punctured Lung",
-  "description": "<p>Lethal, time limit one shift. Stamina and Mobility −2; healing time D6 days.</p>",
+  "description": "Lethal, time limit one shift. Stamina and Mobility −2; healing time D6 days.",
   "documentUuid": "Compendium.fvtt-yze-srd.srd-items.Item.LkbNBms2UYqZl4ax",
   "img": "icons/svg/blood.svg",
   "range": [

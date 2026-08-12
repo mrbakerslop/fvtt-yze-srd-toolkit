@@ -17,7 +17,7 @@
   },
   "face": 0,
   "drawn": false,
-  "description": "<p>Initiative 4. Lower values act first.</p>",
+  "description": "Initiative 4. Lower values act first.",
   "sort": 400000,
   "flags": {
     "fvtt-yze-srd": {
