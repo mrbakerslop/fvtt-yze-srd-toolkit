@@ -267,10 +267,14 @@ function renderFinalDiceGroups(state) {
 
   return [...groups].map(([category, dice]) => {
     const successes = dice.reduce((total, die) => (
-      total + pushDieSuccesses(state.mode, die.result, die.category)
+      total + (die.category === "ammo"
+        ? 0
+        : pushDieSuccesses(state.mode, die.result, die.category))
     ), 0);
     const results = dice.map((die) => {
-      const dieSuccessCount = pushDieSuccesses(state.mode, die.result, die.category);
+      const dieSuccessCount = die.category === "ammo"
+        ? 0
+        : pushDieSuccesses(state.mode, die.result, die.category);
       const classes = [
         "yze-final-die",
         `d${Number(die.faces)}`,
@@ -662,6 +666,13 @@ export function renderDiceTypeFormula(root, state = null) {
       if (die?.category !== "ammo" && Number(die?.result) === 1) {
         result.classList.add("failure");
       }
+      if (
+        state?.mode === DICE_SYSTEMS.STEP
+        && die?.category !== "ammo"
+        && dieSuccesses(state.mode, die?.result, die?.category) > 0
+      ) {
+        result.classList.add("success");
+      }
     }
     for (const flavor of diceRoll.querySelectorAll(".dice-tooltip .part-flavor")) {
       const header = flavor.closest?.(".part-header") ?? flavor.parentElement;
@@ -673,7 +684,9 @@ export function renderDiceTypeFormula(root, state = null) {
       const groupSuccesses = [];
       for (const die of state.dice ?? []) {
         const previous = groupSuccesses.at(-1);
-        const successes = dieSuccesses(state.mode, die.result, die.category);
+        const successes = die.category === "ammo"
+          ? 0
+          : dieSuccesses(state.mode, die.result, die.category);
         if (previous?.category === die.category) {
           previous.successes += successes;
         } else {
