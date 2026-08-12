@@ -76,7 +76,10 @@ export function applyPushResults(state, selectedIds, results) {
 function canPushAgain(state) {
   const maximum = Math.max(1, Math.trunc(Number(state?.maxPushes) || 1));
   const used = Math.max(0, Math.trunc(Number(state?.pushesUsed) || 0));
-  return state?.canPush !== false && state?.pushed !== true && used < maximum;
+  return state?.canPush !== false
+    && state?.accepted !== true
+    && state?.pushed !== true
+    && used < maximum;
 }
 
 function escape(value) {
@@ -205,21 +208,48 @@ export async function promptPushSelection(state) {
   });
 }
 
-/** Render the compact chat-card entry point for pushing a roll. */
-export function renderPushControls(state) {
+/** Explain the available Push action above the compact roll-action row. */
+export function renderPushHint(state) {
   const eligible = (state?.dice ?? []).filter((die) => Number(die.result) !== 1);
   const addsStressDie = state?.rules?.stressDice === true;
+  if (state?.accepted === true) {
+    return `<p class="yze-push-card-hint">${escape(game.i18n.localize("YZE.Roll.AcceptedHint"))}</p>`;
+  }
   if (eligible.length === 0 && !addsStressDie) {
-    return `<p class="yze-push-unavailable">${escape(game.i18n.localize("YZE.Roll.NoPushDice"))}</p>`;
+    return `<p class="yze-push-card-hint yze-push-unavailable">${escape(game.i18n.localize("YZE.Roll.NoPushDice"))}</p>`;
   }
 
   return `
-    <div class="yze-push-controls">
+    <div class="yze-push-card-hint">
       <p>${escape(game.i18n.localize("YZE.Roll.PushCardHint"))}</p>
       ${eligible.length === 0 && addsStressDie
         ? `<p>${escape(game.i18n.localize("YZE.Roll.NoPushDiceStress"))}</p>`
         : ""}
-      <button type="button" data-action="pushRoll">
+    </div>`;
+}
+
+/** Render the Accept action which permanently locks pushing for this result. */
+export function renderAcceptControl(state) {
+  if (state?.canPush === false) return "";
+  const accepted = state?.accepted === true;
+  return `
+    <div class="yze-accept-controls">
+      <button type="button" data-action="acceptRoll"${accepted ? " disabled" : ""}>
+        <i class="fa-solid fa-check" aria-hidden="true"></i>
+        ${escape(game.i18n.localize(accepted ? "YZE.Roll.Accepted" : "YZE.Roll.Accept"))}
+      </button>
+    </div>`;
+}
+
+/** Render the compact chat-card entry point for pushing a roll. */
+export function renderPushControls(state) {
+  if (state?.canPush === false) return "";
+  const eligible = (state?.dice ?? []).filter((die) => Number(die.result) !== 1);
+  const addsStressDie = state?.rules?.stressDice === true;
+  const unavailable = eligible.length === 0 && !addsStressDie;
+  return `
+    <div class="yze-push-controls">
+      <button type="button" data-action="pushRoll"${unavailable || !canPushAgain(state) ? " disabled" : ""}>
         <i class="fa-solid fa-rotate" aria-hidden="true"></i>
         ${escape(game.i18n.localize("YZE.Roll.Push"))}
       </button>
@@ -305,6 +335,12 @@ function renderPushedFlavor(state, consequences = []) {
           ${escape(game.i18n.localize("YZE.Opposed.Start"))}
         </button>
       </div>`;
+  const canStillPush = canPushAgain(state);
+  const rollActions = [
+    canStillPush ? renderAcceptControl(state) : "",
+    canStillPush ? renderPushControls(state) : "",
+    opposedControl
+  ].filter(Boolean).join("");
 
   return `
     <div class="yze chat-card yze-pushed-roll">
@@ -317,8 +353,8 @@ function renderPushedFlavor(state, consequences = []) {
       ${renderHelpingSummary(state.helpers, state.helpAction)}
       ${consequenceList}
       <p class="yze-push-cost-hint">${escape(game.i18n.localize("YZE.Roll.PushCostHint"))}</p>
-      ${canPushAgain(state) ? renderPushControls(state) : ""}
-      ${opposedControl}
+      ${canStillPush ? renderPushHint(state) : ""}
+      ${rollActions ? `<div class="yze-roll-actions">${rollActions}</div>` : ""}
       ${renderAttackControl(state)}
       ${renderHealingControl(state)}
       ${renderChaseControl(state)}
@@ -564,7 +600,9 @@ export async function executePush(
     return null;
   }
   if (!state || !canPushAgain(state)) {
-    ui.notifications.warn(game.i18n.localize("YZE.Roll.AlreadyPushed"));
+    ui.notifications.warn(game.i18n.localize(
+      state?.accepted === true ? "YZE.Roll.AcceptedHint" : "YZE.Roll.AlreadyPushed"
+    ));
     return null;
   }
 
@@ -702,14 +740,55 @@ export function registerPushChatHook({ StepRollClass, onPushed } = {}) {
     const state = message.getFlag(SYSTEM_ID, PUSH_FLAG);
     if (state) renderDiceTypeFormula(root, state);
 
+    const acceptButton = root?.querySelector?.('[data-action="acceptRoll"]');
+    if (acceptButton) {
+      if (!state || state.accepted === true || state.superseded === true) {
+        acceptButton.disabled = true;
+        acceptButton.textContent = game.i18n.localize(
+          state?.superseded === true ? "YZE.Roll.UsePushedResult" : "YZE.Roll.Accepted"
+        );
+      } else {
+        acceptButton.addEventListener("click", async () => {
+          const isAuthor = message.author?.id === game.user.id;
+          if (!isAuthor && !game.user.isGM) {
+            ui.notifications.warn(game.i18n.localize("YZE.Roll.AcceptNotAllowed"));
+            return;
+          }
+
+          const current = message.getFlag(SYSTEM_ID, PUSH_FLAG);
+          if (!current || current.accepted === true || current.superseded === true) return;
+
+          acceptButton.disabled = true;
+          try {
+            await message.setFlag(SYSTEM_ID, PUSH_FLAG, { ...current, accepted: true });
+            acceptButton.textContent = game.i18n.localize("YZE.Roll.Accepted");
+            const pushButton = root.querySelector?.('[data-action="pushRoll"]');
+            if (pushButton) pushButton.disabled = true;
+            const hint = root.querySelector?.(".yze-push-card-hint");
+            if (hint) hint.textContent = game.i18n.localize("YZE.Roll.AcceptedHint");
+          } catch (error) {
+            console.error("YZE System Toolkit | Accept roll failed", error);
+            ui.notifications.error(game.i18n.localize("YZE.Roll.AcceptFailed"));
+            acceptButton.disabled = false;
+          }
+        });
+      }
+    }
+
     const button = root?.querySelector?.('[data-action="pushRoll"]');
     if (!button) return;
 
     if (!state || !canPushAgain(state)) {
       button.disabled = true;
-      button.textContent = game.i18n.localize(
-        state?.canPush === false ? "YZE.Roll.CannotPush" : "YZE.Roll.AlreadyPushed"
-      );
+      if (state?.accepted !== true) {
+        button.textContent = game.i18n.localize(
+          state?.canPush === false ? "YZE.Roll.CannotPush" : "YZE.Roll.AlreadyPushed"
+        );
+      }
+      if (state?.accepted === true) {
+        const hint = root.querySelector?.(".yze-push-card-hint");
+        if (hint) hint.textContent = game.i18n.localize("YZE.Roll.AcceptedHint");
+      }
       return;
     }
 
@@ -722,7 +801,9 @@ export function registerPushChatHook({ StepRollClass, onPushed } = {}) {
 
       const current = message.getFlag(SYSTEM_ID, PUSH_FLAG);
       if (!current || !canPushAgain(current)) {
-        ui.notifications.warn(game.i18n.localize("YZE.Roll.AlreadyPushed"));
+        ui.notifications.warn(game.i18n.localize(
+          current?.accepted === true ? "YZE.Roll.AcceptedHint" : "YZE.Roll.AlreadyPushed"
+        ));
         return;
       }
 

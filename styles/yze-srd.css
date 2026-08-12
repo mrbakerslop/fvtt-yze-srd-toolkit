@@ -2558,6 +2558,37 @@
   margin-top: 0.25rem;
 }
 
+.yze-push-card-hint,
+.yze-push-card-hint p {
+  margin: 0.3rem 0;
+}
+
+.yze-roll-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr));
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+}
+
+.yze-roll-actions > .yze-accept-controls,
+.yze-roll-actions > .yze-push-controls,
+.yze-roll-actions > .yze-opposed-controls {
+  display: flex;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.yze-roll-actions button,
+.yze-roll-actions .yze-push-controls button {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding-inline: 0.25rem;
+  font-size: 0.72rem;
+}
+
 .yze-push-condition {
   display: grid;
   gap: 0.2rem;

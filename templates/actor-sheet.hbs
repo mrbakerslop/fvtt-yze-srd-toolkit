@@ -441,9 +441,9 @@
         </section>
       {{/if}}
 
-      {{#if panic.active}}
-        <section class="sheet-panel panic-panel">
-          <h2>{{localize "YZE.Panic.ActiveEffect"}}</h2>
+      <section class="sheet-panel panic-panel">
+        <h2>{{localize "YZE.Panic.ActiveEffect"}}</h2>
+        {{#if panic.active}}
           {{#each panic.effects}}
             <div class="panic-effect">
               <h3>{{total}}: {{title}}</h3>
@@ -451,8 +451,10 @@
             </div>
           {{/each}}
           <p class="hint">{{localize "YZE.Panic.ActiveUntilStressRelieved"}}</p>
-        </section>
-      {{/if}}
+        {{else}}
+          <p class="hint">{{localize "YZE.Panic.NoActiveEffect"}}</p>
+        {{/if}}
+      </section>
 
       {{#if showVehicleSubsystem}}
         {{#if currentMount}}

@@ -5,7 +5,12 @@ import {
   getStepRating
 } from "../constants.mjs";
 import { getPushRules, getStepModifierMethod } from "../settings.mjs";
-import { renderInitialRuleNotices, renderPushControls } from "./push.mjs";
+import {
+  renderAcceptControl,
+  renderInitialRuleNotices,
+  renderPushControls,
+  renderPushHint
+} from "./push.mjs";
 import { renderModifierBreakdown } from "./roll-dialog.mjs";
 import { renderOpposedControl } from "./opposed.mjs";
 import { renderAttackControl } from "../attack-card.mjs";
@@ -279,6 +284,7 @@ export async function rollStepDice({
     rollMode,
     attemptGoal,
     label,
+    accepted: false,
     pushed: false,
     pushesUsed: 0,
     maxPushes: Math.max(1, Math.trunc(Number(maxPushes) || 1)),
@@ -300,6 +306,12 @@ export async function rollStepDice({
     automaticSuccesses: automatic,
     dice: pushDice
   };
+
+  const rollActions = [
+    renderAcceptControl(pushState),
+    renderPushControls(pushState),
+    renderOpposedControl(pushState)
+  ].filter(Boolean).join("");
 
   const flavor = `
     <div class="yze chat-card">
@@ -323,8 +335,8 @@ export async function rollStepDice({
         ? `<p class="yze-modifier-cap">${foundry.utils.escapeHTML(game.i18n.localize("YZE.Roll.AdvantageSingleDie"))}</p>`
         : ""}
       ${renderInitialRuleNotices(pushState)}
-      ${pushState.canPush ? renderPushControls(pushState) : ""}
-      ${renderOpposedControl(pushState)}
+      ${pushState.canPush ? renderPushHint(pushState) : ""}
+      ${rollActions ? `<div class="yze-roll-actions">${rollActions}</div>` : ""}
       ${renderAttackControl(pushState)}
       ${renderHealingControl(pushState)}
       ${renderChaseControl(pushState)}
