@@ -1,6 +1,6 @@
 {
   "name": "fvtt-yze-srd-toolkit",
-  "version": "14.0.84",
+  "version": "14.0.85",
   "private": true,
   "type": "module",
   "scripts": {
