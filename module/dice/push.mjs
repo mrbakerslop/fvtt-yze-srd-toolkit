@@ -669,6 +669,25 @@ export function renderDiceTypeFormula(root, state = null) {
       if (foundryFormula) foundryFormula.hidden = true;
     }
 
+    if (state?.mode === DICE_SYSTEMS.STEP) {
+      const groupSuccesses = [];
+      for (const die of state.dice ?? []) {
+        const previous = groupSuccesses.at(-1);
+        const successes = dieSuccesses(state.mode, die.result, die.category);
+        if (previous?.category === die.category) {
+          previous.successes += successes;
+        } else {
+          groupSuccesses.push({ category: die.category, successes });
+        }
+      }
+
+      const partTotals = diceRoll.querySelectorAll(".dice-tooltip .part-total");
+      for (const [index, total] of partTotals.entries()) {
+        const group = groupSuccesses[index];
+        if (group) total.textContent = String(group.successes);
+      }
+    }
+
     const formula = diceRoll.querySelector(".dice-formula");
     if (formula) formula.hidden = true;
   }
