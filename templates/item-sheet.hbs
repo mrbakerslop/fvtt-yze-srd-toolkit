@@ -112,7 +112,7 @@
   {{/if}}
 
   {{#if isCarryable}}
-    <section class="yze-section form-grid">
+    <section class="yze-section form-grid carryable-fields {{#if isWeapon}}weapon-core-fields{{/if}} {{#if usesReliability}}has-reliability{{/if}}">
       {{#if showQuantity}}
         <label>
           {{localize "YZE.Item.Quantity"}}
@@ -135,7 +135,7 @@
           <input name="system.reliability.max" type="number" value="{{system.reliability.max}}" min="0">
         </label>
       {{/if}}
-      <label class="checkbox-row">
+      <label class="checkbox-row equipped-field">
         <input name="system.equipped" type="checkbox" {{checked system.equipped}}>
         {{localize "YZE.Item.Equipped"}}
       </label>
@@ -169,7 +169,7 @@
   {{/if}}
 
   {{#if isWeapon}}
-    <section class="yze-section form-grid">
+    <section class="yze-section form-grid weapon-fields">
       <label>
         {{localize "YZE.Item.Grip"}}
         <input name="system.grip" type="text" value="{{system.grip}}">
