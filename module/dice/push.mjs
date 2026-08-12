@@ -123,16 +123,8 @@ function pushConditionControl(state) {
 }
 
 function pushDieShape(faces) {
-  switch (Number(faces)) {
-    case 8:
-      return '<polygon class="yze-push-die-shape" points="48,5 90,48 48,91 6,48"></polygon>';
-    case 10:
-      return '<polygon class="yze-push-die-shape" points="48,4 89,34 74,88 22,88 7,34"></polygon>';
-    case 12:
-      return '<polygon class="yze-push-die-shape" points="48,4 77,14 92,40 84,72 60,91 36,91 12,72 4,40 19,14"></polygon>';
-    default:
-      return '<rect class="yze-push-die-shape" x="8" y="8" width="80" height="80" rx="13"></rect>';
-  }
+  const shape = VALID_FACES.has(Number(faces)) ? Number(faces) : 6;
+  return `<img class="yze-push-die-shape" src="/icons/svg/d${shape}-grey.svg" alt="">`;
 }
 
 /** Render one selectable die illustration for the Push dialog. */
@@ -145,9 +137,7 @@ export function renderPushDieChoice(state, die) {
     <label class="yze-push-die${successes > 0 ? " is-success" : ""}" data-tooltip="${escape(summary)}">
       <input type="checkbox" name="pushDice" value="${escape(die.id)}" aria-label="${escape(summary)}"${checked}>
       <span class="yze-push-die-image" aria-hidden="true">
-        <svg viewBox="0 0 96 96" focusable="false">
-          ${pushDieShape(die.faces)}
-        </svg>
+        ${pushDieShape(die.faces)}
         <strong class="yze-push-die-result">${escape(die.result)}</strong>
       </span>
       <span class="yze-push-die-caption">${escape(caption)}</span>
