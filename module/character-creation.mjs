@@ -8,6 +8,9 @@ import {
 
 const STARTING_ATTRIBUTE_POINTS = 14;
 const STARTING_SKILL_POINTS = 10;
+const STARTING_STEP_ATTRIBUTE_TOTAL = 11;
+const STARTING_STEP_SKILL_TOTAL = 10;
+const STARTING_STEP_SKILL_COUNTS = Object.freeze({ 1: 3, 2: 2, 3: 1 });
 
 function escape(value) {
   return foundry.utils.escapeHTML(String(value ?? ""));
@@ -37,33 +40,16 @@ function defaultPoolAttributes() {
   return Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, 2]));
 }
 
-function defaultStepAttributes(keyAttribute) {
-  const other = ATTRIBUTE_KEYS.find((key) => key !== keyAttribute);
-  return Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [
-    key, key === keyAttribute ? 4 : key === other ? 3 : 2
-  ]));
+function defaultStepAttributes() {
+  return Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, 2]));
 }
 
 function defaultPoolSkills(skills) {
   return new Map(skills.map((skill) => [skill.uuid, 0]));
 }
 
-function defaultStepSkills(skills, keySkillUuids) {
-  const ratings = new Map(skills.map((skill) => [skill.uuid, 0]));
-  const keySkill = skills.find((skill) => keySkillUuids.has(skill.uuid));
-  if (keySkill) ratings.set(keySkill.uuid, 3);
-  const remaining = skills.filter((skill) => skill !== keySkill);
-  for (const skill of remaining.slice(0, 2)) ratings.set(skill.uuid, 2);
-  for (const skill of remaining.slice(2, 5)) ratings.set(skill.uuid, 1);
-  return ratings;
-}
-
-function stepSelect(name, selected, maximum = 4) {
-  return `<select name="${escape(name)}">${STEP_RATINGS
-    .filter((rating) => rating.value <= maximum)
-    .map((rating) => `<option value="${rating.value}"${rating.value === selected ? " selected" : ""}>${escape(
-      formatStepRatingLabel(rating.value)
-    )}</option>`).join("")}</select>`;
+function defaultStepSkills(skills) {
+  return new Map(skills.map((skill) => [skill.uuid, 0]));
 }
 
 function allocationSummary(stepDice) {
@@ -72,14 +58,17 @@ function allocationSummary(stepDice) {
     : game.i18n.localize("YZE.CharacterCreation.PoolAllocationHint");
 }
 
-function poolRatingControl(name, value, minimum, maximum, label) {
+function ratingControl(name, value, minimum, maximum, label, { stepDice = false } = {}) {
   const escapedName = escape(name);
   const escapedLabel = escape(label);
   return `<div class="yze-creation-stepper">
     <button type="button" data-action="adjustCreationRating" data-rating="${escapedName}" data-delta="-1" aria-label="${escape(
       game.i18n.format("YZE.CharacterCreation.DecreaseRating", { rating: label })
     )}"><i class="fa-solid fa-minus" aria-hidden="true"></i></button>
-    <input name="${escapedName}" type="number" value="${value}" min="${minimum}" max="${maximum}" readonly aria-label="${escapedLabel}">
+    ${stepDice
+      ? `<input name="${escapedName}" type="hidden" value="${value}" min="${minimum}" max="${maximum}" data-step-rating>
+        <output class="yze-creation-step-value" data-step-rating-label aria-label="${escapedLabel}">${escape(formatStepRatingLabel(value))}</output>`
+      : `<input name="${escapedName}" type="number" value="${value}" min="${minimum}" max="${maximum}" readonly aria-label="${escapedLabel}">`}
     <button type="button" data-action="adjustCreationRating" data-rating="${escapedName}" data-delta="1" aria-label="${escape(
       game.i18n.format("YZE.CharacterCreation.IncreaseRating", { rating: label })
     )}"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
@@ -95,11 +84,11 @@ function creationContent(actor, archetype, sources) {
       key, Number(actor.system.attributes[key][stepDice ? "stepRating" : "value"])
     ]))
     : stepDice
-      ? defaultStepAttributes(archetype.system.keyAttribute)
+      ? defaultStepAttributes()
       : defaultPoolAttributes();
   const keySkillUuids = new Set(sources.keySkills.map((skill) => skill.uuid));
   const skillDefaults = stepDice
-    ? defaultStepSkills(sources.skills, keySkillUuids)
+    ? defaultStepSkills(sources.skills)
     : defaultPoolSkills(sources.skills);
   if (completed) {
     for (const skill of sources.skills) {
@@ -116,11 +105,11 @@ function creationContent(actor, archetype, sources) {
       ? attributeDefaults[key]
       : integer(attributeDefaults[key], { min: 2, max: maximum });
     const control = stepDice
-      ? stepSelect(`attribute-${key}`, value)
-      : poolRatingControl(`attribute-${key}`, value, 2, maximum, labels[key]);
+      ? ratingControl(`attribute-${key}`, value, 1, 4, labels[key], { stepDice: true })
+      : ratingControl(`attribute-${key}`, value, 2, maximum, labels[key]);
     const content = `<span>${escape(labels[key])}${keyAttribute ? ` <strong>${escape(game.i18n.localize("YZE.CharacterCreation.Key"))}</strong>` : ""}</span>${control}`;
     return stepDice
-      ? `<label class="yze-creation-rating">${content}</label>`
+      ? `<div class="yze-creation-rating" data-step-attribute>${content}</div>`
       : `<div class="yze-creation-rating" data-pool-attribute>${content}</div>`;
   }).join("");
 
@@ -129,8 +118,8 @@ function creationContent(actor, archetype, sources) {
     const selected = skillDefaults.get(skill.uuid) ?? 0;
     const maximum = keySkill ? 3 : 1;
     const control = stepDice
-      ? stepSelect(`skill-${skill.id}`, selected, keySkill ? 3 : 2)
-      : poolRatingControl(
+      ? ratingControl(`skill-${skill.id}`, selected, 0, keySkill ? 3 : 2, skill.name, { stepDice: true })
+      : ratingControl(
         `skill-${skill.id}`,
         integer(selected, { max: maximum }),
         0,
@@ -139,7 +128,7 @@ function creationContent(actor, archetype, sources) {
       );
     const content = `<span>${escape(skill.name)}${keySkill ? ` <strong>${escape(game.i18n.localize("YZE.CharacterCreation.Key"))}</strong>` : ""}</span>${control}`;
     return stepDice
-      ? `<label class="yze-creation-rating" data-skill-uuid="${escape(skill.uuid)}">${content}</label>`
+      ? `<div class="yze-creation-rating" data-skill-uuid="${escape(skill.uuid)}" data-step-skill>${content}</div>`
       : `<div class="yze-creation-rating" data-skill-uuid="${escape(skill.uuid)}" data-pool-skill>${content}</div>`;
   }).join("");
 
@@ -159,8 +148,8 @@ function creationContent(actor, archetype, sources) {
   return `<div class="yze yze-character-creation">
     <h2>${escape(archetype.name)}</h2>
     <p>${escape(allocationSummary(stepDice))}</p>
-    <fieldset><legend>${escape(game.i18n.localize("YZE.Actor.Attributes"))}</legend><div class="yze-creation-grid">${attributes}</div>${stepDice ? "" : `<div class="yze-creation-total" data-attribute-allocation><span>${escape(game.i18n.localize("YZE.CharacterCreation.AttributePoints"))}</span><output data-attribute-total aria-live="polite"></output></div>`}</fieldset>
-    <fieldset><legend>${escape(game.i18n.localize("YZE.Actor.Skills"))}</legend><div class="yze-creation-grid skill-grid">${skills}</div>${stepDice ? "" : `<div class="yze-creation-total" data-skill-allocation><span>${escape(game.i18n.localize("YZE.CharacterCreation.SkillPoints"))}</span><output data-skill-total aria-live="polite"></output></div>`}</fieldset>
+    <fieldset><legend>${escape(game.i18n.localize("YZE.Actor.Attributes"))}</legend><div class="yze-creation-grid">${attributes}</div><div class="yze-creation-total" data-attribute-allocation><span>${escape(game.i18n.localize(stepDice ? "YZE.CharacterCreation.AttributeSteps" : "YZE.CharacterCreation.AttributePoints"))}</span><output data-attribute-total aria-live="polite"></output></div></fieldset>
+    <fieldset><legend>${escape(game.i18n.localize("YZE.Actor.Skills"))}</legend><div class="yze-creation-grid skill-grid">${skills}</div><div class="yze-creation-total" data-skill-allocation><span>${escape(game.i18n.localize(stepDice ? "YZE.CharacterCreation.SkillDistribution" : "YZE.CharacterCreation.SkillPoints"))}</span><output data-skill-total aria-live="polite"></output></div></fieldset>
     <fieldset><legend>${escape(game.i18n.format("YZE.CharacterCreation.ChooseSpecialties", { count: sources.specialtyChoices }))}</legend>${choices(sources.specialties, "specialty", sources.specialtyChoices)}<div class="yze-creation-total" data-specialty-allocation><span>${escape(game.i18n.localize("YZE.CharacterCreation.SpecialtyPicks"))}</span><output data-specialty-total aria-live="polite"></output></div></fieldset>
     <fieldset><legend>${escape(game.i18n.localize("YZE.CharacterCreation.GrantedEquipment"))}</legend>${grants}</fieldset>
     <fieldset><legend>${escape(game.i18n.format("YZE.CharacterCreation.ChooseEquipment", { count: sources.equipmentChoices }))}</legend>${choices(sources.equipment, "equipment", sources.equipmentChoices)}<div class="yze-creation-total" data-equipment-allocation><span>${escape(game.i18n.localize("YZE.CharacterCreation.EquipmentPicks"))}</span><output data-equipment-total aria-live="polite"></output></div></fieldset>
@@ -175,8 +164,11 @@ function wireCreationDialog(dialog, sources, archetype) {
   root.dataset.controlsReady = "true";
 
   const applyButton = form.querySelector('button[data-action="create"]');
+  const stepDice = getDiceSystem() === DICE_SYSTEMS.STEP;
   const poolAttributeInputs = [...form.querySelectorAll("[data-pool-attribute] input")];
   const poolSkillInputs = [...form.querySelectorAll("[data-pool-skill] input")];
+  const stepAttributeInputs = [...form.querySelectorAll("[data-step-attribute] input[data-step-rating]")];
+  const stepSkillInputs = [...form.querySelectorAll("[data-step-skill] input[data-step-rating]")];
   const groups = [
     {
       inputs: poolAttributeInputs,
@@ -206,6 +198,35 @@ function wireCreationDialog(dialog, sources, archetype) {
     }
   ];
 
+  const valuesFor = (inputs, changedInput = null, changedValue = null) => inputs.map((input) => (
+    input === changedInput
+      ? changedValue
+      : integer(input.value, { min: Number(input.min), max: Number(input.max) })
+  ));
+
+  const stepSkillCounts = (values) => Object.fromEntries(
+    [0, 1, 2, 3].map((rating) => [rating, values.filter((value) => value === rating).length])
+  );
+
+  const canAdjustStepRating = (input, delta) => {
+    const minimum = Number(input.min);
+    const maximum = Number(input.max);
+    const current = integer(input.value, { min: minimum, max: maximum });
+    const candidate = current + delta;
+    if (candidate < minimum || candidate > maximum) return false;
+
+    if (stepAttributeInputs.includes(input)) {
+      const values = valuesFor(stepAttributeInputs, input, candidate);
+      return values.reduce((total, value) => total + value, 0) <= STARTING_STEP_ATTRIBUTE_TOTAL;
+    }
+    if (stepSkillInputs.includes(input)) {
+      const values = valuesFor(stepSkillInputs, input, candidate);
+      return values.reduce((total, value) => total + value, 0) <= STARTING_STEP_SKILL_TOTAL
+        && values.filter((value) => value === 3).length <= 1;
+    }
+    return false;
+  };
+
   const sync = () => {
     for (const group of groups) {
       if (group.inputs.length === 0) continue;
@@ -225,6 +246,45 @@ function wireCreationDialog(dialog, sources, archetype) {
         const increase = stepper?.querySelector('[data-delta="1"]');
         if (decrease) decrease.disabled = value <= minimum;
         if (increase) increase.disabled = value >= maximum || total >= group.maximum;
+      }
+    }
+    if (stepDice) {
+      const attributeValues = valuesFor(stepAttributeInputs);
+      const attributeSteps = attributeValues.reduce((total, value) => total + value - 2, 0);
+      const attributeValid = attributeValues.length === ATTRIBUTE_KEYS.length
+        && attributeSteps === 3
+        && attributeValues.filter((value) => value === 1).length <= 1;
+      const attributeOutput = form.querySelector("[data-attribute-total]");
+      const attributeRow = form.querySelector("[data-attribute-allocation]");
+      if (attributeOutput) attributeOutput.textContent = `${attributeSteps} / 3`;
+      attributeRow?.classList.toggle("is-valid", attributeValid);
+      attributeRow?.classList.toggle("is-invalid", !attributeValid);
+
+      const skillCounts = stepSkillCounts(valuesFor(stepSkillInputs));
+      const skillValid = skillCounts[3] === STARTING_STEP_SKILL_COUNTS[3]
+        && skillCounts[2] === STARTING_STEP_SKILL_COUNTS[2]
+        && skillCounts[1] === STARTING_STEP_SKILL_COUNTS[1];
+      const skillOutput = form.querySelector("[data-skill-total]");
+      const skillRow = form.querySelector("[data-skill-allocation]");
+      if (skillOutput) skillOutput.textContent = game.i18n.format(
+        "YZE.CharacterCreation.SkillDistributionSummary",
+        {
+          bLabel: formatStepRatingLabel(3), b: skillCounts[3],
+          cLabel: formatStepRatingLabel(2), c: skillCounts[2],
+          dLabel: formatStepRatingLabel(1), d: skillCounts[1]
+        }
+      );
+      skillRow?.classList.toggle("is-valid", skillValid);
+      skillRow?.classList.toggle("is-invalid", !skillValid);
+
+      for (const input of [...stepAttributeInputs, ...stepSkillInputs]) {
+        const stepper = input.closest(".yze-creation-stepper");
+        const output = stepper?.querySelector("[data-step-rating-label]");
+        if (output) output.textContent = formatStepRatingLabel(Number(input.value));
+        const decrease = stepper?.querySelector('[data-delta="-1"]');
+        const increase = stepper?.querySelector('[data-delta="1"]');
+        if (decrease) decrease.disabled = !canAdjustStepRating(input, -1);
+        if (increase) increase.disabled = !canAdjustStepRating(input, 1);
       }
     }
     for (const group of choiceGroups) {
@@ -253,7 +313,9 @@ function wireCreationDialog(dialog, sources, archetype) {
     const groupTotal = group?.inputs.reduce((sum, entry) => sum + integer(entry.value, {
       min: Number(entry.min), max: Number(entry.max)
     }), 0) ?? 0;
-    if (!group || (delta > 0 && groupTotal >= group.maximum)) return;
+    if (stepDice) {
+      if (!canAdjustStepRating(input, delta)) return;
+    } else if (!group || (delta > 0 && groupTotal >= group.maximum)) return;
     const current = integer(input.value, { min: minimum, max: maximum });
     input.value = String(Math.min(maximum, Math.max(minimum, current + delta)));
     input.dispatchEvent(new Event("change", { bubbles: true }));
@@ -280,15 +342,15 @@ function readCreationForm(form, sources, archetype) {
     const attributeValues = Object.values(attributes);
     if (attributeValues.some((value) => value < 1 || value > 4)
       || attributeValues.filter((value) => value === 1).length > 1
-      || attributeValues.reduce((total, value) => total + value - 2, 0) !== 3) {
+      || attributeValues.reduce((total, value) => total + value, 0) !== STARTING_STEP_ATTRIBUTE_TOTAL) {
       return { error: "YZE.CharacterCreation.InvalidStepAttributes" };
     }
     const skillValues = [...skills.values()];
     const bSkills = sources.skills.filter((skill) => skills.get(skill.uuid) === 3);
     const keyUuids = new Set(sources.keySkills.map((skill) => skill.uuid));
-    if (bSkills.length !== 1 || !keyUuids.has(bSkills[0].uuid)
-      || skillValues.filter((value) => value === 2).length !== 2
-      || skillValues.filter((value) => value === 1).length !== 3
+    if (bSkills.length !== STARTING_STEP_SKILL_COUNTS[3] || !keyUuids.has(bSkills[0].uuid)
+      || skillValues.filter((value) => value === 2).length !== STARTING_STEP_SKILL_COUNTS[2]
+      || skillValues.filter((value) => value === 1).length !== STARTING_STEP_SKILL_COUNTS[1]
       || skillValues.some((value) => value > 3)) {
       return { error: "YZE.CharacterCreation.InvalidStepSkills" };
     }

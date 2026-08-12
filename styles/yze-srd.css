@@ -465,7 +465,8 @@
 }
 
 .yze-creation-stepper button,
-.yze-creation-stepper input {
+.yze-creation-stepper input,
+.yze-creation-step-value {
   height: 2rem;
   margin: 0;
 }
@@ -475,9 +476,19 @@
   padding: 0;
 }
 
-.yze-creation-stepper input {
+.yze-creation-stepper input,
+.yze-creation-step-value {
   text-align: center;
   font-weight: 700;
+}
+
+.yze-creation-step-value {
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  border: 1px solid var(--yze-border);
+  border-radius: 3px;
+  background: var(--yze-paper);
 }
 
 .yze-creation-total {
