@@ -9,7 +9,7 @@ import {
 } from "./items.mjs";
 import { SRD_CRITICAL_INJURIES } from "./critical-injuries.mjs";
 
-const SRD_CONTENT_VERSION = 26;
+const SRD_CONTENT_VERSION = 27;
 
 const MAGIC_DISCIPLINES = new Set([
   "awareness", "healing", "shapeshifting", "blood magic",
@@ -162,11 +162,15 @@ function criticalInjuryEffectsUpdate(item, definitions) {
   const definition = definitions.get(item.getFlag(SYSTEM_ID, "criticalInjuryKey"));
   const source = item._source?.system ?? {};
   const effects = foundry.utils.deepClone(source.effects ?? []);
-  const hasEffect = (type, target = null) => effects.some((effect) => (
-    effect.type === type && (target === null || effect.target === target)
+  const hasEffect = (type, target = null, mode = null) => effects.some((effect) => (
+    effect.type === type
+    && (target === null || effect.target === target)
+    && (mode === null || effect.mode === mode)
   ));
   const add = (type, options = {}) => {
-    if (!hasEffect(type, options.target ?? null)) effects.push(passiveInjuryEffect(type, options));
+    if (!hasEffect(type, options.target ?? null, options.mode ?? null)) {
+      effects.push(passiveInjuryEffect(type, options));
+    }
   };
 
   for (const effect of definition?.system?.effects ?? []) {
@@ -587,7 +591,7 @@ export async function migrateWorldData({ force = false } = {}) {
   if (force || currentVersion < 20) await migrateSeededFood();
   if (force || currentVersion < 13) await migrateEquipmentMechanics();
   if (force || currentVersion < 24) await migrateBackpackEffects();
-  if (force || currentVersion < 25) await migrateCriticalInjuryEffects();
+  if (force || currentVersion < 27) await migrateCriticalInjuryEffects();
   if (force || currentVersion < 26) await migrateSrdDescriptions();
   if (force || currentVersion < 16) await migrateUniversalItemEffects();
   if (force || currentVersion < 22) await migrateExperienceLedgers();

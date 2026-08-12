@@ -18,6 +18,7 @@ import { countStateSuccesses, dieSuccesses } from "./successes.mjs";
 import { renderHelpingSummary } from "../helping.mjs";
 import { renderSurpriseControl } from "../surprise.mjs";
 import { renderRollContext } from "./roll-context.mjs";
+import { chooseConditions } from "../harm.mjs";
 
 const PUSH_FLAG = "push";
 const VALID_FACES = new Set([6, 8, 10, 12]);
@@ -46,6 +47,11 @@ export function countPushBanes(state) {
     if (Object.hasOwn(counts, die.category)) counts[die.category] += 1;
   }
   return counts;
+}
+
+export function countPushedConditions(rules, banes) {
+  return (rules?.conditions ? 1 : 0)
+    + (rules?.conditionBaneDamage ? Math.max(0, Number(banes?.attribute) || 0) : 0);
 }
 
 export function applyPushResults(state, selectedIds, results) {
@@ -398,7 +404,13 @@ function prepareStressPush(state) {
   return { state: prepared, consequences: [] };
 }
 
-async function applyConfiguredConsequences(state, actor, selectedCondition, consequences) {
+async function applyConfiguredConsequences(
+  state,
+  actor,
+  selectedCondition,
+  consequences,
+  appliedConditions = []
+) {
   const rules = state.rules ?? {};
   // Stored rolls created before this setting retain the previous behaviour.
   const appliesBaneDamage = rules.baneDamage !== false;
@@ -513,22 +525,35 @@ async function applyConfiguredConsequences(state, actor, selectedCondition, cons
     }
   }
 
-  const appliesCondition = rules.conditions || rules.conditionBaneDamage;
-  if (appliesCondition && !state.mount?.mountUuid && group && CONDITIONS[group]) {
+  const conditionCount = countPushedConditions(rules, banes);
+  if (conditionCount > 0 && !state.mount?.mountUuid && group && CONDITIONS[group]) {
     const validConditions = CONDITIONS[group];
     const currentConditions = actor?.system?.conditions ?? state.conditionState ?? {};
     const available = validConditions.filter((key) => currentConditions[key] !== true);
-    if (available.length === 0) {
+    const required = Math.min(conditionCount, available.length);
+    const selected = available.includes(selectedCondition) ? [selectedCondition] : [];
+    if (canUpdate && selected.length < required) {
+      const additional = await chooseConditions(actor, group, required - selected.length, {
+        excluded: selected
+      });
+      if (additional !== null) selected.push(...additional);
+    }
+
+    if (canUpdate) {
+      for (const key of selected.slice(0, required)) {
+        updates[`system.conditions.${key}`] = true;
+        appliedConditions.push(key);
+        consequences.push(game.i18n.format("YZE.Roll.ConditionGained", {
+          condition: game.i18n.localize(`YZE.Conditions.${key}`)
+        }));
+      }
+    }
+    if (conditionCount > available.length) {
       if (canUpdate) updates[`system.broken.${group}`] = true;
       consequences.push(game.i18n.format("YZE.Roll.ConditionBroken", {
         group: game.i18n.localize(`YZE.Conditions.${group}.Label`)
       }));
-    } else if (available.includes(selectedCondition) && canUpdate) {
-      updates[`system.conditions.${selectedCondition}`] = true;
-      consequences.push(game.i18n.format("YZE.Roll.ConditionGained", {
-        condition: game.i18n.localize(`YZE.Conditions.${selectedCondition}`)
-      }));
-    } else {
+    } else if (!canUpdate || selected.length < required) {
       consequences.push(game.i18n.format("YZE.Roll.ConditionManual", {
         group: game.i18n.localize(`YZE.Conditions.${group}.Label`)
       }));
@@ -637,14 +662,19 @@ export async function executePush(
     if (Number(die.result) === 1) appliedBaneIds.add(die.id);
   }
   pushedState.appliedBaneIds = [...appliedBaneIds];
+  const appliedConditions = [];
   const consequences = await applyConfiguredConsequences(
     { ...pushedState, dice: consequenceDice },
     actor,
     condition,
-    prepared.consequences
+    prepared.consequences,
+    appliedConditions
   );
-  if (condition && (pushedState.rules?.conditions || pushedState.rules?.conditionBaneDamage)) {
-    pushedState.conditionState = { ...pushedState.conditionState, [condition]: true };
+  if (appliedConditions.length > 0) {
+    pushedState.conditionState = {
+      ...pushedState.conditionState,
+      ...Object.fromEntries(appliedConditions.map((key) => [key, true]))
+    };
   }
   // The Roll terms contain only rerolled dice, but the SRD result includes
   // retained dice as well. Keep Foundry's displayed total aligned with the

@@ -1034,7 +1034,7 @@
       "CannotHealVehicle": "The Healing Skill cannot repair a Vehicle.",
       "CannotHealDead": "A deceased Actor cannot be treated with the Healing Skill.",
       "CannotRecoverDead": "A deceased Actor cannot recover through rest.",
-      "NoHealingNeed": "{target} is not Broken and has no unstabilized lethal Critical Injury.",
+      "NoHealingNeed": "{target} has no Broken state or Critical Injury that can currently be treated.",
       "HealingSkillMissing": "This Actor does not have a Skill Item named Healing.",
       "HealingPurposeTitle": "Choose Healing Purpose",
       "HealingPurposeHint": "Choose one thing to treat on {target}. Recovering from Broken and stabilizing a lethal injury require separate rolls.",
@@ -1044,14 +1044,18 @@
       "StabilizeChoice": "Stabilize — {injury}",
       "HealingResult": "Healing result for {target}: {successes} successes.",
       "StabilizeResult": "Stabilization result for {target}'s {injury}: {successes} successes.",
+      "InjuryTreatmentResult": "Treatment result for {target}'s {injury}: {successes} successes.",
       "ApplyHealing": "Apply Healing",
       "ApplyStabilization": "Stabilize Injury",
+      "ApplyInjuryTreatment": "Complete Treatment",
       "HealingFailed": "The Healing roll produced no successes.",
       "GMApplyHealing": "You cannot update the patient. A GM or an owner of the target must apply the Healing result.",
       "InjuryUnavailable": "That lethal Critical Injury is no longer available for stabilization.",
       "TargetNoLongerBroken": "The target is no longer Broken in that category.",
       "HealingApplied": "{target} recovers {amount} from the Healing roll.",
       "StabilizationApplied": "{target}'s {injury} has been stabilized.",
+      "InjuryTreatmentChoice": "Treat injury — {injury}",
+      "InjuryTreatmentApplied": "Treatment of {target}'s {injury} is complete.",
       "HealingAlreadyApplied": "Healing Applied",
       "HealingApplicationFailed": "The Healing result could not be applied.",
       "ArmorUndamaged": "{armor} is already at its maximum armour rating.",
@@ -1280,7 +1284,8 @@
       "SpecialRules": {
         "none": "No deterministic special rule",
         "rupturedIntestines": "Ruptured intestines — immediate virulence 6/C disease",
-        "crackedSpine": "Cracked spine — urgent Healing decides permanence"
+        "crackedSpine": "Cracked spine — urgent Healing decides permanence",
+        "healingRollEnds": "Treatment roll — injury ends after a Healing roll"
       }
     },
     "InjuryTiming": {
@@ -1299,8 +1304,12 @@
       "CareAlreadyApplied": "Daily care has already been recorded for this injury today.",
       "Healed": "{actor}'s {injury} has completed its healing time.",
       "RecordFailedTreatment": "Record Failed Treatment",
-      "FailedTreatmentRecorded": "Failed treatment recorded. Another attempt requires a successful death save first."
-      ,"UrgentSpineChoice": "Urgent Healing — {injury} (failure makes the paralysis permanent)"
+      "FailedTreatmentRecorded": "Failed treatment recorded. Another attempt requires a successful death save first.",
+      "UrgentSpineChoice": "Urgent Healing — {injury} (must be attempted before the healing deadline)",
+      "TreatmentDurationPending": "This treatment takes a {interval}. Advance world time before completing it ({seconds} seconds remaining).",
+      "TreatmentDurationComplete": "The {interval} treatment time has elapsed; the result can now be applied.",
+      "TreatmentNotReady": "This {interval} treatment is still in progress ({seconds} seconds remaining).",
+      "CrackedSpinePermanent": "{actor}'s {injury} was not treated before its deadline and is now permanent."
     },
     "Environment": {
       "Title": "Environmental Hazards",

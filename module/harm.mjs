@@ -387,12 +387,16 @@ export async function promptProtection(actor, rawDamage, { ranged = false } = {}
   });
 }
 
-async function chooseConditions(actor, category, count, { removing = false } = {}) {
+export async function chooseConditions(actor, category, count, {
+  removing = false,
+  excluded = []
+} = {}) {
   const keys = CONDITIONS[category] ?? [];
+  const excludedKeys = new Set(excluded);
   const candidates = keys.filter((key) => (
-    removing
+    !excludedKeys.has(key) && (removing
       ? actor.system?.conditions?.[key] === true
-      : actor.system?.conditions?.[key] !== true
+      : actor.system?.conditions?.[key] !== true)
   ));
   const required = Math.min(wholeNumber(count), candidates.length);
   if (required === 0) return [];
@@ -817,6 +821,35 @@ export async function recoverShift(actor) {
     }
     return false;
   });
+
+  if (getHarmModel() === HARM_MODELS.CONDITIONS && currentlyBroken.length === 0) {
+    const damaged = tracks.filter((track) => (
+      (CONDITIONS[track.category] ?? []).some(
+        (key) => actor.system?.conditions?.[key] === true
+      )
+    ));
+    if (damaged.length === 0) {
+      ui.notifications.info(game.i18n.localize("YZE.Recovery.FullyRecovered"));
+      return false;
+    }
+
+    // Collect every choice before applying any update so cancelling the
+    // second category cannot leave a partial Shift of recovery behind.
+    const selectedByCategory = [];
+    for (const track of damaged) {
+      const selected = await chooseConditions(actor, track.category, 1, { removing: true });
+      if (selected === null) return false;
+      selectedByCategory.push(...selected);
+    }
+    await actor.update(Object.fromEntries(
+      selectedByCategory.map((key) => [`system.conditions.${key}`, false])
+    ));
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: `<div class="yze chat-card yze-recovery-card"><p>${escape(game.i18n.format("YZE.Recovery.ShiftApplied", { actor: actor.name }))}</p></div>`
+    });
+    return true;
+  }
 
   let recoveryTracks = tracks;
   if (currentlyBroken.length > 0) {

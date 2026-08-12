@@ -71,12 +71,17 @@ function deathSchedule(actor, timeLimit, fromTime = worldTime()) {
   };
 }
 
-export async function initializeInjuryTiming(injury, { force = false } = {}) {
+export async function initializeInjuryTiming(injury, {
+  force = false,
+  updateOptions = {}
+} = {}) {
   const actor = injury?.parent;
   if (!injury || injury.type !== "criticalInjury" || actor?.documentName !== "Actor") return null;
   if (injury.system.recovery?.initialized === true && !force) return injury.system.recovery;
 
-  const healing = parseHealingTime(injury.system.healingTime);
+  const healing = injury.system.permanent === true
+    ? { kind: "permanent", formula: "", text: String(injury.system.healingTime ?? "") }
+    : parseHealingTime(injury.system.healingTime);
   let totalDays = 0;
   if (healing.kind === "timed") {
     const roll = await new Roll(healing.formula).evaluate();
@@ -98,7 +103,7 @@ export async function initializeInjuryTiming(injury, { force = false } = {}) {
     ...schedule,
     treatmentLocked: false
   };
-  await injury.update({ "system.recovery": recovery });
+  await injury.update({ "system.recovery": recovery }, updateOptions);
   if (injury.system.instantDeath === true && actor.system?.dead !== true) {
     await actor.update({ "system.dead": true });
   }
@@ -170,14 +175,18 @@ export async function advanceLethalTreatment(injury) {
   const current = normalizeInjuryInterval(injury.system.timeLimit);
   const next = current === "round" ? "Stretch" : current === "stretch" ? "Shift" : "";
   if (!next) {
+    const completedHealing = injuryRecoveryState(injury).timed
+      && Number(injury.system.recovery?.remainingDays) <= 0
+      && injury.system.permanent !== true;
     await injury.update({
       "system.stabilized": true,
+      ...(completedHealing ? { "system.active": false } : {}),
       "system.recovery.deathSaveDue": false,
       "system.recovery.nextDeathSaveAt": 0,
       "system.recovery.nextDeathSaveRound": 0,
       "system.recovery.treatmentLocked": false
     });
-    return { stabilized: true, timeLimit: injury.system.timeLimit };
+    return { stabilized: true, completedHealing, timeLimit: injury.system.timeLimit };
   }
   const schedule = deathSchedule(injury.parent, next);
   await injury.update({
@@ -193,10 +202,11 @@ export async function advanceLethalTreatment(injury) {
 export function injuryRecoveryState(injury) {
   const recovery = injury?.system?.recovery ?? {};
   const healing = parseHealingTime(injury?.system?.healingTime);
+  const permanent = injury?.system?.permanent === true || healing.kind === "permanent";
   return {
     initialized: recovery.initialized === true,
-    timed: healing.kind === "timed",
-    permanent: injury?.system?.permanent === true || healing.kind === "permanent",
+    timed: healing.kind === "timed" && !permanent,
+    permanent,
     totalDays: Math.max(0, Math.trunc(Number(recovery.totalDays) || 0)),
     remainingDays: Math.max(0, Math.trunc(Number(recovery.remainingDays) || 0)),
     deathSaveDue: recovery.deathSaveDue === true,
@@ -234,7 +244,7 @@ export async function processTimedInjuries(now = worldTime()) {
         if (await markDeathSaveDue(injury)) due += 1;
       }
       const state = injuryRecoveryState(injury);
-      if (!state.timed || state.remainingDays < 1) continue;
+      if (!state.timed || state.permanent || state.remainingDays < 1) continue;
       const lastValue = Number(recovery.lastProcessedAt);
       const last = Number.isFinite(lastValue) ? Math.max(0, lastValue) : now;
       const elapsedDays = Math.floor((now - last) / INJURY_TIME_SECONDS.day);
@@ -246,9 +256,29 @@ export async function processTimedInjuries(now = worldTime()) {
         "system.recovery.lastProcessedAt": last + elapsedDays * INJURY_TIME_SECONDS.day,
         "system.recovery.careCredits": Math.max(0, Number(recovery.careCredits) - credits)
       };
-      if (remaining === 0) update["system.active"] = false;
+      const untreatedSpine = remaining === 0
+        && (hasCriticalInjurySpecialRule(injury, "crackedSpine") || injury.name === "Cracked Spine")
+        && injury.getFlag(SYSTEM_ID, "spineTreatmentResolved") !== true;
+      const awaitingStabilization = remaining === 0
+        && injury.system.lethal === true
+        && injury.system.stabilized !== true
+        && injury.system.instantDeath !== true;
+      if (untreatedSpine) {
+        update["system.permanent"] = true;
+        update["system.healingTime"] = "";
+        update[`flags.${SYSTEM_ID}.spineTreatmentResolved`] = true;
+      } else if (remaining === 0 && !awaitingStabilization) {
+        update["system.active"] = false;
+      }
       await injury.update(update);
-      if (remaining === 0) {
+      if (untreatedSpine) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<div class="yze chat-card"><p>${escape(game.i18n.format("YZE.InjuryTiming.CrackedSpinePermanent", {
+            actor: actor.name, injury: injury.name
+          }))}</p></div>`
+        });
+      } else if (remaining === 0 && !awaitingStabilization) {
         healed += 1;
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
@@ -260,6 +290,50 @@ export async function processTimedInjuries(now = worldTime()) {
     }
   }
   return { healed, due };
+}
+
+function changedPath(changed, path) {
+  if (changed && typeof changed === "object" && Object.hasOwn(changed, path)) return true;
+  let value = changed;
+  for (const segment of path.split(".")) {
+    if (!value || typeof value !== "object" || !Object.hasOwn(value, segment)) return false;
+    value = value[segment];
+  }
+  return true;
+}
+
+export async function synchronizeInjuryTiming(injury, changed) {
+  const options = { yzeSyncInjuryTiming: true };
+  if (changedPath(changed, "system.active") && injury.system.active === true) {
+    await initializeInjuryTiming(injury, { force: true, updateOptions: options });
+    return;
+  }
+  if (changedPath(changed, "system.healingTime") || changedPath(changed, "system.permanent")) {
+    await initializeInjuryTiming(injury, { force: true, updateOptions: options });
+    return;
+  }
+  const timingChanged = ["active", "lethal", "stabilized", "instantDeath", "timeLimit"]
+    .some((field) => changedPath(changed, `system.${field}`));
+  if (!timingChanged) return;
+
+  const active = injury.system.active === true;
+  const awaitingDeathSaves = active && injury.system.lethal === true
+    && injury.system.stabilized !== true && injury.system.instantDeath !== true;
+  const completedHealing = active && !awaitingDeathSaves
+    && injuryRecoveryState(injury).timed
+    && Number(injury.system.recovery?.remainingDays) <= 0
+    && injury.system.permanent !== true;
+  const schedule = awaitingDeathSaves
+    ? deathSchedule(injury.parent, injury.system.timeLimit)
+    : { nextDeathSaveAt: 0, nextDeathSaveRound: 0 };
+  await injury.update({
+    ...(completedHealing ? { "system.active": false } : {}),
+    "system.recovery.lastProcessedAt": worldTime(),
+    "system.recovery.deathSaveDue": false,
+    "system.recovery.nextDeathSaveAt": schedule.nextDeathSaveAt,
+    "system.recovery.nextDeathSaveRound": schedule.nextDeathSaveRound,
+    "system.recovery.treatmentLocked": false
+  }, options);
 }
 
 async function processRoundDeathSaves(combat) {
@@ -294,6 +368,13 @@ export function registerInjuryTimingHooks() {
         console.error("YZE System Toolkit | Could not apply injury disease", error);
       }
     }
+  });
+  Hooks.on("updateItem", (item, changed, options, userId) => {
+    if (item.type !== "criticalInjury" || item.parent?.documentName !== "Actor"
+      || options?.yzeSyncInjuryTiming || userId !== game.user?.id) return;
+    synchronizeInjuryTiming(item, changed).catch((error) => {
+      console.error("YZE System Toolkit | Could not synchronize Critical Injury timing", error);
+    });
   });
   Hooks.once("ready", () => {
     if (!isPrimaryActiveGM()) return;

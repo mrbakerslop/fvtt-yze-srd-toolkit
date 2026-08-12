@@ -216,7 +216,7 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       label: game.i18n.localize(`YZE.CriticalInjury.TriggerOptions.${value || "none"}`),
       selected: this.item.system.triggerKind === value
     }));
-    context.injurySpecialRuleOptions = ["", "rupturedIntestines", "crackedSpine"].map((value) => ({
+    context.injurySpecialRuleOptions = ["", "rupturedIntestines", "crackedSpine", "healingRollEnds"].map((value) => ({
       value,
       label: game.i18n.localize(`YZE.CriticalInjury.SpecialRules.${value || "none"}`),
       selected: this.item.system.specialRule === value
@@ -393,7 +393,7 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         label: game.i18n.localize(`YZE.CriticalInjury.TriggerOptions.${value}`),
         selected: effect.mode === value
       })),
-      injurySpecialRuleOptions: ["rupturedIntestines", "crackedSpine"].map((value) => ({
+      injurySpecialRuleOptions: ["rupturedIntestines", "crackedSpine", "healingRollEnds"].map((value) => ({
         value,
         label: game.i18n.localize(`YZE.CriticalInjury.SpecialRules.${value}`),
         selected: effect.mode === value

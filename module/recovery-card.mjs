@@ -19,8 +19,10 @@ import { activeSpecialties, hasSpecialty } from "./specialties.mjs";
 import {
   addDailyCare,
   advanceLethalTreatment,
+  INJURY_TIME_SECONDS,
   injuryRecoveryState,
-  lockFailedTreatment
+  lockFailedTreatment,
+  normalizeInjuryInterval
 } from "./injury-timing.mjs";
 import { vehicleDriverSkill } from "./vehicles.mjs";
 import { countStateSuccesses } from "./dice/successes.mjs";
@@ -34,6 +36,19 @@ function escape(value) {
 
 function stateSuccesses(state) {
   return countStateSuccesses(state);
+}
+
+function worldTime() {
+  return Math.max(0, Number(game.time?.worldTime) || 0);
+}
+
+function treatmentWaitSeconds(state) {
+  const readyAt = Number(state?.recovery?.treatmentReadyAt) || 0;
+  return readyAt > 0 ? Math.max(0, readyAt - worldTime()) : 0;
+}
+
+function treatmentReady(state) {
+  return treatmentWaitSeconds(state) === 0;
 }
 
 function healingResultLabel(state, successes) {
@@ -70,6 +85,13 @@ function healingResultLabel(state, successes) {
       successes
     });
   }
+  if (state.recovery.kind === "injuryTreatment") {
+    return game.i18n.format("YZE.Recovery.InjuryTreatmentResult", {
+      target: state.recovery.targetName,
+      injury: state.recovery.injuryName,
+      successes
+    });
+  }
   if (state.recovery.kind === "secondWind") {
     return game.i18n.format("YZE.Specialty.SecondWindResult", {
       target: state.recovery.targetName,
@@ -88,7 +110,16 @@ export function renderHealingControl(state) {
   return `
     <div class="yze-healing-result${successes > 0 ? " is-success" : " is-failure"}">
       <p>${escape(healingResultLabel(state, successes))}</p>
-      ${successes > 0 || state.recovery.kind === "repairGear" ? `
+      ${state.recovery.treatmentInterval ? `<p class="hint">${escape(game.i18n.format(
+        treatmentReady(state)
+          ? "YZE.InjuryTiming.TreatmentDurationComplete"
+          : "YZE.InjuryTiming.TreatmentDurationPending",
+        {
+          interval: state.recovery.treatmentInterval,
+          seconds: Math.ceil(treatmentWaitSeconds(state))
+        }
+      ))}</p>` : ""}
+      ${successes > 0 || ["repairGear", "injuryTreatment", "spine"].includes(state.recovery.kind) ? `
         <button type="button" data-action="applyHealing">
           <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
           ${escape(game.i18n.localize(
@@ -98,6 +129,8 @@ export function renderHealingControl(state) {
               ? "YZE.Recovery.ApplyStabilization"
               : state.recovery.kind === "care"
                 ? "YZE.InjuryTiming.ApplyCare"
+              : ["injuryTreatment", "spine"].includes(state.recovery.kind)
+                ? "YZE.Recovery.ApplyInjuryTreatment"
               : state.recovery.kind === "repairArmor"
                 ? "YZE.Recovery.ApplyArmorRepair"
                 : state.recovery.kind === "repairVehicle"
@@ -184,6 +217,21 @@ function healingChoices(target) {
       category: injury.system.category,
       attributeKey: null,
       label: game.i18n.format("YZE.InjuryTiming.CareChoice", { injury: injury.name })
+    });
+  }
+  for (const injury of target.items.filter((item) => (
+    item.type === "criticalInjury"
+    && item.system.active === true
+    && hasCriticalInjurySpecialRule(item, "healingRollEnds")
+  ))) {
+    choices.push({
+      id: `injuryTreatment:${injury.id}`,
+      kind: "injuryTreatment",
+      injuryItemId: injury.id,
+      injuryName: injury.name,
+      category: injury.system.category,
+      attributeKey: null,
+      label: game.i18n.format("YZE.Recovery.InjuryTreatmentChoice", { injury: injury.name })
     });
   }
   for (const injury of target.items.filter((item) => item.type === "criticalInjury"
@@ -276,14 +324,24 @@ export async function promptHealingRoll(healer) {
     return null;
   }
   const actions = combatActionState(healer);
-  if (actions.active && !actions.canSlow) {
+  const interval = purpose.kind === "care"
+    ? "shift"
+    : purpose.kind === "stabilize"
+      ? normalizeInjuryInterval(target.items.get(purpose.injuryItemId)?.system?.timeLimit)
+      : "";
+  const usesSlowAction = purpose.kind !== "care"
+    && (purpose.kind !== "stabilize" || interval === "round");
+  if (usesSlowAction && actions.active && !actions.canSlow) {
     ui.notifications.warn(game.i18n.localize("YZE.Combat.NotEnoughActions"));
     return null;
   }
 
+  const treatmentStartedAt = worldTime();
+  const treatmentDuration = interval ? INJURY_TIME_SECONDS[interval] : 0;
+
   const message = await healer.rollSkill(healing.id, {
     canOppose: false,
-    helpAction: "slow",
+    helpAction: usesSlowAction ? "slow" : null,
     fixedModifiers: purpose.kind === "stabilize"
       && hasSpecialty(healer, SPECIALTY_EFFECTS.FIELD_SURGEON)
       ? [[game.i18n.localize("YZE.Specialty.Effects.fieldSurgeon"), 1]]
@@ -291,11 +349,16 @@ export async function promptHealingRoll(healer) {
     recovery: {
       ...purpose,
       targetActorUuid: target.uuid,
-      targetName: target.name
+      targetName: target.name,
+      treatmentInterval: interval
+        ? interval[0].toUpperCase() + interval.slice(1)
+        : "",
+      treatmentStartedAt,
+      treatmentReadyAt: treatmentStartedAt + treatmentDuration
     }
   });
   if (!message) return null;
-  await spendActorActions(healer, { slow: 1 });
+  if (usesSlowAction) await spendActorActions(healer, { slow: 1 });
   return message;
 }
 
@@ -470,8 +533,15 @@ export async function promptVehicleRepair(vehicle) {
 
 export async function applyHealingRoll(message, state) {
   if (!state?.recovery || state.superseded || message.getFlag(SYSTEM_ID, APPLIED_FLAG)) return false;
+  if (!treatmentReady(state)) {
+    ui.notifications.warn(game.i18n.format("YZE.InjuryTiming.TreatmentNotReady", {
+      interval: state.recovery.treatmentInterval,
+      seconds: Math.ceil(treatmentWaitSeconds(state))
+    }));
+    return false;
+  }
   const successes = stateSuccesses(state);
-  if (successes < 1 && !["repairGear", "spine"].includes(state.recovery.kind)) {
+  if (successes < 1 && !["repairGear", "spine", "injuryTreatment"].includes(state.recovery.kind)) {
     ui.notifications.warn(game.i18n.localize("YZE.Recovery.HealingFailed"));
     return false;
   }
@@ -562,13 +632,19 @@ export async function applyHealingRoll(message, state) {
       return false;
     }
     if (!await addDailyCare(injury)) return false;
+  } else if (state.recovery.kind === "injuryTreatment") {
+    const injury = target.items.get(state.recovery.injuryItemId);
+    if (!injury || injury.type !== "criticalInjury" || injury.system.active !== true
+      || !hasCriticalInjurySpecialRule(injury, "healingRollEnds")) {
+      ui.notifications.warn(game.i18n.localize("YZE.Recovery.InjuryUnavailable"));
+      return false;
+    }
+    await injury.update({ "system.active": false });
+    await injury.setFlag(SYSTEM_ID, "treatmentResolved", true);
   } else if (state.recovery.kind === "spine") {
     const injury = target.items.get(state.recovery.injuryItemId);
     if (!injury || injury.type !== "criticalInjury" || injury.system.active !== true) return false;
     await injury.setFlag(SYSTEM_ID, "spineTreatmentResolved", true);
-    if (successes < 1) {
-      await injury.update({ "system.permanent": true, "system.healingTime": "Permanent" });
-    }
   } else {
     const broken = getActorBrokenState(target);
     if (!broken[state.recovery.category]) {
@@ -598,6 +674,8 @@ export async function applyHealingRoll(message, state) {
           ? "YZE.Vehicle.RepairApplied"
         : state.recovery.kind === "care"
           ? "YZE.InjuryTiming.CareApplied"
+        : state.recovery.kind === "injuryTreatment"
+          ? "YZE.Recovery.InjuryTreatmentApplied"
         : state.recovery.kind === "repairArmor"
           ? "YZE.Recovery.ArmorRepairApplied"
           : state.recovery.kind === "secondWind"
@@ -650,6 +728,14 @@ export function registerHealingChatHook() {
       try {
         const current = message.getFlag(SYSTEM_ID, PUSH_FLAG);
         if (!current?.recovery || stateSuccesses(current) > 0) return;
+        if (!treatmentReady(current)) {
+          ui.notifications.warn(game.i18n.format("YZE.InjuryTiming.TreatmentNotReady", {
+            interval: current.recovery.treatmentInterval,
+            seconds: Math.ceil(treatmentWaitSeconds(current))
+          }));
+          failedButton.disabled = false;
+          return;
+        }
         const target = await fromUuid(current.recovery.targetActorUuid);
         const injury = target?.items?.get(current.recovery.injuryItemId);
         if (!injury || !canUpdateActor(target)) {

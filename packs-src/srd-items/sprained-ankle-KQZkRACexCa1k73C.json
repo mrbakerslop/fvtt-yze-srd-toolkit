@@ -65,6 +65,30 @@
         "armorApplies": false,
         "multiplier": 0,
         "value": 1
+      },
+      {
+        "id": "injurySpecialRule-healingRollEnds",
+        "active": true,
+        "type": "injurySpecialRule",
+        "application": "passive",
+        "target": "",
+        "attribute": "",
+        "label": "",
+        "description": "",
+        "targetMode": "",
+        "scaling": "",
+        "category": "physical",
+        "resource": "",
+        "mode": "healingRollEnds",
+        "duration": "",
+        "handler": "",
+        "filter": "",
+        "status": "",
+        "affectedAttributes": "",
+        "affectedSkills": "",
+        "armorApplies": false,
+        "multiplier": 0,
+        "value": 1
       }
     ],
     "recovery": {
