@@ -14,18 +14,7 @@
     "stabilized": false,
     "deathSaveSkill": "Stamina",
     "rollRange": "63",
-    "rollModifier": 0,
-    "affectedAttributes": "",
-    "affectedSkills": "",
-    "damageOnSkills": "",
-    "movementRestriction": "",
-    "disabledHands": 0,
-    "blockedAttributes": "",
     "blocksActions": false,
-    "sleepRestriction": "",
-    "sleepSkill": "",
-    "triggerKind": "",
-    "specialRule": "",
     "description": "<p>Lethal. Instant death.</p>",
     "price": 0,
     "effects": [],
@@ -40,7 +29,8 @@
       "nextDeathSaveAt": 0,
       "nextDeathSaveRound": 0,
       "treatmentLocked": false
-    }
+    },
+    "location": "torso"
   },
   "flags": {
     "fvtt-yze-srd": {

@@ -31,6 +31,8 @@ import {
 } from "../settings.mjs";
 import { actorEncumbrance } from "../encumbrance.mjs";
 import {
+  criticalInjurySleepSkill,
+  criticalInjuryTriggerKind,
   getActorBrokenState,
   getCriticalInjuryRestrictions,
   rollCriticalInjury,
@@ -107,7 +109,7 @@ import {
 } from "../surprise.mjs";
 import { canBypassCoupEmpathy, performCoupDeGrace } from "../coup-de-grace.mjs";
 import { promptResourceEffect, resourceActivationEffects } from "../resource-effects.mjs";
-import { ITEM_EFFECT_TYPES } from "../item-effects.mjs";
+import { ITEM_EFFECT_TYPES, itemEffects } from "../item-effects.mjs";
 
 const { ActorSheetV2 } = foundry.applications.sheets;
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -152,15 +154,25 @@ function magicEffectSummary(effect) {
 
 function injuryRestrictionLabels(item, attributeLabels) {
   const labels = [];
-  const movement = String(item.system.movementRestriction || "");
+  const effects = (type) => itemEffects(item, type);
+  const movement = String(
+    effects(ITEM_EFFECT_TYPES.INJURY_MOVEMENT)[0]?.mode
+    || item.system.movementRestriction
+    || ""
+  );
   if (movement) labels.push(game.i18n.localize(`YZE.CriticalInjury.MovementOptions.${movement}`));
-  const disabledHands = Math.max(0, Math.trunc(Number(item.system.disabledHands) || 0));
+  const handEffects = effects(ITEM_EFFECT_TYPES.INJURY_HANDS);
+  const disabledHands = handEffects.length > 0
+    ? handEffects.reduce((total, effect) => total + Math.max(0, Number(effect.value) || 0), 0)
+    : Math.max(0, Math.trunc(Number(item.system.disabledHands) || 0));
   if (disabledHands > 0) {
     labels.push(game.i18n.format("YZE.CriticalInjury.DisabledHands", { count: disabledHands }));
   }
-  const blocked = String(item.system.blockedAttributes || "").split(",")
-    .map((key) => key.trim().toLowerCase())
-    .filter(Boolean)
+  const blockEffects = effects(ITEM_EFFECT_TYPES.INJURY_BLOCK_ROLLS);
+  const blocked = (blockEffects.length > 0
+    ? blockEffects.map((effect) => effect.target)
+    : String(item.system.blockedAttributes || "").split(","))
+    .map((key) => String(key).trim().toLowerCase()).filter(Boolean)
     .map((key) => attributeLabels[key] ?? key);
   if (blocked.length > 0) {
     labels.push(game.i18n.format("YZE.CriticalInjury.BlockedAttributes", {
@@ -170,10 +182,14 @@ function injuryRestrictionLabels(item, attributeLabels) {
   if (item.system.blocksActions === true) {
     labels.push(game.i18n.localize("YZE.CriticalInjury.BlocksActions"));
   }
-  const sleep = String(item.system.sleepRestriction || "");
+  const sleep = String(
+    effects(ITEM_EFFECT_TYPES.INJURY_SLEEP)[0]?.mode
+    || item.system.sleepRestriction
+    || ""
+  );
   if (sleep === "insight") {
     labels.push(game.i18n.format("YZE.CriticalInjury.SleepCheckRequired", {
-      skill: String(item.system.sleepSkill || "Insight")
+      skill: criticalInjurySleepSkill(item)
     }));
   } else if (sleep) {
     labels.push(game.i18n.localize(`YZE.CriticalInjury.SleepOptions.${sleep}`));
@@ -529,7 +545,7 @@ export class YZEActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
     if (injuryRestrictions.sleepInsight.length > 0) {
       const sleepSkills = [...new Set(injuryRestrictions.sleepInsight.map((item) => (
-        String(item.system.sleepSkill || "Insight")
+        criticalInjurySleepSkill(item)
       )))];
       context.criticalInjuryRestrictionSummary.push(game.i18n.format(
         "YZE.CriticalInjury.SleepCheckRequired", { skill: sleepSkills.join(" / ") }
@@ -567,7 +583,8 @@ export class YZEActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         healingTime: effectiveHealingTime(this.actor, item.system.healingTime),
         rollModifier: item.system.rollModifier,
         restrictionLabels: injuryRestrictionLabels(item, labels),
-        canTrigger: item.system.active === true && Boolean(item.system.triggerKind),
+        locationLabel: game.i18n.localize(`YZE.CriticalInjury.Locations.${item.system.location || "none"}`),
+        canTrigger: item.system.active === true && Boolean(criticalInjuryTriggerKind(item)),
         description: item.system.description
         });
       });

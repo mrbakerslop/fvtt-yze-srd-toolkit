@@ -563,6 +563,7 @@
                     data-tooltip-direction="UP"
                   >{{name}}</button>
                   <span class="injury-category">{{categoryLabel}}</span>
+                  {{#if locationLabel}}<span class="injury-location">{{locationLabel}}</span>{{/if}}
                   {{#if lethal}}<strong class="injury-lethal">{{localize "YZE.Item.Lethal"}}</strong>{{/if}}
                   {{#if permanent}}<strong>{{localize "YZE.Item.Permanent"}}</strong>{{/if}}
                   {{#if instantDeath}}<strong class="injury-lethal">{{localize "YZE.Item.InstantDeath"}}</strong>{{/if}}

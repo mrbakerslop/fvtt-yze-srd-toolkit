@@ -17,6 +17,7 @@ import {
 import { hasSpecialty } from "./specialties.mjs";
 import { countStateSuccesses } from "./dice/successes.mjs";
 import { getSRDRollTable } from "./srd-content/packs.mjs";
+import { ITEM_EFFECT_TYPES, itemEffects } from "./item-effects.mjs";
 
 const CATEGORIES = Object.freeze(["physical", "mental"]);
 const TABLE_NAMES = Object.freeze({
@@ -43,11 +44,37 @@ function canUpdateActor(actor) {
   return Boolean(actor) && (actor.isOwner !== false || game.user?.isGM === true);
 }
 
+function injuryEffects(injury, type) {
+  return itemEffects(injury, type);
+}
+
+export function criticalInjuryTriggerKind(injury) {
+  return injuryEffects(injury, ITEM_EFFECT_TYPES.INJURY_TRIGGER)[0]?.mode
+    || injury?.system?.triggerKind
+    || "";
+}
+
+export function criticalInjurySleepSkill(injury) {
+  const target = injuryEffects(injury, ITEM_EFFECT_TYPES.INJURY_SLEEP)
+    .find((effect) => effect.mode === "insight")?.target
+    || injury?.system?.sleepSkill
+    || "Insight";
+  return injury?.parent?.items?.find((item) => item.type === "skill"
+    && item.name.localeCompare(target, undefined, { sensitivity: "base" }) === 0)?.name
+    || target;
+}
+
+export function hasCriticalInjurySpecialRule(injury, rule) {
+  return injuryEffects(injury, ITEM_EFFECT_TYPES.INJURY_SPECIAL_RULE)
+    .some((effect) => effect.mode === rule)
+    || injury?.system?.specialRule === rule;
+}
+
 /** Resolve one explicitly contextual recurring trauma effect from its Actor sheet. */
 export async function triggerCriticalInjury(actor, injury) {
   if (!canUpdateActor(actor) || injury?.type !== "criticalInjury"
-    || injury.system.active !== true || !injury.system.triggerKind) return false;
-  const trigger = injury.system.triggerKind;
+    || injury.system.active !== true || !criticalInjuryTriggerKind(injury)) return false;
+  const trigger = criticalInjuryTriggerKind(injury);
   if (trigger === "hallucinations") {
     const insight = actor.items.find((item) => item.type === "skill"
       && item.name.localeCompare("Insight", undefined, { sensitivity: "base" }) === 0);
@@ -112,20 +139,34 @@ function activeRestrictionItems(actor) {
 /** Aggregate deterministic restrictions from every active Critical Injury on an Actor. */
 export function getCriticalInjuryRestrictions(actor) {
   const injuries = activeRestrictionItems(actor);
-  const movementNone = injuries.filter((item) => item.system.movementRestriction === "none");
-  const movementSlow = injuries.filter((item) => item.system.movementRestriction === "slow");
+  const movementMode = (item) => injuryEffects(item, ITEM_EFFECT_TYPES.INJURY_MOVEMENT)[0]?.mode
+    || item.system.movementRestriction;
+  const movementNone = injuries.filter((item) => movementMode(item) === "none");
+  const movementSlow = injuries.filter((item) => movementMode(item) === "slow");
   const actionSources = injuries.filter((item) => item.system.blocksActions === true);
-  const handSources = injuries.filter((item) => Number(item.system.disabledHands) > 0);
+  const disabledHandsFor = (item) => {
+    const effects = injuryEffects(item, ITEM_EFFECT_TYPES.INJURY_HANDS);
+    return effects.length > 0
+      ? effects.reduce((total, effect) => total + Math.max(0, Number(effect.value) || 0), 0)
+      : Number(item.system.disabledHands) || 0;
+  };
+  const handSources = injuries.filter((item) => disabledHandsFor(item) > 0);
   const blockedAttributes = new Map();
   for (const item of injuries) {
-    for (const attribute of list(item.system.blockedAttributes)) {
+    const effects = injuryEffects(item, ITEM_EFFECT_TYPES.INJURY_BLOCK_ROLLS);
+    const attributes = effects.length > 0
+      ? effects.map((effect) => String(effect.target).toLowerCase()).filter(Boolean)
+      : list(item.system.blockedAttributes);
+    for (const attribute of attributes) {
       const sources = blockedAttributes.get(attribute) ?? [];
       sources.push(item);
       blockedAttributes.set(attribute, sources);
     }
   }
-  const sleepInsight = injuries.filter((item) => item.system.sleepRestriction === "insight");
-  const sleepDaylight = injuries.filter((item) => item.system.sleepRestriction === "daylight");
+  const sleepMode = (item) => injuryEffects(item, ITEM_EFFECT_TYPES.INJURY_SLEEP)[0]?.mode
+    || item.system.sleepRestriction;
+  const sleepInsight = injuries.filter((item) => sleepMode(item) === "insight");
+  const sleepDaylight = injuries.filter((item) => sleepMode(item) === "daylight");
   return {
     active: injuries.length > 0,
     injuries,
@@ -134,7 +175,7 @@ export function getCriticalInjuryRestrictions(actor) {
     movement: movementNone.length > 0 ? "none" : movementSlow.length > 0 ? "slow" : "",
     movementSources: movementNone.length > 0 ? movementNone : movementSlow,
     disabledHands: Math.min(2, handSources.reduce(
-      (total, item) => total + Math.max(0, Math.trunc(Number(item.system.disabledHands) || 0)), 0
+      (total, item) => total + Math.max(0, Math.trunc(disabledHandsFor(item))), 0
     )),
     handSources,
     blockedAttributes,
@@ -411,6 +452,7 @@ export function getCriticalInjuryModifier(actor, attributeKey, skillName = null)
   const skill = String(skillName ?? "").trim().toLowerCase();
   const sources = actor?.items
     ?.filter((item) => item.type === "criticalInjury" && item.system.active === true)
+    .filter((item) => injuryEffects(item, ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER).length === 0)
     .filter((item) => {
       const attributes = list(item.system.affectedAttributes);
       const skills = list(item.system.affectedSkills);
@@ -430,7 +472,15 @@ function matchingRollDamageInjuries(actor, skillName) {
   if (!skill) return [];
   return actor?.items
     ?.filter((item) => item.type === "criticalInjury" && item.system.active === true)
-    .filter((item) => list(item.system.damageOnSkills).includes(skill)) ?? [];
+    .map((item) => {
+      const effects = injuryEffects(item, ITEM_EFFECT_TYPES.INJURY_ROLL_DAMAGE)
+        .filter((effect) => String(effect.target).trim().toLowerCase() === skill);
+      const damage = effects.length > 0
+        ? effects.reduce((total, effect) => total + Math.max(1, Number(effect.value) || 1), 0)
+        : list(item.system.damageOnSkills).includes(skill) ? 1 : 0;
+      return { item, damage };
+    })
+    .filter((entry) => entry.damage > 0) ?? [];
 }
 
 /** Apply injury effects which inflict one point of harm whenever a listed Skill is rolled. */
@@ -439,7 +489,7 @@ export async function applyCriticalInjuryRollDamage(actor, { attributeKey, skill
   const injuries = matchingRollDamageInjuries(actor, skillName);
   if (injuries.length === 0 || !canUpdateActor(actor)) return { damage: 0, injuries: [] };
 
-  const damage = injuries.length;
+  const damage = injuries.reduce((total, entry) => total + entry.damage, 0);
   const harmModel = getHarmModel();
   const updates = {};
   if (harmModel === HARM_MODELS.ATTRIBUTE_DAMAGE) {
@@ -461,9 +511,9 @@ export async function applyCriticalInjuryRollDamage(actor, { attributeKey, skill
   ui.notifications.warn(game.i18n.format("YZE.CriticalInjury.RollDamageApplied", {
     actor: actor.name,
     damage,
-    injuries: injuries.map((item) => item.name).join(", ")
+    injuries: injuries.map((entry) => entry.item.name).join(", ")
   }));
-  return { damage, injuries };
+  return { damage, injuries: injuries.map((entry) => entry.item) };
 }
 
 export function registerCriticalInjuryChatHook() {

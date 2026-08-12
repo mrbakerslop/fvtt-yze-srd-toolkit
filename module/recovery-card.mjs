@@ -5,7 +5,10 @@ import {
   SYSTEM_ID
 } from "./constants.mjs";
 import { combatActionState, spendActorActions } from "./combat.mjs";
-import { getActorBrokenState } from "./critical-injuries.mjs";
+import {
+  getActorBrokenState,
+  hasCriticalInjurySpecialRule
+} from "./critical-injuries.mjs";
 import {
   applyRecovery,
   canUpdateActor,
@@ -185,7 +188,7 @@ function healingChoices(target) {
   }
   for (const injury of target.items.filter((item) => item.type === "criticalInjury"
     && item.system.active === true
-    && (item.system.specialRule === "crackedSpine" || item.name === "Cracked Spine")
+    && (hasCriticalInjurySpecialRule(item, "crackedSpine") || item.name === "Cracked Spine")
     && item.getFlag(SYSTEM_ID, "spineTreatmentResolved") !== true)) {
     choices.push({
       id: `spine:${injury.id}`,

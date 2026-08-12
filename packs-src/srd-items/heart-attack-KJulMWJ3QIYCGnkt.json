@@ -14,18 +14,7 @@
     "stabilized": false,
     "deathSaveSkill": "Stamina",
     "rollRange": "66",
-    "rollModifier": 0,
-    "affectedAttributes": "",
-    "affectedSkills": "",
-    "damageOnSkills": "",
-    "movementRestriction": "",
-    "disabledHands": 0,
-    "blockedAttributes": "",
     "blocksActions": false,
-    "sleepRestriction": "",
-    "sleepSkill": "",
-    "triggerKind": "",
-    "specialRule": "",
     "description": "<p>Your heart stops and you die of fright.</p>",
     "price": 0,
     "effects": [],
@@ -40,7 +29,8 @@
       "nextDeathSaveAt": 0,
       "nextDeathSaveRound": 0,
       "treatmentLocked": false
-    }
+    },
+    "location": ""
   },
   "flags": {
     "fvtt-yze-srd": {

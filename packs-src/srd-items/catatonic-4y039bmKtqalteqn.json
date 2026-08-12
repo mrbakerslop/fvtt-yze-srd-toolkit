@@ -8,24 +8,13 @@
     "lethal": false,
     "deathSaveModifier": 0,
     "timeLimit": "",
-    "healingTime": "D6 days",
+    "healingTime": "D6",
     "permanent": false,
     "instantDeath": false,
     "stabilized": false,
     "deathSaveSkill": "",
     "rollRange": "64–65",
-    "rollModifier": 0,
-    "affectedAttributes": "",
-    "affectedSkills": "",
-    "damageOnSkills": "",
-    "movementRestriction": "",
-    "disabledHands": 0,
-    "blockedAttributes": "",
     "blocksActions": true,
-    "sleepRestriction": "",
-    "sleepSkill": "",
-    "triggerKind": "",
-    "specialRule": "",
     "description": "<p>You stare into oblivion and respond to no stimuli; healing time D6 days.</p>",
     "price": 0,
     "effects": [],
@@ -40,7 +29,8 @@
       "nextDeathSaveAt": 0,
       "nextDeathSaveRound": 0,
       "treatmentLocked": false
-    }
+    },
+    "location": ""
   },
   "flags": {
     "fvtt-yze-srd": {

@@ -6,15 +6,102 @@ function slug(value) {
   return value.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-").replaceAll(/^-|-$/g, "");
 }
 
+const INJURY_LOCATIONS = Object.freeze({
+  head: new Set([
+    "Stunned", "Blood in Eyes", "Concussion", "Severed Ear", "Knocked Out Teeth",
+    "Broken Nose", "Gouged Eye", "Ruptured Jugular", "Crushed Skull", "Pierced Head"
+  ]),
+  arms: new Set([
+    "Broken Hand", "Slashed Shoulder", "Crushed Elbow", "Broken Arm",
+    "Severed Arm Artery", "Severed Arm"
+  ]),
+  torso: new Set([
+    "Winded", "Crippling Pain", "Crotch Hit", "Broken Ribs", "Punctured Lung",
+    "Bleeding Gut", "Ruptured Intestines", "Busted Kidney", "Cracked Spine",
+    "Ruptured Aorta", "Disemboweled", "Impaled Heart"
+  ]),
+  legs: new Set([
+    "Sprained Ankle", "Broken Toes", "Impaled Thigh", "Busted Kneecap",
+    "Broken Leg", "Crushed Foot", "Severed Leg Artery", "Severed Leg"
+  ])
+});
+
+function injuryLocation(category, name) {
+  if (category !== "physical") return "";
+  return Object.entries(INJURY_LOCATIONS).find(([, names]) => names.has(name))?.[0] ?? "";
+}
+
+function effect(type, { target = "", mode = "", value = 1 } = {}) {
+  return {
+    id: `${type}-${target || mode || "effect"}`,
+    active: true,
+    type,
+    application: "passive",
+    target,
+    attribute: "",
+    label: "",
+    description: "",
+    targetMode: "",
+    scaling: "",
+    category: "physical",
+    resource: "",
+    mode,
+    duration: "",
+    handler: "",
+    filter: "",
+    status: "",
+    affectedAttributes: "",
+    affectedSkills: "",
+    armorApplies: false,
+    multiplier: 0,
+    value
+  };
+}
+
+function injuryEffects(automation) {
+  const effects = [];
+  for (const attribute of automation.attributes ?? []) {
+    effects.push(effect("automaticRollModifier", { target: attribute, value: automation.modifier }));
+  }
+  for (const skill of automation.skills ?? []) {
+    effects.push(effect("automaticRollModifier", {
+      target: `skill:${skill.toLowerCase()}`,
+      value: automation.modifier
+    }));
+  }
+  if (automation.movement) effects.push(effect("injuryMovement", { mode: automation.movement }));
+  if (automation.disabledHands) effects.push(effect("injuryHands", { value: automation.disabledHands }));
+  for (const attribute of automation.blockedAttributes ?? []) {
+    effects.push(effect("injuryBlockRolls", { target: attribute }));
+  }
+  for (const skill of automation.damageOnSkills ?? []) {
+    effects.push(effect("injuryRollDamage", { target: skill.toLowerCase(), value: 1 }));
+  }
+  if (automation.sleep) {
+    effects.push(effect("injurySleep", {
+      target: automation.sleep === "insight"
+        ? String(automation.sleepSkill ?? "Insight").toLowerCase()
+        : "",
+      mode: automation.sleep
+    }));
+  }
+  if (automation.trigger) effects.push(effect("injuryTrigger", { mode: automation.trigger }));
+  if (automation.specialRule) {
+    effects.push(effect("injurySpecialRule", { mode: automation.specialRule }));
+  }
+  return effects;
+}
+
 function injury(category, range, name, effect, automation = {}) {
   const rollRange = bounds(range);
   const lethal = effect.startsWith("Lethal")
     || /instant death|die immediately|heart stops|story ends|last time/i.test(effect);
   const deathSaveMatch = effect.match(/[−-](\d+) to death saves/i);
   const timeLimitMatch = effect.match(/time limit ([^.]+)\./i);
-  const healingTimeMatch = effect.match(/healing time ([^.]+)\./i);
+  const healingDice = effect.match(/healing time (\d*D6) days/i)?.[1] ?? "";
   const instantDeath = /instant death|die immediately|heart stops|story ends|last time/i.test(effect);
   const permanent = /(?:^|[.;]\s*)permanent\.$/i.test(effect) || instantDeath;
+  const deathInterval = timeLimitMatch?.[1]?.match(/round|stretch|shift|day/i)?.[0] ?? "";
 
   return Object.freeze({
     key: `${category}-${rollRange.join("-")}-${slug(name)}`,
@@ -24,28 +111,19 @@ function injury(category, range, name, effect, automation = {}) {
     effect,
     system: Object.freeze({
       category,
+      location: injuryLocation(category, name),
       active: true,
       lethal,
       deathSaveModifier: deathSaveMatch ? -Number(deathSaveMatch[1]) : 0,
-      timeLimit: timeLimitMatch?.[1] ?? "",
-      healingTime: /no healing time/i.test(effect) ? "None" : healingTimeMatch?.[1] ?? "",
+      timeLimit: deathInterval ? deathInterval[0].toUpperCase() + deathInterval.slice(1).toLowerCase() : "",
+      healingTime: /no healing time/i.test(effect) ? "" : healingDice,
       permanent,
       instantDeath,
       stabilized: false,
       deathSaveSkill: lethal ? "Stamina" : "",
       rollRange: rollRange[0] === rollRange[1] ? String(rollRange[0]) : `${rollRange[0]}–${rollRange[1]}`,
-      rollModifier: automation.modifier ?? 0,
-      affectedAttributes: (automation.attributes ?? []).join(", "),
-      affectedSkills: (automation.skills ?? []).join(", "),
-      damageOnSkills: (automation.damageOnSkills ?? []).join(", "),
-      movementRestriction: automation.movement ?? "",
-      disabledHands: automation.disabledHands ?? 0,
-      blockedAttributes: (automation.blockedAttributes ?? []).join(", "),
       blocksActions: automation.blocksActions ?? false,
-      sleepRestriction: automation.sleep ?? "",
-      sleepSkill: automation.sleep === "insight" ? automation.sleepSkill ?? "Insight" : "",
-      triggerKind: automation.trigger ?? "",
-      specialRule: automation.specialRule ?? "",
+      effects: injuryEffects(automation),
       description: `<p>${effect}</p>`
     })
   });

@@ -173,6 +173,29 @@
   resize: vertical;
 }
 
+.yze.item-sheet .critical-injury-fields {
+  align-items: start;
+}
+
+.yze.item-sheet .critical-injury-toggles,
+.yze.item-sheet .critical-injury-recovery-state {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.4rem 0.75rem;
+  padding: 0.6rem;
+  border: 1px solid var(--yze-border);
+}
+
+.yze.item-sheet .critical-injury-toggles .checkbox-row {
+  flex-direction: row;
+}
+
+.yze.item-sheet .critical-injury-recovery-state {
+  color: var(--yze-muted-text);
+  font-size: 0.8rem;
+}
+
 .yze-zone-manager {
   display: flex;
   flex-direction: column;

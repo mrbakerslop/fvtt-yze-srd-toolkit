@@ -1,5 +1,6 @@
 import { SYSTEM_ID } from "./constants.mjs";
 import { effectiveHealingMultiplier } from "./specialties.mjs";
+import { hasCriticalInjurySpecialRule } from "./critical-injuries.mjs";
 
 export const INJURY_TIME_SECONDS = Object.freeze({
   round: 6,
@@ -283,7 +284,7 @@ export function registerInjuryTimingHooks() {
     initializeInjuryTiming(item).catch((error) => {
       console.error("YZE System Toolkit | Could not initialize Critical Injury timing", error);
     });
-    if ((item.system.specialRule === "rupturedIntestines" || item.name === "Ruptured Intestines")
+    if ((hasCriticalInjurySpecialRule(item, "rupturedIntestines") || item.name === "Ruptured Intestines")
       && isPrimaryActiveGM() && item.getFlag(SYSTEM_ID, "rupturedExposureStarted") !== true) {
       try {
         await item.setFlag(SYSTEM_ID, "rupturedExposureStarted", true);

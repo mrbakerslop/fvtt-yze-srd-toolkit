@@ -8,24 +8,13 @@
     "lethal": false,
     "deathSaveModifier": 0,
     "timeLimit": "",
-    "healingTime": "None",
+    "healingTime": "",
     "permanent": false,
     "instantDeath": false,
     "stabilized": false,
     "deathSaveSkill": "",
     "rollRange": "11",
-    "rollModifier": 0,
-    "affectedAttributes": "",
-    "affectedSkills": "",
-    "damageOnSkills": "",
-    "movementRestriction": "",
-    "disabledHands": 0,
-    "blockedAttributes": "",
     "blocksActions": false,
-    "sleepRestriction": "",
-    "sleepSkill": "",
-    "triggerKind": "",
-    "specialRule": "",
     "description": "<p>Non-lethal; no ongoing effect; no healing time.</p>",
     "price": 0,
     "effects": [],
@@ -40,7 +29,8 @@
       "nextDeathSaveAt": 0,
       "nextDeathSaveRound": 0,
       "treatmentLocked": false
-    }
+    },
+    "location": "torso"
   },
   "flags": {
     "fvtt-yze-srd": {

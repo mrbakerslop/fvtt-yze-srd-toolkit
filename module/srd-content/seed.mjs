@@ -9,7 +9,7 @@ import {
 } from "./items.mjs";
 import { SRD_CRITICAL_INJURIES } from "./critical-injuries.mjs";
 
-const SRD_CONTENT_VERSION = 24;
+const SRD_CONTENT_VERSION = 25;
 
 const MAGIC_DISCIPLINES = new Set([
   "awareness", "healing", "shapeshifting", "blood magic",
@@ -93,36 +93,87 @@ async function migrateSeededFood() {
   }
 }
 
-function criticalInjuryRestrictionUpdate(item, definitions) {
-  const definition = definitions.get(item.getFlag(SYSTEM_ID, "criticalInjuryKey"));
-  if (!definition) return null;
+function passiveInjuryEffect(type, { target = "", mode = "", value = 1 } = {}) {
   return {
-    _id: item.id,
-    "system.movementRestriction": definition.system.movementRestriction,
-    "system.disabledHands": definition.system.disabledHands,
-    "system.blockedAttributes": definition.system.blockedAttributes,
-    "system.blocksActions": definition.system.blocksActions,
-    "system.sleepRestriction": definition.system.sleepRestriction,
-    "system.sleepSkill": definition.system.sleepSkill,
-    "system.triggerKind": definition.system.triggerKind,
-    "system.specialRule": definition.system.specialRule
+    id: foundry.utils.randomID(), active: true, type, application: "passive",
+    target, attribute: "", label: "", description: "", targetMode: "", scaling: "",
+    category: "physical", resource: "", mode, duration: "", handler: "", filter: "",
+    status: "", affectedAttributes: "", affectedSkills: "", armorApplies: false,
+    multiplier: 0, value
   };
 }
 
-async function migrateCriticalInjuryRestrictions() {
-  const definitions = new Map(SRD_CRITICAL_INJURIES.map((injury) => [injury.key, injury]));
-  const worldUpdates = [...game.items]
-    .filter((item) => item.type === "criticalInjury")
-    .map((item) => criticalInjuryRestrictionUpdate(item, definitions))
-    .filter(Boolean);
-  if (worldUpdates.length > 0) await Item.implementation.updateDocuments(worldUpdates);
+function criticalInjuryEffectsUpdate(item, definitions) {
+  if (item.type !== "criticalInjury") return null;
+  const definition = definitions.get(item.getFlag(SYSTEM_ID, "criticalInjuryKey"));
+  const source = item._source?.system ?? {};
+  const effects = foundry.utils.deepClone(source.effects ?? []);
+  const hasEffect = (type, target = null) => effects.some((effect) => (
+    effect.type === type && (target === null || effect.target === target)
+  ));
+  const add = (type, options = {}) => {
+    if (!hasEffect(type, options.target ?? null)) effects.push(passiveInjuryEffect(type, options));
+  };
 
+  for (const effect of definition?.system?.effects ?? []) {
+    add(effect.type, { target: effect.target, mode: effect.mode, value: effect.value });
+  }
+
+  const modifier = Number(source.rollModifier) || 0;
+  if (modifier !== 0) {
+    for (const attribute of normalize(source.affectedAttributes).split(",").map((value) => value.trim()).filter(Boolean)) {
+      add(ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER, { target: attribute, value: modifier });
+    }
+    for (const skill of normalize(source.affectedSkills).split(",").map((value) => value.trim()).filter(Boolean)) {
+      add(ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER, { target: `skill:${skill}`, value: modifier });
+    }
+  }
+  if (source.movementRestriction) add(ITEM_EFFECT_TYPES.INJURY_MOVEMENT, { mode: source.movementRestriction });
+  if (Number(source.disabledHands) > 0) add(ITEM_EFFECT_TYPES.INJURY_HANDS, { value: Number(source.disabledHands) });
+  for (const attribute of normalize(source.blockedAttributes).split(",").map((value) => value.trim()).filter(Boolean)) {
+    add(ITEM_EFFECT_TYPES.INJURY_BLOCK_ROLLS, { target: attribute });
+  }
+  for (const skill of normalize(source.damageOnSkills).split(",").map((value) => value.trim()).filter(Boolean)) {
+    add(ITEM_EFFECT_TYPES.INJURY_ROLL_DAMAGE, { target: skill, value: 1 });
+  }
+  if (source.sleepRestriction) {
+    add(ITEM_EFFECT_TYPES.INJURY_SLEEP, {
+      target: source.sleepRestriction === "insight" ? source.sleepSkill || "Insight" : "",
+      mode: source.sleepRestriction
+    });
+  }
+  if (source.triggerKind) add(ITEM_EFFECT_TYPES.INJURY_TRIGGER, { mode: source.triggerKind });
+  if (source.specialRule) add(ITEM_EFFECT_TYPES.INJURY_SPECIAL_RULE, { mode: source.specialRule });
+
+  const healing = String(source.healingTime ?? "").trim();
+  const healingDice = healing.match(/^(\d*D6)(?:\s+days?)?$/i)?.[1] ?? "";
+  const interval = String(source.timeLimit ?? "").match(/round|stretch|shift|day/i)?.[0] ?? "";
+  return {
+    _id: item.id,
+    "system.location": source.location || definition?.system?.location || "",
+    "system.healingTime": /^(?:none|permanent)$/i.test(healing) ? "" : healingDice || healing,
+    "system.timeLimit": interval
+      ? interval[0].toUpperCase() + interval.slice(1).toLowerCase()
+      : "",
+    "system.permanent": source.permanent === true || /^permanent$/i.test(healing),
+    "system.deathSaveSkill": source.lethal === true
+      ? source.deathSaveSkill || definition?.system?.deathSaveSkill || "Stamina"
+      : source.deathSaveSkill || "",
+    "system.effects": effects
+  };
+}
+
+async function migrateCriticalInjuryEffects() {
+  const definitions = new Map(SRD_CRITICAL_INJURIES.map((injury) => [injury.key, injury]));
+  const worldUpdates = [...game.items].map((item) => (
+    criticalInjuryEffectsUpdate(item, definitions)
+  )).filter(Boolean);
+  if (worldUpdates.length > 0) await Item.implementation.updateDocuments(worldUpdates);
   for (const actor of game.actors) {
-    const actorUpdates = actor.items
-      .filter((item) => item.type === "criticalInjury")
-      .map((item) => criticalInjuryRestrictionUpdate(item, definitions))
-      .filter(Boolean);
-    if (actorUpdates.length > 0) await actor.updateEmbeddedDocuments("Item", actorUpdates);
+    const embeddedUpdates = [...actor.items].map((item) => (
+      criticalInjuryEffectsUpdate(item, definitions)
+    )).filter(Boolean);
+    if (embeddedUpdates.length > 0) await actor.updateEmbeddedDocuments("Item", embeddedUpdates);
   }
 }
 
@@ -482,8 +533,8 @@ export async function migrateWorldData({ force = false } = {}) {
   if (force || currentVersion < 20) await migrateSeededFood();
   if (force || currentVersion < 13) await migrateEquipmentMechanics();
   if (force || currentVersion < 24) await migrateBackpackEffects();
+  if (force || currentVersion < 25) await migrateCriticalInjuryEffects();
   if (force || currentVersion < 16) await migrateUniversalItemEffects();
-  if (force || currentVersion < 21) await migrateCriticalInjuryRestrictions();
   if (force || currentVersion < 22) await migrateExperienceLedgers();
   if (force || currentVersion < 23) await removeObsoleteReferenceJournal();
   await game.settings.set(SYSTEM_ID, "srdContentVersion", SRD_CONTENT_VERSION);

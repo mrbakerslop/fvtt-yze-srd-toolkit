@@ -402,117 +402,50 @@
         </select>
       </label>
       <label>
-        {{localize "YZE.Item.RollRange"}}
-        <input name="system.rollRange" type="text" value="{{system.rollRange}}">
-      </label>
-      <label class="checkbox-row">
-        <input name="system.active" type="checkbox" {{checked system.active}}>
-        {{localize "YZE.Item.Active"}}
-      </label>
-      <label class="checkbox-row">
-        <input name="system.lethal" type="checkbox" {{checked system.lethal}}>
-        {{localize "YZE.Item.Lethal"}}
+        {{localize "YZE.Item.InjuryLocation"}}
+        <select name="system.location">
+          {{#each injuryLocationOptions}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
       </label>
       <label>
-        {{localize "YZE.Item.DeathSaveModifier"}}
-        <input name="system.deathSaveModifier" type="number" value="{{system.deathSaveModifier}}" step="1">
+        {{localize "YZE.Item.InjuryHealingTime"}}
+        <select name="system.healingTime" {{#unless canSetInjuryHealing}}disabled{{/unless}}>
+          {{#each injuryHealingOptions}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
       </label>
-      <label>
-        {{localize "YZE.Item.TimeLimit"}}
-        <input name="system.timeLimit" type="text" value="{{system.timeLimit}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.HealingTime"}}
-        <input name="system.healingTime" type="text" value="{{system.healingTime}}">
-      </label>
-      {{#if system.recovery.initialized}}
+      {{#if showInjuryDeathSaveFields}}
         <label>
-          {{localize "YZE.InjuryTiming.RemainingDays"}}
-          <input name="system.recovery.remainingDays" type="number" value="{{system.recovery.remainingDays}}" min="0">
+          {{localize "YZE.Item.DeathSaveInterval"}}
+          <select name="system.timeLimit">
+            {{#each injuryDeathIntervalOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
         </label>
         <label>
-          {{localize "YZE.InjuryTiming.TotalDays"}}
-          <input name="system.recovery.totalDays" type="number" value="{{system.recovery.totalDays}}" min="0">
+          {{localize "YZE.Item.DeathSaveModifier"}}
+          <input name="system.deathSaveModifier" type="number" value="{{system.deathSaveModifier}}" step="1">
         </label>
-        {{#if system.lethal}}
-          <label class="checkbox-row">
-            <input name="system.recovery.deathSaveDue" type="checkbox" {{checked system.recovery.deathSaveDue}}>
-            {{localize "YZE.InjuryTiming.DeathSaveDue"}}
-          </label>
-        {{/if}}
       {{/if}}
-      <label class="checkbox-row">
-        <input name="system.permanent" type="checkbox" {{checked system.permanent}}>
-        {{localize "YZE.Item.Permanent"}}
-      </label>
-      <label class="checkbox-row">
-        <input name="system.instantDeath" type="checkbox" {{checked system.instantDeath}}>
-        {{localize "YZE.Item.InstantDeath"}}
-      </label>
-      <label class="checkbox-row">
-        <input name="system.stabilized" type="checkbox" {{checked system.stabilized}}>
-        {{localize "YZE.Item.Stabilized"}}
-      </label>
-      <label>
-        {{localize "YZE.Item.DeathSaveSkill"}}
-        <input name="system.deathSaveSkill" type="text" value="{{system.deathSaveSkill}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.InjuryRollModifier"}}
-        <input name="system.rollModifier" type="number" value="{{system.rollModifier}}" step="1">
-      </label>
-      <label>
-        {{localize "YZE.Item.AffectedAttributes"}}
-        <input name="system.affectedAttributes" type="text" value="{{system.affectedAttributes}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.AffectedSkills"}}
-        <input name="system.affectedSkills" type="text" value="{{system.affectedSkills}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.DamageOnSkills"}}
-        <input name="system.damageOnSkills" type="text" value="{{system.damageOnSkills}}">
-      </label>
-      <label>
-        {{localize "YZE.Item.MovementRestriction"}}
-        <select name="system.movementRestriction">
-          {{#each injuryMovementOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
-        </select>
-      </label>
-      <label>
-        {{localize "YZE.Item.DisabledHands"}}
-        <input name="system.disabledHands" type="number" value="{{system.disabledHands}}" min="0" max="2" step="1">
-      </label>
-      <label>
-        {{localize "YZE.Item.BlockedAttributes"}}
-        <input name="system.blockedAttributes" type="text" value="{{system.blockedAttributes}}">
-      </label>
-      <label class="checkbox-row">
-        <input name="system.blocksActions" type="checkbox" {{checked system.blocksActions}}>
-        {{localize "YZE.Item.BlocksActions"}}
-      </label>
-      <label>
-        {{localize "YZE.Item.SleepRestriction"}}
-        <select name="system.sleepRestriction">
-          {{#each injurySleepOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
-        </select>
-      </label>
-      <label>
-        {{localize "YZE.Item.SleepSkill"}}
-        <input name="system.sleepSkill" type="text" value="{{system.sleepSkill}}" placeholder="Insight">
-      </label>
-      <label>
-        {{localize "YZE.Item.InjuryTrigger"}}
-        <select name="system.triggerKind">
-          {{#each injuryTriggerOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
-        </select>
-      </label>
-      <label>
-        {{localize "YZE.Item.InjurySpecialRule"}}
-        <select name="system.specialRule">
-          {{#each injurySpecialRuleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
-        </select>
-      </label>
+      <div class="critical-injury-toggles">
+        <label class="checkbox-row"><input name="system.active" type="checkbox" {{checked system.active}}> {{localize "YZE.Item.Active"}}</label>
+        <label class="checkbox-row"><input name="system.lethal" type="checkbox" {{checked system.lethal}}> {{localize "YZE.Item.Lethal"}}</label>
+        <label class="checkbox-row"><input name="system.permanent" type="checkbox" {{checked system.permanent}}> {{localize "YZE.Item.Permanent"}}</label>
+        <label class="checkbox-row"><input name="system.stabilized" type="checkbox" {{checked system.stabilized}} {{#unless canStabilizeInjury}}disabled{{/unless}}> {{localize "YZE.Item.Stabilized"}}</label>
+        <label class="checkbox-row"><input name="system.blocksActions" type="checkbox" {{checked system.blocksActions}}> {{localize "YZE.Item.BlocksActions"}}</label>
+        <label class="checkbox-row"><input name="system.instantDeath" type="checkbox" {{checked system.instantDeath}}> {{localize "YZE.Item.InstantDeath"}}</label>
+      </div>
+      {{#if system.recovery.initialized}}
+        <div class="critical-injury-recovery-state">
+          <span>{{localize "YZE.InjuryTiming.RemainingDays"}}: {{system.recovery.remainingDays}}</span>
+          <span>{{localize "YZE.InjuryTiming.TotalDays"}}: {{system.recovery.totalDays}}</span>
+          {{#if system.recovery.deathSaveDue}}<strong>{{localize "YZE.InjuryTiming.DeathSaveDue"}}</strong>{{/if}}
+        </div>
+      {{/if}}
     </section>
   {{/if}}
 
@@ -535,6 +468,29 @@
           {{#if isRollModifier}}
             <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target"><option value="all" {{#if allRollsSelected}}selected{{/if}}>{{localize "YZE.ItemEffects.AllRolls"}}</option><optgroup label="{{localize 'YZE.ItemEffects.AttributeTargets'}}">{{#each attributeTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup><optgroup label="{{localize 'YZE.ItemEffects.SkillTargets'}}">{{#each skillTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup></select></label>
             <label>{{localize "YZE.ItemEffects.Value"}}<select name="system.effects.{{index}}.value">{{#each modifierOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInjuryMovement}}
+            <label>{{localize "YZE.ItemEffects.Movement"}}<select name="system.effects.{{index}}.mode">{{#each injuryMovementOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInjuryHands}}
+            <label>{{localize "YZE.ItemEffects.DisabledHands"}}<select name="system.effects.{{index}}.value">{{#each injuryHandOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInjuryBlockRolls}}
+            <label>{{localize "YZE.ItemEffects.BlockedAttribute"}}<select name="system.effects.{{index}}.target">{{#each injuryAttributeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInjuryRollDamage}}
+            <label>{{localize "YZE.ItemEffects.DamageSkill"}}<select name="system.effects.{{index}}.target">{{#each injurySkillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>{{localize "YZE.ItemEffects.DamageAmount"}}<input name="system.effects.{{index}}.value" type="number" value="{{value}}" min="1" max="10"></label>
+          {{/if}}
+          {{#if isInjurySleep}}
+            <label>{{localize "YZE.ItemEffects.SleepRule"}}<select name="system.effects.{{index}}.mode">{{#each injurySleepOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            {{#if injurySleepNeedsSkill}}<label>{{localize "YZE.ItemEffects.SleepSkill"}}<select name="system.effects.{{index}}.target">{{#each injurySkillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+          {{/if}}
+          {{#if isInjuryTrigger}}
+            <label>{{localize "YZE.ItemEffects.InjuryTrigger"}}<select name="system.effects.{{index}}.mode">{{#each injuryTriggerOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{/if}}
+          {{#if isInjurySpecialRule}}
+            <label>{{localize "YZE.ItemEffects.InjurySpecialRule"}}<select name="system.effects.{{index}}.mode">{{#each injurySpecialRuleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
           {{/if}}
           {{#if isExtraPush}}
             <label>{{localize "YZE.ItemEffects.Target"}}<select name="system.effects.{{index}}.target"><option value="all" {{#if allRollsSelected}}selected{{/if}}>{{localize "YZE.ItemEffects.AllRolls"}}</option><optgroup label="{{localize 'YZE.ItemEffects.AttributeTargets'}}">{{#each attributeTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup><optgroup label="{{localize 'YZE.ItemEffects.SkillTargets'}}">{{#each skillTargetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup></select></label>

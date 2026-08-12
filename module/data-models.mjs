@@ -350,6 +350,8 @@ class DescribedItemDataModel extends foundry.abstract.TypeDataModel {
             "carryCapacityMultiplier",
             "hitInterception", "coupDeGrace",
             "willpowerActivation", "doomExpenditure",
+            "injuryMovement", "injuryHands", "injuryBlockRolls",
+            "injuryRollDamage", "injurySleep", "injuryTrigger", "injurySpecialRule",
             "spellDamage", "spellRecovery", "spellModifier",
             "spellResource", "spellStatus", "spellArmor",
             "spellAutomaticSuccess", "spellItemDamage",
@@ -772,6 +774,13 @@ export class CriticalInjuryDataModel extends DescribedItemDataModel {
         blank: false,
         choices: ["physical", "mental"],
         initial: "physical"
+      }),
+      location: new StringField({
+        required: true,
+        nullable: false,
+        blank: true,
+        choices: ["", "head", "arms", "torso", "legs"],
+        initial: ""
       }),
       active: new BooleanField({ required: true, initial: true }),
       lethal: new BooleanField({ required: true, initial: false }),

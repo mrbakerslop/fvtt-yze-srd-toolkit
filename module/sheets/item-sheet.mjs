@@ -161,6 +161,10 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     context.showWeight = !context.useSupplyConsumables;
     context.isSpell = this.item.type === "spell";
     context.isCriticalInjury = this.item.type === "criticalInjury";
+    context.canStabilizeInjury = context.isCriticalInjury
+      && this.item.system.lethal === true && this.item.system.instantDeath !== true;
+    context.showInjuryDeathSaveFields = context.canStabilizeInjury;
+    context.canSetInjuryHealing = context.isCriticalInjury && this.item.system.permanent !== true;
     context.isCarryable = ["gear", "weapon", "armor", "consumable"].includes(this.item.type);
     context.componentTypeOptions = ["engine", "mobility", "weapon", "utility"].map((key) => ({
       key,
@@ -181,6 +185,21 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       key,
       label: game.i18n.localize(`YZE.CriticalInjury.${key}`),
       selected: this.item.system.category === key
+    }));
+    context.injuryLocationOptions = ["", "head", "arms", "torso", "legs"].map((value) => ({
+      value,
+      label: game.i18n.localize(`YZE.CriticalInjury.Locations.${value || "none"}`),
+      selected: this.item.system.location === value
+    }));
+    context.injuryHealingOptions = ["", "D6", "2D6", "3D6"].map((value) => ({
+      value,
+      label: game.i18n.localize(`YZE.CriticalInjury.HealingOptions.${value || "none"}`),
+      selected: this.item.system.healingTime === value
+    }));
+    context.injuryDeathIntervalOptions = ["", "Round", "Stretch", "Shift", "Day"].map((value) => ({
+      value,
+      label: game.i18n.localize(`YZE.CriticalInjury.DeathIntervals.${value || "none"}`),
+      selected: String(this.item.system.timeLimit).toLowerCase() === value.toLowerCase()
     }));
     context.injuryMovementOptions = ["", "slow", "none"].map((value) => ({
       value,
@@ -241,9 +260,23 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const skillNames = [...new Map(skillDocuments.map((item) => [
       item.name.trim().toLocaleLowerCase(), item.name
     ])).entries()];
+    const injuryEffectTypes = [
+      ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER,
+      ITEM_EFFECT_TYPES.INJURY_MOVEMENT,
+      ITEM_EFFECT_TYPES.INJURY_HANDS,
+      ITEM_EFFECT_TYPES.INJURY_BLOCK_ROLLS,
+      ITEM_EFFECT_TYPES.INJURY_ROLL_DAMAGE,
+      ITEM_EFFECT_TYPES.INJURY_SLEEP,
+      ITEM_EFFECT_TYPES.INJURY_TRIGGER,
+      ITEM_EFFECT_TYPES.INJURY_SPECIAL_RULE
+    ];
     const effectTypes = this.item.type === "spell"
       ? SPELL_EFFECT_TYPES
-      : Object.values(ITEM_EFFECT_TYPES).filter((value) => !SPELL_EFFECT_TYPES.includes(value));
+      : this.item.type === "criticalInjury"
+        ? injuryEffectTypes
+        : Object.values(ITEM_EFFECT_TYPES).filter((value) => (
+          !SPELL_EFFECT_TYPES.includes(value) && !injuryEffectTypes.includes(value)
+        ));
     const effects = this.item.toObject().system.effects ?? [];
     for (const effect of effects) {
       const skillTarget = effect.type === ITEM_EFFECT_TYPES.ALTERNATE_ATTRIBUTE
@@ -274,6 +307,14 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       isCoupDeGrace: effect.type === ITEM_EFFECT_TYPES.COUP_DE_GRACE,
       isWillpowerActivation: effect.type === ITEM_EFFECT_TYPES.WILLPOWER_ACTIVATION,
       isDoomExpenditure: effect.type === ITEM_EFFECT_TYPES.DOOM_EXPENDITURE,
+      isInjuryMovement: effect.type === ITEM_EFFECT_TYPES.INJURY_MOVEMENT,
+      isInjuryHands: effect.type === ITEM_EFFECT_TYPES.INJURY_HANDS,
+      isInjuryBlockRolls: effect.type === ITEM_EFFECT_TYPES.INJURY_BLOCK_ROLLS,
+      isInjuryRollDamage: effect.type === ITEM_EFFECT_TYPES.INJURY_ROLL_DAMAGE,
+      isInjurySleep: effect.type === ITEM_EFFECT_TYPES.INJURY_SLEEP,
+      injurySleepNeedsSkill: effect.type === ITEM_EFFECT_TYPES.INJURY_SLEEP && effect.mode === "insight",
+      isInjuryTrigger: effect.type === ITEM_EFFECT_TYPES.INJURY_TRIGGER,
+      isInjurySpecialRule: effect.type === ITEM_EFFECT_TYPES.INJURY_SPECIAL_RULE,
       isResourceActivation: [
         ITEM_EFFECT_TYPES.WILLPOWER_ACTIVATION,
         ITEM_EFFECT_TYPES.DOOM_EXPENDITURE
@@ -325,6 +366,37 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       })),
       skillOptions: skillNames.map(([value, label]) => ({
         value, label, selected: effect.target === value
+      })),
+      injurySkillOptions: skillNames.map(([value, label]) => ({
+        value, label, selected: effect.target === value
+      })),
+      injuryAttributeOptions: attributeTargets.map((option) => ({
+        ...option, selected: effect.target === option.value
+      })),
+      injuryMovementOptions: ["slow", "none"].map((value) => ({
+        value,
+        label: game.i18n.localize(`YZE.CriticalInjury.MovementOptions.${value}`),
+        selected: effect.mode === value
+      })),
+      injuryHandOptions: [1, 2].map((value) => ({
+        value,
+        label: game.i18n.format("YZE.CriticalInjury.DisabledHands", { count: value }),
+        selected: Number(effect.value) === value
+      })),
+      injurySleepOptions: ["insight", "daylight"].map((value) => ({
+        value,
+        label: game.i18n.localize(`YZE.CriticalInjury.SleepOptions.${value}`),
+        selected: effect.mode === value
+      })),
+      injuryTriggerOptions: ["phobia", "alcohol", "claustrophobia", "hallucinations"].map((value) => ({
+        value,
+        label: game.i18n.localize(`YZE.CriticalInjury.TriggerOptions.${value}`),
+        selected: effect.mode === value
+      })),
+      injurySpecialRuleOptions: ["rupturedIntestines", "crackedSpine"].map((value) => ({
+        value,
+        label: game.i18n.localize(`YZE.CriticalInjury.SpecialRules.${value}`),
+        selected: effect.mode === value
       })),
       modifierOptions: Array.from({ length: 11 }, (_, offset) => offset - 5)
         .filter((value) => value !== 0)
@@ -400,7 +472,9 @@ export class YZEItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       active: true,
       type: this.item.type === "spell"
         ? ITEM_EFFECT_TYPES.SPELL_WORKFLOW
-        : ITEM_EFFECT_TYPES.ROLL_MODIFIER,
+        : this.item.type === "criticalInjury"
+          ? ITEM_EFFECT_TYPES.AUTOMATIC_ROLL_MODIFIER
+          : ITEM_EFFECT_TYPES.ROLL_MODIFIER,
       application: this.item.type === "spell" ? "spell" : "passive",
       target: "all",
       attribute: "",

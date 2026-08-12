@@ -5,7 +5,10 @@ import { clearEnvironmentalHazard, updateEnvironmentalHazards } from "./hazard-s
 import { applyDamage, recoverShift, relieveStress } from "./harm.mjs";
 import { countStateSuccesses } from "./dice/successes.mjs";
 import { rollColdExposure, rollFireExposure } from "./environmental-hazards.mjs";
-import { getCriticalInjuryRestrictions } from "./critical-injuries.mjs";
+import {
+  criticalInjurySleepSkill,
+  getCriticalInjuryRestrictions
+} from "./critical-injuries.mjs";
 import { mountMobilityRoll, resolveMountRider } from "./mounts.mjs";
 import {
   addConsumableAmount,
@@ -1058,7 +1061,7 @@ export async function performTravelActivity(actor) {
       return null;
     }
     if (restrictions.sleepInsight.length > 0) {
-      sleepSkill = String(restrictions.sleepInsight[0].system.sleepSkill || "Insight").trim();
+      sleepSkill = criticalInjurySleepSkill(restrictions.sleepInsight[0]).trim();
       const sleepSkillItem = actor.items.find((item) => item.type === "skill"
         && item.name.localeCompare(sleepSkill, undefined, { sensitivity: "base" }) === 0);
       if (!sleepSkillItem) {

@@ -635,6 +635,38 @@ export class YZEActor extends Actor {
 
 export class YZEItem extends Item {
   async _preUpdate(changed, options, user) {
+    if (this.type === "criticalInjury") {
+      const changedValue = (path) => (
+        foundry.utils.getProperty(changed, path) ?? changed[path]
+      );
+      const changedInstantDeath = changedValue("system.instantDeath");
+      const instantDeath = typeof changedInstantDeath === "boolean"
+        ? changedInstantDeath
+        : this.system.instantDeath === true;
+      const changedLethal = changedValue("system.lethal");
+      const lethal = instantDeath
+        ? true
+        : typeof changedLethal === "boolean" ? changedLethal : this.system.lethal === true;
+      const changedPermanent = changedValue("system.permanent");
+      const permanent = typeof changedPermanent === "boolean"
+        ? changedPermanent
+        : this.system.permanent === true;
+      if (instantDeath === true) {
+        foundry.utils.setProperty(changed, "system.lethal", true);
+        foundry.utils.setProperty(changed, "system.stabilized", false);
+      } else if (lethal === false) {
+        foundry.utils.setProperty(changed, "system.stabilized", false);
+        foundry.utils.setProperty(changed, "system.timeLimit", "");
+      }
+      if (lethal === true && !String(
+        changedValue("system.deathSaveSkill") ?? this.system.deathSaveSkill ?? ""
+      ).trim()) {
+        foundry.utils.setProperty(changed, "system.deathSaveSkill", "Stamina");
+      }
+      if (permanent === true) {
+        foundry.utils.setProperty(changed, "system.healingTime", "");
+      }
+    }
     if (this.type === "armor") {
       for (const [current, maximum] of [
         ["system.rating", "system.maxRating"],

@@ -8,24 +8,13 @@
     "lethal": false,
     "deathSaveModifier": 0,
     "timeLimit": "",
-    "healingTime": "2D6 days",
+    "healingTime": "2D6",
     "permanent": false,
     "instantDeath": false,
     "stabilized": false,
     "deathSaveSkill": "",
     "rollRange": "52",
-    "rollModifier": 0,
-    "affectedAttributes": "",
-    "affectedSkills": "",
-    "damageOnSkills": "",
-    "movementRestriction": "",
-    "disabledHands": 0,
-    "blockedAttributes": "",
     "blocksActions": false,
-    "sleepRestriction": "",
-    "sleepSkill": "",
-    "triggerKind": "",
-    "specialRule": "",
     "description": "<p>You cannot stop lying and must roleplay the effect; healing time 2D6 days.</p>",
     "price": 0,
     "effects": [],
@@ -40,7 +29,8 @@
       "nextDeathSaveAt": 0,
       "nextDeathSaveRound": 0,
       "treatmentLocked": false
-    }
+    },
+    "location": ""
   },
   "flags": {
     "fvtt-yze-srd": {
