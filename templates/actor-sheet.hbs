@@ -271,7 +271,7 @@
       <section class="sheet-panel actions-panel">
         <h2>{{localize "YZE.Actor.Actions"}}</h2>
         <div class="action-section-grid">
-          <div class="action-section">
+          <div class="action-section manoeuvres-section">
             <h3>{{localize "YZE.Surprise.Title"}}</h3>
             <ol class="state-action-list">
               <li class="state-action-row" data-tooltip="YZE.Surprise.SneakAttackSheetHint" data-tooltip-direction="UP">
@@ -303,9 +303,9 @@
             </ol>
           </div>
 
-          <div class="action-section {{#if brokenState.broken}}is-broken{{/if}}">
+          <div class="action-section harm-recovery-section {{#if brokenState.broken}}is-broken{{/if}}">
             <h3>{{localize "YZE.Recovery.HarmAndRecovery"}}</h3>
-            <ol class="state-action-list">
+            <ol class="state-action-list harm-recovery-action-list">
               <li class="state-action-row" data-tooltip="YZE.Recovery.ApplyDamageSheetHint" data-tooltip-direction="UP">
                 <span class="state-action-label">{{localize "YZE.Combat.ApplyDamage"}}</span>
                 <button class="icon-button state-action-button" type="button" data-action="applyDamage" aria-label="{{localize 'YZE.Combat.ApplyDamage'}}"><i class="fa-solid fa-heart-crack" aria-hidden="true"></i></button>

@@ -1004,7 +1004,7 @@
       "Absorbed": "Cover absorbed {amount} damage."
     },
     "Recovery": {
-      "HarmAndRecovery": "Harm, Recovery & Broken",
+      "HarmAndRecovery": "Harm & Recovery",
       "HealRecover": "Heal / Recover",
       "RecoverShift": "Recover a Shift",
       "UseHealing": "Use Healing on Target",
